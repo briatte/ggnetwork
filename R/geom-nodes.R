@@ -10,17 +10,17 @@
 #' @param show.legend see \code{\link[ggplot2]{geom_point}}
 #' @param inherit.aes see \code{\link[ggplot2]{geom_point}}
 #' @param ... see \code{\link[ggplot2]{geom_point}}
-#' @importFrom ggplot2 layer ggproto
+#' @importFrom ggplot2 layer
 #' @export
-geom_nodes <- function(mapping = NULL, data = NULL, stat = "identity",
+geom_nodes <- function(mapping = NULL, data = NULL, stat = "nodes",
                        position = "identity", na.rm = FALSE,
                        show.legend = NA, inherit.aes = TRUE, ...) {
 
-  layer(
+  ggplot2::layer(
     data = data,
     mapping = mapping,
-    stat = stat,
-    geom = GeomNodes,
+    stat = StatNodes,
+    geom = ggplot2::GeomPoint,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
@@ -32,37 +32,64 @@ geom_nodes <- function(mapping = NULL, data = NULL, stat = "identity",
 
 }
 
+#' Label the nodes of a network.
+#'
+#' All arguments to this function are identical to those of
+#' \code{\link[ggplot2]{geom_text}}.
+#' @param mapping see \code{\link[ggplot2]{geom_text}}
+#' @param data see \code{\link[ggplot2]{geom_text}}
+#' @param stat see \code{\link[ggplot2]{geom_text}}
+#' @param position see \code{\link[ggplot2]{geom_text}}
+#' @param parse see \code{\link[ggplot2]{geom_text}}
+#' @param show.legend see \code{\link[ggplot2]{geom_text}}
+#' @param inherit.aes see \code{\link[ggplot2]{geom_text}}
+#' @param ... see \code{\link[ggplot2]{geom_text}}
+#' @param nudge_x see \code{\link[ggplot2]{geom_text}}
+#' @param nudge_y see \code{\link[ggplot2]{geom_text}}
+#' @param check_overlap see \code{\link[ggplot2]{geom_text}}
+#' @importFrom ggplot2 layer position_nudge
+#' @export
+geom_nodetext <- function(mapping = NULL, data = NULL, stat = "nodes",
+                          position = "identity", parse = FALSE,
+                          show.legend = NA, inherit.aes = TRUE,
+                          ..., nudge_x = 0, nudge_y = 0,
+                          check_overlap = FALSE) {
+
+  if (!missing(nudge_x) || !missing(nudge_y)) {
+
+    if (!missing(position)) {
+      stop("Specify either `position` or `nudge_x`/`nudge_y`", call. = FALSE)
+    }
+
+    position <- ggplot2::position_nudge(nudge_x, nudge_y)
+
+  }
+
+  ggplot2::layer(
+    data = data,
+    mapping = mapping,
+    stat = StatNodes,
+    geom = ggplot2::GeomText,
+    position = position,
+    show.legend = show.legend,
+    inherit.aes = inherit.aes,
+    params = list(
+      parse = parse,
+      check_overlap = check_overlap,
+      ...
+    )
+  )
+
+}
+
 #' @rdname geom_nodes
 #' @format NULL
 #' @usage NULL
+#' @importFrom ggplot2 ggproto
 #' @export
-GeomNodes <-
-  ggproto("GeomNodes", Geom,
-          required_aes = c("x", "y"),
-          non_missing_aes = c("size", "shape"),
-          default_aes = aes(
-            shape = 19, colour = "black", size = 1.5, fill = NA,
-            alpha = NA, stroke = 0.5
-          ),
-
-          draw_panel = function(data, panel_scales, coord, na.rm = FALSE) {
-            data <- subset(data, select = c(-xend, -yend))
-            data <- unique(data)
-            coords <- coord$transform(data, panel_scales)
-            ggname("geom_nodes",
-                   pointsGrob(
-                     coords$x, coords$y,
-                     pch = coords$shape,
-                     gp = gpar(
-                       col = alpha(coords$colour, coords$alpha),
-                       fill = alpha(coords$fill, coords$alpha),
-                       # Stroke is added around the outside of the point
-                       fontsize = coords$size * .pt + coords$stroke * .stroke / 2,
-                       lwd = coords$stroke * .stroke / 2
-                     )
-                   )
-            )
-          },
-
-          draw_key = draw_key_point
+StatNodes <-
+  ggplot2::ggproto("StatNodes", Stat,
+                   compute_layer = function(data, scales, params) {
+                     unique(subset(data, select = c(-xend, -yend)))
+                   }
   )
