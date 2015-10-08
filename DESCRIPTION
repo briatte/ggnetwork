@@ -10,6 +10,14 @@ License: GPL-3
 LazyData: TRUE
 VignetteBuilder: knitr
 NeedsCompilation: no
-Depends: ggplot2, grid
-Imports: network, sna
-Suggests: intergraph, knitr, plyr
+Depends:
+  ggplot2 (>= 1.0.1.9003),
+  R (>= 2.14),
+Imports:
+  grid,
+  network,
+  sna
+Suggests:
+  intergraph,
+  knitr,
+  testthat

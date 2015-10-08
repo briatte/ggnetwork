@@ -89,6 +89,7 @@ geom_edgetext <- function(mapping = NULL, data = NULL, stat = "edges",
 #' @rdname geom_edgetext
 #' @format NULL
 #' @usage NULL
+#' @importFrom grid gpar grobTree pointsGrob textGrob
 #' @export
 GeomEdgeText <-
   ggproto("GeomEdgeText", Geom,
@@ -115,11 +116,11 @@ GeomEdgeText <-
               data$hjust <- compute_just(data$hjust, data$x)
             }
 
-            grobTree(
-              pointsGrob(
+            grid::grobTree(
+              grid::pointsGrob(
                 data$x, data$y,
                 pch = 19, #coords$shape,
-                gp = gpar(
+                gp = grid::gpar(
                   col = data$fill, # alpha(coords$colour, coords$alpha),
                   fill = data$fill, # alpha(coords$fill, coords$alpha),
                   # Stroke is added around the outside of the point
@@ -127,12 +128,12 @@ GeomEdgeText <-
                   lwd = 0 # coords$stroke * .stroke / 2
                 )
               ),
-              textGrob(
+              grid::textGrob(
                 lab,
                 data$x, data$y, default.units = "native",
                 hjust = data$hjust, vjust = data$vjust,
                 rot = data$angle,
-                gp = gpar(
+                gp = grid::gpar(
                   col = alpha(data$colour, data$alpha),
                   fontsize = data$size * .pt,
                   fontfamily = data$family,
