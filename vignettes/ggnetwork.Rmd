@@ -17,7 +17,7 @@ library(ggplot2)
 devtools::load_all()
 ```
 
-`ggnetwork` also requires the `network` and `sna` packages for network manipulation, and the `plyr` package for data wrangling.
+`ggnetwork` further requires the `network` and `sna` packages for network manipulation.
 
 The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/ggnet) by [Samantha Tyner](https://github.com/sctyner) and [Heike Hoffmann](https://github.com/heike), and shares some code with the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet).
 
