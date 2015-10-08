@@ -13,7 +13,7 @@
 #' @param ... see \code{\link[ggplot2]{geom_segment}}
 #' @importFrom ggplot2 layer
 #' @export
-geom_edges <- function(mapping = NULL, data = NULL, stat = "identity",
+geom_edges <- function(mapping = NULL, data = NULL, stat = "edges",
                        position = "identity", arrow = NULL,
                        na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
                        ...) {
@@ -21,7 +21,7 @@ geom_edges <- function(mapping = NULL, data = NULL, stat = "identity",
   ggplot2::layer(
     data = data,
     mapping = mapping,
-    stat = stat,
+    stat = StatEdges,
     geom = ggplot2::GeomSegment,
     position = position,
     show.legend = show.legend,
@@ -72,7 +72,7 @@ geom_edgetext <- function(mapping = NULL, data = NULL, stat = "edges",
   ggplot2::layer(
     data = data,
     mapping = mapping,
-    stat = StatEdges,
+    stat = StatMidEdges,
     geom = GeomEdgeText,
     position = position,
     show.legend = show.legend,
@@ -148,7 +148,7 @@ GeomEdgeText <-
           draw_key = draw_key_text
   )
 
-#' @rdname geom_edges
+#' @rdname geom_edgetext
 #' @format NULL
 #' @usage NULL
 #' @importFrom ggplot2 ggproto
@@ -156,6 +156,19 @@ GeomEdgeText <-
 StatEdges <-
   ggplot2::ggproto("StatEdges", Stat,
                    compute_layer = function(data, scales, params) {
+                     unique(subset(data, x != xend & y != yend))
+                   }
+  )
+
+#' @rdname geom_edgetext
+#' @format NULL
+#' @usage NULL
+#' @importFrom ggplot2 ggproto
+#' @export
+StatMidEdges <-
+  ggplot2::ggproto("StatMidEdges", Stat,
+                   compute_layer = function(data, scales, params) {
+                     data = subset(data, x != xend & y != yend)
                      data$x = (data$x + data$xend) / 2
                      data$y = (data$y + data$yend) / 2
                      unique(subset(data, select = c(-xend, -yend)))
