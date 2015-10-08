@@ -70,10 +70,10 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   }
 
   # edge list
-  edges = sna::as.edgelist.sna(x)[, 1:2 ]
+  edges = network::as.matrix.network.edgelist(x)
+
   edges = data.frame(nodes[ edges[, 1], 1:2 ], nodes[ edges[, 2], 1:2 ])
   names(edges) = c("x", "y", "xend", "yend")
-
   # arrow gap (thanks to @heike)
   if (arrow.gap > 0) {
 
@@ -91,7 +91,7 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   }
 
   # merge edges and nodes data
-  edges = merge(nodes, edges, by = c("x", "y"), all.x = TRUE)
+  edges = merge(nodes, edges, by = c("x", "y"), all = TRUE)
 
   # add missing columns to nodes data
   nodes$xend = nodes$x
@@ -105,5 +105,5 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   }
 
   # return a data frame with network.size(x) + network.edgecount(x) rows
-  unique(rbind(nodes, edges))
+  unique(rbind(nodes, edges[ !is.na(edges$xend), ]))
 }
