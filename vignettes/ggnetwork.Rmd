@@ -1,5 +1,5 @@
 ---
-title: "ggnetwork: network geometries for ggplot2"
+title: "ggnetwork: network geoms for ggplot2"
 output:
   html_document:
     highlight: default
@@ -21,11 +21,11 @@ devtools::load_all()
 
 `ggnetwork` further requires the `network` and `sna` packages for network manipulation.
 
-The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/ggnet) by [Samantha Tyner](https://github.com/sctyner) and [Heike Hoffmann](https://github.com/heike), and shares some code with the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet).
+The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/ggnet) by Samantha Tyner and Heike Hoffmann. It also shares some code with the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet), which are part of the [`GGally`](https://github.com/ggobi/ggally) package by Barret Schloerke and others. Each of these projects are extensions to Hadley Wickham's implementation of Leland Wilkinson's "grammar of graphics".
 
 ## Minimal example
 
-Let's define a small random graph:
+Let's define a small random graph to illustrate each component of `ggnetwork`:
 
 ```{r, message=FALSE}
 library(network)
@@ -58,7 +58,9 @@ theme_blank
 
 ### `ggnetwork`
 
-The `ggnetwork` package is organised around a function of the same name, which will ’flatten’ the network object to a data frame that contains the edge list of the network, along with the edge attributes and the vertex attributes of the sender nodes.
+The `ggnetwork` package is organised around a ‘workhorse’ function of the same name, which will ’flatten’ the network object to a data frame that contains the edge list of the network, along with the edge attributes and the vertex attributes of the sender nodes.
+
+The network object referred to above might be an object of class `network`, or any data structure that can be coerced to it, such as an edge list, an adjacency matrix or an incidence matrix. If the `intergraph` package is installed, then objects of class `igraph` can also be used with the `ggnetwork` package.
 
 The data frame returned by `ggnetwork` also contains the coordinates needed for node placement as columns `"x"`, `"y"`, `"xend"` and `"yend"`, which as a consequence are "reserved" names in the context of `ggnetworkmap`. If these names show up in the edge or the vertex attributes, the function will simply fail to work.
 
@@ -193,8 +195,6 @@ ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
   geom_edgetext(aes(label = day), color = "grey25") +
   scale_color_brewer(palette = "Set2") +
   scale_size_area("importance", breaks = 1:3, max_size = 9) +
-  scale_x_continuous(NULL, NULL) +
-  scale_y_continuous(NULL, NULL) +
   theme_blank()
 ```
 
