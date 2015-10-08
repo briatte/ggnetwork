@@ -11,7 +11,7 @@
 #' @param show.legend see \code{\link[ggplot2]{geom_segment}}
 #' @param inherit.aes see \code{\link[ggplot2]{geom_segment}}
 #' @param ... see \code{\link[ggplot2]{geom_segment}}
-#' @importFrom ggplot2 layer ggproto
+#' @importFrom ggplot2 layer
 #' @export
 geom_edges <- function(mapping = NULL, data = NULL, stat = "identity",
                        position = "identity", arrow = NULL,
@@ -22,7 +22,7 @@ geom_edges <- function(mapping = NULL, data = NULL, stat = "identity",
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomEdges,
+    geom = ggplot2::GeomSegment,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
@@ -35,53 +35,128 @@ geom_edges <- function(mapping = NULL, data = NULL, stat = "identity",
 
 }
 
-#' @rdname geom_edges
+#' Label the edges of a network.
+#'
+#' All arguments to this function are identical to those of
+#' \code{\link[ggplot2]{geom_text}}. The \code{fill} aesthetic can be used to
+#' set the background color of the labels, which defauts to \code{"white"}.
+#' @param mapping see \code{\link[ggplot2]{geom_text}}
+#' @param data see \code{\link[ggplot2]{geom_text}}
+#' @param stat see \code{\link[ggplot2]{geom_text}}
+#' @param position see \code{\link[ggplot2]{geom_text}}
+#' @param parse see \code{\link[ggplot2]{geom_text}}
+#' @param show.legend see \code{\link[ggplot2]{geom_text}}
+#' @param inherit.aes see \code{\link[ggplot2]{geom_text}}
+#' @param ... see \code{\link[ggplot2]{geom_text}}
+#' @param nudge_x see \code{\link[ggplot2]{geom_text}}
+#' @param nudge_y see \code{\link[ggplot2]{geom_text}}
+#' @param check_overlap see \code{\link[ggplot2]{geom_text}}
+#' @importFrom ggplot2 layer position_nudge
+#' @export
+geom_edgetext <- function(mapping = NULL, data = NULL, stat = "edges",
+                          position = "identity", parse = FALSE,
+                          show.legend = NA, inherit.aes = TRUE,
+                          ..., nudge_x = 0, nudge_y = 0,
+                          check_overlap = FALSE) {
+
+  if (!missing(nudge_x) || !missing(nudge_y)) {
+
+    if (!missing(position)) {
+      stop("Specify either `position` or `nudge_x`/`nudge_y`", call. = FALSE)
+    }
+
+    position <- ggplot2::position_nudge(nudge_x, nudge_y)
+
+  }
+
+  ggplot2::layer(
+    data = data,
+    mapping = mapping,
+    stat = StatEdges,
+    geom = GeomEdgeText,
+    position = position,
+    show.legend = show.legend,
+    inherit.aes = inherit.aes,
+    params = list(
+      parse = parse,
+      check_overlap = check_overlap,
+      ...
+    )
+  )
+
+}
+
+#' @rdname geom_edgetext
 #' @format NULL
 #' @usage NULL
 #' @export
-GeomEdges <-
-  ggplot2::ggproto("GeomEdges", Geom,
-                   required_aes = c("x", "y", "xend", "yend"),
-                   non_missing_aes = c("linetype", "size", "shape"),
-                   default_aes = aes(colour = "black", size = 0.5, linetype = 1, alpha = NA),
+GeomEdgeText <-
+  ggproto("GeomEdgeText", Geom,
+          required_aes = c("x", "y", "label"),
 
-                   draw_panel = function(data, panel_scales, coord, arrow = NULL, na.rm = FALSE) {
+          default_aes = aes(
+            colour = "black", fill = "white", size = 3.88, angle = 0, hjust = 0.5,
+            vjust = 0.5, alpha = NA, family = "", fontface = 1, lineheight = 1.2
+          ),
 
-                     data <- remove_missing(data, na.rm = na.rm,
-                                            c("i", "j", "linetype", "size", "shape"),
-                                            name = "geom_edges")
+          draw_panel = function(data, panel_scales, coord, parse = FALSE,
+                                na.rm = FALSE, check_overlap = FALSE) {
 
-                     if (empty(data)) return(zeroGrob())
+            lab <- data$label
+            if (parse) {
+              lab <- parse(text = lab)
+            }
 
-                     if (coord$is_linear()) {
+            data <- coord$transform(data, panel_scales)
+            if (is.character(data$vjust)) {
+              data$vjust <- compute_just(data$vjust, data$y)
+            }
+            if (is.character(data$hjust)) {
+              data$hjust <- compute_just(data$hjust, data$x)
+            }
 
-                       coord <- coord$transform(data, panel_scales)
-                       return(
-                         ggname("geom_edges",
-                                segmentsGrob(coord$x, coord$y, coord$xend, coord$yend,
-                                             default.units = "native",
-                                             gp = gpar(
-                                               col = alpha(coord$colour, coord$alpha),
-                                               fill = alpha(coord$colour, coord$alpha),
-                                               lwd = coord$size * .pt,
-                                               lty = coord$linetype
-                                             ),
-                                             arrow = arrow)
-                         ))
-                     }
+            grobTree(
+              pointsGrob(
+                data$x, data$y,
+                pch = 19, #coords$shape,
+                gp = gpar(
+                  col = data$fill, # alpha(coords$colour, coords$alpha),
+                  fill = data$fill, # alpha(coords$fill, coords$alpha),
+                  # Stroke is added around the outside of the point
+                  fontsize = 1.5 * data$size * .pt, # coords$size * .pt + coords$stroke * .stroke / 2,
+                  lwd = 0 # coords$stroke * .stroke / 2
+                )
+              ),
+              textGrob(
+                lab,
+                data$x, data$y, default.units = "native",
+                hjust = data$hjust, vjust = data$vjust,
+                rot = data$angle,
+                gp = gpar(
+                  col = alpha(data$colour, data$alpha),
+                  fontsize = data$size * .pt,
+                  fontfamily = data$family,
+                  fontface = data$fontface,
+                  lineheight = data$lineheight
+                ),
+                check.overlap = check_overlap
+              )
+            )
+          },
 
-                     data$group <- 1:nrow(data)
-                     starts <- subset(data, select = c(-xend, -yend))
-                     ends <- plyr::rename(subset(data, select = c(-x, -y)),
-                                          c("xend" = "x", "yend" = "y"),
-                                          warn_missing = FALSE)
+          draw_key = draw_key_text
+  )
 
-                     pieces <- rbind(starts, ends)
-                     pieces <- pieces[order(pieces$group),]
-
-                     GeomPath$draw_panel(pieces, panel_scales, coord, arrow = arrow,
-                                         lineend = lineend)
-                   },
-
-                   draw_key = draw_key_path
+#' @rdname geom_edges
+#' @format NULL
+#' @usage NULL
+#' @importFrom ggplot2 ggproto
+#' @export
+StatEdges <-
+  ggplot2::ggproto("StatEdges", Stat,
+                   compute_layer = function(data, scales, params) {
+                     data$x = (data$x + data$xend) / 2
+                     data$y = (data$y + data$yend) / 2
+                     unique(subset(data, select = c(-xend, -yend)))
+                   }
   )
