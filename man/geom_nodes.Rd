@@ -2,11 +2,11 @@
 % Please edit documentation in R/geom-nodes.R
 \docType{data}
 \name{geom_nodes}
-\alias{GeomNodes}
+\alias{StatNodes}
 \alias{geom_nodes}
 \title{Draw the nodes of a network.}
 \usage{
-geom_nodes(mapping = NULL, data = NULL, stat = "identity",
+geom_nodes(mapping = NULL, data = NULL, stat = "nodes",
   position = "identity", na.rm = FALSE, show.legend = NA,
   inherit.aes = TRUE, ...)
 }

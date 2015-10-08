@@ -2,7 +2,7 @@
 % Please edit documentation in R/geom-edges.R
 \docType{data}
 \name{geom_edges}
-\alias{GeomEdges}
+\alias{StatEdges}
 \alias{geom_edges}
 \title{Draw the edges of a network.}
 \usage{
