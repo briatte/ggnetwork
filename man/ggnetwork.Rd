@@ -24,7 +24,8 @@ avoid overplotting edge arrows and nodes; defaults to \code{0} when the
 network is undirected (no edge shortening), or to \code{0.025} when the
 network is directed.}
 
-\item{...}{other parameters passed to the network layout function as a list}
+\item{...}{other parameters that will get passed to the network layout
+algorithm as a list}
 }
 \description{
 See the vignette for a description of both this function and the rest of the

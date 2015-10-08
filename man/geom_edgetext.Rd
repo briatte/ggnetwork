@@ -3,6 +3,8 @@
 \docType{data}
 \name{geom_edgetext}
 \alias{GeomEdgeText}
+\alias{StatEdges}
+\alias{StatMidEdges}
 \alias{geom_edgetext}
 \title{Label the edges of a network.}
 \usage{
