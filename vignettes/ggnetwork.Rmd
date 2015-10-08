@@ -1,0 +1,204 @@
+---
+title: "ggnetwork: network geometries for ggplot2"
+output:
+  html_document:
+    highlight: default
+    toc: true
+---
+
+The `ggnetwork` package contains the `ggnetwork` ‘workhorse’ function and four geoms that can be used to plot a network as a pure `ggplot2` object. It is meant to be used with [ggplot2](https://github.com/hadley/ggplot2) version 1.0.1.9003 or above. Right now, this means that you need to install `ggplot2` from its development repository to be able to use this package:
+
+```{r, eval=FALSE}
+devtools::install_github("hadley/ggplot2")
+library(ggplot2)
+```
+```{r, echo=FALSE, message=FALSE}
+library(ggplot2)
+devtools::load_all()
+```
+
+`ggnetwork` also requires the `network` and `sna` packages for network manipulation, and the `plyr` package for data wrangling.
+
+The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/ggnet) by [Samantha Tyner](https://github.com/sctyner) and [Heike Hoffmann](https://github.com/heike), and shares some code with the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet).
+
+## Minimal example
+
+Let's define a small random graph:
+
+```{r, message=FALSE}
+library(network)
+library(sna)
+n = network(rgraph(10, tprob = 0.25), directed = FALSE)
+```
+
+Let's now add categorical and continuous attributes for both edges and vertices. We'll start with nodes, adding a categorical vertex attribute called `"family"`, which is set to either `"a"`, `"b"` or `"c"`, and a continuous vertex attribute called `"importance"`, which is set to either 1, 2 or 3.
+
+```{r}
+n %v% "family" = sample(letters[1:3], 10, replace = TRUE)
+n %v% "importance" = sample(1:3, 10, replace = TRUE)
+```
+
+We now add a categorical edge attribute called `"type"`, which is set to either `"x"`, `"y"` or `"z"`, and a continuous vertex attribute called `"day"`, which is set to either 1, 2 or 3.
+
+```{r}
+e = network.edgecount(n)
+set.edge.attribute(n, "type", sample(letters[24:26], e, replace = TRUE))
+set.edge.attribute(n, "day", sample(1:3, e, replace = TRUE))
+```
+
+And finally, let's now define a blank `ggplot2` theme:
+
+```{r}
+theme_clean <- function() {
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+}
+```
+
+## Main building blocks
+
+### `ggnetwork`
+
+The `ggnetwork` package is organised around a function of the same name, which will ’flatten’ the network object to a data frame that contains the edge list of the network, along with the edge attributes and the vertex attributes of the sender nodes.
+
+The data frame returned by `ggnetwork` also contains the coordinates needed for node placement as columns `"x"`, `"y"`, `"xend"` and `"yend"`, which as a consequence are "reserved" names in the context of `ggnetworkmap`. If these names show up in the edge or the vertex attributes, the function will simply fail to work.
+
+The default node placement algorithm used by `ggnetwork` to produce these coordinates is the Fruchterman-Reingold force-dorected layout algorithm. All of the [placement algorithms implemented in the `sna` package](http://www.rdocumentation.org/packages/sna/functions/gplot.layout) are available through `ggnetworkmap`, which also accepts additional layout parameters:
+
+```{r, eval=F}
+ggnetwork(n, layout = "fruchtermanreingold", cell.jitter = 0.75)
+ggnetwork(n, layout = "target", niter = 100)
+```
+
+The top of the data frame contains self-loops to force every node to be included in the plot. This explains why the rows shown below have the same values in `"x"` and `"xend"` (and in `"y"` and `"yend"`), and only missing values in the columns corresponding to the edge attributes:
+
+```{r}
+head(ggnetwork(n))
+```
+
+The next rows of the data frame contain the actual edges:
+
+```{r}
+tail(ggnetwork(n))
+```
+
+The data frame returned by `ggnetwork` has `N + E` rows, where `N` is the number of nodes of the network, and `E` its number of edges. This data format is very likely to include duplicate information about the nodes, which is unavoidable.
+
+Note that `ggnetwork` does not include any safety mechanism against duplicate column names. As a consequence, if there is both a vertex attribute called `"na"` and an edge attribute called `"na"`, as in the example above, then the vertex attribute will be renamed `"na.x"` and the edge attribute will be renamed `"na.y"`.
+
+### `geom_edges`
+
+Let's now draw the network edges using `geom_edges`, which is just a lightly hacked version of `geom_segment`. In the example below, we map the `type` edge attribute to the linetype of the network edges:
+
+```{r}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey50") +
+  theme_clean()
+```
+
+The other aesthetics that we mapped are the basic coordinates of the network plot. These might also be set as part of the call to `geom_segment`, but setting them at the root of the plot avoids having to repeat them in additional geoms.
+
+### `geom_nodes`
+
+Let's now draw the nodes using `geom_nodes`, which is just a lightly hacked version of `geom_point`. In the example below, we map the `family` vertex attribute to the color of the nodes, and make the size of these nodes proportional to the `importance` vertx attribute:
+
+```{r}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey50") +
+  geom_nodes(aes(color = family, size = importance)) +
+  theme_clean()
+```
+
+Because `ggplot2` follows Wilkinson's grammar of graphics, it accepts only one color scale. In the example above, that scale is mapped to a vertex attribute, but it could have also been mapped to an edge attribute. Mapping a color to _both_ a vertex attribute and an edge attribute will create a single color scale that incorrectly merges both attributes into one:
+
+```{r, echo=FALSE, eval=FALSE}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(color = type)) +
+  geom_nodes(aes(color = family)) +
+  theme_clean()
+```
+
+This is a limitation of `ggnetwork` that would require violating some fundamental aspects of the grammar of graphics to be circumvented.
+
+## More building blocks
+
+### `geom_nodetext`
+
+Let's now add node labels. These are simply plotted over the nodes by the `nodetext` geom, which works exactly like `geom_text`. In the example below, we map the `vertex.names` attribute (which contains numbers 1 to 10) to uppercase letters:
+
+```{r}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(color = "black") +
+  geom_nodes(color = "black", size = 8) +
+  geom_nodetext(aes(color = family, label = LETTERS[ vertex.names ]), fontface = "bold") +
+  theme_clean()
+```
+
+### `geom_edgetext`
+
+Let's now add edge labels. These are plotted at mid-distance of the nodes that the edges connect by the `edgetext` geom, which works exactly like `geom_text`, except that it also supports the `fill` aesthetic to set the background color of the labels, which defaults to \code{"white"}. Here's an example where we map the `day` edge attribute to edge labels:
+
+```{r}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey75") +
+  geom_nodes(color = "gold", size = 8) +
+  geom_nodetext(aes(label = LETTERS[ vertex.names ])) +
+  geom_edgetext(aes(label = day), color = "white", fill = "grey25") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = "grey25"),
+        panel.grid = element_blank())
+```
+
+## More plotting parameters
+
+### Edge arrows
+
+`ggnetwork` uses code by [Heike Hoffmann](https://github.com/heike) to better show arrows in directed graphs. To illustrate this, we will need a directed graph example, so let's use the first of the seven `emon` networks bundled in the `network` package:
+
+```{r}
+data(emon)
+emon[[1]]
+```
+
+If this network is passed to `ggnetwork` without any further plotting parameter, the result will feature "shortened" edges that do not reach their receiver nodes:
+
+```{r, echo=FALSE}
+ggplot(ggnetwork(emon[[1]]), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges() +
+  geom_nodes(color = "tomato", size = 4) +
+  theme_clean()
+```
+
+This is because directed networks are expected to be plotted with edge arrows indicating the directedness of each edge. Adding edge arrows with `geom_edges` works through the same call to the `arrow` function that is supported by `geom_segment`:
+
+```{r}
+ggplot(ggnetwork(emon[[1]]), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(arrow = arrow(length = unit(6, "pt"), type = "closed")) +
+  geom_nodes(color = "tomato", size = 4) +
+  theme_clean()
+```
+
+The slightly shortened edges avoid overplotting the edge arrows and the nodes. The amount of "edge shortening" can be set through the `arrow.gap` parameter of `ggnetwork`, which defaults to `0` when the network is undirected and `0.025` when it is. This parameter might need adjustment depending on the size of the nodes, and it will probably not manage to avoid any overplotting when the size of the nodes is not constant.
+
+### Other methods
+
+Since `ggnetwork` works entirely through `ggplot2`, all `ggplot2` methods apply:
+
+```{r}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey50") +
+  geom_nodes(aes(x, y, color = family, size = 1.5 * importance)) +
+  geom_nodetext(aes(label = LETTERS[ vertex.names ], size = 0.5 * importance)) +
+  geom_edgetext(aes(label = day), color = "grey25") +
+  scale_color_brewer(palette = "Set2") +
+  scale_size_area("importance", breaks = 1:3, max_size = 9) +
+  scale_x_continuous(NULL, NULL) +
+  scale_y_continuous(NULL, NULL) +
+  theme_clean()
+```
+
+---
+
+```{r, results='asis', echo=FALSE, cache=TRUE, eval=TRUE}
+cat("Last printed ", gsub("\\s+", " ", format(Sys.time(), "%b %e, %Y")), ".", sep = "")
+```
