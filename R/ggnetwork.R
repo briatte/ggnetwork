@@ -31,7 +31,7 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
                       arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
                       ...) {
 
-  try_require("sna", "ggnetwork")
+  load_pkg("sna")
 
   if (class(x) == "igraph" && "intergraph" %in% rownames(installed.packages())) {
     x = intergraph::asNetwork(x)
@@ -44,7 +44,7 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   }
 
   if (!network::is.network(x)) {
-    stop("could not coerce x to a network object")
+    stop("could not coerce object to a network")
   }
 
   # node placement
