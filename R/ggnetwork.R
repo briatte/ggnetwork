@@ -19,7 +19,9 @@ if (getRversion() >= "2.15.1") {
 #' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
 #' network is undirected (no edge shortening), or to \code{0.025} when the
 #' network is directed.
-#' @param ... other parameters passed to the network layout function as a list
+#' @param ... other parameters that will get passed to the network layout
+#' algorithm as a list
+#' @import sna
 #' @examples
 #' if (require(network)) {
 #'   data(emon)

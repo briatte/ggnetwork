@@ -9,11 +9,15 @@ load_pkg <- function(x) {
 #'
 #' A \code{ggplot2} theme without lines, borders, axis text or titles, suited
 #' for plotting networks.
+#' @param base_size base font size
+#' @param base_family base font family
+#' @importFrom grid unit
+#' @export
 theme_blank <- function(base_size = 12, base_family = "") {
-  theme(line = element_blank(),
-        rect = element_blank(),
-        axis.text = element_blank(),
-        axis.title = element_blank(),
-        plot.margin = unit(c(0, 0, 0, 0), "lines"),
+  ggplot2::theme(line = ggplot2::element_blank(),
+        rect = ggplot2::element_blank(),
+        axis.text = ggplot2::element_blank(),
+        axis.title = ggplot2::element_blank(),
+        plot.margin = grid::unit(c(0, 0, 0, 0), "lines"),
         complete = TRUE)
 }
