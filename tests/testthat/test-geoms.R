@@ -1,7 +1,6 @@
-context("geom-nodes")
+context("Test all geoms")
 
-library(network)
-data(emon)
+data(emon, package = "network")
 
 test_that("geom-nodes works", {
 
@@ -24,8 +23,6 @@ test_that("geom-nodetext works", {
   )
 
 })
-
-context("geom-edges")
 
 test_that("geom-edges works", {
 

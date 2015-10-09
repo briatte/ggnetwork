@@ -1,17 +1,12 @@
-context("ggnetwork")
+context("Test ggnetwork")
 
 library(intergraph)
-library(network)
-data(emon)
-data(flo)
+data(emon, package = "network")
 
 test_that("ggnetwork works", {
 
-  ggnetwork(flo)
-  ggnetwork(emon[[1]], layout = "circle")
-
-  expect_error(ggnetwork(1, "could not coerce"))
-  expect_error(ggnetwork(flo, layout = "wrong value", "unsupported layout"))
+  expect_error(ggnetwork(-999, "could not coerce"))
+  expect_error(ggnetwork(emon[[1]], layout = -999, "unsupported layout"))
 
 })
 
@@ -25,6 +20,15 @@ context("utilities")
 
 test_that("load_pkg works", {
 
-  expect_error(load_pkg("wrong value"))
+  expect_error(load_pkg(-999))
+
+})
+
+test_that("theme_blank works", {
+
+  ggplot(ggnetwork(emon[[1]]), aes(x, y, xend = xend, yend = yend)) +
+    geom_edges() +
+    geom_nodes() +
+    theme_blank()
 
 })
