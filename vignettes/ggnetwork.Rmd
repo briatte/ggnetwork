@@ -1,22 +1,29 @@
 ---
-title: "ggnetwork: network geoms for ggplot2"
+title: 'ggnetwork: network geoms for ggplot2'
 output:
   html_document:
     highlight: default
-    toc: true
+    toc: yes
 ---
 
+```{r, echo=FALSE, message=FALSE}
+library(ggplot2)
+devtools::load_all()
+```
+
 > The [`ggnetwork`](https://github.com/briatte/ggnetwork) package makes it possible to pass network objects to [`ggplot2`](https://github.com/hadley/ggplot2).
+
+Use `devtools` to install it:
+
+```{r, eval=FALSE}
+devtools::install_github("briatte/ggnetwork")
+```
 
 The package is meant to be used with `ggplot2` version 1.0.1.9003 or above. Right now, this means that you will need to install `ggplot2` from its development repository to be able to use `ggnetwork`:
 
 ```{r, eval=FALSE}
 devtools::install_github("hadley/ggplot2")
 library(ggplot2)
-```
-```{r, echo=FALSE, message=FALSE}
-library(ggplot2)
-devtools::load_all()
 ```
 
 `ggnetwork` further requires the `network` and `sna` packages for network manipulation.
