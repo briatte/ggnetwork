@@ -4,16 +4,14 @@
 \alias{geom_edges}
 \title{Draw the edges of a network.}
 \usage{
-geom_edges(mapping = NULL, data = NULL, stat = "edges",
-  position = "identity", arrow = NULL, na.rm = FALSE, show.legend = NA,
-  inherit.aes = TRUE, ...)
+geom_edges(mapping = NULL, data = NULL, position = "identity",
+  arrow = NULL, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
+  ...)
 }
 \arguments{
 \item{mapping}{see \code{\link[ggplot2]{geom_segment}}}
 
 \item{data}{see \code{\link[ggplot2]{geom_segment}}}
-
-\item{stat}{see \code{\link[ggplot2]{geom_segment}}}
 
 \item{position}{see \code{\link[ggplot2]{geom_segment}}}
 
@@ -28,7 +26,9 @@ geom_edges(mapping = NULL, data = NULL, stat = "edges",
 \item{...}{see \code{\link[ggplot2]{geom_segment}}}
 }
 \description{
-All arguments to this function are identical to those of
-\code{\link[ggplot2]{geom_segment}}, including \code{arrow}.
+All arguments to this geom are identical to those of
+\code{\link[ggplot2]{geom_segment}}, including \code{arrow}, which is useful
+to plot directed networks in conjunction with the \code{arrow.gap} argument
+of \code{\link{ggnetwork}}.
 }
 

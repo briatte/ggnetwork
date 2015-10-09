@@ -4,17 +4,14 @@
 \alias{geom_nodetext}
 \title{Label the nodes of a network.}
 \usage{
-geom_nodetext(mapping = NULL, data = NULL, stat = "nodes",
-  position = "identity", parse = FALSE, show.legend = NA,
-  inherit.aes = TRUE, ..., nudge_x = 0, nudge_y = 0,
-  check_overlap = FALSE)
+geom_nodetext(mapping = NULL, data = NULL, position = "identity",
+  parse = FALSE, show.legend = NA, inherit.aes = TRUE, ..., nudge_x = 0,
+  nudge_y = 0, check_overlap = FALSE)
 }
 \arguments{
 \item{mapping}{see \code{\link[ggplot2]{geom_text}}}
 
 \item{data}{see \code{\link[ggplot2]{geom_text}}}
-
-\item{stat}{see \code{\link[ggplot2]{geom_text}}}
 
 \item{position}{see \code{\link[ggplot2]{geom_text}}}
 
@@ -33,7 +30,7 @@ geom_nodetext(mapping = NULL, data = NULL, stat = "nodes",
 \item{check_overlap}{see \code{\link[ggplot2]{geom_text}}}
 }
 \description{
-All arguments to this function are identical to those of
+All arguments to this geom are identical to those of
 \code{\link[ggplot2]{geom_text}}.
 }
 

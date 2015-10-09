@@ -1,10 +1,11 @@
 #' Draw the edges of a network.
 #'
-#' All arguments to this function are identical to those of
-#' \code{\link[ggplot2]{geom_segment}}, including \code{arrow}.
+#' All arguments to this geom are identical to those of
+#' \code{\link[ggplot2]{geom_segment}}, including \code{arrow}, which is useful
+#' to plot directed networks in conjunction with the \code{arrow.gap} argument
+#' of \code{\link{ggnetwork}}.
 #' @param mapping see \code{\link[ggplot2]{geom_segment}}
 #' @param data see \code{\link[ggplot2]{geom_segment}}
-#' @param stat see \code{\link[ggplot2]{geom_segment}}
 #' @param position see \code{\link[ggplot2]{geom_segment}}
 #' @param arrow see \code{\link[ggplot2]{geom_segment}}
 #' @param na.rm see \code{\link[ggplot2]{geom_segment}}
@@ -13,7 +14,7 @@
 #' @param ... see \code{\link[ggplot2]{geom_segment}}
 #' @importFrom ggplot2 layer
 #' @export
-geom_edges <- function(mapping = NULL, data = NULL, stat = "edges",
+geom_edges <- function(mapping = NULL, data = NULL,
                        position = "identity", arrow = NULL,
                        na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
                        ...) {
@@ -37,12 +38,12 @@ geom_edges <- function(mapping = NULL, data = NULL, stat = "edges",
 
 #' Label the edges of a network.
 #'
-#' All arguments to this function are identical to those of
-#' \code{\link[ggplot2]{geom_text}}. The \code{fill} aesthetic can be used to
-#' set the background color of the labels, which defauts to \code{"white"}.
+#' All arguments to this geom are identical to those of
+#' \code{\link[ggplot2]{geom_text}}. The \code{fill} aesthetic, which defaults
+#' to \code{"white"}, can be used to set the background color of the labels. The
+#' labels will be drawn at mid-edge.
 #' @param mapping see \code{\link[ggplot2]{geom_text}}
 #' @param data see \code{\link[ggplot2]{geom_text}}
-#' @param stat see \code{\link[ggplot2]{geom_text}}
 #' @param position see \code{\link[ggplot2]{geom_text}}
 #' @param parse see \code{\link[ggplot2]{geom_text}}
 #' @param show.legend see \code{\link[ggplot2]{geom_text}}
@@ -53,7 +54,7 @@ geom_edges <- function(mapping = NULL, data = NULL, stat = "edges",
 #' @param check_overlap see \code{\link[ggplot2]{geom_text}}
 #' @importFrom ggplot2 layer position_nudge
 #' @export
-geom_edgetext <- function(mapping = NULL, data = NULL, stat = "edges",
+geom_edgetext <- function(mapping = NULL, data = NULL,
                           position = "identity", parse = FALSE,
                           show.legend = NA, inherit.aes = TRUE,
                           ..., nudge_x = 0, nudge_y = 0,
@@ -86,11 +87,8 @@ geom_edgetext <- function(mapping = NULL, data = NULL, stat = "edges",
 
 }
 
-#' @rdname geom_edgetext
-#' @format NULL
-#' @usage NULL
 #' @importFrom grid gpar grobTree pointsGrob textGrob
-#' @export
+#' @keywords internal
 GeomEdgeText <-
   ggproto("GeomEdgeText", Geom,
           required_aes = c("x", "y", "label"),
@@ -148,11 +146,8 @@ GeomEdgeText <-
           draw_key = draw_key_text
   )
 
-#' @rdname geom_edgetext
-#' @format NULL
-#' @usage NULL
 #' @importFrom ggplot2 ggproto
-#' @export
+#' @keywords internal
 StatEdges <-
   ggplot2::ggproto("StatEdges", Stat,
                    compute_layer = function(data, scales, params) {
@@ -160,11 +155,8 @@ StatEdges <-
                    }
   )
 
-#' @rdname geom_edgetext
-#' @format NULL
-#' @usage NULL
 #' @importFrom ggplot2 ggproto
-#' @export
+#' @keywords internal
 StatMidEdges <-
   ggplot2::ggproto("StatMidEdges", Stat,
                    compute_layer = function(data, scales, params) {

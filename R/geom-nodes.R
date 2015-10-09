@@ -1,10 +1,9 @@
 #' Draw the nodes of a network.
 #'
-#' All arguments to this function are identical to those of
+#' All arguments to this geom are identical to those of
 #' \code{\link[ggplot2]{geom_point}}.
 #' @param mapping see \code{\link[ggplot2]{geom_point}}
 #' @param data see \code{\link[ggplot2]{geom_point}}
-#' @param stat see \code{\link[ggplot2]{geom_point}}
 #' @param position see \code{\link[ggplot2]{geom_point}}
 #' @param na.rm see \code{\link[ggplot2]{geom_point}}
 #' @param show.legend see \code{\link[ggplot2]{geom_point}}
@@ -12,7 +11,7 @@
 #' @param ... see \code{\link[ggplot2]{geom_point}}
 #' @importFrom ggplot2 layer
 #' @export
-geom_nodes <- function(mapping = NULL, data = NULL, stat = "nodes",
+geom_nodes <- function(mapping = NULL, data = NULL,
                        position = "identity", na.rm = FALSE,
                        show.legend = NA, inherit.aes = TRUE, ...) {
 
@@ -34,11 +33,10 @@ geom_nodes <- function(mapping = NULL, data = NULL, stat = "nodes",
 
 #' Label the nodes of a network.
 #'
-#' All arguments to this function are identical to those of
+#' All arguments to this geom are identical to those of
 #' \code{\link[ggplot2]{geom_text}}.
 #' @param mapping see \code{\link[ggplot2]{geom_text}}
 #' @param data see \code{\link[ggplot2]{geom_text}}
-#' @param stat see \code{\link[ggplot2]{geom_text}}
 #' @param position see \code{\link[ggplot2]{geom_text}}
 #' @param parse see \code{\link[ggplot2]{geom_text}}
 #' @param show.legend see \code{\link[ggplot2]{geom_text}}
@@ -49,7 +47,7 @@ geom_nodes <- function(mapping = NULL, data = NULL, stat = "nodes",
 #' @param check_overlap see \code{\link[ggplot2]{geom_text}}
 #' @importFrom ggplot2 layer position_nudge
 #' @export
-geom_nodetext <- function(mapping = NULL, data = NULL, stat = "nodes",
+geom_nodetext <- function(mapping = NULL, data = NULL,
                           position = "identity", parse = FALSE,
                           show.legend = NA, inherit.aes = TRUE,
                           ..., nudge_x = 0, nudge_y = 0,
@@ -82,11 +80,8 @@ geom_nodetext <- function(mapping = NULL, data = NULL, stat = "nodes",
 
 }
 
-#' @rdname geom_nodes
-#' @format NULL
-#' @usage NULL
 #' @importFrom ggplot2 ggproto
-#' @export
+#' @keywords internal
 StatNodes <-
   ggplot2::ggproto("StatNodes", Stat,
                    compute_layer = function(data, scales, params) {

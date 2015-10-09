@@ -32,10 +32,37 @@ See the vignette for a description of both this function and the rest of the
 \code{ggnetwork} package.
 }
 \examples{
-if (require(network)) {
+if (require(ggplot2) && require(network)) {
+
+  # source: ?network::flo
+  data(flo)
+
+  # data example
+  ggnetwork(flo)
+
+  # plot example
+  ggplot(ggnetwork(flo), aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(alpha = 0.5) +
+    geom_nodes(size = 12, color = "white") +
+    geom_nodetext(aes(label = vertex.names), fontface = "bold") +
+    theme_blank()
+
+  # source: ?network::emon
   data(emon)
-  ggnetwork(emon[[1]])
+
+  # data example
   ggnetwork(emon[[1]], layout = "target", niter = 100)
+
+  # plot example
+  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.015),
+         aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(aes(color = Frequency),
+               arrow = arrow(length = unit(10, "pt"), type = "closed")) +
+    geom_nodes(aes(size = Formalization)) +
+    scale_color_gradient(low = "grey50", high = "tomato") +
+    scale_size_area(breaks = 1:3) +
+    theme_blank()
+
 }
 }
 
