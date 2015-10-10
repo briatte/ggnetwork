@@ -11,7 +11,7 @@ library(ggplot2)
 devtools::load_all()
 ```
 
-> The [`ggnetwork`](https://github.com/briatte/ggnetwork) package makes it possible to pass network objects to [`ggplot2`](https://github.com/hadley/ggplot2).
+> The [`ggnetwork`](https://github.com/briatte/ggnetwork) package provides a way to build network plots with [`ggplot2`](https://github.com/hadley/ggplot2).
 
 Use `devtools` to install it:
 
