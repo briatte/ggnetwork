@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{theme_blank}
 \alias{theme_blank}
-\title{Blank theme}
+\title{Blank ggplot2 theme, suited for plotting networks.}
 \usage{
 theme_blank(base_size = 12, base_family = "")
 }

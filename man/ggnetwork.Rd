@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggnetwork.R
 \name{ggnetwork}
 \alias{ggnetwork}
-\title{Convert a network object to a data frame}
+\title{Convert a network object to a data frame.}
 \usage{
 ggnetwork(x, layout = "fruchtermanreingold",
   arrow.gap = ifelse(network::is.directed(x), 0.025, 0), ...)
@@ -28,8 +28,9 @@ network is directed.}
 algorithm as a list}
 }
 \description{
-See the vignette for a description of both this function and the rest of the
-\code{ggnetwork} package.
+See the vignette at \url{https://briatte.github.io/ggnetwork/} for a
+description of both this function and the rest of the \code{ggnetwork}
+package.
 }
 \examples{
 if (require(ggplot2) && require(network)) {

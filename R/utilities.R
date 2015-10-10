@@ -5,7 +5,7 @@ load_pkg <- function(x) {
   }
 }
 
-#' Blank theme
+#' Blank ggplot2 theme, suited for plotting networks.
 #'
 #' A \code{ggplot2} theme without lines, borders, axis text or titles, suited
 #' for plotting networks.

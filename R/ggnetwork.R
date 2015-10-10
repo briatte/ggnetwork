@@ -2,10 +2,11 @@ if (getRversion() >= "2.15.1") {
   utils::globalVariables(c("xend", "yend"))
 }
 
-#' Convert a network object to a data frame
+#' Convert a network object to a data frame.
 #'
-#' See the vignette for a description of both this function and the rest of the
-#' \code{ggnetwork} package.
+#' See the vignette at \url{https://briatte.github.io/ggnetwork/} for a 
+#' description of both this function and the rest of the \code{ggnetwork} 
+#' package.
 #' @param x an object of class \code{\link[network]{network}}, or any object
 #' that can be coerced to this class, such as an adjacency or incidence matrix,
 #' or an edge list: see \link[network]{edgeset.constructors} and
