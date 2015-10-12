@@ -58,7 +58,7 @@ if (getRversion() >= "2.15.1") {
 #' }
 #' @export
 ggnetwork <- function(x, layout = "fruchtermanreingold",
-                      arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
+                      arrow.gap = ifelse(network::is.directed(x), 0.95, 0),
                       ...) {
 
   load_pkg("sna")
