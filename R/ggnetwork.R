@@ -4,8 +4,8 @@ if (getRversion() >= "2.15.1") {
 
 #' Convert a network object to a data frame.
 #'
-#' See the vignette at \url{https://briatte.github.io/ggnetwork/} for a 
-#' description of both this function and the rest of the \code{ggnetwork} 
+#' See the vignette at \url{https://briatte.github.io/ggnetwork/} for a
+#' description of both this function and the rest of the \code{ggnetwork}
 #' package.
 #' @param x an object of class \code{\link[network]{network}}, or any object
 #' that can be coerced to this class, such as an adjacency or incidence matrix,
@@ -18,7 +18,7 @@ if (getRversion() >= "2.15.1") {
 #' @param layout a network layout supplied by \code{\link[sna]{gplot.layout}}
 #' @param arrow.gap a parameter that will shorten the network edges in order to
 #' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
-#' network is undirected (no edge shortening), or to \code{0.025} when the
+#' network is undirected (no edge shortening), or to \code{0.95} when the
 #' network is directed.
 #' @param ... other parameters that will get passed to the network layout
 #' algorithm as a list
@@ -46,7 +46,7 @@ if (getRversion() >= "2.15.1") {
 #'   ggnetwork(emon[[1]], layout = "target", niter = 100)
 #'
 #'   # plot example
-#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.015),
+#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.95),
 #'          aes(x, y, xend = xend, yend = yend)) +
 #'     geom_edges(aes(color = Frequency),
 #'                arrow = arrow(length = unit(10, "pt"), type = "closed")) +
@@ -104,13 +104,24 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
 
   edges = data.frame(nodes[ edges[, 1], 1:2 ], nodes[ edges[, 2], 1:2 ])
   names(edges) = c("x", "y", "xend", "yend")
-  # arrow gap (thanks to @heike)
+
+  # arrow gap (thanks to @heike and @ethen8181)
   if (arrow.gap > 0) {
 
-    arrow.gap = with(edges, arrow.gap / sqrt((xend - x) ^ 2 + (yend - y) ^ 2))
+    x.length = with(edges, abs(xend - x))
+    y.length = with(edges, abs(yend - y))
+
+    k = 10
+    x.length = ggplot2::cut_interval(x.length, k, labels = 1:k)
+    y.length = ggplot2::cut_interval(y.length, k, labels = 1:k)
+
+    arrow.gap = rev(seq(arrow.gap - 0.05, arrow.gap, length.out = k))
+    x.length = arrow.gap[x.length]
+    y.length = arrow.gap[y.length]
+
     edges = transform(edges,
-                       xend = x + (1 - arrow.gap) * (xend - x),
-                       yend = y + (1 - arrow.gap) * (yend - y))
+                      xend = x + x.length * (xend - x),
+                      yend = y + y.length * (yend - y))
 
   }
 
