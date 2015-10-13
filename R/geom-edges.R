@@ -151,7 +151,7 @@ GeomEdgeText <-
 StatEdges <-
   ggplot2::ggproto("StatEdges", Stat,
                    compute_layer = function(data, scales, params) {
-                     unique(subset(data, x != xend & y != yend))
+                     unique(subset(data, !(x == xend & y == yend)))
                    }
   )
 
