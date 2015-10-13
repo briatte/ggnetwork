@@ -118,6 +118,10 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
                       xend = xend + (1 - arrow.gap) * x.length,
                       yend = yend + (1 - arrow.gap) * y.length)
 
+    nodes = transform(nodes,
+                      x = x + arrow.gap * x.length,
+                      y = y + arrow.gap * y.length)
+
   }
 
   # import edge attributes
