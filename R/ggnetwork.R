@@ -113,12 +113,13 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
     arrow.gap = with(edges, arrow.gap / sqrt(x.length ^ 2 + y.length ^ 2))
     edges = transform(
       edges,
-      x = x + arrow.gap * x.length,
-      y = y + arrow.gap * y.length,
+#       x = x + arrow.gap * x.length,
+#       y = y + arrow.gap * y.length,
       xend = x + (1 - arrow.gap) * x.length,
       yend = y + (1 - arrow.gap) * y.length
     )
   }
+  print("dude")
 
   # import edge attributes
   for (y in network::list.edge.attributes(x)) {
