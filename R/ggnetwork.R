@@ -119,7 +119,6 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
       yend = y + (1 - arrow.gap) * y.length
     )
   }
-  print("dude")
 
   # import edge attributes
   for (y in network::list.edge.attributes(x)) {
