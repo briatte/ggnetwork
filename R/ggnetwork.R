@@ -46,7 +46,7 @@ if (getRversion() >= "2.15.1") {
 #'   ggnetwork(emon[[1]], layout = "target", niter = 100)
 #'
 #'   # plot example
-#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.95),
+#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.05),
 #'          aes(x, y, xend = xend, yend = yend)) +
 #'     geom_edges(aes(color = Frequency),
 #'                arrow = arrow(length = unit(10, "pt"), type = "closed")) +
@@ -58,7 +58,7 @@ if (getRversion() >= "2.15.1") {
 #' }
 #' @export
 ggnetwork <- function(x, layout = "fruchtermanreingold",
-                      arrow.gap = ifelse(network::is.directed(x), 0.95, 0),
+                      arrow.gap = ifelse(network::is.directed(x), 0.05, 0),
                       ...) {
 
   load_pkg("sna")
