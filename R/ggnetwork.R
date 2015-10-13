@@ -19,7 +19,8 @@ if (getRversion() >= "2.15.1") {
 #' @param arrow.gap a parameter that will shorten the network edges in order to
 #' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
 #' network is undirected (no edge shortening), or to \code{0.05} when the
-#' network is directed.
+#' network is directed. Small values near \code{0.05} will generally achieve
+#' good results when the size of the nodes is reasonably small.
 #' @param ... other parameters that will get passed to the network layout
 #' algorithm as a list
 #' @import sna
@@ -60,10 +61,10 @@ if (getRversion() >= "2.15.1") {
 ggnetwork <- function(x, layout = "fruchtermanreingold",
                       arrow.gap = ifelse(network::is.directed(x), 0.05, 0),
                       ...) {
-
   load_pkg("sna")
 
-  if (class(x) == "igraph" && "intergraph" %in% rownames(installed.packages())) {
+  if (class(x) == "igraph" &&
+      "intergraph" %in% rownames(installed.packages())) {
     x = intergraph::asNetwork(x)
   } else if (class(x) == "igraph") {
     stop("install the 'intergraph' package to use igraph objects with ggnetwork")
@@ -96,32 +97,33 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   # import vertex attributes
   for (y in network::list.vertex.attributes(x)) {
     nodes = cbind(nodes, network::get.vertex.attribute(x, y))
-    names(nodes)[ ncol(nodes) ] = y
+    names(nodes)[ncol(nodes)] = y
   }
 
   # edge list
   edges = network::as.matrix.network.edgelist(x)
 
-  edges = data.frame(nodes[ edges[, 1], 1:2 ], nodes[ edges[, 2], 1:2 ])
+  edges = data.frame(nodes[edges[, 1], 1:2], nodes[edges[, 2], 1:2])
   names(edges) = c("x", "y", "xend", "yend")
 
   # arrow gap (thanks to @heike and @ethen8181 for their work on this issue)
   if (arrow.gap > 0) {
-
-    x.length = with(edges, abs(xend - x))
-    y.length = with(edges, abs(yend - y))
-
+    x.length = with(edges, xend - x)
+    y.length = with(edges, yend - y)
     arrow.gap = with(edges, arrow.gap / sqrt(x.length ^ 2 + y.length ^ 2))
-    edges = transform(edges,
-                      xend = xend + (1 - arrow.gap) * x.length,
-                      yend = yend + (1 - arrow.gap) * y.length)
-
+    edges = transform(
+      edges,
+      x = x + arrow.gap * x.length,
+      y = y + arrow.gap * y.length,
+      xend = x + (1 - arrow.gap) * x.length,
+      yend = y + (1 - arrow.gap) * y.length
+    )
   }
 
   # import edge attributes
   for (y in network::list.edge.attributes(x)) {
     edges = cbind(edges, network::get.edge.attribute(x, y))
-    names(edges)[ ncol(edges) ] = y
+    names(edges)[ncol(edges)] = y
   }
 
   # merge edges and nodes data
@@ -130,14 +132,14 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   # add missing columns to nodes data
   nodes$xend = nodes$x
   nodes$yend = nodes$y
-  names(nodes) = names(edges)[ 1:ncol(nodes) ]
+  names(nodes) = names(edges)[1:ncol(nodes)]
 
   # make nodes data of identical dimensions to edges data
-  for (y in names(edges)[ (1 + ncol(nodes)):ncol(edges) ]) {
+  for (y in names(edges)[(1 + ncol(nodes)):ncol(edges)]) {
     nodes = cbind(nodes, NA)
-    names(nodes)[ ncol(nodes) ] = y
+    names(nodes)[ncol(nodes)] = y
   }
 
   # return a data frame with network.size(x) + network.edgecount(x) rows
-  unique(rbind(nodes, edges[ !is.na(edges$xend), ]))
+  unique(rbind(nodes, edges[!is.na(edges$xend),]))
 }

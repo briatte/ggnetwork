@@ -5,7 +5,7 @@
 \title{Convert a network object to a data frame.}
 \usage{
 ggnetwork(x, layout = "fruchtermanreingold",
-  arrow.gap = ifelse(network::is.directed(x), 0.95, 0), ...)
+  arrow.gap = ifelse(network::is.directed(x), 0.05, 0), ...)
 }
 \arguments{
 \item{x}{an object of class \code{\link[network]{network}}, or any object
@@ -22,7 +22,8 @@ it will be used to convert the object: see
 \item{arrow.gap}{a parameter that will shorten the network edges in order to
 avoid overplotting edge arrows and nodes; defaults to \code{0} when the
 network is undirected (no edge shortening), or to \code{0.05} when the
-network is directed.}
+network is directed. Small values near \code{0.05} will generally achieve
+good results when the size of the nodes is reasonably small.}
 
 \item{...}{other parameters that will get passed to the network layout
 algorithm as a list}
@@ -55,7 +56,7 @@ if (require(ggplot2) && require(network)) {
   ggnetwork(emon[[1]], layout = "target", niter = 100)
 
   # plot example
-  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.95),
+  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.05),
          aes(x, y, xend = xend, yend = yend)) +
     geom_edges(aes(color = Frequency),
                arrow = arrow(length = unit(10, "pt"), type = "closed")) +
