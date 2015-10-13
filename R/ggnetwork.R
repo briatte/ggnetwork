@@ -113,14 +113,8 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
 
     arrow.gap = with(edges, arrow.gap / sqrt(x.length ^ 2 + y.length ^ 2))
     edges = transform(edges,
-                      x = x + arrow.gap * x.length,
-                      y = y + arrow.gap * y.length,
                       xend = xend + (1 - arrow.gap) * x.length,
                       yend = yend + (1 - arrow.gap) * y.length)
-
-    nodes = transform(nodes,
-                      x = x + arrow.gap * x.length,
-                      y = y + arrow.gap * y.length)
 
   }
 
