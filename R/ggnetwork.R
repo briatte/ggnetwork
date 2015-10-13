@@ -18,7 +18,7 @@ if (getRversion() >= "2.15.1") {
 #' @param layout a network layout supplied by \code{\link[sna]{gplot.layout}}
 #' @param arrow.gap a parameter that will shorten the network edges in order to
 #' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
-#' network is undirected (no edge shortening), or to \code{0.95} when the
+#' network is undirected (no edge shortening), or to \code{0.05} when the
 #' network is directed.
 #' @param ... other parameters that will get passed to the network layout
 #' algorithm as a list
@@ -105,23 +105,18 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   edges = data.frame(nodes[ edges[, 1], 1:2 ], nodes[ edges[, 2], 1:2 ])
   names(edges) = c("x", "y", "xend", "yend")
 
-  # arrow gap (thanks to @heike and @ethen8181)
+  # arrow gap (thanks to @heike and @ethen8181 for their work on this issue)
   if (arrow.gap > 0) {
 
     x.length = with(edges, abs(xend - x))
     y.length = with(edges, abs(yend - y))
 
-    k = 10
-    x.length = ggplot2::cut_interval(x.length, k, labels = 1:k)
-    y.length = ggplot2::cut_interval(y.length, k, labels = 1:k)
-
-    arrow.gap = rev(seq(arrow.gap - 0.05, arrow.gap, length.out = k))
-    x.length = arrow.gap[x.length]
-    y.length = arrow.gap[y.length]
-
+    arrow.gap = with(edges, arrow.gap / sqrt(x.length ^ 2 + y.length ^ 2))
     edges = transform(edges,
-                      xend = x + x.length * (xend - x),
-                      yend = y + y.length * (yend - y))
+                      x = x + arrow.gap * x.length,
+                      y = y + arrow.gap * y.length,
+                      xend = xend + (1 - arrow.gap) * x.length,
+                      yend = yend + (1 - arrow.gap) * y.length)
 
   }
 
