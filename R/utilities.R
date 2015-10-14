@@ -16,8 +16,9 @@ load_pkg <- function(x) {
 theme_blank <- function(base_size = 12, base_family = "") {
   ggplot2::theme(line = ggplot2::element_blank(),
         rect = ggplot2::element_blank(),
+        text = ggplot2::element_text(size = base_size, family = base_family),
         axis.text = ggplot2::element_blank(),
         axis.title = ggplot2::element_blank(),
         plot.margin = grid::unit(c(0, 0, 0, 0), "lines"),
-        complete = TRUE)
+        complete = FALSE, validate = TRUE)
 }
