@@ -8,6 +8,8 @@ test_that("ggnetwork works", {
   expect_error(ggnetwork(-999, "could not coerce"))
   expect_error(ggnetwork(emon[[1]], layout = -999, "unsupported layout"))
 
+  ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency")
+
 })
 
 test_that("intergraph works", {

@@ -21,6 +21,11 @@ if (getRversion() >= "2.15.1") {
 #' network is undirected (no edge shortening), or to \code{0.05} when the
 #' network is directed. Small values near \code{0.05} will generally achieve
 #' good results when the size of the nodes is reasonably small.
+#' @param by a character vector that matches an edge attribute, which will be
+#' used to generate a data frame that can be plotted with
+#' \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+#' nodes of the network will appear in all facets, at the same coordinates.
+#' Defaults to \code{NULL} (no faceting).
 #' @param ... other parameters that will get passed to the network layout
 #' algorithm as a list
 #' @import sna
@@ -66,10 +71,19 @@ if (getRversion() >= "2.15.1") {
 #'     scale_size_area(breaks = 1:3) +
 #'     theme_blank()
 #'
+#'   # facet by edge attribute
+#'   ggplot(ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency"),
+#'          aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
+#'     geom_nodes() +
+#'     theme_blank() +
+#'     facet_grid(. ~ Frequency, labeller = label_both)
+#'
 #' }
 #' @export
 ggnetwork <- function(x, layout = "fruchtermanreingold",
                       arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
+                      by = NULL,
                       ...) {
   load_pkg("sna")
 
@@ -123,8 +137,8 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
     arrow.gap = with(edges, arrow.gap / sqrt(x.length ^ 2 + y.length ^ 2))
     edges = transform(
       edges,
-#       x = x + arrow.gap * x.length,
-#       y = y + arrow.gap * y.length,
+      # x = x + arrow.gap * x.length,
+      # y = y + arrow.gap * y.length,
       xend = x + (1 - arrow.gap) * x.length,
       yend = y + (1 - arrow.gap) * y.length
     )
@@ -148,6 +162,16 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   for (y in names(edges)[(1 + ncol(nodes)):ncol(edges)]) {
     nodes = cbind(nodes, NA)
     names(nodes)[ncol(nodes)] = y
+  }
+
+  # panelize nodes (for temporal networks)
+  if (!is.null(by)) {
+    nodes = lapply(sort(unique(edges[, by ])), function(x) {
+      y = nodes
+      y[, by ] = x
+      y
+    })
+    nodes = do.call(rbind, nodes)
   }
 
   # return a data frame with network.size(x) + network.edgecount(x) rows
