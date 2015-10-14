@@ -15,7 +15,10 @@ if (getRversion() >= "2.15.1") {
 #' \code{\link[intergraph:intergraph-package]{intergraph}} package is installed,
 #' it will be used to convert the object: see
 #' \code{\link[intergraph]{asNetwork}} for details.
-#' @param layout a network layout supplied by \code{\link[sna]{gplot.layout}}
+#' @param layout a network layout supplied by \code{\link[sna]{gplot.layout}},
+#' such as \code{"fruchtermanreingold"} (the default), or a two-column matrix
+#' with as many rows as there are nodes in the network, in which case the
+#' matrix is used as nodes coordinates
 #' @param arrow.gap a parameter that will shorten the network edges in order to
 #' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
 #' network is undirected (no edge shortening), or to \code{0.05} when the
@@ -79,6 +82,13 @@ if (getRversion() >= "2.15.1") {
 #'     theme_blank() +
 #'     facet_grid(. ~ Frequency, labeller = label_both)
 #'
+#'   # user-provided layout
+#'   ggplot(ggnetwork(emon[[1]], layout = matrix(runif(28), ncol = 2)),
+#'          aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
+#'     geom_nodes() +
+#'     theme_blank()
+#'
 #' }
 #' @export
 ggnetwork <- function(x, layout = "fruchtermanreingold",
@@ -103,11 +113,15 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   }
 
   # node placement
-  layout = paste0("gplot.layout.", layout)
-  nodes = try(do.call(layout, list(x, layout.par = list(...))), silent = TRUE)
-
-  if (!exists(layout)) {
-    stop("unsupported layout")
+  if (class(layout) == "matrix" && nrow(layout) == network::network.size(x) &&
+      ncol(layout) == 2) {
+    nodes = layout[, 1:2 ]
+  } else {
+    layout = paste0("gplot.layout.", layout)
+    if (!exists(layout)) {
+      stop("unsupported layout")
+    }
+    nodes = do.call(layout, list(x, layout.par = list(...)))
   }
 
   # store coordinates

@@ -11,7 +11,6 @@ load_pkg <- function(x) {
 #' for plotting networks.
 #' @param base_size base font size
 #' @param base_family base font family
-#' @importFrom grid unit
 #' @export
 theme_blank <- function(base_size = 12, base_family = "") {
   ggplot2::theme(line = ggplot2::element_blank(),
@@ -19,6 +18,7 @@ theme_blank <- function(base_size = 12, base_family = "") {
         text = ggplot2::element_text(size = base_size, family = base_family),
         axis.text = ggplot2::element_blank(),
         axis.title = ggplot2::element_blank(),
-        plot.margin = grid::unit(c(0, 0, 0, 0), "lines"),
+        # ggplot2 re-exports unit from grid
+        plot.margin = ggplot2::unit(c(0, 0, 0, 0), "lines"),
         complete = FALSE, validate = TRUE)
 }

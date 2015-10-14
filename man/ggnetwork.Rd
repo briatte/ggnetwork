@@ -5,7 +5,7 @@
 \title{Convert a network object to a data frame.}
 \usage{
 ggnetwork(x, layout = "fruchtermanreingold",
-  arrow.gap = ifelse(network::is.directed(x), 0.05, 0), ...)
+  arrow.gap = ifelse(network::is.directed(x), 0.025, 0), by = NULL, ...)
 }
 \arguments{
 \item{x}{an object of class \code{\link[network]{network}}, or any object
@@ -17,13 +17,22 @@ or an edge list: see \link[network]{edgeset.constructors} and
 it will be used to convert the object: see
 \code{\link[intergraph]{asNetwork}} for details.}
 
-\item{layout}{a network layout supplied by \code{\link[sna]{gplot.layout}}}
+\item{layout}{a network layout supplied by \code{\link[sna]{gplot.layout}},
+such as \code{"fruchtermanreingold"} (the default), or a two-column matrix
+with as many rows as there are nodes in the network, in which case the
+matrix is used as nodes coordinates}
 
 \item{arrow.gap}{a parameter that will shorten the network edges in order to
 avoid overplotting edge arrows and nodes; defaults to \code{0} when the
 network is undirected (no edge shortening), or to \code{0.05} when the
 network is directed. Small values near \code{0.05} will generally achieve
 good results when the size of the nodes is reasonably small.}
+
+\item{by}{a character vector that matches an edge attribute, which will be
+used to generate a data frame that can be plotted with
+\code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+nodes of the network will appear in all facets, at the same coordinates.
+Defaults to \code{NULL} (no faceting).}
 
 \item{...}{other parameters that will get passed to the network layout
 algorithm as a list}
@@ -73,6 +82,21 @@ if (require(ggplot2) && require(network)) {
     geom_nodes(aes(size = Formalization)) +
     scale_color_gradient(low = "grey50", high = "tomato") +
     scale_size_area(breaks = 1:3) +
+    theme_blank()
+
+  # facet by edge attribute
+  ggplot(ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency"),
+         aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
+    geom_nodes() +
+    theme_blank() +
+    facet_grid(. ~ Frequency, labeller = label_both)
+
+  # user-provided layout
+  ggplot(ggnetwork(emon[[1]], layout = matrix(runif(28), ncol = 2)),
+         aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
+    geom_nodes() +
     theme_blank()
 
 }
