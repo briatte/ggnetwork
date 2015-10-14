@@ -26,8 +26,13 @@ test_that("geom-nodetext works", {
 
 test_that("geom-edges works", {
 
+  # straight
   ggplot(ggnetwork(emon[[1]]), aes(x, y, xend = xend, yend = yend)) +
     geom_edges()
+
+  # curved
+  ggplot(ggnetwork(emon[[1]]), aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(curvature = 0.1)
 
 })
 

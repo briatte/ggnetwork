@@ -5,8 +5,8 @@
 \title{Draw the edges of a network.}
 \usage{
 geom_edges(mapping = NULL, data = NULL, position = "identity",
-  arrow = NULL, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
-  ...)
+  arrow = NULL, curvature = 0, angle = 90, ncp = 5, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE, ...)
 }
 \arguments{
 \item{mapping}{see \code{\link[ggplot2]{geom_segment}}}
@@ -16,6 +16,12 @@ geom_edges(mapping = NULL, data = NULL, position = "identity",
 \item{position}{see \code{\link[ggplot2]{geom_segment}}}
 
 \item{arrow}{see \code{\link[ggplot2]{geom_segment}}}
+
+\item{curvature}{see \code{\link[ggplot2]{geom_curve}}}
+
+\item{angle}{see \code{\link[ggplot2]{geom_curve}}}
+
+\item{ncp}{see \code{\link[ggplot2]{geom_curve}}}
 
 \item{na.rm}{see \code{\link[ggplot2]{geom_segment}}}
 
@@ -29,6 +35,9 @@ geom_edges(mapping = NULL, data = NULL, position = "identity",
 All arguments to this geom are identical to those of
 \code{\link[ggplot2]{geom_segment}}, including \code{arrow}, which is useful
 to plot directed networks in conjunction with the \code{arrow.gap} argument
-of \code{\link{ggnetwork}}.
+of \code{\link{ggnetwork}}. The \code{curvature}, \code{angle} and \code{ncp}
+arguments from \code{\link[ggplot2]{geom_curve}} are also available: if
+\code{curvature} is set to any value above \code{0} (the default), the edges
+produced by \code{geom_edges} will be curved.
 }
 

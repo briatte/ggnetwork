@@ -3,11 +3,17 @@
 #' All arguments to this geom are identical to those of
 #' \code{\link[ggplot2]{geom_segment}}, including \code{arrow}, which is useful
 #' to plot directed networks in conjunction with the \code{arrow.gap} argument
-#' of \code{\link{ggnetwork}}.
+#' of \code{\link{ggnetwork}}. The \code{curvature}, \code{angle} and \code{ncp}
+#' arguments from \code{\link[ggplot2]{geom_curve}} are also available: if
+#' \code{curvature} is set to any value above \code{0} (the default), the edges
+#' produced by \code{geom_edges} will be curved.
 #' @param mapping see \code{\link[ggplot2]{geom_segment}}
 #' @param data see \code{\link[ggplot2]{geom_segment}}
 #' @param position see \code{\link[ggplot2]{geom_segment}}
 #' @param arrow see \code{\link[ggplot2]{geom_segment}}
+#' @param curvature see \code{\link[ggplot2]{geom_curve}}
+#' @param angle see \code{\link[ggplot2]{geom_curve}}
+#' @param ncp see \code{\link[ggplot2]{geom_curve}}
 #' @param na.rm see \code{\link[ggplot2]{geom_segment}}
 #' @param show.legend see \code{\link[ggplot2]{geom_segment}}
 #' @param inherit.aes see \code{\link[ggplot2]{geom_segment}}
@@ -16,22 +22,38 @@
 #' @export
 geom_edges <- function(mapping = NULL, data = NULL,
                        position = "identity", arrow = NULL,
+                       curvature = 0, angle = 90, ncp = 5,
                        na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
                        ...) {
 
-  ggplot2::layer(
-    data = data,
-    mapping = mapping,
-    stat = StatEdges,
-    geom = ggplot2::GeomSegment,
-    position = position,
-    show.legend = show.legend,
-    inherit.aes = inherit.aes,
+  if (!curvature) {
+    geom = ggplot2::GeomSegment
     params = list(
       arrow = arrow,
       na.rm = na.rm,
       ...
     )
+  } else {
+    geom = ggplot2::GeomCurve
+    params = list(
+      arrow = arrow,
+      curvature = curvature,
+      angle = angle,
+      ncp = ncp,
+      na.rm = na.rm,
+      ...
+    )
+  }
+
+  ggplot2::layer(
+    data = data,
+    mapping = mapping,
+    stat = StatEdges,
+    geom = geom,
+    position = position,
+    show.legend = show.legend,
+    inherit.aes = inherit.aes,
+    params = params
   )
 
 }

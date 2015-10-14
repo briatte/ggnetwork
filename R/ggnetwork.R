@@ -46,8 +46,8 @@ if (getRversion() >= "2.15.1") {
 #'   # data example
 #'   ggnetwork(emon[[1]], layout = "target", niter = 100)
 #'
-#'   # plot example
-#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.05),
+#'   # plot example with straight edges
+#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.02),
 #'          aes(x, y, xend = xend, yend = yend)) +
 #'     geom_edges(aes(color = Frequency),
 #'                arrow = arrow(length = unit(10, "pt"), type = "closed")) +
@@ -56,10 +56,20 @@ if (getRversion() >= "2.15.1") {
 #'     scale_size_area(breaks = 1:3) +
 #'     theme_blank()
 #'
+#'   # plot example with curved edges
+#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.02),
+#'          aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(aes(color = Frequency), curvature = 0.1,
+#'                arrow = arrow(length = unit(10, "pt"), type = "open")) +
+#'     geom_nodes(aes(size = Formalization)) +
+#'     scale_color_gradient(low = "grey50", high = "tomato") +
+#'     scale_size_area(breaks = 1:3) +
+#'     theme_blank()
+#'
 #' }
 #' @export
 ggnetwork <- function(x, layout = "fruchtermanreingold",
-                      arrow.gap = ifelse(network::is.directed(x), 0.05, 0),
+                      arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
                       ...) {
   load_pkg("sna")
 
