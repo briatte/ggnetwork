@@ -9,7 +9,7 @@
 #' @param show.legend see \code{\link[ggplot2]{geom_point}}
 #' @param inherit.aes see \code{\link[ggplot2]{geom_point}}
 #' @param ... see \code{\link[ggplot2]{geom_point}}
-#' @importFrom ggplot2 layer
+#' @importFrom ggplot2 layer GeomPoint
 #' @export
 geom_nodes <- function(mapping = NULL, data = NULL,
                        position = "identity", na.rm = FALSE,
@@ -38,6 +38,7 @@ geom_nodes <- function(mapping = NULL, data = NULL,
 #' @param mapping see \code{\link[ggplot2]{geom_text}}
 #' @param data see \code{\link[ggplot2]{geom_text}}
 #' @param position see \code{\link[ggplot2]{geom_text}}
+#' @param na.rm see \code{\link[ggplot2]{geom_text}}
 #' @param parse see \code{\link[ggplot2]{geom_text}}
 #' @param show.legend see \code{\link[ggplot2]{geom_text}}
 #' @param inherit.aes see \code{\link[ggplot2]{geom_text}}
@@ -45,7 +46,7 @@ geom_nodes <- function(mapping = NULL, data = NULL,
 #' @param nudge_x see \code{\link[ggplot2]{geom_text}}
 #' @param nudge_y see \code{\link[ggplot2]{geom_text}}
 #' @param check_overlap see \code{\link[ggplot2]{geom_text}}
-#' @importFrom ggplot2 layer position_nudge
+#' @importFrom ggplot2 position_nudge layer GeomText
 #' @export
 geom_nodetext <- function(mapping = NULL, data = NULL,
                           position = "identity", na.rm = FALSE, parse = FALSE,
