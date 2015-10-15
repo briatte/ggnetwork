@@ -48,7 +48,7 @@ geom_nodes <- function(mapping = NULL, data = NULL,
 #' @importFrom ggplot2 layer position_nudge
 #' @export
 geom_nodetext <- function(mapping = NULL, data = NULL,
-                          position = "identity", parse = FALSE,
+                          position = "identity", na.rm = FALSE, parse = FALSE,
                           show.legend = NA, inherit.aes = TRUE,
                           ..., nudge_x = 0, nudge_y = 0,
                           check_overlap = FALSE) {
@@ -72,6 +72,7 @@ geom_nodetext <- function(mapping = NULL, data = NULL,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
     params = list(
+      na.rm = na.rm,
       parse = parse,
       check_overlap = check_overlap,
       ...
