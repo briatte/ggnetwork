@@ -1,5 +1,5 @@
 ---
-title: 'ggnetwork: network geoms for ggplot2'
+title: 'ggnetwork: network geometries for ggplot2'
 output:
   html_document:
     highlight: default
@@ -69,16 +69,18 @@ The `ggnetwork` package is organised around a ‘workhorse’ function of the sa
 
 The network object referred to above might be an object of class `network`, or any data structure that can be coerced to it, such as an edge list, an adjacency matrix or an incidence matrix. If the `intergraph` package is installed, then objects of class `igraph` can also be used with the `ggnetwork` package.
 
-The data frame returned by `ggnetwork` also contains the coordinates needed for node placement as columns `"x"`, `"y"`, `"xend"` and `"yend"`, which as a consequence are "reserved" names in the context of `ggnetworkmap`. If these names show up in the edge or the vertex attributes, the function will simply fail to work.
+The data frame returned by `ggnetwork` also contains the coordinates needed for node placement as columns `"x"`, `"y"`, `"xend"` and `"yend"`, which as a consequence are "reserved" names in the context of `ggnetwork`. If these names show up in the edge or the vertex attributes, the function will simply fail to work.
 
-The default node placement algorithm used by `ggnetwork` to produce these coordinates is the Fruchterman-Reingold force-dorected layout algorithm. All of the [placement algorithms implemented in the `sna` package](http://www.rdocumentation.org/packages/sna/functions/gplot.layout) are available through `ggnetworkmap`, which also accepts additional layout parameters:
+The default node placement algorithm used by `ggnetwork` to produce these coordinates is the Fruchterman-Reingold force-directed layout algorithm. All of the [placement algorithms implemented in the `sna` package](http://www.rdocumentation.org/packages/sna/functions/gplot.layout) are available through `ggnetwork`, which also accepts additional layout parameters:
 
 ```{r, eval=F}
 ggnetwork(n, layout = "fruchtermanreingold", cell.jitter = 0.75)
 ggnetwork(n, layout = "target", niter = 100)
 ```
 
-The top of the data frame contains self-loops to force every node to be included in the plot. This explains why the rows shown below have the same values in `"x"` and `"xend"` (and in `"y"` and `"yend"`), and only missing values in the columns corresponding to the edge attributes:
+The `layout` argument will also accept user-submitted coordinates as a two-column matrix with as many rows as the number of nodes in the network.
+
+The top of the data frame produced by `ggnetwork` contains self-loops to force every node to be included in the plot. This explains why the rows shown below have the same values in `"x"` and `"xend"` (and in `"y"` and `"yend"`), and only missing values in the columns corresponding to the edge attributes:
 
 ```{r}
 head(ggnetwork(n))
@@ -105,6 +107,14 @@ ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
 ```
 
 The other aesthetics that we mapped are the basic coordinates of the network plot. These might also be set as part of the call to `geom_segment`, but setting them at the root of the plot avoids having to repeat them in additional geoms.
+
+Note that `geom_edges` can also produce curved edges by setting its `curvature` argument to any value above `0` (the default):
+
+```{r}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey50", curvature = 0.1) +
+  theme_blank()
+```
 
 ### `geom_nodes`
 
@@ -144,7 +154,7 @@ ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
 
 ### `geom_edgetext`
 
-Let's now add edge labels. These are plotted at mid-distance of the nodes that the edges connect by the `edgetext` geom, which works exactly like `geom_text`, except that it also supports the `fill` aesthetic to set the background color of the labels, which defaults to \code{"white"}. Here's an example where we map the `day` edge attribute to edge labels:
+Let's now add edge labels. These are plotted at mid-distance of the nodes that the edges connect by the `edgetext` geom, which works exactly like `geom_label`, except that its default arguments do not draw a border around the labels. Here's an example where we map the `day` edge attribute to edge labels:
 
 ```{r}
 ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
@@ -159,7 +169,11 @@ ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
         panel.grid = element_blank())
 ```
 
+Note that this geom is unlikely to produce adequate results if the edges produced by `geom_edges` are curved.
+
 ## More plotting parameters
+
+This section presents some experimental features of `ggnetwork`.
 
 ### Edge arrows
 
@@ -190,7 +204,30 @@ ggplot(ggnetwork(emon[[1]]), aes(x = x, y = y, xend = xend, yend = yend)) +
 
 The slightly shortened edges avoid overplotting the edge arrows and the nodes. The amount of "edge shortening" can be set through the `arrow.gap` parameter of `ggnetwork`, which defaults to `0` when the network is undirected and `0.025` when it is. This parameter might need adjustment depending on the size of the nodes, and it will probably not manage to avoid any overplotting when the size of the nodes is not constant.
 
-### Other methods
+### Node panelization
+
+In order for `ggnetwork` to operate correctly with faceted plots, the `by` argument, which is `NULL` by default, can be set to the name of an edge attribute. The result will be a longer data frame that can be plotted with either `facet_wrap` or `facet_grid`, as in the example below, where the faceting variable, the `Frequency` edge attribute, has to be specified twice (once to `ggnetwork`, once to `facet_wrap`):
+
+```{r}
+ggplot(ggnetwork(emon[[1]], arrow.gap = 0.04, by = "Frequency"),
+       aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(arrow = arrow(length = unit(6, "pt"), type = "closed"),
+             aes(color = Sponsorship)) +
+  geom_nodes(aes(color = Sponsorship), size = 4) +
+  facet_wrap(~ Frequency) +
+  theme_bw() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank(),
+        legend.key = element_blank(),
+        panel.grid = element_blank())
+```
+
+The `by` argument is basically an attempt to bring minimal support for temporal networks in `ggnetwork`. It will systematically show all nodes in all plot facets, using the same coordinates in every facet. For more advanced plots of dynamic networks, the user should turn to the [`ndtv`](https://cran.r-project.org/web/packages/ndtv) and [`tsna`](https://cran.r-project.org/web/packages/tsna) packages.
+
+The example above also shows how to use a vertex attribute as part of the aesthetics of the edges. Given how `ggnetwork` operates, these vertex attributes will always be those of the sender node.
+
+## Additional methods
 
 Since `ggnetwork` works entirely through `ggplot2`, all `ggplot2` methods apply:
 
@@ -205,8 +242,22 @@ ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
   theme_blank()
 ```
 
+Similarly, it is possible to use any of the geometries more than once per plot:
+
+```{r}
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(color = "grey50", alpha = 0.5) +
+  geom_nodes(aes(x, y, color = family, size = 5.5 * importance), alpha = 0.5) +
+  geom_nodes(aes(x, y, color = family, size = 1.5 * importance)) +
+  scale_color_brewer(palette = "Set1") +
+  guides(size = FALSE) +
+  theme_blank()
+```
+
 ---
 
 ```{r, results='asis', echo=FALSE, cache=TRUE, eval=TRUE}
-cat("Last printed ", gsub("\\s+", " ", format(Sys.time(), "%b %e, %Y")), ".", sep = "")
+cat("Last printed on ", gsub("\\s+", " ", format(Sys.time(), "%b %e, %Y")), 
+    ", using ggnetwork version ", as.character(packageVersion("ggnetwork")),
+    ".", sep = "")
 ```
