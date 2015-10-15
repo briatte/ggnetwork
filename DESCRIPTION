@@ -1,8 +1,8 @@
 Package: ggnetwork
 Type: Package
 Title: Geometries to plot networks with ggplot2
-Version: 0.1.6
-Date: 2015-10-14
+Version: 0.1.7
+Date: 2015-10-15
 Author: Francois Briatte
 Maintainer: Francois Briatte <f.briatte@gmail.com>
 Description: This package provides four geoms to plot network objects with ggplot2. The vignette bundled with the package provides a complete guide to how these geoms work.
