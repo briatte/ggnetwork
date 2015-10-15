@@ -24,8 +24,8 @@ matrix is used as nodes coordinates}
 
 \item{arrow.gap}{a parameter that will shorten the network edges in order to
 avoid overplotting edge arrows and nodes; defaults to \code{0} when the
-network is undirected (no edge shortening), or to \code{0.05} when the
-network is directed. Small values near \code{0.05} will generally achieve
+network is undirected (no edge shortening), or to \code{0.025} when the
+network is directed. Small values near \code{0.025} will generally achieve
 good results when the size of the nodes is reasonably small.}
 
 \item{by}{a character vector that matches an edge attribute, which will be
@@ -65,7 +65,7 @@ if (require(ggplot2) && require(network)) {
   ggnetwork(emon[[1]], layout = "target", niter = 100)
 
   # plot example with straight edges
-  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.02),
+  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
          aes(x, y, xend = xend, yend = yend)) +
     geom_edges(aes(color = Frequency),
                arrow = arrow(length = unit(10, "pt"), type = "closed")) +
@@ -75,7 +75,7 @@ if (require(ggplot2) && require(network)) {
     theme_blank()
 
   # plot example with curved edges
-  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.02),
+  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
          aes(x, y, xend = xend, yend = yend)) +
     geom_edges(aes(color = Frequency), curvature = 0.1,
                arrow = arrow(length = unit(10, "pt"), type = "open")) +

@@ -5,34 +5,42 @@
 \title{Label the edges of a network.}
 \usage{
 geom_edgetext(mapping = NULL, data = NULL, position = "identity",
-  parse = FALSE, show.legend = NA, inherit.aes = TRUE, ..., nudge_x = 0,
-  nudge_y = 0, check_overlap = FALSE)
+  parse = FALSE, ..., nudge_x = 0, nudge_y = 0,
+  label.padding = unit(0.25, "lines"), label.r = ggplot2::unit(0.15,
+  "lines"), label.size = 0, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
 }
 \arguments{
-\item{mapping}{see \code{\link[ggplot2]{geom_text}}}
+\item{mapping}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{data}{see \code{\link[ggplot2]{geom_text}}}
+\item{data}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{position}{see \code{\link[ggplot2]{geom_text}}}
+\item{position}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{parse}{see \code{\link[ggplot2]{geom_text}}}
+\item{parse}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{show.legend}{see \code{\link[ggplot2]{geom_text}}}
+\item{...}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{inherit.aes}{see \code{\link[ggplot2]{geom_text}}}
+\item{nudge_x}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{...}{see \code{\link[ggplot2]{geom_text}}}
+\item{nudge_y}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{nudge_x}{see \code{\link[ggplot2]{geom_text}}}
+\item{label.padding}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{nudge_y}{see \code{\link[ggplot2]{geom_text}}}
+\item{label.r}{see \code{\link[ggplot2]{geom_label}}}
 
-\item{check_overlap}{see \code{\link[ggplot2]{geom_text}}}
+\item{label.size}{see \code{\link[ggplot2]{geom_label}}}
+
+\item{na.rm}{see \code{\link[ggplot2]{geom_label}}}
+
+\item{show.legend}{see \code{\link[ggplot2]{geom_label}}}
+
+\item{inherit.aes}{see \code{\link[ggplot2]{geom_label}}}
 }
 \description{
 All arguments to this geom are identical to those of
-\code{\link[ggplot2]{geom_text}}. The \code{fill} aesthetic, which defaults
-to \code{"white"}, can be used to set the background color of the labels. The
-labels will be drawn at mid-edge.
+\code{\link[ggplot2]{geom_label}}, with the only difference that the
+\code{label.size} argument defaults to \code{0} in order to avoid drawing a
+border around the edge labels. The labels will be drawn at mid-edges.
 }
 

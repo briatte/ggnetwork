@@ -5,8 +5,8 @@
 \title{Label the nodes of a network.}
 \usage{
 geom_nodetext(mapping = NULL, data = NULL, position = "identity",
-  parse = FALSE, show.legend = NA, inherit.aes = TRUE, ..., nudge_x = 0,
-  nudge_y = 0, check_overlap = FALSE)
+  na.rm = FALSE, parse = FALSE, show.legend = NA, inherit.aes = TRUE,
+  ..., nudge_x = 0, nudge_y = 0, check_overlap = FALSE)
 }
 \arguments{
 \item{mapping}{see \code{\link[ggplot2]{geom_text}}}
@@ -14,6 +14,8 @@ geom_nodetext(mapping = NULL, data = NULL, position = "identity",
 \item{data}{see \code{\link[ggplot2]{geom_text}}}
 
 \item{position}{see \code{\link[ggplot2]{geom_text}}}
+
+\item{na.rm}{see \code{\link[ggplot2]{geom_text}}}
 
 \item{parse}{see \code{\link[ggplot2]{geom_text}}}
 
