@@ -14,18 +14,16 @@ load_pkg <- function(x) {
 #' @param ... other \code{\link{theme}} arguments
 #' @export
 theme_blank <- function(base_size = 12, base_family = "", ...) {
-  ggplot2::theme_bw(base_size = base_size, base_family = base_family)
-  ggplot2::`%+replace%`
+  ggplot2::theme_bw(base_size = base_size, base_family = base_family) +
     ggplot2::theme(
       axis.text = ggplot2::element_blank(),
       axis.ticks = ggplot2::element_blank(),
       axis.title = ggplot2::element_blank(),
       legend.key = ggplot2::element_blank(),
-      panel.background = ggplot2::element_blank(),
+      panel.background = ggplot2::element_rect(fill = "white", colour = NA),
       panel.border = ggplot2::element_blank(),
       panel.grid = ggplot2::element_blank(),
-      ...,
-      complete = FALSE, validate = TRUE
+      ...
     )
 }
 
@@ -38,8 +36,7 @@ theme_blank <- function(base_size = 12, base_family = "", ...) {
 #' @param ... other \code{\link{theme}} arguments
 #' @export
 theme_facet <- function(base_size = 12, base_family = "", ...) {
-  theme_blank(base_size = base_size, base_family = base_family)
-  ggplot2::`%+replace%`
+  theme_blank(base_size = base_size, base_family = base_family) +
     ggplot2::theme(
       panel.border = ggplot2::element_rect(fill = NA, color = "grey50"),
       ...
