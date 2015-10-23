@@ -21,8 +21,9 @@ theme_blank <- function(base_size = 12, base_family = "", ...) {
       axis.ticks = ggplot2::element_blank(),
       axis.title = ggplot2::element_blank(),
       legend.key = ggplot2::element_blank(),
-      panel.grid = ggplot2::element_blank(),
+      panel.background = ggplot2::element_blank(),
       panel.border = ggplot2::element_blank(),
+      panel.grid = ggplot2::element_blank(),
       ...,
       complete = FALSE, validate = TRUE
     )
