@@ -4,12 +4,14 @@
 \alias{theme_blank}
 \title{Blank ggplot2 theme, suited for plotting networks.}
 \usage{
-theme_blank(base_size = 12, base_family = "")
+theme_blank(base_size = 12, base_family = "", ...)
 }
 \arguments{
 \item{base_size}{base font size}
 
 \item{base_family}{base font family}
+
+\item{...}{other \code{\link{theme}} arguments}
 }
 \description{
 A \code{ggplot2} theme without lines, borders, axis text or titles, suited
