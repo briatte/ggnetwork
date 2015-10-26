@@ -19,6 +19,10 @@ if (getRversion() >= "2.15.1") {
 #' such as \code{"fruchtermanreingold"} (the default), or a two-column matrix
 #' with as many rows as there are nodes in the network, in which case the
 #' matrix is used as nodes coordinates
+#' @param weights the name of an edge attribute to use as edge weights when
+#' computing the network layout, if the layout supports such weights (see
+#' 'Details').
+#' Defaults to \code{NULL} (no edge weights).
 #' @param arrow.gap a parameter that will shorten the network edges in order to
 #' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
 #' network is undirected (no edge shortening), or to \code{0.025} when the
@@ -31,6 +35,11 @@ if (getRversion() >= "2.15.1") {
 #' Defaults to \code{NULL} (no faceting).
 #' @param ... other parameters that will get passed to the network layout
 #' algorithm as a list
+#' @details If \code{ggnetwork} finds duplicated edges after converting the
+#' network to an edge list, it will return a warning. Duplicated edges should
+#' be eliminated in favour of single weighted edges before using a network
+#' layout that supports edge weights, such as the Kamada-Kawai force-directed
+#' placement algorithm.
 #' @import sna
 #' @examples
 #' if (require(ggplot2) && require(network)) {
@@ -53,6 +62,9 @@ if (getRversion() >= "2.15.1") {
 #'
 #'   # data example
 #'   ggnetwork(emon[[1]], layout = "target", niter = 100)
+#'
+#'   # data example with edge weights
+#'   ggnetwork(emon[[1]], layout = "kamadakawai", weights = "Frequency")
 #'
 #'   # plot example with straight edges
 #'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
@@ -91,7 +103,7 @@ if (getRversion() >= "2.15.1") {
 #'
 #' }
 #' @export
-ggnetwork <- function(x, layout = "fruchtermanreingold",
+ggnetwork <- function(x, layout = "fruchtermanreingold", weights = NULL,
                       arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
                       by = NULL,
                       ...) {
@@ -139,7 +151,12 @@ ggnetwork <- function(x, layout = "fruchtermanreingold",
   }
 
   # edge list
-  edges = network::as.matrix.network.edgelist(x)
+  edges = network::as.matrix.network.edgelist(x, attrname = weights)
+
+  # edge list (if there are duplicated rows)
+  if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
+    warning("duplicated edges detected")
+  }
 
   edges = data.frame(nodes[edges[, 1], 1:2], nodes[edges[, 2], 1:2])
   names(edges) = c("x", "y", "xend", "yend")

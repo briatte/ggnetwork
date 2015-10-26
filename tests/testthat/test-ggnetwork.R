@@ -14,6 +14,12 @@ test_that("ggnetwork works", {
   # user-provided layout
   ggnetwork(emon[[1]], layout = matrix(runif(28), ncol = 2))
 
+  # edge weights in layout
+  ggnetwork(emon[[1]], layout = "kamadakawai", weights = "Frequency")
+
+  # duplicated edges warning
+  ggnetwork(rbind(matrix(c(1:2, 2:1), nrow = 2), matrix(c(1:2, 2:1), nrow = 2)))
+
 })
 
 test_that("intergraph works", {
@@ -26,7 +32,7 @@ context("utilities")
 
 test_that("load_pkg works", {
 
-  expect_error(load_pkg(-999))
+  expect_error(expect_warning(load_pkg(-999), "no package"), "install the")
 
 })
 

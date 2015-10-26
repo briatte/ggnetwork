@@ -4,7 +4,7 @@
 \alias{ggnetwork}
 \title{Convert a network object to a data frame.}
 \usage{
-ggnetwork(x, layout = "fruchtermanreingold",
+ggnetwork(x, layout = "fruchtermanreingold", weights = NULL,
   arrow.gap = ifelse(network::is.directed(x), 0.025, 0), by = NULL, ...)
 }
 \arguments{
@@ -21,6 +21,11 @@ it will be used to convert the object: see
 such as \code{"fruchtermanreingold"} (the default), or a two-column matrix
 with as many rows as there are nodes in the network, in which case the
 matrix is used as nodes coordinates}
+
+\item{weights}{the name of an edge attribute to use as edge weights when
+computing the network layout, if the layout supports such weights (see
+'Details').
+Defaults to \code{NULL} (no edge weights).}
 
 \item{arrow.gap}{a parameter that will shorten the network edges in order to
 avoid overplotting edge arrows and nodes; defaults to \code{0} when the
@@ -41,6 +46,13 @@ algorithm as a list}
 See the vignette at \url{https://briatte.github.io/ggnetwork/} for a
 description of both this function and the rest of the \code{ggnetwork}
 package.
+}
+\details{
+If \code{ggnetwork} finds duplicated edges after converting the
+network to an edge list, it will return a warning. Duplicated edges should
+be eliminated in favour of single weighted edges before using a network
+layout that supports edge weights, such as the Kamada-Kawai force-directed
+placement algorithm.
 }
 \examples{
 if (require(ggplot2) && require(network)) {
@@ -63,6 +75,9 @@ if (require(ggplot2) && require(network)) {
 
   # data example
   ggnetwork(emon[[1]], layout = "target", niter = 100)
+
+  # data example with edge weights
+  ggnetwork(emon[[1]], layout = "kamadakawai", weights = "Frequency")
 
   # plot example with straight edges
   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
