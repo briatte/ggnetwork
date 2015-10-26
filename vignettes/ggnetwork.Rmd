@@ -73,7 +73,7 @@ The data frame returned by `ggnetwork` also contains the coordinates needed for 
 
 The default node placement algorithm used by `ggnetwork` to produce these coordinates is the Fruchterman-Reingold force-directed layout algorithm. All of the [placement algorithms implemented in the `sna` package](http://www.rdocumentation.org/packages/sna/functions/gplot.layout) are available through `ggnetwork`, which also accepts additional layout parameters:
 
-```{r, eval=F}
+```{r, eval=FALSE}
 ggnetwork(n, layout = "fruchtermanreingold", cell.jitter = 0.75)
 ggnetwork(n, layout = "target", niter = 100)
 ```
@@ -129,7 +129,7 @@ ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
 
 Because `ggplot2` follows Wilkinson's grammar of graphics, it accepts only one color scale. In the example above, that scale is mapped to a vertex attribute, but it could have also been mapped to an edge attribute. Mapping a color to _both_ a vertex attribute and an edge attribute will create a single color scale that incorrectly merges both attributes into one:
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, eval=FALSE}
 ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
   geom_edges(aes(color = type)) +
   geom_nodes(aes(color = family)) +
@@ -173,7 +173,7 @@ Note that this geom is unlikely to produce adequate results if the edges produce
 
 ## More plotting parameters
 
-This section presents some experimental features of `ggnetwork`.
+This section presents some rather experimental features of `ggnetwork`.
 
 ### Edge arrows
 
@@ -204,7 +204,19 @@ ggplot(ggnetwork(emon[[1]]), aes(x = x, y = y, xend = xend, yend = yend)) +
 
 The slightly shortened edges avoid overplotting the edge arrows and the nodes. The amount of "edge shortening" can be set through the `arrow.gap` parameter of `ggnetwork`, which defaults to `0` when the network is undirected and `0.025` when it is. This parameter might need adjustment depending on the size of the nodes, and it will probably not manage to avoid any overplotting when the size of the nodes is not constant.
 
-### Node panelization
+### Edge weights
+
+`ggnetwork` can use an edge attribute as edge weights when computing the network layout. The name of that edge attribute should be passed to the `weights` argument for that to happen, as in this example, which will produce different layouts than if `weights` had been left set to `NULL` (the default):
+
+```{r, eval=FALSE}
+ggnetwork(emon[[1]], weights = "Frequency")
+```
+
+The Kamada-Kawai is one example of a network layout that supports edge weights. The user should refer to the documentation of each network layout to understand which of these can make use of edge weights.
+
+If `ggnetwork` finds duplicated edges in a network, it will return a warning, as these edges should probably have been converted to single weighted edges for adequate plotting.
+
+### Node faceting
 
 In order for `ggnetwork` to operate correctly with faceted plots, the `by` argument, which is `NULL` by default, can be set to the name of an edge attribute. The result will be a longer data frame that can be plotted with either `facet_wrap` or `facet_grid`, as in the example below, where the faceting variable, the `Frequency` edge attribute, has to be specified twice (once to `ggnetwork`, once to `facet_wrap`):
 
@@ -215,17 +227,18 @@ ggplot(ggnetwork(emon[[1]], arrow.gap = 0.04, by = "Frequency"),
              aes(color = Sponsorship)) +
   geom_nodes(aes(color = Sponsorship), size = 4) +
   facet_wrap(~ Frequency) +
-  theme_bw() +
-  theme(axis.text = element_blank(),
-        axis.ticks = element_blank(),
-        axis.title = element_blank(),
-        legend.key = element_blank(),
-        panel.grid = element_blank())
+  theme_facet()
 ```
 
 The `by` argument is basically an attempt to bring minimal support for temporal networks in `ggnetwork`. It will systematically show all nodes in all plot facets, using the same coordinates in every facet. For more advanced plots of dynamic networks, the user should turn to the [`ndtv`](https://cran.r-project.org/web/packages/ndtv) and [`tsna`](https://cran.r-project.org/web/packages/tsna) packages.
 
 The example above also shows how to use a vertex attribute as part of the aesthetics of the edges. Given how `ggnetwork` operates, these vertex attributes will always be those of the sender node.
+
+Last, the example also shows that `ggnetwork` comes with a theme called `theme_facet`. This theme is a variation of the previously mentioned `theme_blank` that preserves its facet boxes:
+
+```{r}
+theme_facet
+```
 
 ## Additional methods
 
@@ -256,7 +269,7 @@ ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
 
 ---
 
-```{r, results='asis', echo=FALSE, cache=TRUE, eval=TRUE}
+```{r, results='asis', echo=FALSE}
 cat("Last printed on ", gsub("\\s+", " ", format(Sys.time(), "%b %e, %Y")), 
     ", using ggnetwork version ", as.character(packageVersion("ggnetwork")),
     ".", sep = "")
