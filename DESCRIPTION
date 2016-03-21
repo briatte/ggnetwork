@@ -1,22 +1,25 @@
 Package: ggnetwork
 Type: Package
 Title: Geometries to plot networks with ggplot2
-Version: 0.2.2
-Date: 2015-12-22
+Version: 0.3
+Date: 2016-03-21
 Author: Francois Briatte
 Maintainer: Francois Briatte <f.briatte@gmail.com>
-Description: This package provides four geoms to plot network objects with ggplot2. The vignette bundled with the package provides a complete guide to how these geoms work.
+Description: This package provides four geoms to plot network objects with
+    ggplot2. The vignette bundled with the package provides a complete guide to
+    how these geoms work.
 License: GPL-3
 LazyData: TRUE
 VignetteBuilder: knitr
 NeedsCompilation: no
 Depends:
-  ggplot2 (>= 2.0.0),
-  R (>= 2.14),
+    ggplot2 (>= 2.0.0),
+    R (>= 2.14),
 Imports:
-  network,
-  sna
+    network,
+    sna
 Suggests:
-  intergraph,
-  knitr,
-  testthat
+    intergraph,
+    knitr,
+    testthat
+RoxygenNote: 5.0.1
