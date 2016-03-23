@@ -1,4 +1,4 @@
-#' Convert an igraph object to a data frame.
+#' Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}
 #'
 #' This function requires the \code{\link[intergraph:intergraph-package]{intergraph}}
 #' package to be installed.

@@ -2,7 +2,7 @@ if (getRversion() >= "2.15.1") {
   utils::globalVariables(c("xend", "yend"))
 }
 
-#' Convert a network object to a data frame.
+#' Fortify method for networks of class \code{\link[network]{network}}
 #'
 #' See the vignette at \url{https://briatte.github.io/ggnetwork/} for a
 #' description of both this function and the rest of the \code{ggnetwork}
