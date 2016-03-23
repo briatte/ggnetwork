@@ -2,7 +2,7 @@
 % Please edit documentation in R/fortify-igraph.R
 \name{fortify.igraph}
 \alias{fortify.igraph}
-\title{Convert an igraph object to a data frame.}
+\title{Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}}
 \usage{
 \method{fortify}{igraph}(model, ...)
 }

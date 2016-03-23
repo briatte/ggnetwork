@@ -9,35 +9,127 @@ geom_edges(mapping = NULL, data = NULL, position = "identity",
   show.legend = NA, inherit.aes = TRUE, ...)
 }
 \arguments{
-\item{mapping}{see \code{\link[ggplot2]{geom_segment}}}
+\item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
+\code{\link{aes_}}. If specified and \code{inherit.aes = TRUE} (the
+default), it is combined with the default mapping at the top level of the
+plot. You must supply \code{mapping} if there is no plot mapping.}
 
-\item{data}{see \code{\link[ggplot2]{geom_segment}}}
+\item{data}{The data to be displayed in this layer. There are three
+   options:
 
-\item{position}{see \code{\link[ggplot2]{geom_segment}}}
+   If \code{NULL}, the default, the data is inherited from the plot
+   data as specified in the call to \code{\link{ggplot}}.
 
-\item{arrow}{see \code{\link[ggplot2]{geom_segment}}}
+   A \code{data.frame}, or other object, will override the plot
+   data. All objects will be fortified to produce a data frame. See
+   \code{\link{fortify}} for which variables will be created.
 
-\item{curvature}{see \code{\link[ggplot2]{geom_curve}}}
+   A \code{function} will be called with a single argument,
+   the plot data. The return value must be a \code{data.frame.}, and
+   will be used as the layer data.}
 
-\item{angle}{see \code{\link[ggplot2]{geom_curve}}}
+\item{position}{Position adjustment, either as a string, or the result of
+a call to a position adjustment function.}
 
-\item{ncp}{see \code{\link[ggplot2]{geom_curve}}}
+\item{arrow}{specification for arrow heads, as created by arrow()}
 
-\item{na.rm}{see \code{\link[ggplot2]{geom_segment}}}
+\item{curvature}{A numeric value giving the amount of curvature.
+    Negative values produce left-hand curves, positive values
+    produce right-hand curves, and zero produces a straight line.}
 
-\item{show.legend}{see \code{\link[ggplot2]{geom_segment}}}
+\item{angle}{A numeric value between 0 and 180,
+    giving an amount to skew the control
+    points of the curve.  Values less than 90 skew the curve towards
+    the start point and values greater than 90 skew the curve
+    towards the end point.}
 
-\item{inherit.aes}{see \code{\link[ggplot2]{geom_segment}}}
+\item{ncp}{The number of control points used to draw the curve.
+    More control points creates a smoother curve.}
 
-\item{...}{see \code{\link[ggplot2]{geom_segment}}}
+\item{na.rm}{If \code{FALSE} (the default), removes missing values with
+a warning.  If \code{TRUE} silently removes missing values.}
+
+\item{show.legend}{logical. Should this layer be included in the legends?
+\code{NA}, the default, includes if any aesthetics are mapped.
+\code{FALSE} never includes, and \code{TRUE} always includes.}
+
+\item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn't inherit behaviour from
+the default plot specification, e.g. \code{\link{borders}}.}
+
+\item{...}{other arguments passed on to \code{\link{layer}}. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+\code{color = "red"} or \code{size = 3}. They may also be parameters
+to the paired geom/stat.}
 }
 \description{
 All arguments to this geom are identical to those of
 \code{\link[ggplot2]{geom_segment}}, including \code{arrow}, which is useful
 to plot directed networks in conjunction with the \code{arrow.gap} argument
-of \code{\link{ggnetwork}}. The \code{curvature}, \code{angle} and \code{ncp}
-arguments from \code{\link[ggplot2]{geom_curve}} are also available: if
-\code{curvature} is set to any value above \code{0} (the default), the edges
-produced by \code{geom_edges} will be curved.
+of \code{\link{fortify.network}}. The \code{curvature}, \code{angle} and
+\code{ncp} arguments of \code{\link[ggplot2]{geom_curve}} are also available:
+if \code{curvature} is set to any value above \code{0} (the default), the
+edges produced by \code{geom_edges} will be curved.
+}
+\examples{
+if (require(network) && require(sna)) {
+
+# rerun if the example does not produce reciprocated ties
+n <- network(rgraph(10, tprob = 0.2), directed = TRUE)
+
+# just edges
+ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+  geom_edges(size = 1, color = "steelblue") +
+  theme_blank()
+
+# with nodes
+ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+  geom_edges(size = 1, color = "steelblue") +
+  geom_nodes(size = 3, color = "steelblue") +
+  theme_blank()
+
+# with arrows
+ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+  geom_edges(size = 1, color = "steelblue",
+             arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
+  geom_nodes(size = 3, color = "steelblue") +
+  theme_blank()
+
+# with curvature
+ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+  geom_edges(size = 1, color = "steelblue", curvature = 0.15,
+             arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
+  geom_nodes(size = 3, color = "steelblue") +
+  theme_blank()
+
+# arbitrary categorical edge attribute
+e <- sample(letters[ 1:2 ], network.edgecount(n), replace = TRUE)
+set.edge.attribute(n, "type", e)
+ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), size = 1, curvature = 0.15,
+             arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
+  geom_nodes(size = 3, color = "steelblue") +
+  theme_blank()
+
+# arbitrary numeric edge attribute (signed network)
+e <- sample(-2:2, network.edgecount(n), replace = TRUE)
+set.edge.attribute(n, "weight", e)
+ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+  geom_edges(aes(color = weight), curvature = 0.15,
+             arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
+  geom_nodes(size = 3, color = "grey50") +
+  scale_color_gradient(low = "steelblue", high = "tomato") +
+  theme_blank()
+
+# draw only a subset of all edges
+positive_weight <- function(x) { x[ x$weight >= 0, ] }
+ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+  geom_edges(aes(color = weight), data = positive_weight) +
+  geom_nodes(size = 4, color = "grey50") +
+  scale_color_gradient(low = "gold", high = "tomato") +
+  theme_blank()
+
+}
 }
 

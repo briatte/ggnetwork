@@ -2,7 +2,7 @@
 % Please edit documentation in R/fortify-network.R
 \name{fortify.network}
 \alias{fortify.network}
-\title{Convert a network object to a data frame.}
+\title{Fortify method for networks of class \code{\link[network]{network}}}
 \usage{
 \method{fortify}{network}(model, data = NULL,
   layout = "fruchtermanreingold", weights = NULL,
