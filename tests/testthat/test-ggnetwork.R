@@ -18,7 +18,12 @@ test_that("ggnetwork works", {
   ggnetwork(emon[[1]], layout = "kamadakawai", weights = "Frequency")
 
   # duplicated edges warning
-  ggnetwork(rbind(matrix(c(1:2, 2:1), nrow = 2), matrix(c(1:2, 2:1), nrow = 2)))
+  expect_warning(
+    ggnetwork(rbind(
+      matrix(c(1:2, 2:1), nrow = 2),
+      matrix(c(1:2, 2:1), nrow = 2))),
+    "duplicated edges"
+  )
 
 })
 

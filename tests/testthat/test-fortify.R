@@ -10,6 +10,9 @@ test_that("fortify.network works", {
 
   n <- network(flo, directed = FALSE)
 
+  expect_is(fortify(n), "data.frame")
+  expect_true(all(c("x", "y", "xend", "yend") %in% names(fortify(n))))
+
   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
     geom_nodes() +
     geom_edges() +
@@ -22,6 +25,9 @@ test_that("fortify.network works", {
 test_that("fortify.igraph works", {
 
   n <- asIgraph(network(flo, directed = FALSE))
+
+  expect_is(fortify(n), "data.frame")
+  expect_true(all(c("x", "y", "xend", "yend") %in% names(fortify(n))))
 
   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
     geom_edges() +
