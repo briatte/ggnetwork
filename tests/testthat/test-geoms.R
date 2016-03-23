@@ -2,7 +2,7 @@ context("Test all geoms")
 
 data(emon, package = "network")
 
-test_that("geom-nodes works", {
+test_that("geom_nodes works", {
 
   ggplot(emon[[1]], aes(x, y)) +
     geom_nodes()
@@ -12,7 +12,7 @@ test_that("geom-nodes works", {
 
 })
 
-test_that("geom-nodetext works", {
+test_that("geom_nodetext works", {
 
   ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
     geom_nodetext(aes(label = vertex.names))
@@ -36,7 +36,7 @@ test_that("geom_nodetext_repel works", {
 
 })
 
-test_that("geom-nodelabel works", {
+test_that("geom_nodelabel works", {
 
   ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
     geom_nodelabel(aes(label = vertex.names))
@@ -60,7 +60,7 @@ test_that("geom_nodelabel_repel works", {
 
 })
 
-test_that("geom-edges works", {
+test_that("geom_edges works", {
 
   # straight
   ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
@@ -72,7 +72,7 @@ test_that("geom-edges works", {
 
 })
 
-test_that("geom-edgetext works", {
+test_that("geom_edgetext works", {
 
   ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
     geom_edgetext(aes(label = Frequency))
@@ -86,5 +86,26 @@ test_that("geom-edgetext works", {
                     position = "identity"),
     "Specify either"
   )
+
+})
+
+test_that("geom_edgelabel works", {
+
+  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+    geom_edgelabel(aes(label = Frequency))
+
+})
+
+test_that("geom_edgetext_repel works", {
+
+  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+    geom_edgetext_repel(aes(label = Frequency))
+
+})
+
+test_that("geom_edgelabel_repel works", {
+
+  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+    geom_edgelabel_repel(aes(label = Frequency))
 
 })
