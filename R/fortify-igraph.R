@@ -9,10 +9,11 @@
 #' @param ... additional parameters for the \code{fortify.network} function; see
 #' \code{\link{fortify.network}}.
 #' @method fortify igraph
+#' @importFrom utils installed.packages
 #' @export
 fortify.igraph <- function(model, ...) {
 
-  if ("intergraph" %in% rownames(installed.packages())) {
+  if ("intergraph" %in% rownames(utils::installed.packages())) {
 
     fortify.network(intergraph::asNetwork(model), ...)
 
