@@ -19,7 +19,7 @@ library(ggnetwork)
 
 > The [`ggnetwork`](https://github.com/briatte/ggnetwork) package provides a way to build network plots with [`ggplot2`](http://ggplot2.org/).
 
-Install the stable version [from CRAN](https://cran.r-project.org/web/packages/ggnetwork/index.html):
+Install the stable version from CRAN:
 
 ```{r, eval=FALSE}
 install.packages("ggnetwork")
@@ -300,7 +300,7 @@ ggplot(ggnetwork(emon[[1]], arrow.gap = 0.04, by = "Frequency"),
   theme_facet()
 ```
 
-The `by` argument is basically an attempt to bring minimal support for temporal networks in `ggnetwork`. It will systematically show all nodes in all plot facets, using the same coordinates in every facet. For more advanced plots of dynamic networks, the user should turn to the [`ndtv`](https://cran.r-project.org/web/packages/ndtv) and [`tsna`](https://cran.r-project.org/web/packages/tsna) packages.
+The `by` argument is basically an attempt to bring minimal support for temporal networks in `ggnetwork`. It will systematically show all nodes in all plot facets, using the same coordinates in every facet. For more advanced plots of dynamic networks, the user should turn to the [`ndtv`](https://cran.r-project.org/package=ndtv) and [`tsna`](https://cran.r-project.org/package=tsna) packages.
 
 The example above also shows how to use a vertex attribute as part of the aesthetics of the edges. Given how `ggnetwork` operates, these vertex attributes will always be those of the sender node.
 
