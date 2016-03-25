@@ -1,6 +1,12 @@
 This package makes it possible to pass network objects to [`ggplot2`](http://ggplot2.org/) (>= 2.0.0).
 
-Install with `devtools`:
+Install from CRAN:
+
+```r
+install.packages("ggnetwork")
+```
+
+Or from GitHub with `devtools`:
 
 ```r
 devtools::install_github("briatte/ggnetwork")
