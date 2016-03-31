@@ -299,7 +299,7 @@ StatEdges <-
 StatMidEdges <-
   ggplot2::ggproto("StatMidEdges", Stat,
                    compute_layer = function(data, scales, params) {
-                     data = subset(data, x != xend & y != yend)
+                     data = subset(data, !(x == xend & y == yend))
                      data$x = (data$x + data$xend) / 2
                      data$y = (data$y + data$yend) / 2
                      unique(subset(data, select = c(-xend, -yend)))
