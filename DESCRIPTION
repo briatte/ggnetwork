@@ -7,6 +7,8 @@ Author: Francois Briatte
 Maintainer: Francois Briatte <f.briatte@gmail.com>
 Description: Geometries to plot network objects with 'ggplot2'.
 License: GPL-3
+URL: https://github.com/briatte/ggnetwork
+BugReports: https://github.com/briatte/ggnetwork/issues
 LazyData: TRUE
 VignetteBuilder: knitr
 NeedsCompilation: no
