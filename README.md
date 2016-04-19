@@ -1,4 +1,4 @@
-## This package allows to pass network objects to [`ggplot2`](http://ggplot2.org/) (>= 2.0.0) along with several geometries to plot their elements.
+## This package allows to pass network objects to [`ggplot2`](http://ggplot2.org/), along with several geometries to plot their elements.
 
 __Install from CRAN__ or from GitHub with `devtools`:
 
@@ -10,9 +10,15 @@ install.packages("ggnetwork")
 devtools::install_github("briatte/ggnetwork")
 ```
 
+__IMPORTANT:__ the `ggnetwork` package depends on `ggplot2` version 2.0.0 or above.
+
+* * *
+
 __The package vignette__ contains [detailed examples](https://briatte.github.io/ggnetwork/) of how to use the fortify method and each of the geometries provided by the package.
 
 __For further examples__ that use `ggnetwork` with other packages to produce animated graphs, see James Curley's slides on “[Interactive and Dynamic Network Visualization in R](http://curleylab.psych.columbia.edu/netviz/).”
+
+* * *
 
 __Comments and suggestions__ are very welcome: please file them as [issues](https://github.com/briatte/ggnetwork/issues).
 
