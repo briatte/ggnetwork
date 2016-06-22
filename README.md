@@ -24,4 +24,4 @@ __Comments and suggestions__ are very welcome: please file them as [issues](http
 
 __See also__ the [geomnet](https://github.com/sctyner/geomnet), [ggnet](https://github.com/briatte/ggnet) and [ggraph](https://github.com/thomasp85/ggraph) packages for related work.
 
-__Thanks to__ [Heike Hofmann](https://github.com/heike), [Pedro Jordano](https://github.com/pedroj), [Moritz Marbach](https://github.com/sumtxt), Bertrand Sudre, [Samantha C. Tyner](https://github.com/sctyner), and two anonymous _[R Journal](https://journal.r-project.org/)_ reviewers.
+__Thanks to__ [Michał Bojanowski](https://github.com/mbojan), [Heike Hofmann](https://github.com/heike), [Pedro Jordano](https://github.com/pedroj), [Moritz Marbach](https://github.com/sumtxt), Bertrand Sudre, [Samantha C. Tyner](https://github.com/sctyner), and two anonymous _[R Journal](https://journal.r-project.org/)_ reviewers.
