@@ -18,7 +18,8 @@ Depends:
 Imports:
     ggrepel (>= 0.5),
     network,
-    sna
+    sna,
+    utils
 Suggests:
     intergraph,
     knitr,
