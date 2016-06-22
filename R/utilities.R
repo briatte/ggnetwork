@@ -1,10 +1,3 @@
-#' @keywords internal
-load_pkg <- function(x) {
-  if (!require(x, character.only = TRUE)) {
-    stop("install the '", x, "' package to use ggnetwork")
-  }
-}
-
 #' Blank ggplot2 theme, suited for plotting networks.
 #'
 #' A \code{ggplot2} theme without lines, borders, axis text or titles, suited
