@@ -1,3 +1,10 @@
+ggnetwork 0.5.3 (2016-06-XX)
+----------------------------
+
+FIXES
+
+* Safer calls to the sna package (#9). Thanks to Michał Bojanowski.
+
 ggnetwork 0.5.2 (2016-05-01)
 ----------------------------
 
