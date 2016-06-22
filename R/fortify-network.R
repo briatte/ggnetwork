@@ -105,8 +105,6 @@ fortify.network <- function(model, data = NULL,
                             arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
                             by = NULL,
                             ...) {
-
-  load_pkg("sna")
   x = model
 
   # node placement
@@ -116,10 +114,11 @@ fortify.network <- function(model, data = NULL,
     nodes = layout[, 1:2 ]
   } else {
     layout = paste0("gplot.layout.", layout)
-    if (!exists(layout)) {
+    ns <- loadNamespace("sna")
+    if (!exists(layout, envir=ns, inherits=FALSE)) {
       stop("unsupported layout")
     }
-    nodes = do.call(layout, list(x, layout.par = list(...)))
+    nodes = do.call( utils::getFromNamespace(layout, ns), list(x, layout.par = list(...)))
   }
 
   # store coordinates
