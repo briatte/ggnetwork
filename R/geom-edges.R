@@ -288,7 +288,7 @@ geom_edgelabel_repel <- geom_edgetext_repel
 #' @importFrom ggplot2 ggproto
 #' @keywords internal
 StatEdges <-
-  ggplot2::ggproto("StatEdges", Stat,
+  ggplot2::ggproto("StatEdges", ggplot2::Stat,
                    compute_layer = function(data, scales, params) {
                      unique(subset(data, !(x == xend & y == yend)))
                    }
@@ -297,7 +297,7 @@ StatEdges <-
 #' @importFrom ggplot2 ggproto
 #' @keywords internal
 StatMidEdges <-
-  ggplot2::ggproto("StatMidEdges", Stat,
+  ggplot2::ggproto("StatMidEdges", ggplot2::Stat,
                    compute_layer = function(data, scales, params) {
                      data = subset(data, !(x == xend & y == yend))
                      data$x = (data$x + data$xend) / 2
