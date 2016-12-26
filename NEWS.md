@@ -1,7 +1,13 @@
 ggnetwork 0.5.3 (2016-06-XX)
 ----------------------------
 
+Added Travis CI.
+
 FIXES
+
+* Export ggplot2::Stat to enable loading ggnetwork first (#14). Thanks to Tyler Rinker.
+
+* Built with the new version of ggproto (#11).
 
 * Safer calls to the sna package (#9). Thanks to Michał Bojanowski.
 
