@@ -368,7 +368,7 @@ geom_nodelabel_repel <- function(
 #' @importFrom ggplot2 ggproto
 #' @keywords internal
 StatNodes <-
-  ggplot2::ggproto("StatNodes", Stat,
+  ggplot2::ggproto("StatNodes", ggplot2::Stat,
                    compute_layer = function(data, scales, params) {
                      if (all(c("xend", "yend") %in% names(data))) {
                        unique(subset(data, select = c(-xend, -yend)))

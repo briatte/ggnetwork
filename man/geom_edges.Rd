@@ -31,7 +31,7 @@ plot. You must supply \code{mapping} if there is no plot mapping.}
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
-\item{arrow}{specification for arrow heads, as created by arrow()}
+\item{arrow}{specification for arrow heads, as created by arrow().}
 
 \item{curvature}{A numeric value giving the amount of curvature.
     Negative values produce left-hand curves, positive values
@@ -46,8 +46,8 @@ a call to a position adjustment function.}
 \item{ncp}{The number of control points used to draw the curve.
     More control points creates a smoother curve.}
 
-\item{na.rm}{If \code{FALSE} (the default), removes missing values with
-a warning.  If \code{TRUE} silently removes missing values.}
+\item{na.rm}{If \code{FALSE}, the default, missing values are removed with
+a warning. If \code{TRUE}, missing values are silently removed.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.

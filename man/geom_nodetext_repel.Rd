@@ -36,7 +36,7 @@ displayed as described in ?plotmath}
 
   \itemize{
     \item Aesthetics: to set an aesthetic to a fixed value, like
-       \code{color = "red"} or \code{size = 3}.
+       \code{colour = "red"} or \code{size = 3}.
     \item Other arguments to the layer, for example you override the
       default \code{stat} associated with the layer.
     \item Other arguments passed on to the stat.
@@ -48,10 +48,8 @@ displayed as described in ?plotmath}
 \item{point.padding}{Amount of padding around labeled point. Defaults to
 \code{unit(0, "lines")}.}
 
-\item{segment.color}{Color of the line segment connecting the data point to
-the text labe. Defaults to \code{#666666}.}
-
-\item{segment.size}{Width of segment, in mm.}
+\item{segment.size}{Width of line segment connecting the data point to
+the text label, in mm.}
 
 \item{arrow}{specification for arrow heads, as created by \code{\link[grid]{arrow}}}
 
