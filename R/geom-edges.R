@@ -197,6 +197,7 @@ geom_edgetext <- function(mapping = NULL, data = NULL,
 #' @inheritParams ggrepel::geom_label_repel
 #' @param nudge_x,nudge_y Horizontal and vertical adjustments to nudge the
 #'   starting position of each text label.
+#' @param segment.color Color of the line segment. 
 #' @importFrom ggplot2 layer
 #' @importFrom ggrepel GeomLabelRepel
 #' @examples

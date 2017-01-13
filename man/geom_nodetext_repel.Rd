@@ -48,6 +48,8 @@ displayed as described in ?plotmath}
 \item{point.padding}{Amount of padding around labeled point. Defaults to
 \code{unit(0, "lines")}.}
 
+\item{segment.color}{Color of the line segment.}
+
 \item{segment.size}{Width of line segment connecting the data point to
 the text label, in mm.}
 
