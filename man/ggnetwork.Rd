@@ -2,9 +2,15 @@
 % Please edit documentation in R/ggnetwork.R
 \name{ggnetwork}
 \alias{ggnetwork}
+\alias{ggnetwork.default}
+\alias{ggnetwork.igraph}
 \title{Fortify network objects.}
 \usage{
 ggnetwork(x, ...)
+
+\method{ggnetwork}{igraph}(x, ...)
+
+\method{ggnetwork}{default}(x, ...)
 }
 \arguments{
 \item{x}{an object of class \code{\link[network]{network}}, or any object

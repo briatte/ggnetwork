@@ -12,31 +12,34 @@
 #' it will be used to convert the object: see
 #' \code{\link{fortify.igraph}} for details.
 #' @param ... arguments passed to the \code{\link{fortify.network}} function.
+#' @rdname ggnetwork
 #' @export
 ggnetwork <- function(x, ...) {
+    UseMethod('ggnetwork')
+}
 
-  if (class(x) == "igraph") {
+#' @export
+#' @rdname ggnetwork
+#' @method ggnetwork igraph
+ggnetwork.igraph <- function(x, ...) {
 
     fortify.igraph(x, ...)
 
-  } else {
+} 
+
+#' @export
+#' @rdname ggnetwork
+#' @method ggnetwork default
+ggnetwork.default <- function(x, ...) {
 
     if (!network::is.network(x)) {
-
-      x = try(network::network(x), silent = TRUE)
-
+        x <- try(network::network(x), silent = TRUE)
     }
 
-    if (!network::is.network(x)) {
+    if (!network::is.network(x)) stop("could not coerce object to a network")
 
-      stop("could not coerce object to a network")
-
-    } else {
-
-      fortify.network(x, ...)
-
-    }
-
-  }
+    fortify.network(x, ...)
 
 }
+
+
