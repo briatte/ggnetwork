@@ -2,6 +2,8 @@
 
 S3method(fortify,igraph)
 S3method(fortify,network)
+S3method(ggnetwork,default)
+S3method(ggnetwork,igraph)
 export(geom_edgelabel)
 export(geom_edgelabel_repel)
 export(geom_edges)
