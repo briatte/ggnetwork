@@ -44,7 +44,7 @@ the default plot specification, e.g. \code{\link{borders}}.}
 
 \item{...}{other arguments passed on to \code{\link{layer}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
-\code{color = "red"} or \code{size = 3}. They may also be parameters
+\code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 }
 \description{
@@ -59,28 +59,28 @@ n <- network(flo, directed = FALSE)
 
 # just nodes
 ggplot(n, aes(x, y)) +
-  geom_nodes(size = 3, shape = 21, color = "steelblue") +
+  geom_nodes(size = 3, shape = 21, colour = "steelblue") +
   theme_blank()
 
 # with edges
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(color = "steelblue") +
-  geom_nodes(size = 3, shape = 21, color = "steelblue", fill = "white") +
+  geom_edges(colour = "steelblue") +
+  geom_nodes(size = 3, shape = 21, colour = "steelblue", fill = "white") +
   theme_blank()
 
 # with nodes sized according to degree centrality
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(color = "steelblue") +
-  geom_nodes(size = degree(n), shape = 21, color = "steelblue", fill = "white") +
+  geom_edges(colour = "steelblue") +
+  geom_nodes(size = degree(n), shape = 21, colour = "steelblue", fill = "white") +
   theme_blank()
 
 # with nodes colored according to betweenness centrality
 
 n \%v\% "betweenness" <- betweenness(flo)
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(color = "grey50") +
-  geom_nodes(aes(color = betweenness), size = 3) +
-  scale_color_gradient(low = "gold", high = "tomato") +
+  geom_edges(colour = "grey50") +
+  geom_nodes(aes(colour = betweenness), size = 3) +
+  scale_colour_gradient(low = "gold", high = "tomato") +
   theme_blank() +
   theme(legend.position = "bottom")
 
