@@ -45,7 +45,7 @@ displayed as described in ?plotmath}
 
 \item{...}{other arguments passed on to \code{\link{layer}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
-\code{color = "red"} or \code{size = 3}. They may also be parameters
+\code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
 \item{nudge_x, nudge_y}{Horizontal and vertical adjustment to nudge labels by.
@@ -90,9 +90,9 @@ set.edge.attribute(n, "type", e)
 
 # with labelled edges
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(aes(color = type)) +
-  geom_edgetext(aes(label = type, color = type)) +
-  geom_nodes(size = 4, color = "grey50") +
+  geom_edges(aes(colour = type)) +
+  geom_edgetext(aes(label = type, colour = type)) +
+  geom_nodes(size = 4, colour = "grey50") +
   theme_blank()
 
 # label only a subset of all edges with arbitrary symbol
@@ -100,7 +100,7 @@ edge_type <- function(x) { x[ x$type == "a", ] }
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
   geom_edges() +
   geom_edgetext(label = "=", data = edge_type) +
-  geom_nodes(size = 4, color = "grey50") +
+  geom_nodes(size = 4, colour = "grey50") +
   theme_blank()
 
 }
