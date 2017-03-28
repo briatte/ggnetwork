@@ -39,7 +39,7 @@ a call to a position adjustment function.}
 
 \item{...}{other arguments passed on to \code{\link{layer}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
-\code{color = "red"} or \code{size = 3}. They may also be parameters
+\code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
 \item{parse}{If TRUE, the labels will be parsed into expressions and
@@ -87,14 +87,14 @@ ggplot(n, aes(x, y)) +
 
 # with nodes underneath
 ggplot(n, aes(x, y)) +
-  geom_nodes(color = "gold", size = 9) +
+  geom_nodes(colour = "gold", size = 9) +
   geom_nodetext(aes(label = vertex.names)) +
   theme_blank()
 
 # with nodes and edges
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(color = "gold") +
-  geom_nodes(color = "gold", size = 9) +
+  geom_edges(colour = "gold") +
+  geom_nodes(colour = "gold", size = 9) +
   geom_nodetext(aes(label = vertex.names)) +
   theme_blank()
 
@@ -109,14 +109,14 @@ n <- network(flo, directed = FALSE)
 
 # with text labels
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(color = "grey50") +
+  geom_edges(colour = "grey50") +
   geom_nodelabel(aes(label = vertex.names)) +
   theme_blank()
 
 # with text labels coloured according to degree centrality
 n \%v\% "degree" <- degree(n)
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(color = "grey50") +
+  geom_edges(colour = "grey50") +
   geom_nodelabel(aes(label = vertex.names, fill = degree)) +
   scale_fill_gradient(low = "gold", high = "tomato") +
   theme_blank()
@@ -124,10 +124,10 @@ ggplot(n, aes(x, y, xend = xend, yend = yend)) +
 # label only a subset of all nodes
 high_degree <- function(x) { x[ x$degree > median(x$degree), ] }
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(color = "steelblue") +
-  geom_nodes(aes(size = degree), color = "steelblue") +
+  geom_edges(colour = "steelblue") +
+  geom_nodes(aes(size = degree), colour = "steelblue") +
   geom_nodelabel(aes(label = vertex.names), data = high_degree,
-                 color = "white", fill = "tomato") +
+                 colour = "white", fill = "tomato") +
   theme_blank()
 }
 
