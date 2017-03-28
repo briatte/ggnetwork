@@ -18,27 +18,27 @@
 #'
 #' # just edges
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, color = "steelblue") +
+#'   geom_edges(size = 1, colour = "steelblue") +
 #'   theme_blank()
 #'
 #' # with nodes
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, color = "steelblue") +
-#'   geom_nodes(size = 3, color = "steelblue") +
+#'   geom_edges(size = 1, colour = "steelblue") +
+#'   geom_nodes(size = 3, colour = "steelblue") +
 #'   theme_blank()
 #'
 #' # with arrows
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, color = "steelblue",
+#'   geom_edges(size = 1, colour = "steelblue",
 #'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, color = "steelblue") +
+#'   geom_nodes(size = 3, colour = "steelblue") +
 #'   theme_blank()
 #'
 #' # with curvature
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, color = "steelblue", curvature = 0.15,
+#'   geom_edges(size = 1, colour = "steelblue", curvature = 0.15,
 #'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, color = "steelblue") +
+#'   geom_nodes(size = 3, colour = "steelblue") +
 #'   theme_blank()
 #'
 #' # arbitrary categorical edge attribute
@@ -47,25 +47,25 @@
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
 #'   geom_edges(aes(linetype = type), size = 1, curvature = 0.15,
 #'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, color = "steelblue") +
+#'   geom_nodes(size = 3, colour = "steelblue") +
 #'   theme_blank()
 #'
 #' # arbitrary numeric edge attribute (signed network)
 #' e <- sample(-2:2, network.edgecount(n), replace = TRUE)
 #' set.edge.attribute(n, "weight", e)
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(color = weight), curvature = 0.15,
+#'   geom_edges(aes(colour = weight), curvature = 0.15,
 #'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, color = "grey50") +
-#'   scale_color_gradient(low = "steelblue", high = "tomato") +
+#'   geom_nodes(size = 3, colour = "grey50") +
+#'   scale_colour_gradient(low = "steelblue", high = "tomato") +
 #'   theme_blank()
 #'
 #' # draw only a subset of all edges
 #' positive_weight <- function(x) { x[ x$weight >= 0, ] }
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(color = weight), data = positive_weight) +
-#'   geom_nodes(size = 4, color = "grey50") +
-#'   scale_color_gradient(low = "gold", high = "tomato") +
+#'   geom_edges(aes(colour = weight), data = positive_weight) +
+#'   geom_nodes(size = 4, colour = "grey50") +
+#'   scale_colour_gradient(low = "gold", high = "tomato") +
 #'   theme_blank()
 #'
 #' }
@@ -136,9 +136,9 @@ geom_edges <- function(mapping = NULL, data = NULL,
 #'
 #' # with labelled edges
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(color = type)) +
-#'   geom_edgetext(aes(label = type, color = type)) +
-#'   geom_nodes(size = 4, color = "grey50") +
+#'   geom_edges(aes(colour = type)) +
+#'   geom_edgetext(aes(label = type, colour = type)) +
+#'   geom_nodes(size = 4, colour = "grey50") +
 #'   theme_blank()
 #'
 #' # label only a subset of all edges with arbitrary symbol
@@ -146,7 +146,7 @@ geom_edges <- function(mapping = NULL, data = NULL,
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
 #'   geom_edges() +
 #'   geom_edgetext(label = "=", data = edge_type) +
-#'   geom_nodes(size = 4, color = "grey50") +
+#'   geom_nodes(size = 4, colour = "grey50") +
 #'   theme_blank()
 #'
 #' }
@@ -213,17 +213,17 @@ geom_edgetext <- function(mapping = NULL, data = NULL,
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
 #'   geom_edges() +
 #'   geom_edgetext_repel(aes(label = day), box.padding = unit(0.5, "lines")) +
-#'   geom_nodes(size = 4, color = "grey50") +
+#'   geom_nodes(size = 4, colour = "grey50") +
 #'   theme_blank()
 #'
 #' # repulsive edge labels for only a subset of all edges
 #' edge_day <- function(x) { x[ x$day > 2, ] }
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(color = cut(day, (4:0)[ -3 ]))) +
+#'   geom_edges(aes(colour = cut(day, (4:0)[ -3 ]))) +
 #'   geom_edgetext_repel(aes(label = paste("day", day),
-#'                       color = cut(day, (4:0)[ -3 ])), data = edge_day) +
-#'   geom_nodes(size = 4, color = "grey50") +
-#'   scale_color_manual("day", labels = c("old ties", "day 3", "day 4"),
+#'                       colour = cut(day, (4:0)[ -3 ])), data = edge_day) +
+#'   geom_nodes(size = 4, colour = "grey50") +
+#'   scale_colour_manual("day", labels = c("old ties", "day 3", "day 4"),
 #'                      values = c("grey50", "gold", "tomato")) +
 #'   theme_blank()
 #'
@@ -238,7 +238,7 @@ geom_edgetext_repel <- function(
   point.padding = unit(1e-6, "lines"),
   label.r = unit(0.15, "lines"),
   label.size = 0.25,
-  segment.color = "#666666",
+  segment.colour = "#666666",
   segment.size = 0.5,
   arrow = NULL,
   force = 1,
@@ -264,7 +264,7 @@ geom_edgetext_repel <- function(
       point.padding  = point.padding,
       label.r = label.r,
       label.size = label.size,
-      segment.color = segment.color,
+      segment.colour = segment.colour,
       segment.size = segment.size,
       arrow = arrow,
       na.rm = na.rm,
