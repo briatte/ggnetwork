@@ -102,7 +102,7 @@ if (getRversion() >= "2.15.1") {
 #' @export
 fortify.network <- function(model, data = NULL,
                             layout = "fruchtermanreingold", weights = NULL,
-                            arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
+                            arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
                             by = NULL,
                             ...) {
   x = model
@@ -139,7 +139,7 @@ fortify.network <- function(model, data = NULL,
   edges = network::as.matrix.network.edgelist(x, attrname = weights)
 
   # edge list (if there are duplicated rows)
-  if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
+  if (nrow(edges[, 1:2, drop = FALSE]) > nrow(unique(edges[, 1:2, drop = FALSE]))) {
     warning("duplicated edges detected")
   }
 
