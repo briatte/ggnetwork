@@ -166,10 +166,10 @@ fortify.network <- function(model, data = NULL,
     names(edges)[ncol(edges)] = y
   }
 
-  # merge edges and nodes data
-  edges = merge(nodes, edges, by = c("x", "y"), all = TRUE)
-
   if (nrow(edges)!=0) {
+    # merge edges and nodes data
+    edges = merge(nodes, edges, by = c("x", "y"), all = TRUE)
+    
     # add missing columns to nodes data
     nodes$xend = nodes$x
     nodes$yend = nodes$y
@@ -199,7 +199,6 @@ fortify.network <- function(model, data = NULL,
     # add missing columns to nodes data
     nodes$xend = nodes$x
     nodes$yend = nodes$y
-    names(nodes) = names(edges)[1:ncol(nodes)]
     return(nodes)
   }
 
