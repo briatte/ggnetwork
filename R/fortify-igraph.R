@@ -45,8 +45,15 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   
   # import vertex attributes
   if (length(igraph::list.vertex.attributes(x))) {
-    nodes <- cbind(nodes, sapply(igraph::list.vertex.attributes(x),
-                                 igraph::get.vertex.attribute, graph = x))
+    nodes <- cbind(
+      nodes,
+      vapply(
+        igraph::list.vertex.attributes(x),
+        FUN = igraph::get.vertex.attribute,
+        graph = x,
+        FUN.VALUE = rep(1, igraph::gorder(x)),
+        USE.NAMES = T
+      )
   }
 
   
