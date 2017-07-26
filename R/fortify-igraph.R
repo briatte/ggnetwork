@@ -106,10 +106,8 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   names(nodes) = names(edges)[1:ncol(nodes)]
   
   # make nodes data of identical dimensions to edges data
-  for (y in names(edges)[(1 + ncol(nodes)):ncol(edges)]) {
-    nodes = cbind(nodes, NA)
-    names(nodes)[ncol(nodes)] = y
-  }
+  missing.cols <- names(edges)[which(!(names(edges) %in% names(nodes)))]
+  nodes[missing.cols] <- NA
   
   # panelize nodes (for temporal networks)
   if (!is.null(by)) {
