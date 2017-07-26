@@ -54,6 +54,7 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
         FUN.VALUE = rep(1, igraph::gorder(x)),
         USE.NAMES = T
       )
+    )
   }
 
   
