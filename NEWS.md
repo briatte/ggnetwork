@@ -1,3 +1,11 @@
+ggnetwork 0.5.4 (2017-07-XX)
+----------------------------
+
+Changes
+
+* Added native support for igraph
+
+
 ggnetwork 0.5.3 (2016-06-XX)
 ----------------------------
 
