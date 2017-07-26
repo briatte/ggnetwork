@@ -28,16 +28,11 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   
   # node placement
   if (class(layout) == "matrix" &&
-      nrow(layout) == network::network.size(x) &&
+      nrow(layout) == igraph::gorder(x) &&
       ncol(layout) == 2) {
     nodes = layout[, 1:2 ]
   } else {
-    layout = paste0("gplot.layout.", layout)
-    ns <- loadNamespace("sna")
-    if (!exists(layout, envir=ns, inherits=FALSE)) {
-      stop("unsupported layout")
-    }
-    nodes = do.call( utils::getFromNamespace(layout, ns), list(x, layout.par = list(...)))
+    nodes <- igraph::layout_(x, layout)
   }
   
   # store coordinates
