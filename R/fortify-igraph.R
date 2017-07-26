@@ -20,7 +20,7 @@
 #' @importFrom utils installed.packages
 #' @export
 fortify.igraph <- function(model, layout = igraph::nicely(), 
-                           arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
+                           arrow.gap = ifelse(igraph::is.directed(x), 0.025, 0),
                            by = NULL) {
 
   
