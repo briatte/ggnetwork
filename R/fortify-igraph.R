@@ -83,11 +83,19 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   }
   
   # import edge attributes
-  for (y in network::list.edge.attributes(x)) {
-    edges = cbind(edges, network::get.edge.attribute(x, y))
-    names(edges)[ncol(edges)] = y
+  if (length(igraph::list.edge.attributes(x))) {
+    edges <- cbind(
+      edges,
+      vapply(
+        igraph::list.edge.attributes(x),
+        FUN = igraph::get.edge.attribute,
+        graph = x,
+        FUN.VALUE = rep(1, igraph::gsize(x)),
+        USE.NAMES = T
+      )
+    )
   }
-  
+
   # merge edges and nodes data
   edges = merge(nodes, edges, by = c("x", "y"), all = TRUE)
   
