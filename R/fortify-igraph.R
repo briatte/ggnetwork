@@ -22,14 +22,6 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
                            arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
                            by = NULL) {
 
-  if ("intergraph" %in% rownames(utils::installed.packages())) {
-
-    fortify.network(intergraph::asNetwork(model), ...)
-
-  } else {
-
-    stop("install the 'intergraph' package to use igraph objects with ggnetwork")
-
-  }
-
+  
+ 
 }
