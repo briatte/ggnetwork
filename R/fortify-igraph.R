@@ -58,7 +58,7 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
 
   
   # edge list
-  edges = network::as.matrix.network.edgelist(x, attrname = weights)
+  edges <- igraph::as_edgelist(x, names = F)
   
   # edge list (if there are duplicated rows)
   if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
