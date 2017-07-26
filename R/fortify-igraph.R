@@ -44,10 +44,11 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   nodes$y = scale(nodes$y, center = min(nodes$y), scale = diff(range(nodes$y)))
   
   # import vertex attributes
-  for (y in network::list.vertex.attributes(x)) {
-    nodes = cbind(nodes, network::get.vertex.attribute(x, y))
-    names(nodes)[ncol(nodes)] = y
+  if (length(igraph::list.vertex.attributes(x))) {
+    nodes <- cbind(nodes, sapply(igraph::list.vertex.attributes(x),
+                                 igraph::get.vertex.attribute, graph = x))
   }
+
   
   # edge list
   edges = network::as.matrix.network.edgelist(x, attrname = weights)
