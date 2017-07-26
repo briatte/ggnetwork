@@ -14,14 +14,14 @@
 #' good results when the size of the nodes is reasonably small.
 #' @param by a character vector that matches an edge attribute, which will be
 #' used to generate a data frame that can be plotted with
-#' @param ... additional parameters for the \code{layout} argument; see
-#' \code{\link[sna]{gplot.layout}} for available options.
+#' @param ... additional parameters for the \code{\link[igraph]{layout_}
+#' function
 #' @method fortify igraph
 #' @importFrom utils installed.packages
 #' @export
 fortify.igraph <- function(model, layout = igraph::nicely(), 
                            arrow.gap = ifelse(igraph::is.directed(x), 0.025, 0),
-                           by = NULL) {
+                           by = NULL, ...) {
 
   
   x = model
@@ -32,7 +32,7 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
       ncol(layout) == 2) {
     nodes = layout[, 1:2 ]
   } else {
-    nodes <- igraph::layout_(x, layout)
+    nodes <- igraph::layout_(x, layout, ...)
   }
   
   # store coordinates
