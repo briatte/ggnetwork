@@ -47,11 +47,10 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   if (length(igraph::list.vertex.attributes(x))) {
     nodes <- cbind(
       nodes,
-      vapply(
+      sapply(
         igraph::list.vertex.attributes(x),
         FUN = igraph::get.vertex.attribute,
         graph = x,
-        FUN.VALUE = rep(1, igraph::gorder(x)),
         USE.NAMES = T
       )
     )
@@ -87,14 +86,13 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   if (length(igraph::list.edge.attributes(x))) {
     edges <- cbind(
       edges,
-      vapply(
+      sapply(
         igraph::list.edge.attributes(x),
         FUN = igraph::get.edge.attribute,
         graph = x,
-        FUN.VALUE = rep(1, igraph::gsize(x)),
         USE.NAMES = T
+        )
       )
-    )
   }
 
   # merge edges and nodes data
