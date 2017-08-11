@@ -40,8 +40,10 @@ fortify.igraph <- function(model, layout = igraph::nicely(),
   names(nodes) = c("x", "y")
   
   # rescale coordinates
-  nodes$x = scale(nodes$x, center = min(nodes$x), scale = diff(range(nodes$x)))
-  nodes$y = scale(nodes$y, center = min(nodes$y), scale = diff(range(nodes$y)))
+  nodes$x = unname(scale(nodes$x, center = min(nodes$x),
+                         scale = diff(range(nodes$x))))
+  nodes$y = unname(scale(nodes$y, center = min(nodes$y), 
+                         scale = diff(range(nodes$y))))
   
   # import vertex attributes
   if (length(igraph::list.vertex.attributes(x))) {
