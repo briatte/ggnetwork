@@ -139,10 +139,12 @@ fortify.network <- function(model, data = NULL,
   edges = network::as.matrix.network.edgelist(x, attrname = weights)
 
   # edge list (if there are duplicated rows)
-  if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
+  if (nrow(edges) > 1) {
+    if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
     warning("duplicated edges detected")
+    }
   }
-
+  
   edges = data.frame(nodes[edges[, 1], 1:2], nodes[edges[, 2], 1:2])
   names(edges) = c("x", "y", "xend", "yend")
 
