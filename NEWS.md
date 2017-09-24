@@ -3,7 +3,7 @@ ggnetwork 0.5.4 (2017-07-XX)
 
 Changes
 
-* Added native support for igraph
+* Added native support for igraph.  Thanks to [Jake Fisher](www.src.isr.umich.edu/people/jake-fisher/).
 
 
 ggnetwork 0.5.3 (2016-06-XX)
