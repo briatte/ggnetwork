@@ -23,4 +23,3 @@ A wrapper for the \code{\link{fortify.network}} and
 \code{\link{fortify.igraph}} functions that will also try to coerce matrices
 and data frames to network objects.
 }
-

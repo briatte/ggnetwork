@@ -17,4 +17,3 @@ theme_facet(base_size = 12, base_family = "", ...)
 A variation of \code{\link{theme_blank}} that adds a panel border to the
 plot, which is often suitable for plotting faceted networks.
 }
-

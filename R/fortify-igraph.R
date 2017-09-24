@@ -1,7 +1,5 @@
 #' Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}
 #'
-#' This function requires the \code{\link[intergraph:intergraph-package]{intergraph}}
-#' package to be installed.
 #' @param model an object of class \code{\link[igraph:igraph-package]{igraph}}
 #' @param layout a function call to an 
 #' \code{\link[igraph:igraph-package]{igraph}} layout function, or a 2 column
@@ -14,7 +12,7 @@
 #' good results when the size of the nodes is reasonably small.
 #' @param by a character vector that matches an edge attribute, which will be
 #' used to generate a data frame that can be plotted with
-#' @param ... additional parameters for the \code{\link[igraph]{layout_}
+#' @param ... additional parameters for the \code{\link[igraph]{layout_}}
 #' function
 #' @method fortify igraph
 #' @importFrom utils installed.packages
