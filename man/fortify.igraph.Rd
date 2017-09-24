@@ -28,6 +28,5 @@ used to generate a data frame that can be plotted with}
 function}
 }
 \description{
-This function requires the \code{\link[intergraph:intergraph-package]{intergraph}}
-package to be installed.
+Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}
 }
