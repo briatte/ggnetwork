@@ -19,4 +19,3 @@ the \code{\link{fortify.network}} function.}
 This function requires the \code{\link[intergraph:intergraph-package]{intergraph}}
 package to be installed.
 }
-
