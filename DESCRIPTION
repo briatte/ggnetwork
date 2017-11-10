@@ -19,9 +19,9 @@ Imports:
     ggrepel (>= 0.5),
     network,
     sna,
+    intergraph,
     utils
 Suggests:
-    intergraph,
     knitr,
     testthat
 RoxygenNote: 5.0.1

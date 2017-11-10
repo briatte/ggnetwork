@@ -1,2 +1,5 @@
 language: r
 cache: packages
+before_install:
+  - sudo apt-get install libgsl0-dev texlive
+  - Rscript -e 'install.packages(c("devtools", "ggrepel", "network", "sna", "intergraph"))'
