@@ -17,4 +17,3 @@ theme_blank(base_size = 12, base_family = "", ...)
 A \code{ggplot2} theme without lines, borders, axis text or titles, suited
 for plotting networks.
 }
-

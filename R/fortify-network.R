@@ -126,8 +126,10 @@ fortify.network <- function(model, data = NULL,
   names(nodes) = c("x", "y")
 
   # rescale coordinates
-  nodes$x = scale(nodes$x, center = min(nodes$x), scale = diff(range(nodes$x)))
-  nodes$y = scale(nodes$y, center = min(nodes$y), scale = diff(range(nodes$y)))
+  nodes$x = as.vector(scale(nodes$x, center = min(nodes$x),
+                         scale = diff(range(nodes$x))))
+  nodes$y = as.vector(scale(nodes$y, center = min(nodes$y),
+                         scale = diff(range(nodes$y))))
 
   # import vertex attributes
   for (y in network::list.vertex.attributes(x)) {

@@ -29,6 +29,6 @@ test_that("ggnetwork works", {
 
 test_that("intergraph works", {
 
-  ggnetwork(intergraph::asIgraph(emon[[1]]), layout = "circle")
+  ggnetwork(intergraph::asIgraph(emon[[1]]), layout = igraph::in_circle())
 
 })
