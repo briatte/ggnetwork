@@ -9,6 +9,7 @@ Authors@R: c(
   person("Michał", "Bojanowski", role = "ctb"),
   person("Mickaël", "Canouil", role = "ctb"),
   person("Jacob C.", "Fisher", role = "ctb", comment = c(ORCID = "0000-0003-0299-0346")),
+  person("Kipp", "Johnson", role = "ctb", comment = c(ORCID = "0000-0002-5102-741X")),
   person("Tyler", "Rinker", role = "ctb")
   )
 Description: Geometries to plot network objects with 'ggplot2'.
