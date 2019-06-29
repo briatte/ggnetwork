@@ -6,18 +6,20 @@
 \title{Draw repulsive edge labels.}
 \usage{
 geom_edgetext_repel(mapping = NULL, data = NULL, parse = FALSE, ...,
-  box.padding = unit(0.25, "lines"), label.padding = unit(0.25, "lines"),
-  point.padding = unit(1e-06, "lines"), label.r = unit(0.15, "lines"),
-  label.size = 0.25, segment.colour = "#666666", segment.size = 0.5,
-  arrow = NULL, force = 1, max.iter = 2000, nudge_x = 0, nudge_y = 0,
-  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
+  box.padding = unit(0.25, "lines"), label.padding = unit(0.25,
+  "lines"), point.padding = unit(1e-06, "lines"), label.r = unit(0.15,
+  "lines"), label.size = 0.25, segment.colour = "#666666",
+  segment.size = 0.5, arrow = NULL, force = 1, max.iter = 2000,
+  nudge_x = 0, nudge_y = 0, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
 
 geom_edgelabel_repel(mapping = NULL, data = NULL, parse = FALSE, ...,
-  box.padding = unit(0.25, "lines"), label.padding = unit(0.25, "lines"),
-  point.padding = unit(1e-06, "lines"), label.r = unit(0.15, "lines"),
-  label.size = 0.25, segment.colour = "#666666", segment.size = 0.5,
-  arrow = NULL, force = 1, max.iter = 2000, nudge_x = 0, nudge_y = 0,
-  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
+  box.padding = unit(0.25, "lines"), label.padding = unit(0.25,
+  "lines"), point.padding = unit(1e-06, "lines"), label.r = unit(0.15,
+  "lines"), label.size = 0.25, segment.colour = "#666666",
+  segment.size = 0.5, arrow = NULL, force = 1, max.iter = 2000,
+  nudge_x = 0, nudge_y = 0, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2]{aes}} or
@@ -43,19 +45,25 @@ displayed as described in ?plotmath}
     \item Other arguments passed on to the stat.
   }}
 
-\item{box.padding}{Amount of padding around bounding box. Defaults to
-\code{unit(0.25, "lines")}.}
+\item{box.padding}{Amount of padding around bounding box, as unit or number.
+Defaults to 0.25. (Default unit is lines, but other units can be specified
+by passing \code{unit(x, "units")}).}
 
-\item{label.padding}{Amount of padding around label. Defaults to 0.25 lines.}
+\item{label.padding}{Amount of padding around label, as unit or number.
+Defaults to 0.25. (Default unit is lines, but other units can be specified
+by passing \code{unit(x, "units")}).}
 
-\item{point.padding}{Amount of padding around labeled point. Defaults to
-\code{unit(0, "lines")}.}
+\item{point.padding}{Amount of padding around labeled point, as unit or
+number. Defaults to 0. (Default unit is lines, but other units can be
+specified by passing \code{unit(x, "units")}).}
 
-\item{label.r}{Radius of rounded corners. Defaults to 0.15 lines.}
+\item{label.r}{Radius of rounded corners, as unit or number. Defaults
+to 0.15. (Default unit is lines, but other units can be specified by
+passing \code{unit(x, "units")}).}
 
 \item{label.size}{Size of label border, in mm.}
 
-\item{segment.color}{Colour of the line segment. Defaults to the same colour
+\item{segment.colour}{Colour of the line segment. Defaults to the same colour
 as the text. In the unlikely event you specify both US and UK spellings of colour, the
 US spelling will take precedence.}
 

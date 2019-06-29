@@ -6,7 +6,8 @@
 \usage{
 \method{fortify}{network}(model, data = NULL,
   layout = "fruchtermanreingold", weights = NULL,
-  arrow.gap = ifelse(network::is.directed(x), 0.025, 0), by = NULL, ...)
+  arrow.gap = ifelse(network::is.directed(model), 0.025, 0), by = NULL,
+  ...)
 }
 \arguments{
 \item{model}{an object of class \code{\link[network]{network}}.}

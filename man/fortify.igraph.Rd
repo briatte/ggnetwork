@@ -4,16 +4,19 @@
 \alias{fortify.igraph}
 \title{Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}}
 \usage{
-\method{fortify}{igraph}(model, layout = igraph::nicely(),
+\method{fortify}{igraph}(model, data = NULL, layout = igraph::nicely(),
   arrow.gap = ifelse(igraph::is.directed(x), 0.025, 0), by = NULL, ...)
 }
 \arguments{
 \item{model}{an object of class \code{\link[igraph:igraph-package]{igraph}}}
 
+\item{data}{not used by this method.}
+
 \item{layout}{a function call to an 
-\code{\link[igraph:igraph-package]{igraph}} layout function, or a 2 column
-matrix giving the x and y coordinates for the vertices.  See 
-\code{\link[igraph]{layout_}} for details.}
+\code{\link[igraph:igraph-package]{igraph}} layout function, such as 
+\code{\link[igraph]{layout_nicely}} (the default), or a 2 column matrix
+giving the x and y coordinates for the vertices.
+See \code{\link[igraph]{layout_}} for details.}
 
 \item{arrow.gap}{a parameter that will shorten the network edges in order to
 avoid overplotting edge arrows and nodes; defaults to \code{0} when the
