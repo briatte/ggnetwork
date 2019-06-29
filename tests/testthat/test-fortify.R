@@ -1,6 +1,5 @@
 context("Test ggnetwork")
 
-library(intergraph)
 data(flo, package = "network")
 
 library(network)
@@ -24,7 +23,7 @@ test_that("fortify.network works", {
 
 test_that("fortify.igraph works", {
 
-  n <- asIgraph(network(flo, directed = FALSE))
+  n <- igraph::graph_from_adjacency_matrix(flo, mode = "undirected")
 
   expect_is(fortify(n), "data.frame")
   expect_true(all(c("x", "y", "xend", "yend") %in% names(fortify(n))))

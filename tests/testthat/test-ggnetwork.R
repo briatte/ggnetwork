@@ -1,6 +1,5 @@
 context("Test ggnetwork")
 
-library(intergraph)
 data(emon, package = "network")
 
 test_that("ggnetwork works", {
@@ -24,11 +23,5 @@ test_that("ggnetwork works", {
       matrix(c(1:2, 2:1), nrow = 2))),
     "duplicated edges"
   )
-
-})
-
-test_that("intergraph works", {
-
-  ggnetwork(intergraph::asIgraph(emon[[1]]), layout = igraph::in_circle())
 
 })
