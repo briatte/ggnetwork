@@ -102,7 +102,7 @@ if (getRversion() >= "2.15.1") {
 #' @export
 fortify.network <- function(model, data = NULL,
                             layout = "fruchtermanreingold", weights = NULL,
-                            arrow.gap = ifelse(network::is.directed(x), 0.025, 0),
+                            arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
                             by = NULL,
                             ...) {
   x = model
@@ -141,7 +141,7 @@ fortify.network <- function(model, data = NULL,
   edges = network::as.matrix.network.edgelist(x, attrname = weights)
 
   # edge list (if there are duplicated rows)
-  if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
+  if (nrow(edges[, 1:2, drop = FALSE]) > nrow(unique(edges[, 1:2, drop = FALSE]))) {
     warning("duplicated edges detected")
   }
 
@@ -168,33 +168,40 @@ fortify.network <- function(model, data = NULL,
     names(edges)[ncol(edges)] = y
   }
 
-  # merge edges and nodes data
-  edges = merge(nodes, edges, by = c("x", "y"), all = TRUE)
+  if (nrow(edges)!=0) {
+    # merge edges and nodes data
+    edges = merge(nodes, edges, by = c("x", "y"), all = TRUE)
+    
+    # add missing columns to nodes data
+    nodes$xend = nodes$x
+    nodes$yend = nodes$y
+    names(nodes) = names(edges)[1:ncol(nodes)]
 
-  # add missing columns to nodes data
-  nodes$xend = nodes$x
-  nodes$yend = nodes$y
-  names(nodes) = names(edges)[1:ncol(nodes)]
+    # make nodes data of identical dimensions to edges data
+    for (y in names(edges)[(1 + ncol(nodes)):ncol(edges)]) {
+      nodes = cbind(nodes, NA)
+      names(nodes)[ncol(nodes)] = y
+    }
 
-  # make nodes data of identical dimensions to edges data
-  for (y in names(edges)[(1 + ncol(nodes)):ncol(edges)]) {
-    nodes = cbind(nodes, NA)
-    names(nodes)[ncol(nodes)] = y
+    # panelize nodes (for temporal networks)
+    if (!is.null(by)) {
+      nodes = lapply(sort(unique(edges[, by ])), function(x) {
+        y = nodes
+        y[, by ] = x
+        y
+      })
+      nodes = do.call(rbind, nodes)
+    }
+
+    # return a data frame with network.size(x) + network.edgecount(x) rows,
+    # or length(unique(edges[, by ])) * network.size(x) + network.edgecount(x)
+    # rows if the nodes have been panelized
+    return(unique(rbind(nodes, edges[ !is.na(edges$xend), ])))
+  } else {
+    # add missing columns to nodes data
+    nodes$xend = nodes$x
+    nodes$yend = nodes$y
+    return(nodes)
   }
-
-  # panelize nodes (for temporal networks)
-  if (!is.null(by)) {
-    nodes = lapply(sort(unique(edges[, by ])), function(x) {
-      y = nodes
-      y[, by ] = x
-      y
-    })
-    nodes = do.call(rbind, nodes)
-  }
-
-  # return a data frame with network.size(x) + network.edgecount(x) rows,
-  # or length(unique(edges[, by ])) * network.size(x) + network.edgecount(x)
-  # rows if the nodes have been panelized
-  unique(rbind(nodes, edges[ !is.na(edges$xend), ]))
 
 }

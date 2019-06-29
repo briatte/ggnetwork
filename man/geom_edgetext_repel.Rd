@@ -8,14 +8,14 @@
 geom_edgetext_repel(mapping = NULL, data = NULL, parse = FALSE, ...,
   box.padding = unit(0.25, "lines"), label.padding = unit(0.25, "lines"),
   point.padding = unit(1e-06, "lines"), label.r = unit(0.15, "lines"),
-  label.size = 0.25, segment.color = "#666666", segment.size = 0.5,
+  label.size = 0.25, segment.colour = "#666666", segment.size = 0.5,
   arrow = NULL, force = 1, max.iter = 2000, nudge_x = 0, nudge_y = 0,
   na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
 
 geom_edgelabel_repel(mapping = NULL, data = NULL, parse = FALSE, ...,
   box.padding = unit(0.25, "lines"), label.padding = unit(0.25, "lines"),
   point.padding = unit(1e-06, "lines"), label.r = unit(0.15, "lines"),
-  label.size = 0.25, segment.color = "#666666", segment.size = 0.5,
+  label.size = 0.25, segment.colour = "#666666", segment.size = 0.5,
   arrow = NULL, force = 1, max.iter = 2000, nudge_x = 0, nudge_y = 0,
   na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
 }
@@ -105,17 +105,17 @@ set.edge.attribute(n, "day", e)
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
   geom_edges() +
   geom_edgetext_repel(aes(label = day), box.padding = unit(0.5, "lines")) +
-  geom_nodes(size = 4, color = "grey50") +
+  geom_nodes(size = 4, colour = "grey50") +
   theme_blank()
 
 # repulsive edge labels for only a subset of all edges
 edge_day <- function(x) { x[ x$day > 2, ] }
 ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(aes(color = cut(day, (4:0)[ -3 ]))) +
+  geom_edges(aes(colour = cut(day, (4:0)[ -3 ]))) +
   geom_edgetext_repel(aes(label = paste("day", day),
-                      color = cut(day, (4:0)[ -3 ])), data = edge_day) +
-  geom_nodes(size = 4, color = "grey50") +
-  scale_color_manual("day", labels = c("old ties", "day 3", "day 4"),
+                      colour = cut(day, (4:0)[ -3 ])), data = edge_day) +
+  geom_nodes(size = 4, colour = "grey50") +
+  scale_colour_manual("day", labels = c("old ties", "day 3", "day 4"),
                      values = c("grey50", "gold", "tomato")) +
   theme_blank()
 

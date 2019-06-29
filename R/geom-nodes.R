@@ -12,28 +12,28 @@
 #'
 #' # just nodes
 #' ggplot(n, aes(x, y)) +
-#'   geom_nodes(size = 3, shape = 21, color = "steelblue") +
+#'   geom_nodes(size = 3, shape = 21, colour = "steelblue") +
 #'   theme_blank()
 #'
 #' # with edges
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "steelblue") +
-#'   geom_nodes(size = 3, shape = 21, color = "steelblue", fill = "white") +
+#'   geom_edges(colour = "steelblue") +
+#'   geom_nodes(size = 3, shape = 21, colour = "steelblue", fill = "white") +
 #'   theme_blank()
 #'
 #' # with nodes sized according to degree centrality
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "steelblue") +
-#'   geom_nodes(size = degree(n), shape = 21, color = "steelblue", fill = "white") +
+#'   geom_edges(colour = "steelblue") +
+#'   geom_nodes(size = degree(n), shape = 21, colour = "steelblue", fill = "white") +
 #'   theme_blank()
 #'
 #' # with nodes colored according to betweenness centrality
 #'
 #' n %v% "betweenness" <- betweenness(flo)
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "grey50") +
-#'   geom_nodes(aes(color = betweenness), size = 3) +
-#'   scale_color_gradient(low = "gold", high = "tomato") +
+#'   geom_edges(colour = "grey50") +
+#'   geom_nodes(aes(colour = betweenness), size = 3) +
+#'   scale_colour_gradient(low = "gold", high = "tomato") +
 #'   theme_blank() +
 #'   theme(legend.position = "bottom")
 #'
@@ -85,14 +85,14 @@ geom_nodes <- function(mapping = NULL, data = NULL,
 #'
 #' # with nodes underneath
 #' ggplot(n, aes(x, y)) +
-#'   geom_nodes(color = "gold", size = 9) +
+#'   geom_nodes(colour = "gold", size = 9) +
 #'   geom_nodetext(aes(label = vertex.names)) +
 #'   theme_blank()
 #'
 #' # with nodes and edges
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "gold") +
-#'   geom_nodes(color = "gold", size = 9) +
+#'   geom_edges(colour = "gold") +
+#'   geom_nodes(colour = "gold", size = 9) +
 #'   geom_nodetext(aes(label = vertex.names)) +
 #'   theme_blank()
 #'
@@ -157,10 +157,10 @@ geom_nodetext <- function(mapping = NULL,
 #'
 #' n <- network(rgraph(10, tprob = 0.2), directed = FALSE)
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "steelblue") +
+#'   geom_edges(colour = "steelblue") +
 #'   geom_nodetext_repel(aes(label = paste("node", vertex.names)),
 #'                       box.padding = unit(1, "lines")) +
-#'   geom_nodes(color = "steelblue", size = 3) +
+#'   geom_nodes(colour = "steelblue", size = 3) +
 #'   theme_blank()
 #'
 #' }
@@ -172,7 +172,7 @@ geom_nodetext_repel <- function(mapping = NULL,
                                 ...,
                                 box.padding = unit(0.25, "lines"),
                                 point.padding = unit(1e-06, "lines"),
-                                segment.color = "#666666",
+                                segment.colour = "#666666",
                                 segment.size = 0.5,
                                 arrow = NULL,
                                 force = 1,
@@ -194,7 +194,7 @@ geom_nodetext_repel <- function(mapping = NULL,
           na.rm = na.rm,
           box.padding = box.padding,
           point.padding = point.padding,
-          segment.color = segment.color,
+          segment.colour = segment.colour,
           segment.size = segment.size,
           arrow = arrow,
           force = force,
@@ -221,14 +221,14 @@ geom_nodetext_repel <- function(mapping = NULL,
 #'
 #' # with text labels
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "grey50") +
+#'   geom_edges(colour = "grey50") +
 #'   geom_nodelabel(aes(label = vertex.names)) +
 #'   theme_blank()
 #'
 #' # with text labels coloured according to degree centrality
 #' n %v% "degree" <- degree(n)
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "grey50") +
+#'   geom_edges(colour = "grey50") +
 #'   geom_nodelabel(aes(label = vertex.names, fill = degree)) +
 #'   scale_fill_gradient(low = "gold", high = "tomato") +
 #'   theme_blank()
@@ -236,10 +236,10 @@ geom_nodetext_repel <- function(mapping = NULL,
 #' # label only a subset of all nodes
 #' high_degree <- function(x) { x[ x$degree > median(x$degree), ] }
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "steelblue") +
-#'   geom_nodes(aes(size = degree), color = "steelblue") +
+#'   geom_edges(colour = "steelblue") +
+#'   geom_nodes(aes(size = degree), colour = "steelblue") +
 #'   geom_nodelabel(aes(label = vertex.names), data = high_degree,
-#'                  color = "white", fill = "tomato") +
+#'                  colour = "white", fill = "tomato") +
 #'   theme_blank()
 #' }
 #'
@@ -296,23 +296,23 @@ geom_nodelabel <- function(mapping = NULL, data = NULL,
 #' n <- network(flo, directed = FALSE)
 #'
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "steelblue") +
+#'   geom_edges(colour = "steelblue") +
 #'   geom_nodelabel_repel(aes(label = vertex.names),
 #'                       box.padding = unit(1, "lines")) +
-#'   geom_nodes(color = "steelblue", size = 3) +
+#'   geom_nodes(colour = "steelblue", size = 3) +
 #'   theme_blank()
 #'
 #' # label only a subset of all nodes
 #' n %v% "degree" <- degree(n)
 #' low_degree <- function(x) { x[ x$degree < median(x$degree), ] }
 #' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(color = "steelblue") +
+#'   geom_edges(colour = "steelblue") +
 #'   geom_nodelabel_repel(aes(label = vertex.names),
 #'                        box.padding = unit(1.5, "lines"),
 #'                        data = low_degree,
-#'                        segment.color = "tomato",
-#'                        color = "white", fill = "tomato") +
-#'   geom_nodes(aes(size = degree), color = "steelblue") +
+#'                        segment.colour = "tomato",
+#'                        colour = "white", fill = "tomato") +
+#'   geom_nodes(aes(size = degree), colour = "steelblue") +
 #'   theme_blank()
 #'
 #' }
@@ -326,7 +326,7 @@ geom_nodelabel_repel <- function(
   point.padding = unit(1e-6, "lines"),
   label.r = unit(0.15, "lines"),
   label.size = 0.25,
-  segment.color = "#666666",
+  segment.colour = "#666666",
   segment.size = 0.5,
   arrow = NULL,
   force = 1,
@@ -352,7 +352,7 @@ geom_nodelabel_repel <- function(
       point.padding  = point.padding,
       label.r = label.r,
       label.size = label.size,
-      segment.color = segment.color,
+      segment.colour = segment.colour,
       segment.size = segment.size,
       arrow = arrow,
       na.rm = na.rm,
