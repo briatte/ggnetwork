@@ -36,12 +36,13 @@ theme_facet <- function(base_size = 12, base_family = "", ...) {
     )
 }
 
-#' Rescale `x` to (0, 1), except if `x` is constant
+#' Rescale x to (0, 1), except if x is constant
 #' 
-#' Discussed in PR #32.
+#' Discussed in PR #32: https://github.com/briatte/ggnetwork/pull/32
 #' @param x a vector to rescale
 #' @param scale the scale on which to rescale the vector
 #' @return The rescaled vector, coerced to a vector if necessary.
+#' If the original vector was constant, all of its values are replaced by 0.5.
 #' @author Kipp Johnson
 scale_safely <- function(x, scale = diff(range(x))) {
   if (!scale) {
