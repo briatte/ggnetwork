@@ -35,3 +35,19 @@ theme_facet <- function(base_size = 12, base_family = "", ...) {
       ...
     )
 }
+
+#' Rescale `x` to (0, 1), except if `x` is constant
+#' 
+#' Discussed in PR #32.
+#' @param x a vector to rescale
+#' @param scale the scale on which to rescale the vector
+#' @return The rescaled vector, coerced to a vector if necessary.
+#' @author Kipp Johnson
+scale_safely <- function(x, scale = diff(range(x))) {
+  if (!scale) {
+    x <- rep(0.5, length.out = length(x))
+  } else {
+    x <- base::scale(x, center = min(x), scale = scale)
+  }
+  as.vector(x)
+}

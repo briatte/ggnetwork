@@ -125,20 +125,10 @@ fortify.network <- function(model, data = NULL,
   nodes = data.frame(nodes)
   names(nodes) = c("x", "y")
 
-  # rescale coordinates if needed (discussed in PR #32)
-  if (length(unique(nodes$x)) > 1) {
-    nodes$x <- as.vector(scale(nodes$x, center = min(nodes$x),
-                              scale = diff(range(nodes$x))))
-  } else {
-    nodes$x <- 0.5 # constant `x` coordinate
-  }
-  if (length(unique(nodes$y)) > 1) {
-    nodes$y <- as.vector(scale(nodes$y, center = min(nodes$y),
-                              scale = diff(range(nodes$y))))
-  } else {
-    nodes$y <- 0.5 # constant `y` coordinate
-  }
-  
+  # rescale coordinates
+  nodes$x <- scale_safely(nodes$x)
+  nodes$y <- scale_safely(nodes$y)
+
   # import vertex attributes
   for (y in network::list.vertex.attributes(x)) {
     nodes = cbind(nodes, network::get.vertex.attribute(x, y))
