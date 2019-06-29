@@ -7,7 +7,7 @@ Maintainer: François Briatte <f.briatte@gmail.com>
 Authors@R: c(
   person("François", "Briatte", email = "f.briatte@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6494-9774")),
   person("Michał", "Bojanowski", role = "ctb"),
-  person("Mickaël", "Canouil", role = "ctb"),
+  person("Mickaël", "Canouil", role = "ctb", comment = c(ORCID = "0000-0002-3396-4549")),
   person("Jacob C.", "Fisher", role = "ctb", comment = c(ORCID = "0000-0003-0299-0346")),
   person("Kipp", "Johnson", role = "ctb", comment = c(ORCID = "0000-0002-5102-741X")),
   person("Tyler", "Rinker", role = "ctb")
