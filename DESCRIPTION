@@ -3,15 +3,22 @@ Type: Package
 Title: Geometries to Plot Networks with 'ggplot2'
 Version: 0.5.4
 Date: 2016-03-24
-Author: Francois Briatte
-Maintainer: Francois Briatte <f.briatte@gmail.com>
+Maintainer: François Briatte <f.briatte@gmail.com>
+Authors@R: c(
+  person("François", "Briatte", email = "f.briatte@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6494-9774")),
+  person("Michał", "Bojanowski", role = "ctb"),
+  person("Jacob C.", "Fisher", role = "ctb", comment = c(ORCID = "0000-0003-0299-0346")),
+  person("Tyler", "Rinker", role = "ctb")
+  )
 Description: Geometries to plot network objects with 'ggplot2'.
 License: GPL-3
+Encoding: UTF-8
 URL: https://github.com/briatte/ggnetwork
 BugReports: https://github.com/briatte/ggnetwork/issues
-LazyData: TRUE
-VignetteBuilder: knitr
+LazyData: true
 NeedsCompilation: no
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
 Depends:
     ggplot2 (>= 2.0.0),
     R (>= 3.1),
@@ -24,4 +31,5 @@ Suggests:
     igraph,
     knitr,
     testthat
-RoxygenNote: 6.0.1
+Enhances:
+    ggplot2
