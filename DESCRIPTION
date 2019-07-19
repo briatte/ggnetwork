@@ -22,10 +22,10 @@ Depends:
 Imports:
     ggrepel (>= 0.5),
     network,
+    igraph,
     sna,
     utils
 Suggests:
-    igraph,
     knitr,
     testthat
 Collate:
