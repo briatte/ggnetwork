@@ -33,5 +33,3 @@ Suggests:
     igraph,
     knitr,
     testthat
-Enhances:
-    ggplot2
