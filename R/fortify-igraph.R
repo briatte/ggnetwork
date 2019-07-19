@@ -25,9 +25,11 @@ fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
   x <- model
 
   # node placement
-  if (class(layout) == "matrix" &&
-    nrow(layout) == igraph::gorder(x) &&
-    ncol(layout) == 2) {
+  if (
+    class(layout) == "matrix" &&
+      nrow(layout) == igraph::gorder(x) &&
+      ncol(layout) == 2
+  ) {
     nodes <- layout[, 1:2 ]
   } else {
     nodes <- igraph::layout_(x, layout, ...)
@@ -35,7 +37,7 @@ fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
 
   # store coordinates
   nodes <- data.frame(nodes)
-  names(nodes) <- c("x", "y")
+  colnames(nodes) <- c("x", "y")
 
   # rescale coordinates
   nodes$x <- scale_safely(nodes$x)
@@ -49,14 +51,14 @@ fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
         igraph::list.vertex.attributes(x),
         FUN = igraph::get.vertex.attribute,
         graph = x,
-        USE.NAMES = T
+        USE.NAMES = TRUE
       )
     )
   }
 
 
   # edge list
-  edges <- igraph::as_edgelist(x, names = F)
+  edges <- igraph::as_edgelist(x, names = FALSE)
 
   # edge list (if there are duplicated rows)
   if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
