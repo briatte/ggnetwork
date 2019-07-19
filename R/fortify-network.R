@@ -3,37 +3,38 @@
 #' See the vignette at \url{https://briatte.github.io/ggnetwork/} for a
 #' description of both this function and the rest of the \code{ggnetwork}
 #' package.
+#'
 #' @param model an object of class \code{\link[network]{network}}.
 #' @param data not used by this method.
 #' @param layout a network layout supplied by \code{\link[sna]{gplot.layout}},
-#' such as \code{"fruchtermanreingold"} (the default), or a two-column matrix
-#' with as many rows as there are nodes in the network, in which case the
-#' matrix is used as nodes coordinates.
+#'  such as \code{"fruchtermanreingold"} (the default), or a two-column matrix
+#'   with as many rows as there are nodes in the network, in which case the
+#'   matrix is used as nodes coordinates.
 #' @param weights the name of an edge attribute to use as edge weights when
-#' computing the network layout, if the layout supports such weights (see
-#' 'Details').
-#' Defaults to \code{NULL} (no edge weights).
+#'   computing the network layout, if the layout supports such weights (see
+#'   'Details').
+#'   Defaults to \code{NULL} (no edge weights).
 #' @param arrow.gap a parameter that will shorten the network edges in order to
-#' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
-#' network is undirected (no edge shortening), or to \code{0.025} when the
-#' network is directed. Small values near \code{0.025} will generally achieve
-#' good results when the size of the nodes is reasonably small.
+#'   avoid overplotting edge arrows and nodes; defaults to \code{0} when the
+#'   network is undirected (no edge shortening), or to \code{0.025} when the
+#'   network is directed. Small values near \code{0.025} will generally achieve
+#'   good results when the size of the nodes is reasonably small.
 #' @param by a character vector that matches an edge attribute, which will be
-#' used to generate a data frame that can be plotted with
-#' \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
-#' nodes of the network will appear in all facets, at the same coordinates.
-#' Defaults to \code{NULL} (no faceting).
-#' @return a data.frame object.
+#'   used to generate a data frame that can be plotted with
+#'   \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+#'   nodes of the network will appear in all facets, at the same coordinates.
+#'   Defaults to \code{NULL} (no faceting).
 #' @param ... additional parameters for the \code{layout} argument; see
-#' \code{\link[sna]{gplot.layout}} for available options.
+#'   \code{\link[sna]{gplot.layout}} for available options.
+#'
 #' @details \code{fortify.network} will return a warning if it finds duplicated
-#' edges after converting the network to an edge list. Duplicated edges should
-#' be eliminated in favour of single weighted edges before using a network
-#' layout that supports edge weights, such as the Kamada-Kawai force-directed
-#' placement algorithm.
-#' @import sna
-#' @importFrom ggplot2 fortify
-#' @method fortify network
+#'   edges after converting the network to an edge list. Duplicated edges should
+#'   be eliminated in favour of single weighted edges before using a network
+#'   layout that supports edge weights, such as the Kamada-Kawai force-directed
+#'   placement algorithm.
+#'
+#' @return a data.frame object.
+#'
 #' @examples
 #' if (require(ggplot2) && require(network)) {
 #'
@@ -105,12 +106,17 @@
 #'     geom_nodes() +
 #'     theme_blank()
 #' }
+#'
 #' @export
-fortify.network <- function(model, data = NULL,
-                            layout = "fruchtermanreingold", weights = NULL,
-                            arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
-                            by = NULL,
-                            ...) {
+fortify.network <- function(
+  model,
+  data = NULL,
+  layout = "fruchtermanreingold",
+  weights = NULL,
+  arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
+  by = NULL,
+  ...
+) {
   # node placement
   if (
     class(layout) == "matrix" &&

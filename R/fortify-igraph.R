@@ -3,24 +3,28 @@
 #' @param model an object of class \code{\link[igraph:igraph-package]{igraph}}
 #' @param data not used by this method.
 #' @param layout a function call to an
-#' \code{\link[igraph:igraph-package]{igraph}} layout function, such as
-#' \code{\link[igraph]{layout_nicely}} (the default), or a 2 column matrix
-#' giving the x and y coordinates for the vertices.
-#' See \code{\link[igraph]{layout_}} for details.
+#'   \code{\link[igraph:igraph-package]{igraph}} layout function, such as
+#'   \code{\link[igraph]{layout_nicely}} (the default), or a 2 column matrix
+#'   giving the x and y coordinates for the vertices.
+#'   See \code{\link[igraph]{layout_}} for details.
 #' @param arrow.gap a parameter that will shorten the network edges in order to
-#' avoid overplotting edge arrows and nodes; defaults to \code{0} when the
-#' network is undirected (no edge shortening), or to \code{0.025} when the
-#' network is directed. Small values near \code{0.025} will generally achieve
-#' good results when the size of the nodes is reasonably small.
+#'   avoid overplotting edge arrows and nodes; defaults to \code{0} when the
+#'   network is undirected (no edge shortening), or to \code{0.025} when the
+#'   network is directed. Small values near \code{0.025} will generally achieve
+#'   good results when the size of the nodes is reasonably small.
 #' @param by a character vector that matches an edge attribute, which will be
-#' used to generate a data frame that can be plotted with
-#' @param ... additional parameters for the \code{\link[igraph]{layout_}}
-#' function
-#' @method fortify igraph
+#'   used to generate a data frame that can be plotted with
+#' @param ... additional parameters for the \code{\link[igraph]{layout_}} function
+#'
 #' @export
-fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
-                           arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0),
-                           by = NULL, ...) {
+fortify.igraph <- function(
+  model,
+  data = NULL,
+  layout = igraph::nicely(),
+  arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0),
+  by = NULL,
+  ...
+) {
   # node placement
   if (
     class(layout) == "matrix" &&
