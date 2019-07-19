@@ -1,14 +1,8 @@
-context("Test ggnetwork")
-
-data(flo, package = "network")
-
-# library(network)
-# library(sna)
-
-test_that("fortify.network works", {
+test_that("fortify.network", {
+  data(flo, package = "network")
   n <- network::network(flo, directed = FALSE)
 
-  expect_is(fortify(n), "data.frame")
+  expect_s3_class(fortify(n), "data.frame")
   expect_true(all(c("x", "y", "xend", "yend") %in% names(fortify(n))))
 
   expect_s3_class({
@@ -29,10 +23,10 @@ test_that("fortify.network works", {
   }, class = "ggplot")
 })
 
-test_that("fortify.igraph works", {
+test_that("fortify.igraph", {
   n <- igraph::graph_from_adjacency_matrix(flo, mode = "undirected")
 
-  expect_is(fortify(n), "data.frame")
+  expect_s3_class(fortify(n), "data.frame")
   expect_true(all(c("x", "y", "xend", "yend") %in% names(fortify(n))))
 
   ggplot(n, aes(x, y, xend = xend, yend = yend)) +

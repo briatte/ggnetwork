@@ -3,19 +3,27 @@ context("Test all geoms")
 data(emon, package = "network")
 
 test_that("geom_nodes works", {
-  ggplot(emon[[1]], aes(x, y)) +
-    geom_nodes()
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y)) +
+      geom_nodes()
+  }, class = "ggplot")
 
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_nodes()
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_nodes()
+  }, class = "ggplot")
 })
 
 test_that("geom_nodetext works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_nodetext(aes(label = vertex.names))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_nodetext(aes(label = vertex.names))
+  }, class = "ggplot")
 
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_nodetext(aes(label = Paid.Staff), nudge_x = 1, nudge_y = 1)
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_nodetext(aes(label = Paid.Staff), nudge_x = 1, nudge_y = 1)
+  }, class = "ggplot")
 
   expect_error(
     ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
@@ -28,16 +36,22 @@ test_that("geom_nodetext works", {
 })
 
 test_that("geom_nodetext_repel works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_nodetext_repel(aes(label = vertex.names))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_nodetext_repel(aes(label = vertex.names))
+  }, class = "ggplot")
 })
 
 test_that("geom_nodelabel works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_nodelabel(aes(label = vertex.names))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_nodelabel(aes(label = vertex.names))
+  }, class = "ggplot")
 
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_nodelabel(aes(label = Paid.Staff), nudge_x = 1, nudge_y = 1)
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_nodelabel(aes(label = Paid.Staff), nudge_x = 1, nudge_y = 1)
+  }, class = "ggplot")
 
   expect_error(
     ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
@@ -50,27 +64,37 @@ test_that("geom_nodelabel works", {
 })
 
 test_that("geom_nodelabel_repel works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_nodelabel_repel(aes(label = vertex.names))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_nodelabel_repel(aes(label = vertex.names))
+  }, class = "ggplot")
 })
 
 test_that("geom_edges works", {
 
   # straight
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_edges()
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_edges()
+  }, class = "ggplot")
 
   # curved
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_edges(curvature = 0.1)
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_edges(curvature = 0.1)
+  }, class = "ggplot")
 })
 
 test_that("geom_edgetext works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_edgetext(aes(label = Frequency))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_edgetext(aes(label = Frequency))
+  }, class = "ggplot")
 
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_edgetext(aes(label = Frequency), nudge_x = 1, nudge_y = 1)
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_edgetext(aes(label = Frequency), nudge_x = 1, nudge_y = 1)
+  }, class = "ggplot")
 
   expect_error(
     ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
@@ -83,16 +107,22 @@ test_that("geom_edgetext works", {
 })
 
 test_that("geom_edgelabel works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_edgelabel(aes(label = Frequency))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_edgelabel(aes(label = Frequency))
+  }, class = "ggplot")
 })
 
 test_that("geom_edgetext_repel works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_edgetext_repel(aes(label = Frequency))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_edgetext_repel(aes(label = Frequency))
+  }, class = "ggplot")
 })
 
 test_that("geom_edgelabel_repel works", {
-  ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
-    geom_edgelabel_repel(aes(label = Frequency))
+  expect_s3_class({
+    ggplot(emon[[1]], aes(x, y, xend = xend, yend = yend)) +
+      geom_edgelabel_repel(aes(label = Frequency))
+  }, class = "ggplot")
 })
