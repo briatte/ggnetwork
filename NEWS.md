@@ -29,6 +29,12 @@ ggnetwork 0.5.6
 * In `R/fortify-igraph.R` and `R/fortify-network.R`, 
   + use subsetting functions instead of `with` and `transform` (*i.e.*, intended to be use interactively).
   + fix issue from CRAN check with undefined global variables.
+  
+* In `R/geom-nodes.R` and `R/geom-edges.R`, 
+  + remove unnecessary "@importFom".
+  + add missing function packages prefix.
+  
+* In `R/utilities.R`, reexport `fortify` and `unit` from `ggplot2`.
 
 
 
