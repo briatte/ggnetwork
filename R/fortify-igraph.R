@@ -72,14 +72,9 @@ fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
   if (arrow.gap > 0) {
     x.length <- edges$xend - edges$x
     y.length <- edges$yend - edges$y
-    arrow.gap <- with(edges, arrow.gap / sqrt(x.length^2 + y.length^2))
-    edges <- transform(
-      edges,
-      # x = x + arrow.gap * x.length,
-      # y = y + arrow.gap * y.length,
-      xend = x + (1 - arrow.gap) * x.length,
-      yend = y + (1 - arrow.gap) * y.length
-    )
+    arrow.gap <- edges$arrow.gap / sqrt(x.length^2 + y.length^2)
+    edges$xend <- edges$x + (1 - arrow.gap) * x.length
+    edges$yend <- edges$y + (1 - arrow.gap) * y.length
   }
 
   # import edge attributes
