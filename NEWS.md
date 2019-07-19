@@ -20,7 +20,8 @@ ggnetwork 0.5.6
 
 * In `DESCRIPTION`,
   + update RoxygenNote version.
-  + Remove `ggplot2` from `Enhances` field.
+  + remove `ggplot2` from `Enhances` field.
+  + add `Collate` field to load sequentially the functions.
   
 * Remove `inst/doc/` directory, *i.e.*, the vignette is part of the `pkgdown` website.
 
