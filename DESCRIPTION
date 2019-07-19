@@ -17,8 +17,8 @@ License: GPL-3
 URL: https://github.com/briatte/ggnetwork
 BugReports: https://github.com/briatte/ggnetwork/issues
 Depends:
-    ggplot2 (>= 2.0.0),
     R (>= 3.1),
+    ggplot2 (>= 2.0.0)
 Imports:
     ggrepel (>= 0.5),
     network,
