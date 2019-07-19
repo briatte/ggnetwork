@@ -118,9 +118,11 @@ fortify.network <- function(model, data = NULL,
   x <- model
 
   # node placement
-  if (class(layout) == "matrix" &&
-    nrow(layout) == network::network.size(x) &&
-    ncol(layout) == 2) {
+  if (
+    class(layout) == "matrix" &&
+      nrow(layout) == network::network.size(x) &&
+      ncol(layout) == 2
+  ) {
     nodes <- layout[, 1:2 ]
   } else {
     layout <- paste0("gplot.layout.", layout)
@@ -158,16 +160,11 @@ fortify.network <- function(model, data = NULL,
 
   # arrow gap (thanks to @heike and @ethen8181 for their work on this issue)
   if (arrow.gap > 0) {
-    x.length <- with(edges, xend - x)
-    y.length <- with(edges, yend - y)
-    arrow.gap <- with(edges, arrow.gap / sqrt(x.length^2 + y.length^2))
-    edges <- transform(
-      edges,
-      # x = x + arrow.gap * x.length,
-      # y = y + arrow.gap * y.length,
-      xend = x + (1 - arrow.gap) * x.length,
-      yend = y + (1 - arrow.gap) * y.length
-    )
+    x.length <- edges$xend - edges$x
+    y.length <- edges$yend - edges$y
+    arrow.gap <- edges$arrow.gap / sqrt(x.length^2 + y.length^2)
+    edges$xend <- edges$x + (1 - arrow.gap) * x.length
+    edges$yend <- edges$y + (1 - arrow.gap) * y.length
   }
 
   # import edge attributes
