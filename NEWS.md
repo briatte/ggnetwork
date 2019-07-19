@@ -1,5 +1,5 @@
 ggnetwork 0.5.6
-============================
+===============
 
 ## Repository changes
 
@@ -22,6 +22,7 @@ ggnetwork 0.5.6
   + update RoxygenNote version.
   + remove `ggplot2` from `Enhances` field.
   + add `Collate` field to load sequentially the functions.
+  + move `igraph` to `Imports` field.
   
 * Remove `inst/doc/` directory, *i.e.*, the vignette is part of the `pkgdown` website.
 
@@ -30,6 +31,7 @@ ggnetwork 0.5.6
 * In `R/fortify-igraph.R` and `R/fortify-network.R`, 
   + use subsetting functions instead of `with` and `transform` (*i.e.*, intended to be use interactively).
   + fix issue from CRAN check with undefined global variables.
+  + remove namespace loading for `sna` package (*i.e.*, `gplot.layout.*` functions).
   
 * In `R/geom-nodes.R` and `R/geom-edges.R`, 
   + remove unnecessary "@importFom".
