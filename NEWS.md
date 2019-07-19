@@ -1,3 +1,31 @@
+# ggnetwork 0.5.6
+
+## Repository changes
+
+* Add `README.Rmd` (replace `README.md`), 
+  + use badges.
+  + list all GitHub contributors.
+  + add Contributing, Code of Conduct Issue Template and Support markdown file (`usethis`).
+
+* Improve `.travis.yml`,
+  + use `pkgdown` for website deployment.
+      - add `_pkgdown.yml` configuration file.
+  + use `covr` for code coverage.
+      - add default `codecov.yml` configuration file.
+  
+* Add `ggnetwork.Rproj`, for ease of use within Rstudio.
+
+## Minor improvements and fixes
+
+* In `DESCRIPTION`,
+  + update RoxygenNote version.
+  + Remove `ggplot2` from `Enhances` field.
+  
+* Remove `inst/doc/` directory, *i.e.*, the vignette is part of the `pkgdown` website.
+
+* Use tidy code style.
+  
+
 ggnetwork 0.5.4 (2017-07-XX)
 ----------------------------
 
