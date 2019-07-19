@@ -125,12 +125,8 @@ fortify.network <- function(
   ) {
     nodes <- layout[, 1:2 ]
   } else {
-    layout <- paste0("gplot.layout.", layout)
-    ns <- loadNamespace("sna")
-    if (!exists(layout, envir = ns, inherits = FALSE)) {
-      stop("unsupported layout")
-    }
-    nodes <- do.call(utils::getFromNamespace(layout, ns), list(model, layout.par = list(...)))
+    layout <- eval(parse(text = paste0("sna::gplot.layout.", layout)))
+    nodes <- do.call(layout, list(model, layout.par = list(...)))
   }
 
   # store coordinates
