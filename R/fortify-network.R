@@ -1,7 +1,3 @@
-if (getRversion() >= "2.15.1") {
-  utils::globalVariables(c("xend", "yend"))
-}
-
 #' Fortify method for networks of class \code{\link[network]{network}}
 #'
 #' See the vignette at \url{https://briatte.github.io/ggnetwork/} for a
@@ -115,12 +111,10 @@ fortify.network <- function(model, data = NULL,
                             arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
                             by = NULL,
                             ...) {
-  x <- model
-
   # node placement
   if (
     class(layout) == "matrix" &&
-      nrow(layout) == network::network.size(x) &&
+      nrow(layout) == network::network.size(model) &&
       ncol(layout) == 2
   ) {
     nodes <- layout[, 1:2 ]
@@ -130,7 +124,7 @@ fortify.network <- function(model, data = NULL,
     if (!exists(layout, envir = ns, inherits = FALSE)) {
       stop("unsupported layout")
     }
-    nodes <- do.call(utils::getFromNamespace(layout, ns), list(x, layout.par = list(...)))
+    nodes <- do.call(utils::getFromNamespace(layout, ns), list(model, layout.par = list(...)))
   }
 
   # store coordinates
@@ -142,13 +136,13 @@ fortify.network <- function(model, data = NULL,
   nodes$y <- scale_safely(nodes$y)
 
   # import vertex attributes
-  for (y in network::list.vertex.attributes(x)) {
-    nodes <- cbind(nodes, network::get.vertex.attribute(x, y))
+  for (y in network::list.vertex.attributes(model)) {
+    nodes <- cbind(nodes, network::get.vertex.attribute(model, y))
     names(nodes)[ncol(nodes)] <- y
   }
 
   # edge list
-  edges <- network::as.matrix.network.edgelist(x, attrname = weights)
+  edges <- network::as.matrix.network.edgelist(model, attrname = weights)
 
   # edge list (if there are duplicated rows)
   if (nrow(edges[, 1:2, drop = FALSE]) > nrow(unique(edges[, 1:2, drop = FALSE]))) {
@@ -163,14 +157,21 @@ fortify.network <- function(model, data = NULL,
     x.length <- edges$xend - edges$x
     y.length <- edges$yend - edges$y
     arrow.gap <- edges$arrow.gap / sqrt(x.length^2 + y.length^2)
-    edges$xend <- edges$x + (1 - arrow.gap) * x.length
-    edges$yend <- edges$y + (1 - arrow.gap) * y.length
+    # edges$xend <- edges$x + (1 - arrow.gap) * x.length
+    # edges$yend <- edges$y + (1 - arrow.gap) * y.length
+    edges <- transform(
+      edges,
+      # x = x + arrow.gap * x.length,
+      # y = y + arrow.gap * y.length,
+      xend = x + (1 - arrow.gap) * x.length,
+      yend = y + (1 - arrow.gap) * y.length
+    )
   }
 
   # import edge attributes
-  for (y in network::list.edge.attributes(x)) {
-    edges <- cbind(edges, network::get.edge.attribute(x, y))
-    names(edges)[ncol(edges)] <- y
+  for (iattribute in network::list.edge.attributes(model)) {
+    edges <- cbind(edges, network::get.edge.attribute(model, iattribute))
+    names(edges)[ncol(edges)] <- iattribute
   }
 
   if (nrow(edges) != 0) {
@@ -190,18 +191,18 @@ fortify.network <- function(model, data = NULL,
 
     # panelize nodes (for temporal networks)
     if (!is.null(by)) {
-      nodes <- lapply(sort(unique(edges[, by ])), function(x) {
+      nodes <- lapply(sort(unique(edges[, by])), function(x) {
         y <- nodes
-        y[, by ] <- x
+        y[, by] <- x
         y
       })
       nodes <- do.call(rbind, nodes)
     }
 
-    # return a data frame with network.size(x) + network.edgecount(x) rows,
-    # or length(unique(edges[, by ])) * network.size(x) + network.edgecount(x)
+    # return a data frame with network.size(model) + network.edgecount(model) rows,
+    # or length(unique(edges[, by ])) * network.size(model) + network.edgecount(model)
     # rows if the nodes have been panelized
-    return(unique(rbind(nodes, edges[ !is.na(edges$xend), ])))
+    return(unique(rbind(nodes, edges[!is.na(edges$xend), ])))
   } else {
     # add missing columns to nodes data
     nodes$xend <- nodes$x

@@ -26,6 +26,11 @@ ggnetwork 0.5.6
 
 * Use tidy code style.
 
+* In `R/fortify-igraph.R` and `R/fortify-network.R`, 
+  + use subsetting functions instead of `with` and `transform` (*i.e.*, intended to be use interactively).
+  + fix issue from CRAN check with undefined global variables.
+
+
 
 ggnetwork 0.5.5 (2017-08-XX)
 ============================
