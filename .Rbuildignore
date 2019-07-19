@@ -1,0 +1,14 @@
+^pkgdown$
+^_pkgdown\.yml$
+^.github$
+^inst/pkgdown$
+^docs$
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^README
+^README-.*\.png$
+^\.travis\.yml$
+^appveyor\.yml$
+^codecov\.yml$
+^\.github$
