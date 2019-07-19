@@ -11,7 +11,9 @@
 #' \code{\link[intergraph:intergraph-package]{intergraph}} package is installed,
 #' it will be used to convert the object: see
 #' \code{\link{fortify.igraph}} for details.
+#'
 #' @param ... arguments passed to the \code{\link{fortify.network}} function.
+#'
 #' @export
 ggnetwork <- function(x, ...) {
   if (class(x) == "igraph") {
