@@ -28,8 +28,7 @@ good results when the size of the nodes is reasonably small.}
 \item{by}{a character vector that matches an edge attribute, which will be
 used to generate a data frame that can be plotted with}
 
-\item{...}{additional parameters for the \code{\link[igraph]{layout_}}
-function}
+\item{...}{additional parameters for the \code{\link[igraph]{layout_}} function}
 }
 \description{
 Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}

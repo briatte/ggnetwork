@@ -7,14 +7,14 @@
 \usage{
 geom_edgetext(mapping = NULL, data = NULL, position = "identity",
   parse = FALSE, ..., nudge_x = 0, nudge_y = 0,
-  label.padding = unit(0.25, "lines"), label.r = ggplot2::unit(0.15,
-  "lines"), label.size = 0, na.rm = FALSE, show.legend = NA,
+  label.padding = unit(0.25, "lines"), label.r = unit(0.15, "lines"),
+  label.size = 0, na.rm = FALSE, show.legend = NA,
   inherit.aes = TRUE)
 
 geom_edgelabel(mapping = NULL, data = NULL, position = "identity",
   parse = FALSE, ..., nudge_x = 0, nudge_y = 0,
-  label.padding = unit(0.25, "lines"), label.r = ggplot2::unit(0.15,
-  "lines"), label.size = 0, na.rm = FALSE, show.legend = NA,
+  label.padding = unit(0.25, "lines"), label.r = unit(0.15, "lines"),
+  label.size = 0, na.rm = FALSE, show.legend = NA,
   inherit.aes = TRUE)
 }
 \arguments{
@@ -107,4 +107,5 @@ if (require(network) && require(sna)) {
     geom_nodes(size = 4, colour = "grey50") +
     theme_blank()
 }
+
 }

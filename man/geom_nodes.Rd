@@ -86,4 +86,5 @@ if (require(network) && require(sna)) {
     theme_blank() +
     theme(legend.position = "bottom")
 }
+
 }

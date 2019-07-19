@@ -125,4 +125,5 @@ if (require(ggplot2) && require(network)) {
     geom_nodes() +
     theme_blank()
 }
+
 }

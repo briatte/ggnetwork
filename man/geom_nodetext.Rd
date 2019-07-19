@@ -103,6 +103,7 @@ if (require(network) && require(sna)) {
     theme_blank()
 }
 
+
 ## geom_nodelabel examples
 
 if (require(network) && require(sna)) {
@@ -136,4 +137,5 @@ if (require(network) && require(sna)) {
     ) +
     theme_blank()
 }
+
 }

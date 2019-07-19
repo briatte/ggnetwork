@@ -143,4 +143,5 @@ if (require(network) && require(sna)) {
     scale_colour_gradient(low = "gold", high = "tomato") +
     theme_blank()
 }
+
 }

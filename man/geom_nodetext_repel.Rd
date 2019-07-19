@@ -109,6 +109,7 @@ if (require(network) && require(sna)) {
     geom_nodes(colour = "steelblue", size = 3) +
     theme_blank()
 }
+
 ## geom_nodelabel_repel examples
 
 if (require(network) && require(sna)) {
@@ -139,4 +140,5 @@ if (require(network) && require(sna)) {
     geom_nodes(aes(size = degree), colour = "steelblue") +
     theme_blank()
 }
+
 }
