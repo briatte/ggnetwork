@@ -70,8 +70,6 @@ scale_safely <- function(x, scale = diff(range(x))) {
 #' @importFrom ggplot2 fortify
 NULL
 
-
-
 #' unit
 #'
 #' See \code{ggplot2::\link[ggplot2]{unit}} for details.
