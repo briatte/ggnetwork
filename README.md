@@ -25,7 +25,7 @@ This package allows to pass network objects to
 [`ggplot2`](http://ggplot2.org/), along with several geometries to plot
 their elements.
 
-## Installation
+## Get started
 
 You can install the released version of ggnetwork from
 [CRAN](https://CRAN.R-project.org) with:
@@ -44,8 +44,6 @@ remotes::install_github("briatte/ggnetwork")
 **IMPORTANT: the `ggnetwork` package depends on `ggplot2` version 2.0.0
 or above.**
 
------
-
 **The package vignette** contains [detailed
 examples](https://briatte.github.io/ggnetwork/) of how to use its
 fortify method and each of its geometries.
@@ -57,18 +55,54 @@ R](http://curleylab.psych.columbia.edu/netviz/).”
 
 -----
 
-**Comments and suggestions** are very welcome: please file them as
-[issues](https://github.com/briatte/ggnetwork/issues).
+## Getting help
 
-**See also** the [geomnet](https://github.com/sctyner/geomnet),
-[ggnet](https://github.com/briatte/ggnet) and
-[ggraph](https://github.com/thomasp85/ggraph) packages for related work.
+If you encounter a clear bug, please file a minimal reproducible example
+on [github](https://github.com/briatte/ggnetwork/issues).  
+For questions and other discussion, please contact the package
+maintainer.
 
-**Thanks to** [Michał Bojanowski](https://github.com/mbojan), [Jake
-Fisher](https://github.com/jcfisher), [Heike
-Hofmann](https://github.com/heike), [Pedro
-Jordano](https://github.com/pedroj), [Moritz
-Marbach](https://github.com/sumtxt), [Tyler
-Rinker](https://github.com/trinker), Bertrand Sudre, [Samantha C.
-Tyner](https://github.com/sctyner), and two anonymous *[R
-Journal](https://journal.r-project.org/)* reviewers.
+## See also
+
+Related packages:
+
+  - [geomnet](https://github.com/sctyner/geomnet)
+  - [ggnet](https://github.com/briatte/ggnet)
+  - [ggraph](https://github.com/thomasp85/ggraph)
+
+## Thanks
+
+Thanks to two anonymous *[R Journal](https://journal.r-project.org/)*
+reviewers.contributors, [@achmurzy](https://github.com/achmurzy),
+[@andrewd789](https://github.com/andrewd789),
+[@ArtemSokolov](https://github.com/ArtemSokolov),
+[@aterhorst](https://github.com/aterhorst),
+[@briatte](https://github.com/briatte),
+[@emillykkejensen](https://github.com/emillykkejensen),
+[@evinhas](https://github.com/evinhas),
+[@FinScience](https://github.com/FinScience),
+[@ghost](https://github.com/ghost),
+[@instantkaffee](https://github.com/instantkaffee),
+[@jalapic](https://github.com/jalapic),
+[@jcfisher](https://github.com/jcfisher),
+[@jfaganUK](https://github.com/jfaganUK),
+[@kippjohnson](https://github.com/kippjohnson),
+[@koheiw](https://github.com/koheiw),
+[@mbojan](https://github.com/mbojan),
+[@mcanouil](https://github.com/mcanouil),
+[@mgagliol](https://github.com/mgagliol),
+[@mhairi](https://github.com/mhairi),
+[@minimaxir](https://github.com/minimaxir),
+[@mkarikom](https://github.com/mkarikom),
+[@nick-youngblut](https://github.com/nick-youngblut),
+[@SantiFilippo](https://github.com/SantiFilippo),
+[@sciabolazza](https://github.com/sciabolazza),
+[@sctyner](https://github.com/sctyner),
+[@trinker](https://github.com/trinker) and
+[@zachcp](https://github.com/zachcp)
+
+-----
+
+Please note that this project is released with a [Contributor Code of
+Conduct](.github/CODE_OF_CONDUCT.md).  
+By participating in this project you agree to abide by its terms.
