@@ -64,40 +64,50 @@ if (getRversion() >= "2.15.1") {
 #'   ggnetwork(emon[[1]], layout = "kamadakawai", weights = "Frequency")
 #'
 #'   # plot example with straight edges
-#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
-#'          aes(x, y, xend = xend, yend = yend)) +
+#'   ggplot(
+#'     ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
+#'     aes(x, y, xend = xend, yend = yend)
+#'   ) +
 #'     geom_edges(aes(color = Frequency),
-#'                arrow = arrow(length = unit(10, "pt"), type = "closed")) +
+#'       arrow = arrow(length = unit(10, "pt"), type = "closed")
+#'     ) +
 #'     geom_nodes(aes(size = Formalization)) +
 #'     scale_color_gradient(low = "grey50", high = "tomato") +
 #'     scale_size_area(breaks = 1:3) +
 #'     theme_blank()
 #'
 #'   # plot example with curved edges
-#'   ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
-#'          aes(x, y, xend = xend, yend = yend)) +
-#'     geom_edges(aes(color = Frequency), curvature = 0.1,
-#'                arrow = arrow(length = unit(10, "pt"), type = "open")) +
+#'   ggplot(
+#'     ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
+#'     aes(x, y, xend = xend, yend = yend)
+#'   ) +
+#'     geom_edges(aes(color = Frequency),
+#'       curvature = 0.1,
+#'       arrow = arrow(length = unit(10, "pt"), type = "open")
+#'     ) +
 #'     geom_nodes(aes(size = Formalization)) +
 #'     scale_color_gradient(low = "grey50", high = "tomato") +
 #'     scale_size_area(breaks = 1:3) +
 #'     theme_blank()
 #'
 #'   # facet by edge attribute
-#'   ggplot(ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency"),
-#'          aes(x, y, xend = xend, yend = yend)) +
+#'   ggplot(
+#'     ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency"),
+#'     aes(x, y, xend = xend, yend = yend)
+#'   ) +
 #'     geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
 #'     geom_nodes() +
 #'     theme_blank() +
 #'     facet_grid(. ~ Frequency, labeller = label_both)
 #'
 #'   # user-provided layout
-#'   ggplot(ggnetwork(emon[[1]], layout = matrix(runif(28), ncol = 2)),
-#'          aes(x, y, xend = xend, yend = yend)) +
+#'   ggplot(
+#'     ggnetwork(emon[[1]], layout = matrix(runif(28), ncol = 2)),
+#'     aes(x, y, xend = xend, yend = yend)
+#'   ) +
 #'     geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
 #'     geom_nodes() +
 #'     theme_blank()
-#'
 #' }
 #' @export
 fortify.network <- function(model, data = NULL,
@@ -105,25 +115,25 @@ fortify.network <- function(model, data = NULL,
                             arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
                             by = NULL,
                             ...) {
-  x = model
+  x <- model
 
   # node placement
   if (class(layout) == "matrix" &&
-      nrow(layout) == network::network.size(x) &&
-      ncol(layout) == 2) {
-    nodes = layout[, 1:2 ]
+    nrow(layout) == network::network.size(x) &&
+    ncol(layout) == 2) {
+    nodes <- layout[, 1:2 ]
   } else {
-    layout = paste0("gplot.layout.", layout)
+    layout <- paste0("gplot.layout.", layout)
     ns <- loadNamespace("sna")
-    if (!exists(layout, envir=ns, inherits=FALSE)) {
+    if (!exists(layout, envir = ns, inherits = FALSE)) {
       stop("unsupported layout")
     }
-    nodes = do.call( utils::getFromNamespace(layout, ns), list(x, layout.par = list(...)))
+    nodes <- do.call(utils::getFromNamespace(layout, ns), list(x, layout.par = list(...)))
   }
 
   # store coordinates
-  nodes = data.frame(nodes)
-  names(nodes) = c("x", "y")
+  nodes <- data.frame(nodes)
+  names(nodes) <- c("x", "y")
 
   # rescale coordinates
   nodes$x <- scale_safely(nodes$x)
@@ -131,27 +141,27 @@ fortify.network <- function(model, data = NULL,
 
   # import vertex attributes
   for (y in network::list.vertex.attributes(x)) {
-    nodes = cbind(nodes, network::get.vertex.attribute(x, y))
-    names(nodes)[ncol(nodes)] = y
+    nodes <- cbind(nodes, network::get.vertex.attribute(x, y))
+    names(nodes)[ncol(nodes)] <- y
   }
 
   # edge list
-  edges = network::as.matrix.network.edgelist(x, attrname = weights)
+  edges <- network::as.matrix.network.edgelist(x, attrname = weights)
 
   # edge list (if there are duplicated rows)
   if (nrow(edges[, 1:2, drop = FALSE]) > nrow(unique(edges[, 1:2, drop = FALSE]))) {
     warning("duplicated edges detected")
   }
 
-  edges = data.frame(nodes[edges[, 1], 1:2], nodes[edges[, 2], 1:2])
-  names(edges) = c("x", "y", "xend", "yend")
+  edges <- data.frame(nodes[edges[, 1], 1:2], nodes[edges[, 2], 1:2])
+  names(edges) <- c("x", "y", "xend", "yend")
 
   # arrow gap (thanks to @heike and @ethen8181 for their work on this issue)
   if (arrow.gap > 0) {
-    x.length = with(edges, xend - x)
-    y.length = with(edges, yend - y)
-    arrow.gap = with(edges, arrow.gap / sqrt(x.length ^ 2 + y.length ^ 2))
-    edges = transform(
+    x.length <- with(edges, xend - x)
+    y.length <- with(edges, yend - y)
+    arrow.gap <- with(edges, arrow.gap / sqrt(x.length^2 + y.length^2))
+    edges <- transform(
       edges,
       # x = x + arrow.gap * x.length,
       # y = y + arrow.gap * y.length,
@@ -162,33 +172,33 @@ fortify.network <- function(model, data = NULL,
 
   # import edge attributes
   for (y in network::list.edge.attributes(x)) {
-    edges = cbind(edges, network::get.edge.attribute(x, y))
-    names(edges)[ncol(edges)] = y
+    edges <- cbind(edges, network::get.edge.attribute(x, y))
+    names(edges)[ncol(edges)] <- y
   }
 
-  if (nrow(edges)!=0) {
+  if (nrow(edges) != 0) {
     # merge edges and nodes data
-    edges = merge(nodes, edges, by = c("x", "y"), all = TRUE)
-    
+    edges <- merge(nodes, edges, by = c("x", "y"), all = TRUE)
+
     # add missing columns to nodes data
-    nodes$xend = nodes$x
-    nodes$yend = nodes$y
-    names(nodes) = names(edges)[1:ncol(nodes)]
+    nodes$xend <- nodes$x
+    nodes$yend <- nodes$y
+    names(nodes) <- names(edges)[1:ncol(nodes)]
 
     # make nodes data of identical dimensions to edges data
     for (y in names(edges)[(1 + ncol(nodes)):ncol(edges)]) {
-      nodes = cbind(nodes, NA)
-      names(nodes)[ncol(nodes)] = y
+      nodes <- cbind(nodes, NA)
+      names(nodes)[ncol(nodes)] <- y
     }
 
     # panelize nodes (for temporal networks)
     if (!is.null(by)) {
-      nodes = lapply(sort(unique(edges[, by ])), function(x) {
-        y = nodes
-        y[, by ] = x
+      nodes <- lapply(sort(unique(edges[, by ])), function(x) {
+        y <- nodes
+        y[, by ] <- x
         y
       })
-      nodes = do.call(rbind, nodes)
+      nodes <- do.call(rbind, nodes)
     }
 
     # return a data frame with network.size(x) + network.edgecount(x) rows,
@@ -197,9 +207,8 @@ fortify.network <- function(model, data = NULL,
     return(unique(rbind(nodes, edges[ !is.na(edges$xend), ])))
   } else {
     # add missing columns to nodes data
-    nodes$xend = nodes$x
-    nodes$yend = nodes$y
+    nodes$xend <- nodes$x
+    nodes$yend <- nodes$y
     return(nodes)
   }
-
 }

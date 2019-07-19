@@ -13,61 +13,70 @@
 #' @examples
 #' if (require(network) && require(sna)) {
 #'
-#' # rerun if the example does not produce reciprocated ties
-#' n <- network(rgraph(10, tprob = 0.2), directed = TRUE)
+#'   # rerun if the example does not produce reciprocated ties
+#'   n <- network(rgraph(10, tprob = 0.2), directed = TRUE)
 #'
-#' # just edges
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, colour = "steelblue") +
-#'   theme_blank()
+#'   # just edges
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(size = 1, colour = "steelblue") +
+#'     theme_blank()
 #'
-#' # with nodes
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, colour = "steelblue") +
-#'   geom_nodes(size = 3, colour = "steelblue") +
-#'   theme_blank()
+#'   # with nodes
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(size = 1, colour = "steelblue") +
+#'     geom_nodes(size = 3, colour = "steelblue") +
+#'     theme_blank()
 #'
-#' # with arrows
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, colour = "steelblue",
-#'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, colour = "steelblue") +
-#'   theme_blank()
+#'   # with arrows
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(
+#'       size = 1, colour = "steelblue",
+#'       arrow = arrow(length = unit(0.5, "lines"), type = "closed")
+#'     ) +
+#'     geom_nodes(size = 3, colour = "steelblue") +
+#'     theme_blank()
 #'
-#' # with curvature
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(size = 1, colour = "steelblue", curvature = 0.15,
-#'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, colour = "steelblue") +
-#'   theme_blank()
+#'   # with curvature
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(
+#'       size = 1, colour = "steelblue", curvature = 0.15,
+#'       arrow = arrow(length = unit(0.5, "lines"), type = "closed")
+#'     ) +
+#'     geom_nodes(size = 3, colour = "steelblue") +
+#'     theme_blank()
 #'
-#' # arbitrary categorical edge attribute
-#' e <- sample(letters[ 1:2 ], network.edgecount(n), replace = TRUE)
-#' set.edge.attribute(n, "type", e)
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(linetype = type), size = 1, curvature = 0.15,
-#'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, colour = "steelblue") +
-#'   theme_blank()
+#'   # arbitrary categorical edge attribute
+#'   e <- sample(letters[ 1:2 ], network.edgecount(n), replace = TRUE)
+#'   set.edge.attribute(n, "type", e)
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(aes(linetype = type),
+#'       size = 1, curvature = 0.15,
+#'       arrow = arrow(length = unit(0.5, "lines"), type = "closed")
+#'     ) +
+#'     geom_nodes(size = 3, colour = "steelblue") +
+#'     theme_blank()
 #'
-#' # arbitrary numeric edge attribute (signed network)
-#' e <- sample(-2:2, network.edgecount(n), replace = TRUE)
-#' set.edge.attribute(n, "weight", e)
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(colour = weight), curvature = 0.15,
-#'              arrow = arrow(length = unit(0.5, "lines"), type = "closed")) +
-#'   geom_nodes(size = 3, colour = "grey50") +
-#'   scale_colour_gradient(low = "steelblue", high = "tomato") +
-#'   theme_blank()
+#'   # arbitrary numeric edge attribute (signed network)
+#'   e <- sample(-2:2, network.edgecount(n), replace = TRUE)
+#'   set.edge.attribute(n, "weight", e)
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(aes(colour = weight),
+#'       curvature = 0.15,
+#'       arrow = arrow(length = unit(0.5, "lines"), type = "closed")
+#'     ) +
+#'     geom_nodes(size = 3, colour = "grey50") +
+#'     scale_colour_gradient(low = "steelblue", high = "tomato") +
+#'     theme_blank()
 #'
-#' # draw only a subset of all edges
-#' positive_weight <- function(x) { x[ x$weight >= 0, ] }
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(colour = weight), data = positive_weight) +
-#'   geom_nodes(size = 4, colour = "grey50") +
-#'   scale_colour_gradient(low = "gold", high = "tomato") +
-#'   theme_blank()
-#'
+#'   # draw only a subset of all edges
+#'   positive_weight <- function(x) {
+#'     x[ x$weight >= 0, ]
+#'   }
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(aes(colour = weight), data = positive_weight) +
+#'     geom_nodes(size = 4, colour = "grey50") +
+#'     scale_colour_gradient(low = "gold", high = "tomato") +
+#'     theme_blank()
 #' }
 #' @export
 geom_edges <- function(mapping = NULL, data = NULL,
@@ -75,17 +84,16 @@ geom_edges <- function(mapping = NULL, data = NULL,
                        curvature = 0, angle = 90, ncp = 5,
                        na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
                        ...) {
-
   if (!curvature) {
-    geom = ggplot2::GeomSegment
-    params = list(
+    geom <- ggplot2::GeomSegment
+    params <- list(
       arrow = arrow,
       na.rm = na.rm,
       ...
     )
   } else {
-    geom = ggplot2::GeomCurve
-    params = list(
+    geom <- ggplot2::GeomCurve
+    params <- list(
       arrow = arrow,
       curvature = curvature,
       angle = angle,
@@ -105,7 +113,6 @@ geom_edges <- function(mapping = NULL, data = NULL,
     inherit.aes = inherit.aes,
     params = params
   )
-
 }
 
 # note: the nudge_x,nudge_y arguments below are duplicated from the original
@@ -126,29 +133,29 @@ geom_edges <- function(mapping = NULL, data = NULL,
 #' @importFrom ggplot2 unit position_nudge layer GeomLabel
 #' @examples
 #' if (require(network) && require(sna)) {
+#'   data(flo, package = "network")
+#'   n <- network(flo, directed = FALSE)
 #'
-#' data(flo, package = "network")
-#' n <- network(flo, directed = FALSE)
+#'   # arbitrary categorical edge attribute
+#'   e <- sample(letters[ 1:4 ], network.edgecount(n), replace = TRUE)
+#'   set.edge.attribute(n, "type", e)
 #'
-#' # arbitrary categorical edge attribute
-#' e <- sample(letters[ 1:4 ], network.edgecount(n), replace = TRUE)
-#' set.edge.attribute(n, "type", e)
+#'   # with labelled edges
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(aes(colour = type)) +
+#'     geom_edgetext(aes(label = type, colour = type)) +
+#'     geom_nodes(size = 4, colour = "grey50") +
+#'     theme_blank()
 #'
-#' # with labelled edges
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(colour = type)) +
-#'   geom_edgetext(aes(label = type, colour = type)) +
-#'   geom_nodes(size = 4, colour = "grey50") +
-#'   theme_blank()
-#'
-#' # label only a subset of all edges with arbitrary symbol
-#' edge_type <- function(x) { x[ x$type == "a", ] }
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges() +
-#'   geom_edgetext(label = "=", data = edge_type) +
-#'   geom_nodes(size = 4, colour = "grey50") +
-#'   theme_blank()
-#'
+#'   # label only a subset of all edges with arbitrary symbol
+#'   edge_type <- function(x) {
+#'     x[ x$type == "a", ]
+#'   }
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges() +
+#'     geom_edgetext(label = "=", data = edge_type) +
+#'     geom_nodes(size = 4, colour = "grey50") +
+#'     theme_blank()
 #' }
 #' @export
 geom_edgetext <- function(mapping = NULL, data = NULL,
@@ -201,54 +208,57 @@ geom_edgetext <- function(mapping = NULL, data = NULL,
 #' @importFrom ggrepel GeomLabelRepel
 #' @examples
 #' if (require(network) && require(sna)) {
+#'   data(flo, package = "network")
+#'   n <- network(flo, directed = FALSE)
 #'
-#' data(flo, package = "network")
-#' n <- network(flo, directed = FALSE)
+#'   # arbitrary categorical edge attribute
+#'   e <- sample(1:4, network.edgecount(n), replace = TRUE)
+#'   set.edge.attribute(n, "day", e)
 #'
-#' # arbitrary categorical edge attribute
-#' e <- sample(1:4, network.edgecount(n), replace = TRUE)
-#' set.edge.attribute(n, "day", e)
+#'   # with repulsive edge labels
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges() +
+#'     geom_edgetext_repel(aes(label = day), box.padding = unit(0.5, "lines")) +
+#'     geom_nodes(size = 4, colour = "grey50") +
+#'     theme_blank()
 #'
-#' # with repulsive edge labels
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges() +
-#'   geom_edgetext_repel(aes(label = day), box.padding = unit(0.5, "lines")) +
-#'   geom_nodes(size = 4, colour = "grey50") +
-#'   theme_blank()
-#'
-#' # repulsive edge labels for only a subset of all edges
-#' edge_day <- function(x) { x[ x$day > 2, ] }
-#' ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-#'   geom_edges(aes(colour = cut(day, (4:0)[ -3 ]))) +
-#'   geom_edgetext_repel(aes(label = paste("day", day),
-#'                       colour = cut(day, (4:0)[ -3 ])), data = edge_day) +
-#'   geom_nodes(size = 4, colour = "grey50") +
-#'   scale_colour_manual("day", labels = c("old ties", "day 3", "day 4"),
-#'                      values = c("grey50", "gold", "tomato")) +
-#'   theme_blank()
-#'
+#'   # repulsive edge labels for only a subset of all edges
+#'   edge_day <- function(x) {
+#'     x[ x$day > 2, ]
+#'   }
+#'   ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+#'     geom_edges(aes(colour = cut(day, (4:0)[ -3 ]))) +
+#'     geom_edgetext_repel(aes(
+#'       label = paste("day", day),
+#'       colour = cut(day, (4:0)[ -3 ])
+#'     ), data = edge_day) +
+#'     geom_nodes(size = 4, colour = "grey50") +
+#'     scale_colour_manual("day",
+#'       labels = c("old ties", "day 3", "day 4"),
+#'       values = c("grey50", "gold", "tomato")
+#'     ) +
+#'     theme_blank()
 #' }
 #' @export
 geom_edgetext_repel <- function(
-  mapping = NULL, data = NULL,
-  parse = FALSE,
-  ...,
-  box.padding = unit(0.25, "lines"),
-  label.padding = unit(0.25, "lines"),
-  point.padding = unit(1e-6, "lines"),
-  label.r = unit(0.15, "lines"),
-  label.size = 0.25,
-  segment.colour = "#666666",
-  segment.size = 0.5,
-  arrow = NULL,
-  force = 1,
-  max.iter = 2000,
-  nudge_x = 0,
-  nudge_y = 0,
-  na.rm = FALSE,
-  show.legend = NA,
-  inherit.aes = TRUE
-) {
+                                mapping = NULL, data = NULL,
+                                parse = FALSE,
+                                ...,
+                                box.padding = unit(0.25, "lines"),
+                                label.padding = unit(0.25, "lines"),
+                                point.padding = unit(1e-6, "lines"),
+                                label.r = unit(0.15, "lines"),
+                                label.size = 0.25,
+                                segment.colour = "#666666",
+                                segment.size = 0.5,
+                                arrow = NULL,
+                                force = 1,
+                                max.iter = 2000,
+                                nudge_x = 0,
+                                nudge_y = 0,
+                                na.rm = FALSE,
+                                show.legend = NA,
+                                inherit.aes = TRUE) {
   layer(
     data = data,
     mapping = mapping,
@@ -259,9 +269,9 @@ geom_edgetext_repel <- function(
     inherit.aes = inherit.aes,
     params = list(
       parse = parse,
-      box.padding  = box.padding,
+      box.padding = box.padding,
       label.padding = label.padding,
-      point.padding  = point.padding,
+      point.padding = point.padding,
       label.r = label.r,
       label.size = label.size,
       segment.colour = segment.colour,
@@ -289,19 +299,19 @@ geom_edgelabel_repel <- geom_edgetext_repel
 #' @keywords internal
 StatEdges <-
   ggplot2::ggproto("StatEdges", ggplot2::Stat,
-                   compute_layer = function(data, scales, params) {
-                     unique(subset(data, !(x == xend & y == yend)))
-                   }
+    compute_layer = function(data, scales, params) {
+      unique(subset(data, !(x == xend & y == yend)))
+    }
   )
 
 #' @importFrom ggplot2 ggproto
 #' @keywords internal
 StatMidEdges <-
   ggplot2::ggproto("StatMidEdges", ggplot2::Stat,
-                   compute_layer = function(data, scales, params) {
-                     data = subset(data, !(x == xend & y == yend))
-                     data$x = (data$x + data$xend) / 2
-                     data$y = (data$y + data$yend) / 2
-                     unique(subset(data, select = c(-xend, -yend)))
-                   }
+    compute_layer = function(data, scales, params) {
+      data <- subset(data, !(x == xend & y == yend))
+      data$x <- (data$x + data$xend) / 2
+      data$y <- (data$y + data$yend) / 2
+      unique(subset(data, select = c(-xend, -yend)))
+    }
   )

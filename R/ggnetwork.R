@@ -14,29 +14,17 @@
 #' @param ... arguments passed to the \code{\link{fortify.network}} function.
 #' @export
 ggnetwork <- function(x, ...) {
-
   if (class(x) == "igraph") {
-
     fortify.igraph(x, ...)
-
   } else {
-
     if (!network::is.network(x)) {
-
-      x = try(network::network(x), silent = TRUE)
-
+      x <- try(network::network(x), silent = TRUE)
     }
 
     if (!network::is.network(x)) {
-
       stop("could not coerce object to a network")
-
     } else {
-
       fortify.network(x, ...)
-
     }
-
   }
-
 }

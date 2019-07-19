@@ -37,7 +37,7 @@ theme_facet <- function(base_size = 12, base_family = "", ...) {
 }
 
 #' Rescale x to (0, 1), except if x is constant
-#' 
+#'
 #' Discussed in PR #32: https://github.com/briatte/ggnetwork/pull/32
 #' @param x a vector to rescale
 #' @param scale the scale on which to rescale the vector

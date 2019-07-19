@@ -6,7 +6,6 @@ library(network)
 library(sna)
 
 test_that("fortify.network works", {
-
   n <- network(flo, directed = FALSE)
 
   expect_is(fortify(n), "data.frame")
@@ -18,11 +17,9 @@ test_that("fortify.network works", {
     geom_nodetext(aes(label = vertex.names)) +
     geom_edgetext(aes(label = 1)) +
     theme_blank()
-
 })
 
 test_that("fortify.igraph works", {
-
   n <- igraph::graph_from_adjacency_matrix(flo, mode = "undirected")
 
   expect_is(fortify(n), "data.frame")
@@ -34,5 +31,4 @@ test_that("fortify.igraph works", {
     geom_nodetext(aes(label = vertex.names)) +
     geom_edgetext(aes(label = 1)) +
     theme_blank()
-
 })

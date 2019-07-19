@@ -3,7 +3,6 @@ context("Test ggnetwork")
 data(emon, package = "network")
 
 test_that("ggnetwork works", {
-
   expect_error(ggnetwork(-999, "could not coerce"))
   expect_error(ggnetwork(emon[[1]], layout = -999, "unsupported layout"))
 
@@ -20,8 +19,8 @@ test_that("ggnetwork works", {
   expect_warning(
     ggnetwork(rbind(
       matrix(c(1:2, 2:1), nrow = 2),
-      matrix(c(1:2, 2:1), nrow = 2))),
+      matrix(c(1:2, 2:1), nrow = 2)
+    )),
     "duplicated edges"
   )
-
 })
