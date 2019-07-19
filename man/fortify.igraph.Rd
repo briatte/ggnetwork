@@ -5,7 +5,8 @@
 \title{Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}}
 \usage{
 \method{fortify}{igraph}(model, data = NULL, layout = igraph::nicely(),
-  arrow.gap = ifelse(igraph::is.directed(x), 0.025, 0), by = NULL, ...)
+  arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0), by = NULL,
+  ...)
 }
 \arguments{
 \item{model}{an object of class \code{\link[igraph:igraph-package]{igraph}}}

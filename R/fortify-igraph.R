@@ -17,10 +17,9 @@
 #' @param ... additional parameters for the \code{\link[igraph]{layout_}}
 #' function
 #' @method fortify igraph
-#' @importFrom utils installed.packages
 #' @export
 fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
-                           arrow.gap = ifelse(igraph::is.directed(x), 0.025, 0),
+                           arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0),
                            by = NULL, ...) {
   # node placement
   if (
@@ -70,16 +69,9 @@ fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
   if (arrow.gap > 0) {
     x.length <- edges$xend - edges$x
     y.length <- edges$yend - edges$y
-    arrow.gap <- edges$arrow.gap / sqrt(x.length^2 + y.length^2)
-    # edges$xend <- edges$x + (1 - arrow.gap) * x.length
-    # edges$yend <- edges$y + (1 - arrow.gap) * y.length
-    edges <- transform(
-      edges,
-      # x = x + arrow.gap * x.length,
-      # y = y + arrow.gap * y.length,
-      xend = x + (1 - arrow.gap) * x.length,
-      yend = y + (1 - arrow.gap) * y.length
-    )
+    arrow.gap <- arrow.gap / sqrt(x.length^2 + y.length^2)
+    edges$xend <- edges$x + (1 - arrow.gap) * x.length
+    edges$yend <- edges$y + (1 - arrow.gap) * y.length
   }
 
   # import edge attributes
