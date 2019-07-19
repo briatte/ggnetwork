@@ -85,7 +85,7 @@ fortify.igraph <- function(model, data = NULL, layout = igraph::nicely(),
         igraph::list.edge.attributes(x),
         FUN = igraph::get.edge.attribute,
         graph = x,
-        USE.NAMES = T
+        USE.NAMES = TRUE
       )
     )
   }
