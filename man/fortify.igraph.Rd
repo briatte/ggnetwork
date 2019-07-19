@@ -12,8 +12,8 @@
 
 \item{data}{not used by this method.}
 
-\item{layout}{a function call to an 
-\code{\link[igraph:igraph-package]{igraph}} layout function, such as 
+\item{layout}{a function call to an
+\code{\link[igraph:igraph-package]{igraph}} layout function, such as
 \code{\link[igraph]{layout_nicely}} (the default), or a 2 column matrix
 giving the x and y coordinates for the vertices.
 See \code{\link[igraph]{layout_}} for details.}
