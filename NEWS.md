@@ -1,4 +1,5 @@
-# ggnetwork 0.5.6
+ggnetwork 0.5.6
+============================
 
 ## Repository changes
 
@@ -24,22 +25,28 @@
 * Remove `inst/doc/` directory, *i.e.*, the vignette is part of the `pkgdown` website.
 
 * Use tidy code style.
+
+
+ggnetwork 0.5.5 (2017-08-XX)
+============================
   
 
 ggnetwork 0.5.4 (2017-07-XX)
-----------------------------
+============================
 
-Changes
+## Minor improvements and fixes
 
 * Added native support for igraph.  Thanks to [Jake Fisher](www.src.isr.umich.edu/people/jake-fisher/).
 
 
 ggnetwork 0.5.3 (2016-06-XX)
-----------------------------
+============================
 
-Added Travis CI.
+## Repository changes
 
-FIXES
+* Added Travis CI.
+
+## Minor improvements and fixes
 
 * Export ggplot2::Stat to enable loading ggnetwork first (#14). Thanks to Tyler Rinker.
 
@@ -47,16 +54,15 @@ FIXES
 
 * Safer calls to the sna package (#9). Thanks to Michał Bojanowski.
 
-ggnetwork 0.5.2 (2016-05-01)
-----------------------------
 
-FIXES
+ggnetwork 0.5.2 (2016-05-01)
+============================
+
+## Minor improvements and fixes
 
 * Fixed a bug that removed labels from strictly vertical or strictly horizontal edges (#5).
 
 * Fixed a small documentation issue that was corrected in roxygen 5.0.2 (#4).
-
-CHANGES
 
 * Support for segment colors in all geoms using ggrepel 0.5.1 (#3).
 
@@ -64,6 +70,6 @@ CHANGES
 
 
 ggnetwork 0.5.1 (2016-03-25)
-----------------------------
+============================
 
 First CRAN release.
