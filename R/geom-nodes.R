@@ -2,8 +2,9 @@
 #'
 #' All arguments to this geom are identical to those of
 #' \code{\link[ggplot2]{geom_point}}.
+#'
 #' @inheritParams ggplot2::geom_point
-#' @importFrom ggplot2 layer GeomPoint
+#'
 #' @examples
 #' if (require(network) && require(sna)) {
 #'   data(flo, package = "network")
@@ -36,10 +37,17 @@
 #'     theme_blank() +
 #'     theme(legend.position = "bottom")
 #' }
+#'
 #' @export
-geom_nodes <- function(mapping = NULL, data = NULL,
-                       position = "identity", na.rm = FALSE,
-                       show.legend = NA, inherit.aes = TRUE, ...) {
+geom_nodes <- function(
+  mapping = NULL,
+  data = NULL,
+  position = "identity",
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...
+) {
   ggplot2::layer(
     data = data,
     mapping = mapping,
@@ -62,11 +70,11 @@ geom_nodes <- function(mapping = NULL, data = NULL,
 #'
 #' All arguments to these geoms are identical to those of
 #' \code{\link[ggplot2]{geom_text}} and \code{\link[ggplot2]{geom_label}}.
+#'
 #' @inheritParams ggplot2::geom_text
 #' @param nudge_x,nudge_y Horizontal and vertical adjustment to nudge labels by.
 #'   Useful for offsetting text from points, particularly on discrete scales.
-#' @importFrom ggplot2 position_nudge layer GeomText
-#' @export
+#'
 #' @examples
 #' ## geom_nodetext examples
 #'
@@ -91,22 +99,25 @@ geom_nodes <- function(mapping = NULL, data = NULL,
 #'     geom_nodetext(aes(label = vertex.names)) +
 #'     theme_blank()
 #' }
-geom_nodetext <- function(mapping = NULL,
-                          data = NULL,
-                          position = "identity",
-                          ...,
-                          parse = FALSE,
-                          nudge_x = 0,
-                          nudge_y = 0,
-                          check_overlap = FALSE,
-                          na.rm = FALSE,
-                          show.legend = NA,
-                          inherit.aes = TRUE) {
+#'
+#' @export
+geom_nodetext <- function(
+  mapping = NULL,
+  data = NULL,
+  position = "identity",
+  ...,
+  parse = FALSE,
+  nudge_x = 0,
+  nudge_y = 0,
+  check_overlap = FALSE,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+) {
   if (!missing(nudge_x) || !missing(nudge_y)) {
     if (!missing(position)) {
       stop("Specify either `position` or `nudge_x`/`nudge_y`", call. = FALSE)
     }
-
     position <- ggplot2::position_nudge(nudge_x, nudge_y)
   }
 
@@ -135,11 +146,11 @@ geom_nodetext <- function(mapping = NULL,
 #' All arguments to these geoms are identical to those of
 #' \code{\link[ggrepel]{geom_text_repel}} and
 #' \code{\link[ggrepel]{geom_label_repel}}.
+#'
 #' @inheritParams ggrepel::geom_text_repel
 #' @param nudge_x,nudge_y Horizontal and vertical adjustments to nudge the
 #'   starting position of each text label.
-#' @importFrom ggplot2 layer
-#' @importFrom ggrepel GeomTextRepel
+#'
 #' @examples
 #' ## geom_nodetext_repel example
 #'
@@ -153,24 +164,27 @@ geom_nodetext <- function(mapping = NULL,
 #'     geom_nodes(colour = "steelblue", size = 3) +
 #'     theme_blank()
 #' }
+#'
 #' @export
-geom_nodetext_repel <- function(mapping = NULL,
-                                data = NULL,
-                                # stat = "identity",
-                                parse = FALSE,
-                                ...,
-                                box.padding = unit(0.25, "lines"),
-                                point.padding = unit(1e-06, "lines"),
-                                segment.colour = "#666666",
-                                segment.size = 0.5,
-                                arrow = NULL,
-                                force = 1,
-                                max.iter = 2000,
-                                nudge_x = 0,
-                                nudge_y = 0,
-                                na.rm = FALSE,
-                                show.legend = NA,
-                                inherit.aes = TRUE) {
+geom_nodetext_repel <- function(
+  mapping = NULL,
+  data = NULL,
+  # stat = "identity",
+  parse = FALSE,
+  ...,
+  box.padding = unit(0.25, "lines"),
+  point.padding = unit(1e-06, "lines"),
+  segment.colour = "#666666",
+  segment.size = 0.5,
+  arrow = NULL,
+  force = 1,
+  max.iter = 2000,
+  nudge_x = 0,
+  nudge_y = 0,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+) {
   ggplot2::layer(
     data = data,
     mapping = mapping,
@@ -197,8 +211,9 @@ geom_nodetext_repel <- function(mapping = NULL,
 }
 
 #' @rdname geom_nodetext
+#'
 #' @inheritParams ggplot2::geom_label
-#' @importFrom ggplot2 position_nudge layer GeomLabel
+#'
 #' @examples
 #'
 #' ## geom_nodelabel examples
@@ -234,28 +249,31 @@ geom_nodetext_repel <- function(mapping = NULL,
 #'     ) +
 #'     theme_blank()
 #' }
+#'
 #' @export
-geom_nodelabel <- function(mapping = NULL, data = NULL,
-                           position = "identity",
-                           ...,
-                           parse = FALSE,
-                           nudge_x = 0,
-                           nudge_y = 0,
-                           label.padding = unit(0.25, "lines"),
-                           label.r = unit(0.15, "lines"),
-                           label.size = 0.25,
-                           na.rm = FALSE,
-                           show.legend = NA,
-                           inherit.aes = TRUE) {
+geom_nodelabel <- function(
+  mapping = NULL,
+  data = NULL,
+  position = "identity",
+  ...,
+  parse = FALSE,
+  nudge_x = 0,
+  nudge_y = 0,
+  label.padding = unit(0.25, "lines"),
+  label.r = unit(0.15, "lines"),
+  label.size = 0.25,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+) {
   if (!missing(nudge_x) || !missing(nudge_y)) {
     if (!missing(position)) {
       stop("Specify either `position` or `nudge_x`/`nudge_y`", call. = FALSE)
     }
-
     position <- ggplot2::position_nudge(nudge_x, nudge_y)
   }
 
-  layer(
+  ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = StatNodes,
@@ -275,9 +293,9 @@ geom_nodelabel <- function(mapping = NULL, data = NULL,
 }
 
 #' @rdname geom_nodetext_repel
+#'
 #' @inheritParams ggrepel::geom_label_repel
-#' @importFrom ggplot2 layer
-#' @importFrom ggrepel GeomLabelRepel
+#'
 #' @examples
 #' ## geom_nodelabel_repel examples
 #'
@@ -309,27 +327,30 @@ geom_nodelabel <- function(mapping = NULL, data = NULL,
 #'     geom_nodes(aes(size = degree), colour = "steelblue") +
 #'     theme_blank()
 #' }
+#'
 #' @export
 geom_nodelabel_repel <- function(
-                                 mapping = NULL, data = NULL,
-                                 parse = FALSE,
-                                 ...,
-                                 box.padding = unit(0.25, "lines"),
-                                 label.padding = unit(0.25, "lines"),
-                                 point.padding = unit(1e-6, "lines"),
-                                 label.r = unit(0.15, "lines"),
-                                 label.size = 0.25,
-                                 segment.colour = "#666666",
-                                 segment.size = 0.5,
-                                 arrow = NULL,
-                                 force = 1,
-                                 max.iter = 2000,
-                                 nudge_x = 0,
-                                 nudge_y = 0,
-                                 na.rm = FALSE,
-                                 show.legend = NA,
-                                 inherit.aes = TRUE) {
-  layer(
+  mapping = NULL,
+  data = NULL,
+  parse = FALSE,
+  ...,
+  box.padding = unit(0.25, "lines"),
+  label.padding = unit(0.25, "lines"),
+  point.padding = unit(1e-6, "lines"),
+  label.r = unit(0.15, "lines"),
+  label.size = 0.25,
+  segment.colour = "#666666",
+  segment.size = 0.5,
+  arrow = NULL,
+  force = 1,
+  max.iter = 2000,
+  nudge_x = 0,
+  nudge_y = 0,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+) {
+  ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = StatNodes,
@@ -357,15 +378,13 @@ geom_nodelabel_repel <- function(
   )
 }
 
-#' @importFrom ggplot2 ggproto
 #' @keywords internal
-StatNodes <-
-  ggplot2::ggproto("StatNodes", ggplot2::Stat,
-    compute_layer = function(data, scales, params) {
-      if (all(c("xend", "yend") %in% names(data))) {
-        unique(subset(data, select = c(-xend, -yend)))
-      } else {
-        unique(data)
-      }
+StatNodes <- ggplot2::ggproto("StatNodes", ggplot2::Stat,
+  compute_layer = function(data, scales, params) {
+    if (all(c("xend", "yend") %in% names(data))) {
+      unique(subset(data, select = c(-xend, -yend)))
+    } else {
+      unique(data)
     }
-  )
+  }
+)

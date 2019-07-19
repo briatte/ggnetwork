@@ -7,9 +7,10 @@
 #' \code{ncp} arguments of \code{\link[ggplot2]{geom_curve}} are also available:
 #' if \code{curvature} is set to any value above \code{0} (the default), the
 #' edges produced by \code{geom_edges} will be curved.
+#'
 #' @inheritParams ggplot2::geom_segment
 #' @inheritParams ggplot2::geom_curve
-#' @importFrom ggplot2 GeomSegment GeomCurve layer
+#'
 #' @examples
 #' if (require(network) && require(sna)) {
 #'
@@ -78,19 +79,24 @@
 #'     scale_colour_gradient(low = "gold", high = "tomato") +
 #'     theme_blank()
 #' }
+#'
 #' @export
-geom_edges <- function(mapping = NULL, data = NULL,
-                       position = "identity", arrow = NULL,
-                       curvature = 0, angle = 90, ncp = 5,
-                       na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
-                       ...) {
+geom_edges <- function(
+  mapping = NULL,
+  data = NULL,
+  position = "identity",
+  arrow = NULL,
+  curvature = 0,
+  angle = 90,
+  ncp = 5,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...
+) {
   if (!curvature) {
     geom <- ggplot2::GeomSegment
-    params <- list(
-      arrow = arrow,
-      na.rm = na.rm,
-      ...
-    )
+    params <- list(arrow = arrow, na.rm = na.rm, ...)
   } else {
     geom <- ggplot2::GeomCurve
     params <- list(
@@ -127,10 +133,11 @@ geom_edges <- function(mapping = NULL, data = NULL,
 #' border around the edge labels. The labels will be drawn at mid-edges.
 #' \code{\link{geom_text}} and \code{\link{geom_label}} produce strictly
 #' identical results.
+#'
 #' @inheritParams ggplot2::geom_label
 #' @param nudge_x,nudge_y Horizontal and vertical adjustment to nudge labels by.
 #'   Useful for offsetting text from points, particularly on discrete scales.
-#' @importFrom ggplot2 unit position_nudge layer GeomLabel
+#'
 #' @examples
 #' if (require(network) && require(sna)) {
 #'   data(flo, package = "network")
@@ -157,14 +164,23 @@ geom_edges <- function(mapping = NULL, data = NULL,
 #'     geom_nodes(size = 4, colour = "grey50") +
 #'     theme_blank()
 #' }
+#'
 #' @export
-geom_edgetext <- function(mapping = NULL, data = NULL,
-                          position = "identity", parse = FALSE, ...,
-                          nudge_x = 0, nudge_y = 0,
-                          label.padding = unit(0.25, "lines"),
-                          label.r = ggplot2::unit(0.15, "lines"),
-                          label.size = 0,
-                          na.rm = FALSE, show.legend = NA, inherit.aes = TRUE) {
+geom_edgetext <- function(
+  mapping = NULL,
+  data = NULL,
+  position = "identity",
+  parse = FALSE,
+  ...,
+  nudge_x = 0,
+  nudge_y = 0,
+  label.padding = unit(0.25, "lines"),
+  label.r = unit(0.15, "lines"),
+  label.size = 0,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+) {
   if (!missing(nudge_x) || !missing(nudge_y)) {
     if (!missing(position)) {
       stop("Specify either `position` or `nudge_x`/`nudge_y`", call. = FALSE)
@@ -201,11 +217,11 @@ geom_edgetext <- function(mapping = NULL, data = NULL,
 #' \code{\link{geom_edgelabel_repel}} are identical to those of
 #' \code{\link[ggrepel]{geom_label_repel}}. \code{\link{geom_text_repel}} and
 #' \code{\link{geom_label_repel}} produce strictly identical results.
+#'
 #' @inheritParams ggrepel::geom_label_repel
 #' @param nudge_x,nudge_y Horizontal and vertical adjustments to nudge the
 #'   starting position of each text label.
-#' @importFrom ggplot2 layer
-#' @importFrom ggrepel GeomLabelRepel
+#'
 #' @examples
 #' if (require(network) && require(sna)) {
 #'   data(flo, package = "network")
@@ -239,27 +255,29 @@ geom_edgetext <- function(mapping = NULL, data = NULL,
 #'     ) +
 #'     theme_blank()
 #' }
+#'
 #' @export
 geom_edgetext_repel <- function(
-                                mapping = NULL, data = NULL,
-                                parse = FALSE,
-                                ...,
-                                box.padding = unit(0.25, "lines"),
-                                label.padding = unit(0.25, "lines"),
-                                point.padding = unit(1e-6, "lines"),
-                                label.r = unit(0.15, "lines"),
-                                label.size = 0.25,
-                                segment.colour = "#666666",
-                                segment.size = 0.5,
-                                arrow = NULL,
-                                force = 1,
-                                max.iter = 2000,
-                                nudge_x = 0,
-                                nudge_y = 0,
-                                na.rm = FALSE,
-                                show.legend = NA,
-                                inherit.aes = TRUE) {
-  layer(
+  mapping = NULL, data = NULL,
+  parse = FALSE,
+  ...,
+  box.padding = unit(0.25, "lines"),
+  label.padding = unit(0.25, "lines"),
+  point.padding = unit(1e-6, "lines"),
+  label.r = unit(0.15, "lines"),
+  label.size = 0.25,
+  segment.colour = "#666666",
+  segment.size = 0.5,
+  arrow = NULL,
+  force = 1,
+  max.iter = 2000,
+  nudge_x = 0,
+  nudge_y = 0,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+) {
+  ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = StatMidEdges,
@@ -295,23 +313,19 @@ geom_edgelabel <- geom_edgetext
 #' @export
 geom_edgelabel_repel <- geom_edgetext_repel
 
-#' @importFrom ggplot2 ggproto
 #' @keywords internal
-StatEdges <-
-  ggplot2::ggproto("StatEdges", ggplot2::Stat,
-    compute_layer = function(data, scales, params) {
-      unique(subset(data, !(x == xend & y == yend)))
-    }
-  )
+StatEdges <- ggplot2::ggproto("StatEdges", ggplot2::Stat,
+  compute_layer = function(data, scales, params) {
+    unique(subset(data, !(x == xend & y == yend)))
+  }
+)
 
-#' @importFrom ggplot2 ggproto
 #' @keywords internal
-StatMidEdges <-
-  ggplot2::ggproto("StatMidEdges", ggplot2::Stat,
-    compute_layer = function(data, scales, params) {
-      data <- subset(data, !(x == xend & y == yend))
-      data$x <- (data$x + data$xend) / 2
-      data$y <- (data$y + data$yend) / 2
-      unique(subset(data, select = c(-xend, -yend)))
-    }
-  )
+StatMidEdges <- ggplot2::ggproto("StatMidEdges", ggplot2::Stat,
+  compute_layer = function(data, scales, params) {
+    data <- subset(data, !(x == xend & y == yend))
+    data$x <- (data$x + data$xend) / 2
+    data$y <- (data$y + data$yend) / 2
+    unique(subset(data, select = c(-xend, -yend)))
+  }
+)
