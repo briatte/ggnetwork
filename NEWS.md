@@ -1,6 +1,8 @@
 ggnetwork 0.5.6
 ===============
 
+Many thanks to Mickaël Canouil, who contributed all changes below (#42).
+
 ## Repository changes
 
 * Add `README.Rmd` (replace `README.md`), 
@@ -43,32 +45,34 @@ ggnetwork 0.5.6
 
 
 
-ggnetwork 0.5.5 (2017-08-XX)
-============================
+ggnetwork 0.5.5
+===============
   
 
-ggnetwork 0.5.4 (2017-07-XX)
-============================
+ggnetwork 0.5.4
+===============
+
+Added native support for `igraph`. Thanks to [Jake Fisher](https://github.com/jcfisher) (#25).
 
 ## Minor improvements and fixes
 
-* Added native support for igraph.  Thanks to [Jake Fisher](www.src.isr.umich.edu/people/jake-fisher/).
+Fix for network layouts with constant coordinates. Thanks to [Kipp Johnson](https://github.com/kippjohnson) (#32).
 
 
-ggnetwork 0.5.3 (2016-06-XX)
-============================
+ggnetwork 0.5.3
+===============
 
 ## Repository changes
 
-* Added Travis CI.
+Added Travis CI. Thanks to [Kohei Watanabe](https://github.com/koheiw) (#26).
 
 ## Minor improvements and fixes
 
-* Export ggplot2::Stat to enable loading ggnetwork first (#14). Thanks to Tyler Rinker.
+* Export `ggplot2::Stat` to enable loading `ggnetwork` first (#14). Thanks to [Tyler Rinker](https://github.com/trinker).
 
-* Built with the new version of ggproto (#11).
+* Built with the new version of `ggproto` (#11).
 
-* Safer calls to the sna package (#9). Thanks to Michał Bojanowski.
+* Safer calls to the `sna` package (#9). Thanks to [Michał Bojanowski](https://github.com/mbojan).
 
 
 ggnetwork 0.5.2 (2016-05-01)
@@ -78,9 +82,11 @@ ggnetwork 0.5.2 (2016-05-01)
 
 * Fixed a bug that removed labels from strictly vertical or strictly horizontal edges (#5).
 
-* Fixed a small documentation issue that was corrected in roxygen 5.0.2 (#4).
+* Fixed a small documentation issue that was corrected in `roxygen` 5.0.2 (#4).
 
-* Support for segment colors in all geoms using ggrepel 0.5.1 (#3).
+CHANGES
+
+* Support for segment colors in all geoms using `ggrepel` 0.5.1 (#3).
 
 * Added some acknowledgements to the README and links to the DESCRIPTION.
 
