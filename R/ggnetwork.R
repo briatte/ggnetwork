@@ -12,7 +12,7 @@
 #' it will be used to convert the object: see
 #' \code{\link{fortify.igraph}} for details.
 #'
-#' @param ... arguments passed to the \code{\link{fortify.network}} function.
+#' @param ... arguments passed to the \code{\link{fortify.network}} or \code{\link{fortify.igraph}} function.
 #'
 #' @export
 ggnetwork <- function(x, ...) {
