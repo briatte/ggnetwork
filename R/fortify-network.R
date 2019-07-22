@@ -118,11 +118,7 @@ fortify.network <- function(
   ...
 ) {
   # node placement
-  if (
-    class(layout) == "matrix" &&
-      nrow(layout) == network::network.size(model) &&
-      ncol(layout) == 2
-  ) {
+  if (class(layout) == "matrix" && identical(dim(layout), c(network::network.size(model), 2L))) {
     nodes <- layout[, 1:2 ]
   } else {
     layout <- eval(parse(text = paste0("sna::gplot.layout.", layout)))

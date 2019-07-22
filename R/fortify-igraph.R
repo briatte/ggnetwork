@@ -26,11 +26,7 @@ fortify.igraph <- function(
   ...
 ) {
   # node placement
-  if (
-    class(layout) == "matrix" &&
-      nrow(layout) == igraph::gorder(model) &&
-      ncol(layout) == 2
-  ) {
+  if (class(layout) == "matrix" && identical(dim(layout), c(igraph::gorder(model), 2L))) {
     nodes <- layout[, 1:2 ]
   } else {
     nodes <- igraph::layout_(model, layout, ...)
