@@ -37,6 +37,8 @@ ggnetwork 0.5.6
   + remove unnecessary "@importFom".
   + add missing function packages prefix.
   
+* In `R/ggnetwork.R`, `switch` and `tryCatch` to make the `igraph` and `network` testing consistent.
+  
 * In `R/utilities.R`, reexport `fortify` and `unit` from `ggplot2`.
 
 

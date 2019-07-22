@@ -16,17 +16,15 @@
 #'
 #' @export
 ggnetwork <- function(x, ...) {
-  if (class(x) == "igraph") {
-    fortify.igraph(x, ...)
-  } else {
-    if (!network::is.network(x)) {
-      x <- try(network::network(x), silent = TRUE)
+  tryCatch(
+    switch(
+      EXPR = class(x),
+      "igraph" = fortify.igraph(x, ...),
+      "network" = fortify.network(x, ...),
+      fortify.network(network::network(x), ...)
+    ),
+    error = function(e) {
+      stop('could not coerce object to a "network"')
     }
-
-    if (!network::is.network(x)) {
-      stop("could not coerce object to a network")
-    } else {
-      fortify.network(x, ...)
-    }
-  }
+  )
 }
