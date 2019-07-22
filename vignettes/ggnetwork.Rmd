@@ -25,10 +25,10 @@ Install the stable version from CRAN:
 install.packages("ggnetwork")
 ```
 
-Or use `devtools` to install the latest version of the package [from GitHub](https://github.com/briatte/ggnetwork):
+Or use `remotes` to install the latest version of the package [from GitHub](https://github.com/briatte/ggnetwork):
 
 ```{r, eval=FALSE}
-devtools::install_github("briatte/ggnetwork")
+remotes::install_github("briatte/ggnetwork")
 ```
 
 The package is meant to be used with `ggplot2` version 2.0.0 or above, so make sure that you update your version of `ggplot2` from CRAN before using `ggnetwork`:

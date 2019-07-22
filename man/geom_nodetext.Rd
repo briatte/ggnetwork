@@ -82,58 +82,60 @@ All arguments to these geoms are identical to those of
 ## geom_nodetext examples
 
 if (require(network) && require(sna)) {
+  n <- network(rgraph(10, tprob = 0.2), directed = FALSE)
 
-n <- network(rgraph(10, tprob = 0.2), directed = FALSE)
+  # just node labels
+  ggplot(n, aes(x, y)) +
+    geom_nodetext(aes(label = vertex.names)) +
+    theme_blank()
 
-# just node labels
-ggplot(n, aes(x, y)) +
-  geom_nodetext(aes(label = vertex.names)) +
-  theme_blank()
+  # with nodes underneath
+  ggplot(n, aes(x, y)) +
+    geom_nodes(colour = "gold", size = 9) +
+    geom_nodetext(aes(label = vertex.names)) +
+    theme_blank()
 
-# with nodes underneath
-ggplot(n, aes(x, y)) +
-  geom_nodes(colour = "gold", size = 9) +
-  geom_nodetext(aes(label = vertex.names)) +
-  theme_blank()
-
-# with nodes and edges
-ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(colour = "gold") +
-  geom_nodes(colour = "gold", size = 9) +
-  geom_nodetext(aes(label = vertex.names)) +
-  theme_blank()
-
+  # with nodes and edges
+  ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(colour = "gold") +
+    geom_nodes(colour = "gold", size = 9) +
+    geom_nodetext(aes(label = vertex.names)) +
+    theme_blank()
 }
+
 
 ## geom_nodelabel examples
 
 if (require(network) && require(sna)) {
+  data(flo, package = "network")
+  n <- network(flo, directed = FALSE)
 
-data(flo, package = "network")
-n <- network(flo, directed = FALSE)
+  # with text labels
+  ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(colour = "grey50") +
+    geom_nodelabel(aes(label = vertex.names)) +
+    theme_blank()
 
-# with text labels
-ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(colour = "grey50") +
-  geom_nodelabel(aes(label = vertex.names)) +
-  theme_blank()
+  # with text labels coloured according to degree centrality
+  n \%v\% "degree" <- degree(n)
+  ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(colour = "grey50") +
+    geom_nodelabel(aes(label = vertex.names, fill = degree)) +
+    scale_fill_gradient(low = "gold", high = "tomato") +
+    theme_blank()
 
-# with text labels coloured according to degree centrality
-n \%v\% "degree" <- degree(n)
-ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(colour = "grey50") +
-  geom_nodelabel(aes(label = vertex.names, fill = degree)) +
-  scale_fill_gradient(low = "gold", high = "tomato") +
-  theme_blank()
-
-# label only a subset of all nodes
-high_degree <- function(x) { x[ x$degree > median(x$degree), ] }
-ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(colour = "steelblue") +
-  geom_nodes(aes(size = degree), colour = "steelblue") +
-  geom_nodelabel(aes(label = vertex.names), data = high_degree,
-                 colour = "white", fill = "tomato") +
-  theme_blank()
+  # label only a subset of all nodes
+  high_degree <- function(x) {
+    x[ x$degree > median(x$degree), ]
+  }
+  ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(colour = "steelblue") +
+    geom_nodes(aes(size = degree), colour = "steelblue") +
+    geom_nodelabel(aes(label = vertex.names),
+      data = high_degree,
+      colour = "white", fill = "tomato"
+    ) +
+    theme_blank()
 }
 
 }

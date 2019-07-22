@@ -1,7 +1,7 @@
 Package: ggnetwork
 Type: Package
 Title: Geometries to Plot Networks with 'ggplot2'
-Version: 0.5.4
+Version: 0.5.6.9000
 Date: 2016-03-24
 Maintainer: François Briatte <f.briatte@gmail.com>
 Authors@R: c(
@@ -14,24 +14,30 @@ Authors@R: c(
   )
 Description: Geometries to plot network objects with 'ggplot2'.
 License: GPL-3
-Encoding: UTF-8
 URL: https://github.com/briatte/ggnetwork
 BugReports: https://github.com/briatte/ggnetwork/issues
-LazyData: true
-NeedsCompilation: no
-RoxygenNote: 6.0.1
-VignetteBuilder: knitr
 Depends:
-    ggplot2 (>= 2.0.0),
     R (>= 3.1),
+    ggplot2 (>= 2.0.0)
 Imports:
     ggrepel (>= 0.5),
     network,
+    igraph,
     sna,
     utils
 Suggests:
-    igraph,
     knitr,
     testthat
-Enhances:
-    ggplot2
+Collate:
+    'utilities.R'
+    'fortify-igraph.R'
+    'fortify-network.R'
+    'geom-nodes.R'
+    'geom-edges.R'
+    'ggnetwork.R'
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: no

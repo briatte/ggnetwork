@@ -100,42 +100,45 @@ All arguments to these geoms are identical to those of
 ## geom_nodetext_repel example
 
 if (require(network) && require(sna)) {
-
-n <- network(rgraph(10, tprob = 0.2), directed = FALSE)
-ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(colour = "steelblue") +
-  geom_nodetext_repel(aes(label = paste("node", vertex.names)),
-                      box.padding = unit(1, "lines")) +
-  geom_nodes(colour = "steelblue", size = 3) +
-  theme_blank()
-
+  n <- network(rgraph(10, tprob = 0.2), directed = FALSE)
+  ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(colour = "steelblue") +
+    geom_nodetext_repel(aes(label = paste("node", vertex.names)),
+      box.padding = unit(1, "lines")
+    ) +
+    geom_nodes(colour = "steelblue", size = 3) +
+    theme_blank()
 }
+
 ## geom_nodelabel_repel examples
 
 if (require(network) && require(sna)) {
+  data(flo, package = "network")
+  n <- network(flo, directed = FALSE)
 
-data(flo, package = "network")
-n <- network(flo, directed = FALSE)
+  ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(colour = "steelblue") +
+    geom_nodelabel_repel(aes(label = vertex.names),
+      box.padding = unit(1, "lines")
+    ) +
+    geom_nodes(colour = "steelblue", size = 3) +
+    theme_blank()
 
-ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(colour = "steelblue") +
-  geom_nodelabel_repel(aes(label = vertex.names),
-                      box.padding = unit(1, "lines")) +
-  geom_nodes(colour = "steelblue", size = 3) +
-  theme_blank()
-
-# label only a subset of all nodes
-n \%v\% "degree" <- degree(n)
-low_degree <- function(x) { x[ x$degree < median(x$degree), ] }
-ggplot(n, aes(x, y, xend = xend, yend = yend)) +
-  geom_edges(colour = "steelblue") +
-  geom_nodelabel_repel(aes(label = vertex.names),
-                       box.padding = unit(1.5, "lines"),
-                       data = low_degree,
-                       segment.colour = "tomato",
-                       colour = "white", fill = "tomato") +
-  geom_nodes(aes(size = degree), colour = "steelblue") +
-  theme_blank()
-
+  # label only a subset of all nodes
+  n \%v\% "degree" <- degree(n)
+  low_degree <- function(x) {
+    x[ x$degree < median(x$degree), ]
+  }
+  ggplot(n, aes(x, y, xend = xend, yend = yend)) +
+    geom_edges(colour = "steelblue") +
+    geom_nodelabel_repel(aes(label = vertex.names),
+      box.padding = unit(1.5, "lines"),
+      data = low_degree,
+      segment.colour = "tomato",
+      colour = "white", fill = "tomato"
+    ) +
+    geom_nodes(aes(size = degree), colour = "steelblue") +
+    theme_blank()
 }
+
 }

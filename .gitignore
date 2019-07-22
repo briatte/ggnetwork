@@ -1,6 +1,3 @@
+**.Rproj.user
 .Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-.Rbuildignore
-ggnetwork.Rproj
+docs

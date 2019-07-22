@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{scale_safely}
 \alias{scale_safely}
-\title{Rescale `x` to (0, 1), except if `x` is constant}
+\title{Rescale x to (0, 1), except if x is constant}
 \usage{
 scale_safely(x, scale = diff(range(x)))
 }
@@ -13,9 +13,10 @@ scale_safely(x, scale = diff(range(x)))
 }
 \value{
 The rescaled vector, coerced to a vector if necessary.
+If the original vector was constant, all of its values are replaced by 0.5.
 }
 \description{
-Discussed in PR #32.
+Discussed in PR #32: https://github.com/briatte/ggnetwork/pull/32
 }
 \author{
 Kipp Johnson

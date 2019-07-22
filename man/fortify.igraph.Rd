@@ -5,15 +5,16 @@
 \title{Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}}
 \usage{
 \method{fortify}{igraph}(model, data = NULL, layout = igraph::nicely(),
-  arrow.gap = ifelse(igraph::is.directed(x), 0.025, 0), by = NULL, ...)
+  arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0), by = NULL,
+  ...)
 }
 \arguments{
 \item{model}{an object of class \code{\link[igraph:igraph-package]{igraph}}}
 
 \item{data}{not used by this method.}
 
-\item{layout}{a function call to an 
-\code{\link[igraph:igraph-package]{igraph}} layout function, such as 
+\item{layout}{a function call to an
+\code{\link[igraph:igraph-package]{igraph}} layout function, such as
 \code{\link[igraph]{layout_nicely}} (the default), or a 2 column matrix
 giving the x and y coordinates for the vertices.
 See \code{\link[igraph]{layout_}} for details.}
@@ -27,8 +28,7 @@ good results when the size of the nodes is reasonably small.}
 \item{by}{a character vector that matches an edge attribute, which will be
 used to generate a data frame that can be plotted with}
 
-\item{...}{additional parameters for the \code{\link[igraph]{layout_}}
-function}
+\item{...}{additional parameters for the \code{\link[igraph]{layout_}} function}
 }
 \description{
 Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}
