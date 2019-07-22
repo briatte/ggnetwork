@@ -69,7 +69,7 @@ Related packages:
 usethis::use_tidy_thanks()
 ```
 
-Thanks to two anonymous _[R Journal](https://journal.r-project.org/)_ reviewers.contributors,
+Thanks to two anonymous _[R Journal](https://journal.r-project.org/)_ reviewers,
 [&#x0040;achmurzy](https://github.com/achmurzy), [&#x0040;andrewd789](https://github.com/andrewd789), [&#x0040;ArtemSokolov](https://github.com/ArtemSokolov), [&#x0040;aterhorst](https://github.com/aterhorst), [&#x0040;briatte](https://github.com/briatte), [&#x0040;emillykkejensen](https://github.com/emillykkejensen), [&#x0040;evinhas](https://github.com/evinhas), [&#x0040;FinScience](https://github.com/FinScience), [&#x0040;ghost](https://github.com/ghost), [&#x0040;instantkaffee](https://github.com/instantkaffee), [&#x0040;jalapic](https://github.com/jalapic), [&#x0040;jcfisher](https://github.com/jcfisher), [&#x0040;jfaganUK](https://github.com/jfaganUK), [&#x0040;kippjohnson](https://github.com/kippjohnson), [&#x0040;koheiw](https://github.com/koheiw), [&#x0040;mbojan](https://github.com/mbojan), [&#x0040;mcanouil](https://github.com/mcanouil), [&#x0040;mgagliol](https://github.com/mgagliol), [&#x0040;mhairi](https://github.com/mhairi), [&#x0040;minimaxir](https://github.com/minimaxir), [&#x0040;mkarikom](https://github.com/mkarikom), [&#x0040;nick-youngblut](https://github.com/nick-youngblut), [&#x0040;SantiFilippo](https://github.com/SantiFilippo), [&#x0040;sciabolazza](https://github.com/sciabolazza), [&#x0040;sctyner](https://github.com/sctyner), [&#x0040;trinker](https://github.com/trinker) and [&#x0040;zachcp](https://github.com/zachcp)
 
 

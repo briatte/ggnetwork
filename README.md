@@ -73,7 +73,7 @@ Related packages:
 ## Thanks
 
 Thanks to two anonymous *[R Journal](https://journal.r-project.org/)*
-reviewers.contributors, [@achmurzy](https://github.com/achmurzy),
+reviewers, [@achmurzy](https://github.com/achmurzy),
 [@andrewd789](https://github.com/andrewd789),
 [@ArtemSokolov](https://github.com/ArtemSokolov),
 [@aterhorst](https://github.com/aterhorst),
