@@ -46,13 +46,13 @@ remotes::install_github("briatte/ggnetwork")
 
 ## Documentation
 
-**The package vignette** contains [detailed
+The package vignette contains [detailed
 examples](https://briatte.github.io/ggnetwork/) of how to use its
 `fortify` method and each of its geometries.
 
-**For further examples** that use `ggnetwork` with other packages to
-produce animated graphs, see James Curley’s slides on “[Interactive and
-Dynamic Network Visualization in
+For further examples that use `ggnetwork` with other packages to produce
+animated graphs, see James Curley’s slides on “[Interactive and Dynamic
+Network Visualization in
 R](http://curleylab.psych.columbia.edu/netviz/)” (2016).
 
 -----
@@ -83,16 +83,13 @@ following article:
 > with `ggplot2`](https://doi.org/10.32614/RJ-2017-023),” *The R
 > Journal* 9(1): 27–59, 2017.
 
-Related packages:
-
-  - [geomnet](https://github.com/sctyner/geomnet)
-  - [ggnet](https://github.com/briatte/ggnet)
-  - [ggraph](https://github.com/thomasp85/ggraph)
+Related packages: [`geomnet`](https://github.com/sctyner/geomnet),
+[`ggnet`](https://github.com/briatte/ggnet),
+[`ggraph`](https://github.com/thomasp85/ggraph).
 
 ## Thanks
 
-Thanks to two anonymous *[R Journal](https://journal.r-project.org/)*
-reviewers, [@achmurzy](https://github.com/achmurzy),
+Thanks to [@achmurzy](https://github.com/achmurzy),
 [@andrewd789](https://github.com/andrewd789),
 [@ArtemSokolov](https://github.com/ArtemSokolov),
 [@aterhorst](https://github.com/aterhorst),
@@ -116,10 +113,12 @@ reviewers, [@achmurzy](https://github.com/achmurzy),
 [@SantiFilippo](https://github.com/SantiFilippo),
 [@sciabolazza](https://github.com/sciabolazza),
 [@sctyner](https://github.com/sctyner),
-[@trinker](https://github.com/trinker) and
-[@zachcp](https://github.com/zachcp). [@heike](https://github.com/heike)
-and [@ethen8181](https://github.com/ethen8181) also helped with the
-tricky issue of having arrows on directed edges, while
+[@trinker](https://github.com/trinker),
+[@zachcp](https://github.com/zachcp) and two anonymous *[R
+Journal](https://journal.r-project.org/)* reviewers.
+[@heike](https://github.com/heike) and
+[@ethen8181](https://github.com/ethen8181) also helped with the tricky
+issue of having arrows on directed edges, while
 [@sumtxt](https://github.com/sumtxt) inspired this package as well as
 its predecessor, the `ggnet` package, which also benefitted from
 discussions with [@pedroj](https://github.com/pedroj) and Bertrand
