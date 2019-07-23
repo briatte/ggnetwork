@@ -14,8 +14,6 @@ cache:
   - C:\RLibrary
 
 # Adapt as necessary starting from here
-version: {build}-{branch}
-
 environment:
   global:
     USE_RTOOLS: true
