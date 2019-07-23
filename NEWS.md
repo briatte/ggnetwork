@@ -1,8 +1,13 @@
 ggnetwork 0.5.6
 ===============
 
-Many thanks to Mickaël Canouil, who contributed all changes below (#42).
 Due to a bugfix ni `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#45).
+
+
+ggnetwork 0.5.5
+===============
+
+Many thanks to [Mickaël Canouil](https://github.com/mcanouil), who contributed all changes below (#42).
 
 ## Repository changes
 
@@ -44,11 +49,6 @@ Due to a bugfix ni `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#
   
 * In `R/utilities.R`, reexport `fortify` and `unit` from `ggplot2`.
 
-
-
-ggnetwork 0.5.5
-===============
-  
 
 ggnetwork 0.5.4
 ===============
