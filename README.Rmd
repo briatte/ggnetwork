@@ -29,13 +29,13 @@ This package allows to pass network objects to [`ggplot2`](http://ggplot2.org/) 
 
 ## Get started
 
-You can install the released version of `ggnetwork` from [CRAN](https://CRAN.R-project.org):
+You can install the released version of `ggnetwork` from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("ggnetwork")
 ```
 
-The development version is available from [GitHub](https://github.com/):
+And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
@@ -86,8 +86,11 @@ usethis::use_tidy_thanks()
 
 Thanks to two anonymous _[R Journal](https://journal.r-project.org/)_ reviewers,
 [&#x0040;achmurzy](https://github.com/achmurzy), [&#x0040;andrewd789](https://github.com/andrewd789), [&#x0040;ArtemSokolov](https://github.com/ArtemSokolov), [&#x0040;aterhorst](https://github.com/aterhorst), [&#x0040;emillykkejensen](https://github.com/emillykkejensen), [&#x0040;evinhas](https://github.com/evinhas), [&#x0040;FinScience](https://github.com/FinScience), [&#x0040;ghost](https://github.com/ghost), [&#x0040;instantkaffee](https://github.com/instantkaffee), [&#x0040;jalapic](https://github.com/jalapic), [&#x0040;jcfisher](https://github.com/jcfisher), [&#x0040;jfaganUK](https://github.com/jfaganUK), [&#x0040;kippjohnson](https://github.com/kippjohnson), [&#x0040;koheiw](https://github.com/koheiw), [&#x0040;mbojan](https://github.com/mbojan), 
-[&#x0040;mcanouil](https://github.com/mcanouil), [&#x0040;mgagliol](https://github.com/mgagliol), [&#x0040;mhairi](https://github.com/mhairi), [&#x0040;minimaxir](https://github.com/minimaxir), [&#x0040;mkarikom](https://github.com/mkarikom), [&#x0040;nick-youngblut](https://github.com/nick-youngblut), [&#x0040;SantiFilippo](https://github.com/SantiFilippo), [&#x0040;sciabolazza](https://github.com/sciabolazza), [&#x0040;sctyner](https://github.com/sctyner), [&#x0040;trinker](https://github.com/trinker) and [&#x0040;zachcp](https://github.com/zachcp)
-
+[&#x0040;mcanouil](https://github.com/mcanouil), [&#x0040;mgagliol](https://github.com/mgagliol), [&#x0040;mhairi](https://github.com/mhairi), [&#x0040;minimaxir](https://github.com/minimaxir), [&#x0040;mkarikom](https://github.com/mkarikom), [&#x0040;nick-youngblut](https://github.com/nick-youngblut), [&#x0040;SantiFilippo](https://github.com/SantiFilippo), [&#x0040;sciabolazza](https://github.com/sciabolazza), [&#x0040;sctyner](https://github.com/sctyner), [&#x0040;trinker](https://github.com/trinker) and [&#x0040;zachcp](https://github.com/zachcp). 
+[&#x0040;heike](https://github.com/heike) and 
+[&#x0040;ethen8181](https://github.com/ethen8181) also helped with the tricky issue of having arrows on directed edges, while 
+[&#x0040;sumtxt](https://github.com/sumtxt) inspired this package as well as its predecessor, the `ggnet` package, which also benefitted from discussions with 
+[&#x0040;pedroj](https://github.com/pedroj) and Bertrand Sudre.
 
 ---
 Please note that this project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).  
