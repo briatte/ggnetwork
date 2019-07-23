@@ -29,13 +29,13 @@ This package allows to pass network objects to [`ggplot2`](http://ggplot2.org/) 
 
 ## Get started
 
-You can install the released version of `ggnetwork` from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of `ggnetwork` [from CRAN](https://cran.r-project.org/package=ggnetwork) with:
 
 ``` r
 install.packages("ggnetwork")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+And the development version [from GitHub](https://github.com/briatte/ggnetwork) with:
 
 ``` r
 # install.packages("remotes")
