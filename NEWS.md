@@ -2,6 +2,7 @@ ggnetwork 0.5.6
 ===============
 
 Many thanks to Mickaël Canouil, who contributed all changes below (#42).
+Due to a bugfix ni `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#45).
 
 ## Repository changes
 
