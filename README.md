@@ -22,12 +22,12 @@ checks\_worst](https://cranchecks.info/badges/worst/ggnetwork)](https://cran.r-p
 <!-- badges: end -->
 
 This package allows to pass network objects to
-[`ggplot2`](http://ggplot2.org/), along with several geometries to plot
-their elements.
+[`ggplot2`](http://ggplot2.org/) and provides geometries to plot their
+elements.
 
 ## Get started
 
-You can install the released version of ggnetwork from
+You can install the released version of `ggnetwork` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
@@ -41,28 +41,47 @@ And the development version from [GitHub](https://github.com/) with:
 remotes::install_github("briatte/ggnetwork")
 ```
 
-**IMPORTANT: the `ggnetwork` package depends on `ggplot2` version 2.0.0
-or above.**
+**IMPORTANT:** the `ggnetwork` package depends on R 3.1+ and on
+`ggplot2` version 2.0.0+.
+
+## Documentation
 
 **The package vignette** contains [detailed
 examples](https://briatte.github.io/ggnetwork/) of how to use its
-fortify method and each of its geometries.
+`fortify` method and each of its geometries.
 
 **For further examples** that use `ggnetwork` with other packages to
 produce animated graphs, see James Curley’s slides on “[Interactive and
 Dynamic Network Visualization in
-R](http://curleylab.psych.columbia.edu/netviz/).”
+R](http://curleylab.psych.columbia.edu/netviz/)” (2016).
 
 -----
 
 ## Getting help
 
 If you encounter a clear bug, please file a minimal reproducible example
-on [github](https://github.com/briatte/ggnetwork/issues).  
+[on GitHub](https://github.com/briatte/ggnetwork/issues).
+
 For questions and other discussion, please contact the package
 maintainer.
 
+## Citation
+
+You can get a citation for the package from R:
+
+``` r
+citation("ggnetwork")
+```
+
 ## See also
+
+The package was written within a larger development effort around
+network visualization with `ggplot2`, on which you can read the
+following article:
+
+> Sam Tyner, François Briatte and Heike Hofmann, “[Network Visualization
+> with `ggplot2`](https://doi.org/10.32614/RJ-2017-023),” *The R
+> Journal* 9(1): 27–59, 2017.
 
 Related packages:
 
@@ -77,7 +96,6 @@ reviewers, [@achmurzy](https://github.com/achmurzy),
 [@andrewd789](https://github.com/andrewd789),
 [@ArtemSokolov](https://github.com/ArtemSokolov),
 [@aterhorst](https://github.com/aterhorst),
-[@briatte](https://github.com/briatte),
 [@emillykkejensen](https://github.com/emillykkejensen),
 [@evinhas](https://github.com/evinhas),
 [@FinScience](https://github.com/FinScience),
@@ -99,7 +117,13 @@ reviewers, [@achmurzy](https://github.com/achmurzy),
 [@sciabolazza](https://github.com/sciabolazza),
 [@sctyner](https://github.com/sctyner),
 [@trinker](https://github.com/trinker) and
-[@zachcp](https://github.com/zachcp)
+[@zachcp](https://github.com/zachcp). [@heike](https://github.com/heike)
+and [@ethen8181](https://github.com/ethen8181) also helped with the
+tricky issue of having arrows on directed edges, while
+[@sumtxt](https://github.com/sumtxt) inspired this package as well as
+its predecessor, the `ggnet` package, which also benefitted from
+discussions with [@pedroj](https://github.com/pedroj) and Bertrand
+Sudre.
 
 -----
 
