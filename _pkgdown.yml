@@ -5,3 +5,8 @@ template:
 development:
   mode: auto
 
+authors:
+  Mickaël Canouil:
+    href: http://mickael.canouil.fr
+  François Briatte:
+    href: http://f.briatte.org/
