@@ -1,7 +1,7 @@
 ggnetwork 0.5.6
 ===============
 
-Due to a bugfix ni `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#45).
+Due to a bugfix in `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#45).
 
 
 ggnetwork 0.5.5
