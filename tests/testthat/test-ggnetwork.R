@@ -1,12 +1,18 @@
 test_that("ggnetwork works", {
-  data(emon, package = "network")
-  expect_error(ggnetwork(-999, "could not coerce"))
-  expect_error(ggnetwork(emon[[1]], layout = -999, "unsupported layout"))
+  expect_error(ggnetwork(-123), "could not coerce")
 
   # with igraph
   n <- igraph::graph_from_adjacency_matrix(as.matrix(emon[[1]]))
   igraph::E(n)$Frequency <- network::get.edge.attribute(emon[[1]], "Frequency")
 
+  #
+  # unsupported layouts
+  #
+  expect_error(ggnetwork(emon[[1]], layout = -999), "not an exported object")
+  # with igraph
+  expect_error(ggnetwork(n, layout = igraph::foobar), "not an exported object")
+
+  #
   # facet by edge attribute
   expect_s3_class({
     ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency")

@@ -14,15 +14,15 @@
 #'
 #' @export
 ggnetwork <- function(x, ...) {
-  tryCatch(
-    switch(
-      EXPR = class(x),
-      "igraph" = fortify.igraph(x, ...),
-      "network" = fortify.network(x, ...),
-      fortify.network(network::network(x), ...)
-    ),
-    error = function(e) {
-      stop('could not coerce object to a network: see ?ggnetwork for help')
-    }
+  switch(
+    EXPR = class(x),
+    "igraph" = fortify.igraph(x, ...),
+    "network" = fortify.network(x, ...),
+    tryCatch(
+      fortify.network(network::network(x), ...),
+      error = function(e) {
+        stop('could not coerce object to a network: see ?ggnetwork for help')
+      }
+    )
   )
 }
