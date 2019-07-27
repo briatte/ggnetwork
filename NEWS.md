@@ -3,6 +3,10 @@ ggnetwork 0.5.6
 
 Due to a bugfix in `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#45).
 
+## Minor improvements and fixes
+
+Finished fixing a bug affecting 2-node, 1-tie networks of class `igraph` (#12). Thanks to [Mickaël Canouil](https://github.com/mcanouil) (#20) and [Zachary Charlop-Powers](https://github.com/zachcp) (#24).
+
 
 ggnetwork 0.5.5
 ===============
