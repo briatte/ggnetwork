@@ -35,11 +35,17 @@ test_that("ggnetwork works", {
   }, class = "data.frame")
 
   # duplicated edges warning
+  n <- rbind(
+    matrix(c(1:2, 2:1), nrow = 2),
+    matrix(c(1:2, 2:1), nrow = 2)
+  )
   expect_warning(
-    ggnetwork(rbind(
-      matrix(c(1:2, 2:1), nrow = 2),
-      matrix(c(1:2, 2:1), nrow = 2)
-    )),
+    ggnetwork(n),
+    "duplicated edges"
+  )
+  # with igraph
+  expect_warning(
+    ggnetwork(igraph::graph_from_edgelist(n)),
     "duplicated edges"
   )
 })
