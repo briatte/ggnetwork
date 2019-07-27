@@ -58,7 +58,9 @@ fortify.igraph <- function(
   edges <- igraph::as_edgelist(model, names = FALSE)
 
   # edge list (if there are duplicated rows)
-  if (nrow(edges[, 1:2]) > nrow(unique(edges[, 1:2]))) {
+  if (
+    nrow(edges[, 1:2, drop = FALSE]) > nrow(unique(edges[, 1:2, drop = FALSE]))
+  ) {
     warning("duplicated edges detected")
   }
 
