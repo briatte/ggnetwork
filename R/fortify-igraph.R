@@ -89,30 +89,37 @@ fortify.igraph <- function(
     )
   }
 
-  # merge edges and nodes data
-  edges <- merge(nodes, edges, by = c("x", "y"), all = TRUE)
+  if (nrow(edges) != 0) {
+    # merge edges and nodes data
+    edges <- merge(nodes, edges, by = c("x", "y"), all = TRUE)
 
-  # add missing columns to nodes data
-  nodes$xend <- nodes$x
-  nodes$yend <- nodes$y
-  names(nodes) <- names(edges)[1:ncol(nodes)]
+    # add missing columns to nodes data
+    nodes$xend <- nodes$x
+    nodes$yend <- nodes$y
+    names(nodes) <- names(edges)[1:ncol(nodes)]
 
-  # make nodes data of identical dimensions to edges data
-  missing.cols <- names(edges)[which(!(names(edges) %in% names(nodes)))]
-  nodes[missing.cols] <- NA
+    # make nodes data of identical dimensions to edges data
+    missing.cols <- names(edges)[which(!(names(edges) %in% names(nodes)))]
+    nodes[missing.cols] <- NA
 
-  # panelize nodes (for temporal networks)
-  if (!is.null(by)) {
-    nodes <- lapply(sort(unique(edges[, by])), function(x) {
-      y <- nodes
-      y[, by] <- x
-      y
-    })
-    nodes <- do.call(rbind, nodes)
+    # panelize nodes (for temporal networks)
+    if (!is.null(by)) {
+      nodes <- lapply(sort(unique(edges[, by])), function(x) {
+        y <- nodes
+        y[, by] <- x
+        y
+      })
+      nodes <- do.call(rbind, nodes)
+    }
+
+    # return a data frame with network.size(model) + network.edgecount(model) rows,
+    # or length(unique(edges[, by ])) * network.size(model) + network.edgecount(model)
+    # rows if the nodes have been panelized
+    return(unique(rbind(nodes, edges[!is.na(edges$xend), ])))
+  } else {
+    # add missing columns to nodes data
+    nodes$xend <- nodes$x
+    nodes$yend <- nodes$y
+    return(nodes)
   }
-
-  # return a data frame with network.size(model) + network.edgecount(model) rows,
-  # or length(unique(edges[, by])) * network.size(model) + network.edgecount(model)
-  # rows if the nodes have been panelized
-  unique(rbind(nodes, edges[!is.na(edges$xend), ]))
 }
