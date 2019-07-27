@@ -38,3 +38,31 @@ test_that("fortify.igraph", {
       theme_blank()
   }, class = "ggplot")
 })
+
+test_that("zero-edge networks fortify alright", {
+  # with `igraph`
+  n <- igraph::random.graph.game(n = 1, p.or.m = 0)
+
+  expect_s3_class(fortify(n), "data.frame")
+  expect_true(all(c("x", "y", "xend", "yend") %in% names(fortify(n))))
+
+  expect_s3_class({
+    ggplot2::ggplot(n, ggplot2::aes(x, y, xend = xend, yend = yend)) +
+      geom_edges() +
+      geom_nodes() +
+      theme_blank()
+  }, class = "ggplot")
+
+  # with `network`
+  n <- network::network(igraph::as_adjacency_matrix(n))
+
+  expect_s3_class(fortify(n), "data.frame")
+  expect_true(all(c("x", "y", "xend", "yend") %in% names(fortify(n))))
+
+  expect_s3_class({
+    ggplot2::ggplot(n, ggplot2::aes(x, y, xend = xend, yend = yend)) +
+      geom_edges() +
+      geom_nodes() +
+      theme_blank()
+  }, class = "ggplot")
+})
