@@ -27,14 +27,15 @@ elements.
 
 ## Get started
 
-You can install the released version of `ggnetwork` from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the released version of `ggnetwork` [from
+CRAN](https://cran.r-project.org/package=ggnetwork) with:
 
 ``` r
 install.packages("ggnetwork")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+And the development version [from
+GitHub](https://github.com/briatte/ggnetwork) with:
 
 ``` r
 # install.packages("remotes")
@@ -55,8 +56,6 @@ animated graphs, see James Curley’s slides on “[Interactive and Dynamic
 Network Visualization in
 R](http://curleylab.psych.columbia.edu/netviz/)” (2016).
 
------
-
 ## Getting help
 
 If you encounter a clear bug, please file a minimal reproducible example
@@ -75,17 +74,21 @@ citation("ggnetwork")
 
 ## See also
 
-The package was written within a larger development effort around
-network visualization with `ggplot2`, on which you can read the
+The `ggnetwork` package was written within a larger development effort
+around network visualization with `ggplot2`, on which you can read the
 following article:
 
 > Sam Tyner, François Briatte and Heike Hofmann, “[Network Visualization
 > with `ggplot2`](https://doi.org/10.32614/RJ-2017-023),” *The R
 > Journal* 9(1): 27–59, 2017.
 
-Related packages: [`geomnet`](https://github.com/sctyner/geomnet),
-[`ggnet`](https://github.com/briatte/ggnet),
-[`ggraph`](https://github.com/thomasp85/ggraph).
+The article also covers the related packages
+[`geomnet`](https://github.com/sctyner/geomnet) and
+[`ggnet`](https://github.com/briatte/ggnet). It does not cover the more
+recent [`ggraph`](https://github.com/thomasp85/ggraph) and
+[`tidygraph`](https://github.com/thomasp85/tidygraph), although you
+should turn to those if you need a highly extensive way to handle ‘tidy’
+networks in `ggplot2`.
 
 ## Thanks
 
