@@ -39,6 +39,7 @@ test_that("fortify.igraph", {
   }, class = "ggplot")
 })
 
+# next test should also test the 'no scaling' part of `scale_safely` (see #32)
 test_that("zero-edge networks fortify alright", {
   # with `igraph`
   n <- igraph::random.graph.game(n = 1, p.or.m = 0)
