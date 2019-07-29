@@ -6,7 +6,7 @@
 #'
 #' @param x an object of class \code{\link[network]{network}} or
 #'   \code{\link[igraph:igraph-package]{igraph}}, or any object that can be
-#'   coerced to this class, such as an adjacency or incidence matrix, or an
+#'   coerced to that class, such as an adjacency or incidence matrix, or an
 #'   edge list: see \code{\link[network]{edgeset.constructors}} and
 #'   \code{\link[network]{network}} for details.
 #' @param ... arguments passed to the \code{\link{fortify.network}} or
