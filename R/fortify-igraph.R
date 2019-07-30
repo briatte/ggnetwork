@@ -53,17 +53,9 @@ fortify.igraph <- function(
   nodes$y <- scale_safely(nodes$y)
 
   # import vertex attributes
-  if (length(igraph::list.vertex.attributes(model))) {
-    nodes <- cbind(
-      nodes,
-      sapply(
-        igraph::list.vertex.attributes(model),
-        FUN = igraph::get.vertex.attribute,
-        graph = model,
-        USE.NAMES = TRUE
-      ),
-      stringsAsFactors = stringsAsFactors
-    )
+  for (i in igraph::list.vertex.attributes(model)) {
+    nodes <- cbind(nodes, igraph::get.vertex.attribute(model, i), stringsAsFactors = stringsAsFactors)
+    names(nodes)[ncol(nodes)] <- i
   }
 
   # edge list
@@ -89,17 +81,9 @@ fortify.igraph <- function(
   }
 
   # import edge attributes
-  if (length(igraph::list.edge.attributes(model))) {
-    edges <- cbind(
-      edges,
-      sapply(
-        igraph::list.edge.attributes(model),
-        FUN = igraph::get.edge.attribute,
-        graph = model,
-        USE.NAMES = TRUE
-      ),
-      stringsAsFactors = stringsAsFactors
-    )
+  for (i in igraph::list.edge.attributes(model)) {
+    edges <- cbind(edges, igraph::get.edge.attribute(model, i), stringsAsFactors = stringsAsFactors)
+    names(edges)[ncol(edges)] <- i
   }
 
   if (nrow(edges) != 0) {

@@ -11,6 +11,9 @@ Due to a bugfix in `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#
 attributes as character strings instead of factors, which remains the default 
 behaviour (#53).
 
+* Fixed a bug that caused `igraph` vertex attributes to be returned in a 
+different type than the original attribute (#54).
+
 
 ggnetwork 0.5.5
 ===============
