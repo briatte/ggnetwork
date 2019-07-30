@@ -119,7 +119,7 @@
     <pre class="usage"><span class='co'># S3 method for igraph</span>
 <span class='fu'><a href='fortify.html'>fortify</a></span>(<span class='no'>model</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/igraph/topics/layout_nicely'>nicely</a></span>(),
   <span class='kw'>arrow.gap</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ifelse'>ifelse</a></span>(<span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/igraph/topics/is_directed'>is.directed</a></span>(<span class='no'>model</span>), <span class='fl'>0.025</span>, <span class='fl'>0</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"stringsAsFactors"</span>), <span class='no'>...</span>)</pre>
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"stringsAsFactors"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,6 +155,12 @@ used to generate a data frame that can be plotted with
 <code><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></code> or <code><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></code>. The
 nodes of the network will appear in all facets, at the same coordinates.
 Defaults to <code>NULL</code> (no faceting).</p></td>
+    </tr>
+    <tr>
+      <th>scale</th>
+      <td><p>whether to (re)scale the layout coordinates. Defaults to
+<code>TRUE</code>, but should be set to <code>FALSE</code> if <code>layout</code> contains
+meaningful spatial coordinates, such as latitude and longitude.</p></td>
     </tr>
     <tr>
       <th>stringsAsFactors</th>
