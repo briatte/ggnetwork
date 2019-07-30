@@ -42,7 +42,7 @@ GitHub](https://github.com/briatte/ggnetwork) with:
 remotes::install_github("briatte/ggnetwork")
 ```
 
-**IMPORTANT:** the `ggnetwork` package depends on R 3.1+ and on
+**IMPORTANT:** the `ggnetwork` package depends on R 3.5+ and on
 `ggplot2` version 2.0.0+.
 
 ## Documentation
@@ -54,7 +54,9 @@ examples](https://briatte.github.io/ggnetwork/) of how to use its
 For further examples that use `ggnetwork` with other packages to produce
 animated graphs, see James Curley’s slides on “[Interactive and Dynamic
 Network Visualization in
-R](http://curleylab.psych.columbia.edu/netviz/)” (2016).
+R](http://curleylab.psych.columbia.edu/netviz/)” (2016). For even more
+options, see Katherine Ognyanova’s tutorial “[Network visualization with
+R](https://kateto.net/network-visualization) (2019).
 
 ## Getting help
 
