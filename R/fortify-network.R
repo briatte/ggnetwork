@@ -141,9 +141,9 @@ fortify.network <- function(
   nodes$y <- scale_safely(nodes$y)
 
   # import vertex attributes
-  for (y in network::list.vertex.attributes(model)) {
-    nodes <- cbind(nodes, network::get.vertex.attribute(model, y), stringsAsFactors = stringsAsFactors)
-    names(nodes)[ncol(nodes)] <- y
+  for (i in network::list.vertex.attributes(model)) {
+    nodes <- cbind(nodes, network::get.vertex.attribute(model, i), stringsAsFactors = stringsAsFactors)
+    names(nodes)[ncol(nodes)] <- i
   }
 
   # edge list
@@ -169,9 +169,9 @@ fortify.network <- function(
   }
 
   # import edge attributes
-  for (iattribute in network::list.edge.attributes(model)) {
-    edges <- cbind(edges, network::get.edge.attribute(model, iattribute), stringsAsFactors = stringsAsFactors)
-    names(edges)[ncol(edges)] <- iattribute
+  for (i in network::list.edge.attributes(model)) {
+    edges <- cbind(edges, network::get.edge.attribute(model, i), stringsAsFactors = stringsAsFactors)
+    names(edges)[ncol(edges)] <- i
   }
 
   if (nrow(edges) != 0) {
