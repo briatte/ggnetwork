@@ -7,16 +7,14 @@
 ggnetwork(x, ...)
 }
 \arguments{
-\item{x}{an object of class \code{\link[network]{network}}, or any object
-that can be coerced to this class, such as an adjacency or incidence matrix,
-or an edge list: see \code{\link[network]{edgeset.constructors}} and
-\code{\link[network]{network}} for details. If the object is of class
-\code{\link[igraph:igraph-package]{igraph}} and the
-\code{\link[intergraph:intergraph-package]{intergraph}} package is installed,
-it will be used to convert the object: see
-\code{\link{fortify.igraph}} for details.}
+\item{x}{an object of class \code{\link[network]{network}} or
+\code{\link[igraph:igraph-package]{igraph}}, or any object that can be
+coerced to that class, such as an adjacency or incidence matrix, or an
+edge list: see \code{\link[network]{edgeset.constructors}} and
+\code{\link[network]{network}} for details.}
 
-\item{...}{arguments passed to the \code{\link{fortify.network}} function.}
+\item{...}{arguments passed to the \code{\link{fortify.network}} or
+\code{\link{fortify.igraph}} functions.}
 }
 \description{
 A wrapper for the \code{\link{fortify.network}} and

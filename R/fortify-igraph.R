@@ -14,11 +14,16 @@
 #'   good results when the size of the nodes is reasonably small.
 #' @param by a character vector that matches an edge attribute, which will be
 #'   used to generate a data frame that can be plotted with
+#'   \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+#'   nodes of the network will appear in all facets, at the same coordinates.
+#'   Defaults to \code{NULL} (no faceting).
 #' @param stringsAsFactors whether vertex and edge attributes should be
 #'   converted to factors if they are of class \code{character}. Defaults to
 #'   the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
 #'   default: see \code{\link[base]{data.frame}}.
 #' @param ... additional parameters for the \code{\link[igraph]{layout_}} function
+#'
+#' @return a \code{\link[base]{data.frame}} object.
 #'
 #' @export
 fortify.igraph <- function(
@@ -60,7 +65,6 @@ fortify.igraph <- function(
       stringsAsFactors = stringsAsFactors
     )
   }
-
 
   # edge list
   edges <- igraph::as_edgelist(model, names = FALSE)

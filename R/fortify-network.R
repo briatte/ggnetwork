@@ -37,7 +37,7 @@
 #'   layout that supports edge weights, such as the Kamada-Kawai force-directed
 #'   placement algorithm.
 #'
-#' @return a data.frame object.
+#' @return a \code{\link[base]{data.frame}} object.
 #'
 #' @examples
 #' if (require(ggplot2) && require(network)) {

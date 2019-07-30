@@ -7,7 +7,7 @@
 \method{fortify}{network}(model, data = NULL,
   layout = "fruchtermanreingold", weights = NULL,
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0), by = NULL,
-  ...)
+  stringsAsFactors = getOption("stringsAsFactors"), ...)
 }
 \arguments{
 \item{model}{an object of class \code{\link[network]{network}}.}
@@ -36,11 +36,16 @@ used to generate a data frame that can be plotted with
 nodes of the network will appear in all facets, at the same coordinates.
 Defaults to \code{NULL} (no faceting).}
 
+\item{stringsAsFactors}{whether vertex and edge attributes should be
+converted to factors if they are of class \code{character}. Defaults to
+the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
+default: see \code{\link[base]{data.frame}}.}
+
 \item{...}{additional parameters for the \code{layout} argument; see
 \code{\link[sna]{gplot.layout}} for available options.}
 }
 \value{
-a data.frame object.
+a \code{\link[base]{data.frame}} object.
 }
 \description{
 See the vignette at \url{https://briatte.github.io/ggnetwork/} for a

@@ -6,7 +6,7 @@
 \usage{
 \method{fortify}{igraph}(model, data = NULL, layout = igraph::nicely(),
   arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0), by = NULL,
-  ...)
+  stringsAsFactors = getOption("stringsAsFactors"), ...)
 }
 \arguments{
 \item{model}{an object of class \code{\link[igraph:igraph-package]{igraph}}}
@@ -26,9 +26,20 @@ network is directed. Small values near \code{0.025} will generally achieve
 good results when the size of the nodes is reasonably small.}
 
 \item{by}{a character vector that matches an edge attribute, which will be
-used to generate a data frame that can be plotted with}
+used to generate a data frame that can be plotted with
+\code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+nodes of the network will appear in all facets, at the same coordinates.
+Defaults to \code{NULL} (no faceting).}
+
+\item{stringsAsFactors}{whether vertex and edge attributes should be
+converted to factors if they are of class \code{character}. Defaults to
+the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
+default: see \code{\link[base]{data.frame}}.}
 
 \item{...}{additional parameters for the \code{\link[igraph]{layout_}} function}
+}
+\value{
+a \code{\link[base]{data.frame}} object.
 }
 \description{
 Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}
