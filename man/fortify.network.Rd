@@ -7,7 +7,7 @@
 \method{fortify}{network}(model, data = NULL,
   layout = "fruchtermanreingold", weights = NULL,
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0), by = NULL,
-  stringsAsFactors = getOption("stringsAsFactors"), ...)
+  scale = TRUE, stringsAsFactors = getOption("stringsAsFactors"), ...)
 }
 \arguments{
 \item{model}{an object of class \code{\link[network]{network}}.}
@@ -35,6 +35,10 @@ used to generate a data frame that can be plotted with
 \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
 nodes of the network will appear in all facets, at the same coordinates.
 Defaults to \code{NULL} (no faceting).}
+
+\item{scale}{whether to (re)scale the layout coordinates. Defaults to
+\code{TRUE}, but should be set to \code{FALSE} if \code{layout} contains
+meaningful spatial coordinates, such as latitude and longitude.}
 
 \item{stringsAsFactors}{whether vertex and edge attributes should be
 converted to factors if they are of class \code{character}. Defaults to

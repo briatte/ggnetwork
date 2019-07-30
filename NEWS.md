@@ -5,6 +5,9 @@ Due to a bugfix in `statnet.common` 4.2.0, `ggnetwork` now requires R ≥ 3.5 (#
 
 ## Minor improvements and fixes
 
+* Added a `scale` argument that makes it possible to pass meaningful spatial 
+coordinates like latitude and longitude without (re)scaling (#48).
+
 * Finished fixing a bug affecting 2-node, 1-tie networks of class `igraph` (#12). Thanks to [Mickaël Canouil](https://github.com/mcanouil) (#20) and [Zachary Charlop-Powers](https://github.com/zachcp) (#24).
 
 * Added a `stringsAsFactors` argument that allows to import vertex and edge 
