@@ -124,7 +124,7 @@ package.</p>
 <span class='fu'><a href='fortify.html'>fortify</a></span>(<span class='no'>model</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>layout</span> <span class='kw'>=</span> <span class='st'>"fruchtermanreingold"</span>, <span class='kw'>weights</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>arrow.gap</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ifelse'>ifelse</a></span>(<span class='kw pkg'>network</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/network/topics/network.indicators'>is.directed</a></span>(<span class='no'>model</span>), <span class='fl'>0.025</span>, <span class='fl'>0</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>)</pre>
+  <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"stringsAsFactors"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,6 +168,13 @@ nodes of the network will appear in all facets, at the same coordinates.
 Defaults to <code>NULL</code> (no faceting).</p></td>
     </tr>
     <tr>
+      <th>stringsAsFactors</th>
+      <td><p>whether vertex and edge attributes should be
+converted to factors if they are of class <code>character</code>. Defaults to
+the value of <code><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption("stringsAsFactors")</a></code>, which is <code>TRUE</code> by
+default: see <code><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>additional parameters for the <code>layout</code> argument; see
 <code><a href='https://www.rdocumentation.org/packages/sna/topics/gplot.layout'>gplot.layout</a></code> for available options.</p></td>
@@ -176,7 +183,7 @@ Defaults to <code>NULL</code> (no faceting).</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data.frame object.</p>
+    <p>a <code><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></code> object.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
