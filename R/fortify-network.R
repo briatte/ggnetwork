@@ -24,6 +24,10 @@
 #'   \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
 #'   nodes of the network will appear in all facets, at the same coordinates.
 #'   Defaults to \code{NULL} (no faceting).
+#' @param stringsAsFactors whether vertex and edge attributes should be
+#'   converted to factors if they are of class \code{character}. Defaults to
+#'   the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
+#'   default: see \code{\link[base]{data.frame}}.
 #' @param ... additional parameters for the \code{layout} argument; see
 #'   \code{\link[sna]{gplot.layout}} for available options.
 #'
@@ -115,6 +119,7 @@ fortify.network <- function(
   weights = NULL,
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
   by = NULL,
+  stringsAsFactors = getOption("stringsAsFactors"),
   ...
 ) {
   # node placement
@@ -137,7 +142,7 @@ fortify.network <- function(
 
   # import vertex attributes
   for (y in network::list.vertex.attributes(model)) {
-    nodes <- cbind(nodes, network::get.vertex.attribute(model, y))
+    nodes <- cbind(nodes, network::get.vertex.attribute(model, y), stringsAsFactors = stringsAsFactors)
     names(nodes)[ncol(nodes)] <- y
   }
 
@@ -165,7 +170,7 @@ fortify.network <- function(
 
   # import edge attributes
   for (iattribute in network::list.edge.attributes(model)) {
-    edges <- cbind(edges, network::get.edge.attribute(model, iattribute))
+    edges <- cbind(edges, network::get.edge.attribute(model, iattribute), stringsAsFactors = stringsAsFactors)
     names(edges)[ncol(edges)] <- iattribute
   }
 
