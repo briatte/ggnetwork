@@ -14,6 +14,9 @@ behaviour (#53).
 * Fixed a bug that caused `igraph` vertex attributes to be returned in a 
 different type than the original attribute (#54).
 
+* Fixed a bug that made it impossible to convert edge attributes provided as
+character strings into factors (#55), which is now the case by default (#53).
+
 
 ggnetwork 0.5.5
 ===============

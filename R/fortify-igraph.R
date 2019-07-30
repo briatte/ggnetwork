@@ -112,7 +112,12 @@ fortify.igraph <- function(
     # return a data frame with network.size(model) + network.edgecount(model) rows,
     # or length(unique(edges[, by ])) * network.size(model) + network.edgecount(model)
     # rows if the nodes have been panelized
-    return(unique(rbind(nodes, edges[!is.na(edges$xend), ])))
+
+    # [NOTE] `edges` has to be passed first to `rbind` in order for the edge
+    # attributes (e.g. factor) to be preserved in the result; this should not
+    # affect plotting the result, but differs from `ggnetwork` 0.5.1: `nodes`
+    # is now at the end of the result rather at the beginning
+    return(unique(rbind(edges[!is.na(edges$xend), ], nodes)))
   } else {
     # add missing columns to nodes data
     nodes$xend <- nodes$x
