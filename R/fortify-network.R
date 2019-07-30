@@ -127,7 +127,7 @@ fortify.network <- function(
   ...
 ) {
   # node placement
-  if (class(layout) == "matrix" && identical(dim(layout), c(network::network.size(model), 2L))) {
+  if (class(layout) == "matrix" && identical(dim(layout), c(as.integer(network::network.size(model)), 2L))) {
     nodes <- layout[, 1:2 ]
   } else if (class(layout) == "matrix") {
     stop("layout matrix dimensions do not match network size")
