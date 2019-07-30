@@ -24,6 +24,9 @@
 #'   \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
 #'   nodes of the network will appear in all facets, at the same coordinates.
 #'   Defaults to \code{NULL} (no faceting).
+#' @param scale whether to (re)scale the layout coordinates. Defaults to
+#'   \code{TRUE}, but should be set to \code{FALSE} if \code{layout} contains
+#'   meaningful spatial coordinates, such as latitude and longitude.
 #' @param stringsAsFactors whether vertex and edge attributes should be
 #'   converted to factors if they are of class \code{character}. Defaults to
 #'   the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
@@ -119,6 +122,7 @@ fortify.network <- function(
   weights = NULL,
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
   by = NULL,
+  scale = TRUE,
   stringsAsFactors = getOption("stringsAsFactors"),
   ...
 ) {
@@ -137,8 +141,10 @@ fortify.network <- function(
   names(nodes) <- c("x", "y")
 
   # rescale coordinates
-  nodes$x <- scale_safely(nodes$x)
-  nodes$y <- scale_safely(nodes$y)
+  if (scale) {
+    nodes$x <- scale_safely(nodes$x)
+    nodes$y <- scale_safely(nodes$y)
+  }
 
   # import vertex attributes
   for (i in network::list.vertex.attributes(model)) {
