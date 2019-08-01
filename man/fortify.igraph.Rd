@@ -9,7 +9,7 @@
   scale = TRUE, stringsAsFactors = getOption("stringsAsFactors"), ...)
 }
 \arguments{
-\item{model}{an object of class \code{\link[igraph:igraph-package]{igraph}}}
+\item{model}{an object of class \code{\link[igraph:igraph-package]{igraph}}.}
 
 \item{data}{not used by this method.}
 
@@ -25,11 +25,7 @@ network is undirected (no edge shortening), or to \code{0.025} when the
 network is directed. Small values near \code{0.025} will generally achieve
 good results when the size of the nodes is reasonably small.}
 
-\item{by}{a character vector that matches an edge attribute, which will be
-used to generate a data frame that can be plotted with
-\code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
-nodes of the network will appear in all facets, at the same coordinates.
-Defaults to \code{NULL} (no faceting).}
+\item{by}{a character vector that matches an edge attribute, which will be}
 
 \item{scale}{whether to (re)scale the layout coordinates. Defaults to
 \code{TRUE}, but should be set to \code{FALSE} if \code{layout} contains

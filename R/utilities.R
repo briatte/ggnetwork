@@ -80,3 +80,165 @@ NULL
 #' @export
 #' @importFrom ggplot2 unit
 NULL
+
+
+#' format_fortify
+#'
+#' a unified function to format \code{\link[network]{network}}
+#' or \code{\link[igraph:igraph-package]{igraph}} object.
+#'
+#' @param model an object of class \code{\link[network]{network}}
+#'   or \code{\link[igraph:igraph-package]{igraph}}.
+#' @param nodes a nodes object from a call to fortify.
+#' @param weights the name of an edge attribute to use as edge weights when
+#'   computing the network layout, if the layout supports such weights (see
+#'   'Details').
+#'   Defaults to \code{NULL} (no edge weights).
+#' @param arrow.gap a parameter that will shorten the network edges in order to
+#'   avoid overplotting edge arrows and nodes; defaults to \code{0} when the
+#'   network is undirected (no edge shortening), or to \code{0.025} when the
+#'   network is directed. Small values near \code{0.025} will generally achieve
+#'   good results when the size of the nodes is reasonably small.
+#' @param by a character vector that matches an edge attribute, which will be
+#' @param by a character vector that matches an edge attribute, which will be
+#'   used to generate a data frame that can be plotted with
+#'   \code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+#'   nodes of the network will appear in all facets, at the same coordinates.
+#'   Defaults to \code{NULL} (no faceting).
+#' @param scale whether to (re)scale the layout coordinates. Defaults to
+#'   \code{TRUE}, but should be set to \code{FALSE} if \code{layout} contains
+#'   meaningful spatial coordinates, such as latitude and longitude.
+#' @param stringsAsFactors whether vertex and edge attributes should be
+#'   converted to factors if they are of class \code{character}. Defaults to
+#'   the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
+#'   default: see \code{\link[base]{data.frame}}.
+#' @param .lva a "list vertex attributes" function.
+#' @param .gva a "get vertex attributes" function.
+#' @param .lea a "get edges attributes" function.
+#' @param .gea a "get edges attributes" function.
+#' @param .ael a "as edges list" function.
+#'
+#' @return a \code{\link[base]{data.frame}} object.
+#'
+#' @keywords internal
+#'
+format_fortify <- function(
+  model,
+  nodes = NULL,
+  weights = NULL,
+  arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
+  by = NULL,
+  scale = TRUE,
+  stringsAsFactors = getOption("stringsAsFactors"),
+  .lva = NULL,
+  .gva = NULL,
+  .lea = NULL,
+  .gea = NULL,
+  .ael = NULL
+) {
+  # store coordinates
+  nodes <- data.frame(nodes)
+  colnames(nodes) <- c("x", "y")
+
+  # rescale coordinates
+  if (scale) {
+    nodes$x <- scale_safely(nodes$x)
+    nodes$y <- scale_safely(nodes$y)
+  }
+
+  # import vertex attributes
+  if (length(.lva(model)) > 0) {
+    nodes <- cbind.data.frame(
+      nodes,
+      sapply(
+        X = .lva(model),
+        Y = model,
+        FUN = function(X, Y) .gva(Y, X),
+        simplify = FALSE
+      ),
+      stringsAsFactors = stringsAsFactors
+    )
+  }
+
+  # edge list
+  if (class(model) == "igraph") {
+    edges <- .ael(model)
+  } else {
+    edges <- .ael(model, attrname = weights)
+  }
+
+  # edge list (if there are duplicated rows)
+  if (nrow(edges[, 1:2, drop = FALSE]) > nrow(unique(edges[, 1:2, drop = FALSE]))) {
+    warning("duplicated edges detected")
+  }
+
+  edges <- data.frame(nodes[edges[, 1], c("x", "y")], nodes[edges[, 2], c("x", "y")])
+  colnames(edges) <- c("x", "y", "xend", "yend")
+
+  # arrow gap (thanks to @heike and @ethen8181 for their work on this issue)
+  if (arrow.gap > 0) {
+    x.length <- edges$xend - edges$x
+    y.length <- edges$yend - edges$y
+    arrow.gap <- arrow.gap / sqrt(x.length^2 + y.length^2)
+    edges$xend <- edges$x + (1 - arrow.gap) * x.length
+    edges$yend <- edges$y + (1 - arrow.gap) * y.length
+  }
+
+  # import edge attributes
+  if (length(.lea(model)) > 0) {
+    edges <- cbind.data.frame(
+      edges,
+      sapply(
+        X = .lea(model),
+        Y = model,
+        FUN = function(X, Y) .gea(Y, X),
+        simplify = FALSE
+      ),
+      stringsAsFactors = stringsAsFactors
+    )
+  }
+
+  if (nrow(edges) > 0) {
+    # drop "na" columns created by 'network' methods
+    # this is to ensure consistency with 'igraph' methods
+    if ("na" %in% colnames(nodes)) nodes$na <- NULL
+    if ("na" %in% colnames(edges)) edges$na <- NULL
+
+    # merge edges and nodes data
+    edges <- merge(nodes, edges, by = c("x", "y"), all = TRUE)
+
+    # add missing columns to nodes data
+    nodes$xend <- nodes$x
+    nodes$yend <- nodes$y
+    # names(nodes) <- names(edges)[1:ncol(nodes)] # columns are already named from 'nodes' and 'edges'
+
+    # make nodes data of identical dimensions to edges data
+    nodes[, setdiff(names(edges), names(nodes))] <- NA
+
+    # panelize nodes (for temporal networks)
+    if (!is.null(by)) {
+      nodes <- lapply(sort(unique(edges[, by])), function(x) {
+        y <- nodes
+        y[, by] <- x
+        y
+      })
+      nodes <- do.call(rbind, nodes)
+    }
+
+    # return a data frame with network.size(model) + network.edgecount(model) rows,
+    # or length(unique(edges[, by ])) * network.size(model) + network.edgecount(model)
+    # rows if the nodes have been panelized
+
+    # [NOTE] `edges` has to be passed first to `rbind` in order for the edge
+    # attributes (e.g. factor) to be preserved in the result; this should not
+    # affect plotting the result, but differs from `ggnetwork` 0.5.1: `nodes`
+    # is now at the end of the result rather at the beginning
+
+    return(unique(rbind(edges[!is.na(edges$xend), ], nodes)))
+  } else {
+    # add missing columns to nodes data
+    nodes$xend <- nodes$x
+    nodes$yend <- nodes$y
+    return(nodes)
+  }
+}
