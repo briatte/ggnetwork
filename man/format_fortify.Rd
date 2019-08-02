@@ -7,8 +7,9 @@
 format_fortify(model, nodes = NULL, weights = NULL,
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0), by = NULL,
   scale = TRUE, stringsAsFactors = getOption("stringsAsFactors"),
-  .lva = NULL, .gva = NULL, .lea = NULL, .gea = NULL,
-  .ael = NULL)
+  .list_vertex_attributes_fun = NULL,
+  .get_vertex_attributes_fun = NULL, .list_edges_attributes_fun = NULL,
+  .get_edges_attributes_fun = NULL, .as_edges_list_fun = NULL)
 }
 \arguments{
 \item{model}{an object of class \code{\link[network]{network}}
@@ -38,15 +39,15 @@ converted to factors if they are of class \code{character}. Defaults to
 the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
 default: see \code{\link[base]{data.frame}}.}
 
-\item{.lva}{a "list vertex attributes" function.}
+\item{.list_vertex_attributes_fun}{a "list vertex attributes" function.}
 
-\item{.gva}{a "get vertex attributes" function.}
+\item{.get_vertex_attributes_fun}{a "get vertex attributes" function.}
 
-\item{.lea}{a "get edges attributes" function.}
+\item{.list_edges_attributes_fun}{a "get edges attributes" function.}
 
-\item{.gea}{a "get edges attributes" function.}
+\item{.get_edges_attributes_fun}{a "get edges attributes" function.}
 
-\item{.ael}{a "as edges list" function.}
+\item{.as_edges_list_fun}{a "as edges list" function.}
 
 \item{by}{a character vector that matches an edge attribute, which will be
 used to generate a data frame that can be plotted with

@@ -124,10 +124,10 @@ fortify.network <- function(
     by = by,
     scale = scale,
     stringsAsFactors = stringsAsFactors,
-    .lva = network::list.vertex.attributes,
-    .gva = network::get.vertex.attribute,
-    .lea = network::list.edge.attributes,
-    .gea = network::get.edge.attribute,
-    .ael = network::as.matrix.network.edgelist
+    .list_vertex_attributes_fun = network::list.vertex.attributes,
+    .get_vertex_attributes_fun = network::get.vertex.attribute,
+    .list_edges_attributes_fun = network::list.edge.attributes,
+    .get_edges_attributes_fun = network::get.edge.attribute,
+    .as_edges_list_fun = network::as.matrix.network.edgelist
   )
 }

@@ -40,10 +40,10 @@ fortify.igraph <- function(
     by = by,
     scale = scale,
     stringsAsFactors = stringsAsFactors,
-    .lva = igraph::list.vertex.attributes,
-    .gva = igraph::get.vertex.attribute,
-    .lea = igraph::list.edge.attributes,
-    .gea = igraph::get.edge.attribute,
-    .ael = igraph::as_edgelist
+    .list_vertex_attributes_fun = igraph::list.vertex.attributes,
+    .get_vertex_attributes_fun = igraph::get.vertex.attribute,
+    .list_edges_attributes_fun = igraph::list.edge.attributes,
+    .get_edges_attributes_fun = igraph::get.edge.attribute,
+    .as_edges_list_fun = igraph::as_edgelist
   )
 }
