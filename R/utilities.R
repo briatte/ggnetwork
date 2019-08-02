@@ -112,11 +112,11 @@ NULL
 #'   converted to factors if they are of class \code{character}. Defaults to
 #'   the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
 #'   default: see \code{\link[base]{data.frame}}.
-#' @param .lva a "list vertex attributes" function.
-#' @param .gva a "get vertex attributes" function.
-#' @param .lea a "get edges attributes" function.
-#' @param .gea a "get edges attributes" function.
-#' @param .ael a "as edges list" function.
+#' @param .list_vertex_attributes_fun a "list vertex attributes" function.
+#' @param .get_vertex_attributes_fun a "get vertex attributes" function.
+#' @param .list_edges_attributes_fun a "get edges attributes" function.
+#' @param .get_edges_attributes_fun a "get edges attributes" function.
+#' @param .as_edges_list_fun a "as edges list" function.
 #'
 #' @return a \code{\link[base]{data.frame}} object.
 #'
@@ -130,11 +130,11 @@ format_fortify <- function(
   by = NULL,
   scale = TRUE,
   stringsAsFactors = getOption("stringsAsFactors"),
-  .lva = NULL,
-  .gva = NULL,
-  .lea = NULL,
-  .gea = NULL,
-  .ael = NULL
+  .list_vertex_attributes_fun = NULL,
+  .get_vertex_attributes_fun = NULL,
+  .list_edges_attributes_fun = NULL,
+  .get_edges_attributes_fun = NULL,
+  .as_edges_list_fun = NULL
 ) {
   # store coordinates
   nodes <- data.frame(nodes)
@@ -147,13 +147,13 @@ format_fortify <- function(
   }
 
   # import vertex attributes
-  if (length(.lva(model)) > 0) {
+  if (length(.list_vertex_attributes_fun(model)) > 0) {
     nodes <- cbind.data.frame(
       nodes,
       sapply(
-        X = .lva(model),
+        X = .list_vertex_attributes_fun(model),
         Y = model,
-        FUN = function(X, Y) .gva(Y, X),
+        FUN = function(X, Y) .get_vertex_attributes_fun(Y, X),
         simplify = FALSE
       ),
       stringsAsFactors = stringsAsFactors
@@ -162,9 +162,9 @@ format_fortify <- function(
 
   # edge list
   if (class(model) == "igraph") {
-    edges <- .ael(model)
+    edges <- .as_edges_list_fun(model)
   } else {
-    edges <- .ael(model, attrname = weights)
+    edges <- .as_edges_list_fun(model, attrname = weights)
   }
 
   # edge list (if there are duplicated rows)
@@ -185,13 +185,13 @@ format_fortify <- function(
   }
 
   # import edge attributes
-  if (length(.lea(model)) > 0) {
+  if (length(.list_edges_attributes_fun(model)) > 0) {
     edges <- cbind.data.frame(
       edges,
       sapply(
-        X = .lea(model),
+        X = .list_edges_attributes_fun(model),
         Y = model,
-        FUN = function(X, Y) .gea(Y, X),
+        FUN = function(X, Y) .get_edges_attributes_fun(Y, X),
         simplify = FALSE
       ),
       stringsAsFactors = stringsAsFactors
