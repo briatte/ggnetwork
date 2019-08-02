@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fortify method for networks of class <code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code> — fortify.igraph • ggnetwork</title>
+<title>format_fortify — format_fortify • ggnetwork</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Fortify method for networks of class <code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code> — fortify.igraph" />
+<meta property="og:title" content="format_fortify — format_fortify" />
 
-<meta property="og:description" content="Fortify method for networks of class igraph" />
+<meta property="og:description" content="a unified function to format network
+or igraph object." />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -105,40 +106,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fortify method for networks of class <code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/briatte/ggnetwork/blob/master/R/fortify-igraph.R'><code>R/fortify-igraph.R</code></a></small>
-    <div class="hidden name"><code>fortify.igraph.Rd</code></div>
+    <h1>format_fortify</h1>
+    <small class="dont-index">Source: <a href='https://github.com/briatte/ggnetwork/blob/master/R/utilities.R'><code>R/utilities.R</code></a></small>
+    <div class="hidden name"><code>format_fortify.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Fortify method for networks of class <code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code></p>
+    <p>a unified function to format <code><a href='https://www.rdocumentation.org/packages/network/topics/network'>network</a></code>
+or <code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code> object.</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for igraph</span>
-<span class='fu'><a href='fortify.html'>fortify</a></span>(<span class='no'>model</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/igraph/topics/layout_nicely'>nicely</a></span>(),
-  <span class='kw'>arrow.gap</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ifelse'>ifelse</a></span>(<span class='kw pkg'>igraph</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/igraph/topics/is_directed'>is.directed</a></span>(<span class='no'>model</span>), <span class='fl'>0.025</span>, <span class='fl'>0</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"stringsAsFactors"</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>format_fortify</span>(<span class='no'>model</span>, <span class='kw'>nodes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>weights</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>arrow.gap</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ifelse'>ifelse</a></span>(<span class='kw pkg'>network</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/network/topics/network.indicators'>is.directed</a></span>(<span class='no'>model</span>), <span class='fl'>0.025</span>, <span class='fl'>0</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"stringsAsFactors"</span>),
+  <span class='kw'>.list_vertex_attributes_fun</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>.get_vertex_attributes_fun</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.list_edges_attributes_fun</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>.get_edges_attributes_fun</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.as_edges_list_fun</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>an object of class <code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code>.</p></td>
+      <td><p>an object of class <code><a href='https://www.rdocumentation.org/packages/network/topics/network'>network</a></code>
+or <code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code>.</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>not used by this method.</p></td>
+      <th>nodes</th>
+      <td><p>a nodes object from a call to fortify.</p></td>
     </tr>
     <tr>
-      <th>layout</th>
-      <td><p>a function call to an
-<code><a href='https://www.rdocumentation.org/packages/igraph/topics/aaa-igraph-package'>igraph</a></code> layout function, such as
-<code><a href='https://www.rdocumentation.org/packages/igraph/topics/layout_nicely'>layout_nicely</a></code> (the default), or a 2 column matrix
-giving the x and y coordinates for the vertices.
-See <code><a href='https://www.rdocumentation.org/packages/igraph/topics/layout_'>layout_</a></code> for details.</p></td>
+      <th>weights</th>
+      <td><p>the name of an edge attribute to use as edge weights when
+computing the network layout, if the layout supports such weights (see
+'Details').
+Defaults to <code>NULL</code> (no edge weights).</p></td>
     </tr>
     <tr>
       <th>arrow.gap</th>
@@ -166,8 +170,32 @@ the value of <code><a href='https://www.rdocumentation.org/packages/base/topics/
 default: see <code><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>additional parameters for the <code><a href='https://www.rdocumentation.org/packages/igraph/topics/layout_'>layout_</a></code> function</p></td>
+      <th>.list_vertex_attributes_fun</th>
+      <td><p>a "list vertex attributes" function.</p></td>
+    </tr>
+    <tr>
+      <th>.get_vertex_attributes_fun</th>
+      <td><p>a "get vertex attributes" function.</p></td>
+    </tr>
+    <tr>
+      <th>.list_edges_attributes_fun</th>
+      <td><p>a "get edges attributes" function.</p></td>
+    </tr>
+    <tr>
+      <th>.get_edges_attributes_fun</th>
+      <td><p>a "get edges attributes" function.</p></td>
+    </tr>
+    <tr>
+      <th>.as_edges_list_fun</th>
+      <td><p>a "as edges list" function.</p></td>
+    </tr>
+    <tr>
+      <th>by</th>
+      <td><p>a character vector that matches an edge attribute, which will be
+used to generate a data frame that can be plotted with
+<code><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></code> or <code><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></code>. The
+nodes of the network will appear in all facets, at the same coordinates.
+Defaults to <code>NULL</code> (no faceting).</p></td>
     </tr>
     </table>
     

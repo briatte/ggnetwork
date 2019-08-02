@@ -75,7 +75,7 @@
       <h1>ggnetwork: Network geometries for ggplot2</h1>
                         <h4 class="author">François Briatte</h4>
             
-            <h4 class="date">2019-07-30</h4>
+            <h4 class="date">2019-08-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/briatte/ggnetwork/blob/master/vignettes/ggnetwork.Rmd"><code>vignettes/ggnetwork.Rmd</code></a></small>
       <div class="hidden name"><code>ggnetwork.Rmd</code></div>
@@ -121,7 +121,7 @@
 ##                 colour = NA), panel.border = ggplot2::element_blank(), 
 ##             panel.grid = ggplot2::element_blank(), ...)
 ## }
-## &lt;bytecode: 0x24d33c8&gt;
+## &lt;bytecode: 0x1e53760&gt;
 ## &lt;environment: namespace:ggnetwork&gt;</code></pre>
 </div>
 <div id="main-building-blocks" class="section level2">
@@ -140,36 +140,36 @@
 <p>The <code>layout</code> argument will also accept user-submitted coordinates as a two-column matrix with as many rows as the number of nodes in the network.</p>
 <p>The top of the data frame produced by <code>ggnetwork</code> contains self-loops to force every node to be included in the plot. This explains why the rows shown below have the same values in <code>"x"</code> and <code>"xend"</code> (and in <code>"y"</code> and <code>"yend"</code>), and only missing values in the columns corresponding to the edge attributes:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="../reference/ggnetwork.html">ggnetwork</a></span>(n))</a></code></pre></div>
-<pre><code>##            x         y family importance  na.x vertex.names      xend
-## 1 0.00000000 0.1588920      b          3 FALSE           10 0.2597270
-## 2 0.00000000 0.1588920      b          3 FALSE           10 0.3778542
-## 3 0.08491113 0.6027185      b          3 FALSE            9 0.5627116
-## 4 0.08491113 0.6027185      b          3 FALSE            9 0.3778542
-## 5 0.08491113 0.6027185      b          3 FALSE            9 0.2482799
-## 6 0.08491113 0.6027185      b          3 FALSE            9 0.2597270
-##        yend day  na.y type
-## 1 0.4245802   1 FALSE    z
-## 2 0.3385446   2 FALSE    x
-## 3 0.6540959   1 FALSE    z
-## 4 0.3385446   1 FALSE    x
-## 5 0.7437306   2 FALSE    z
-## 6 0.4245802   3 FALSE    y</code></pre>
+<pre><code>##           x         y family importance vertex.names      xend      yend
+## 1 0.0000000 0.5850824      b          2            7 0.3046012 0.9231285
+## 2 0.0000000 0.5850824      b          2            7 0.2442027 0.6203912
+## 3 0.1222450 0.0000000      a          2            8 0.0000000 0.5850824
+## 4 0.1222450 0.0000000      a          2            8 0.4717269 0.0346110
+## 5 0.2442027 0.6203912      c          3            4 0.3046012 0.9231285
+## 7 0.3276188 0.3982269      c          2           10 0.3046012 0.9231285
+##   day type
+## 1   3    y
+## 2   2    z
+## 3   1    x
+## 4   1    y
+## 5   1    x
+## 7   3    z</code></pre>
 <p>The next rows of the data frame contain the actual edges:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">tail</a></span>(<span class="kw"><a href="../reference/ggnetwork.html">ggnetwork</a></span>(n))</a></code></pre></div>
-<pre><code>##             x         y family importance  na.x vertex.names      xend
-## 51  0.4237053 0.2116540      b          3 FALSE            5 0.4237053
-## 61  0.2636940 0.7192705      c          1 FALSE            6 0.2636940
-## 71  0.0000000 0.5905208      c          1 FALSE            7 0.0000000
-## 81  1.0000000 0.2552397      c          3 FALSE            8 1.0000000
-## 91  0.7208198 0.2429724      b          3 FALSE            9 0.7208198
-## 101 0.1062617 0.0000000      b          3 FALSE           10 0.1062617
-##          yend day na.y type
-## 51  0.2116540  NA   NA &lt;NA&gt;
-## 61  0.7192705  NA   NA &lt;NA&gt;
-## 71  0.5905208  NA   NA &lt;NA&gt;
-## 81  0.2552397  NA   NA &lt;NA&gt;
-## 91  0.2429724  NA   NA &lt;NA&gt;
-## 101 0.0000000  NA   NA &lt;NA&gt;</code></pre>
+<pre><code>##             x         y family importance vertex.names      xend      yend
+## 51  0.4306932 0.4879406      b          3            5 0.4306932 0.4879406
+## 61  0.3329289 0.0000000      b          3            6 0.3329289 0.0000000
+## 71  0.1073257 1.0000000      b          2            7 0.1073257 1.0000000
+## 81  0.0000000 0.6461762      a          2            8 0.0000000 0.6461762
+## 91  1.0000000 0.2223085      b          1            9 1.0000000 0.2223085
+## 101 0.1378243 0.2744494      c          2           10 0.1378243 0.2744494
+##     day type
+## 51   NA &lt;NA&gt;
+## 61   NA &lt;NA&gt;
+## 71   NA &lt;NA&gt;
+## 81   NA &lt;NA&gt;
+## 91   NA &lt;NA&gt;
+## 101  NA &lt;NA&gt;</code></pre>
 <p>The data frame returned by <code>ggnetwork</code> has (<em>N</em> + <em>E</em>) rows, where <em>N</em> is the number of nodes of the network, and <em>E</em> its number of edges. This data format is very likely to include duplicate information about the nodes, which is unavoidable.</p>
 <p>Note that <code>ggnetwork</code> does not include any safety mechanism against duplicate column names. As a consequence, if there is both a vertex attribute called <code>"na"</code> and an edge attribute called <code>"na"</code>, as in the example above, then the vertex attribute will be renamed <code>"na.x"</code> and the edge attribute will be renamed <code>"na.y"</code>.</p>
 </div>
@@ -359,7 +359,7 @@
 ##         ggplot2::theme(panel.border = ggplot2::element_rect(fill = NA, 
 ##             color = "grey50"), ...)
 ## }
-## &lt;bytecode: 0x513b930&gt;
+## &lt;bytecode: 0x59ee240&gt;
 ## &lt;environment: namespace:ggnetwork&gt;</code></pre>
 </div>
 </div>
@@ -396,7 +396,7 @@
 <a class="sourceLine" id="cb34-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/theme_blank.html">theme_blank</a></span>()</a></code></pre></div>
 <p><img src="ggnetwork_files/figure-html/unnamed-chunk-31-1.png" width="700"></p>
 <hr>
-<p>Last printed on Jul 30, 2019, using ggnetwork version 0.5.6.9000.</p>
+<p>Last printed on Aug 2, 2019, using ggnetwork version 0.5.6.9000.</p>
 </div>
   </div>
 
