@@ -4,9 +4,16 @@
 \alias{fortify.igraph}
 \title{Fortify method for networks of class \code{\link[igraph:igraph-package]{igraph}}}
 \usage{
-\method{fortify}{igraph}(model, data = NULL, layout = igraph::nicely(),
-  arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0), by = NULL,
-  scale = TRUE, stringsAsFactors = getOption("stringsAsFactors"), ...)
+\method{fortify}{igraph}(
+  model,
+  data = NULL,
+  layout = igraph::nicely(),
+  arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0),
+  by = NULL,
+  scale = TRUE,
+  stringsAsFactors = getOption("stringsAsFactors"),
+  ...
+)
 }
 \arguments{
 \item{model}{an object of class \code{\link[igraph:igraph-package]{igraph}}.}
@@ -25,7 +32,11 @@ network is undirected (no edge shortening), or to \code{0.025} when the
 network is directed. Small values near \code{0.025} will generally achieve
 good results when the size of the nodes is reasonably small.}
 
-\item{by}{a character vector that matches an edge attribute, which will be}
+\item{by}{a character vector that matches an edge attribute, which will be
+used to generate a data frame that can be plotted with
+\code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+nodes of the network will appear in all facets, at the same coordinates.
+Defaults to \code{NULL} (no faceting).}
 
 \item{scale}{whether to (re)scale the layout coordinates. Defaults to
 \code{TRUE}, but should be set to \code{FALSE} if \code{layout} contains

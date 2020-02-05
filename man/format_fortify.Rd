@@ -4,12 +4,20 @@
 \alias{format_fortify}
 \title{format_fortify}
 \usage{
-format_fortify(model, nodes = NULL, weights = NULL,
-  arrow.gap = ifelse(network::is.directed(model), 0.025, 0), by = NULL,
-  scale = TRUE, stringsAsFactors = getOption("stringsAsFactors"),
+format_fortify(
+  model,
+  nodes = NULL,
+  weights = NULL,
+  arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
+  by = NULL,
+  scale = TRUE,
+  stringsAsFactors = getOption("stringsAsFactors"),
   .list_vertex_attributes_fun = NULL,
-  .get_vertex_attributes_fun = NULL, .list_edges_attributes_fun = NULL,
-  .get_edges_attributes_fun = NULL, .as_edges_list_fun = NULL)
+  .get_vertex_attributes_fun = NULL,
+  .list_edges_attributes_fun = NULL,
+  .get_edges_attributes_fun = NULL,
+  .as_edges_list_fun = NULL
+)
 }
 \arguments{
 \item{model}{an object of class \code{\link[network]{network}}
@@ -28,7 +36,11 @@ network is undirected (no edge shortening), or to \code{0.025} when the
 network is directed. Small values near \code{0.025} will generally achieve
 good results when the size of the nodes is reasonably small.}
 
-\item{by}{a character vector that matches an edge attribute, which will be}
+\item{by}{a character vector that matches an edge attribute, which will be
+used to generate a data frame that can be plotted with
+\code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
+nodes of the network will appear in all facets, at the same coordinates.
+Defaults to \code{NULL} (no faceting).}
 
 \item{scale}{whether to (re)scale the layout coordinates. Defaults to
 \code{TRUE}, but should be set to \code{FALSE} if \code{layout} contains
@@ -48,12 +60,6 @@ default: see \code{\link[base]{data.frame}}.}
 \item{.get_edges_attributes_fun}{a "get edges attributes" function.}
 
 \item{.as_edges_list_fun}{a "as edges list" function.}
-
-\item{by}{a character vector that matches an edge attribute, which will be
-used to generate a data frame that can be plotted with
-\code{\link[ggplot2]{facet_wrap}} or \code{\link[ggplot2]{facet_grid}}. The
-nodes of the network will appear in all facets, at the same coordinates.
-Defaults to \code{NULL} (no faceting).}
 }
 \value{
 a \code{\link[base]{data.frame}} object.
