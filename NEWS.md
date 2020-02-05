@@ -1,3 +1,8 @@
+ggnetwork 0.5.7
+===============
+
+Adjustments to avoid any [issues with `class()`](https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html).
+
 ggnetwork 0.5.6
 ===============
 
