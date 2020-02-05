@@ -42,8 +42,8 @@ GitHub](https://github.com/briatte/ggnetwork) with:
 remotes::install_github("briatte/ggnetwork")
 ```
 
-**IMPORTANT:** the `ggnetwork` package depends on R 3.5+ and on
-`ggplot2` version 2.0.0+.
+The `ggnetwork` package depends on **R 3.5+** and on `ggplot2` version
+2.0.0+.
 
 ## Documentation
 
@@ -56,7 +56,9 @@ animated graphs, see James Curley’s slides on “[Interactive and Dynamic
 Network Visualization in
 R](http://curleylab.psych.columbia.edu/netviz/)” (2016). For even more
 options, see Katherine Ognyanova’s tutorial “[Network visualization with
-R](https://kateto.net/network-visualization) (2019).
+R](https://kateto.net/network-visualization) (2019), and David Schoch’s
+guide “[Network Visualizations in R using `ggraph` and
+`graphlayouts`](http://mr.schochastics.net/netVizR.html)” (2019).
 
 ## Getting help
 
@@ -87,10 +89,11 @@ following article:
 The article also covers the related packages
 [`geomnet`](https://github.com/sctyner/geomnet) and
 [`ggnet`](https://github.com/briatte/ggnet). It does not cover the more
-recent [`ggraph`](https://github.com/thomasp85/ggraph) and
+recent [`ggraph`](https://github.com/thomasp85/ggraph),
+[`graphlayouts`](https://github.com/schochastics/graphlayouts) and
 [`tidygraph`](https://github.com/thomasp85/tidygraph), although you
-should turn to those if you need a highly extensive way to handle ‘tidy’
-networks in `ggplot2`.
+should turn to those if you need a highly extensive way to build and
+plot ‘tidy’ networks with `ggplot2`.
 
 ## Thanks
 
