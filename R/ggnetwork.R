@@ -15,7 +15,7 @@
 #' @export
 ggnetwork <- function(x, ...) {
   switch(
-    EXPR = class(x),
+    EXPR = data.class(x),
     "igraph" = fortify.igraph(x, ...),
     "network" = fortify.network(x, ...),
     tryCatch(
