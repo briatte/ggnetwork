@@ -162,7 +162,7 @@ format_fortify <- function(
 
   # edge list
   if (inherits(model, "igraph")) {
-    edges <- .as_edges_list_fun(model)
+    edges <- .as_edges_list_fun(model, names = FALSE)
   } else {
     edges <- .as_edges_list_fun(model, attrname = weights)
   }

@@ -2,8 +2,8 @@ Package: ggnetwork
 Type: Package
 Title: Geometries to Plot Networks with 'ggplot2'
 Description: Geometries to plot network objects with 'ggplot2'.
-Version: 0.5.7
-Date: 2020-02-05
+Version: 0.5.8
+Date: 2020-02-06
 Maintainer: François Briatte <f.briatte@gmail.com>
 Authors@R: c(
   person("François", "Briatte", email = "f.briatte@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6494-9774")),

@@ -5,7 +5,9 @@ ggnetwork 0.5.7
 
 * Adjustments to avoid any [issues with `class()`](https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html).
 
-* Fixed some faulty or unsecure URLs (thanks to Uwe Ligges).
+* Fixed some faulty and/or unsecure URLs (thanks to Uwe Ligges).
+
+* Fixed a bug that caused networks of class `igraph` to lose edge attributes.
 
 ggnetwork 0.5.6
 ===============
