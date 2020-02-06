@@ -17,7 +17,7 @@ library(ggplot2)
 library(ggnetwork)
 ```
 
-> The [`ggnetwork`](https://github.com/briatte/ggnetwork) package provides a way to build network plots with [`ggplot2`](http://ggplot2.org/).
+> The [`ggnetwork`](https://github.com/briatte/ggnetwork) package provides a way to build network plots with [`ggplot2`](https://ggplot2.tidyverse.org/).
 
 Install the stable version from CRAN:
 
@@ -40,7 +40,7 @@ library(ggplot2)
 
 `ggnetwork` further requires the `network` and `sna` packages for network manipulation, and will also install the [`ggrepel`](https://github.com/slowkow/ggrepel) package for repulsive label drawing.
 
-The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/ggnet) by [Samantha C. Tyner](https://github.com/sctyner) and [Heike Hoffmann](https://github.com/heike). It also shares some similarity to the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet), which are part of the [`GGally`](https://github.com/ggobi/ggally) package by Barret Schloerke and others. Each of these projects are extensions to Hadley Wickham's implementation of Leland Wilkinson's "grammar of graphics" in [ggplot2](http://ggplot2.org/).
+The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/ggnet) by [Samantha C. Tyner](https://github.com/sctyner) and [Heike Hoffmann](https://github.com/heike). It also shares some similarity to the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet), which are part of the [`GGally`](https://github.com/ggobi/ggally) package by Barret Schloerke and others. Each of these projects are extensions to Hadley Wickham's implementation of Leland Wilkinson's "grammar of graphics" in [ggplot2](https://ggplot2.tidyverse.org/).
 
 ## Minimal example
 
@@ -83,7 +83,7 @@ The network object referred to above might be an object of class `network`, or a
 
 The data frame returned by `ggnetwork` also contains the coordinates needed for node placement as columns `"x"`, `"y"`, `"xend"` and `"yend"`, which as a consequence are "reserved" names in the context of `ggnetwork`. If these names show up in the edge or the vertex attributes, the function will simply fail to work.
 
-The default node placement algorithm used by `ggnetwork` to produce these coordinates is the Fruchterman-Reingold force-directed layout algorithm. All of the [placement algorithms implemented in the `sna` package](http://www.rdocumentation.org/packages/sna/functions/gplot.layout) are available through `ggnetwork`, which also accepts additional layout parameters:
+The default node placement algorithm used by `ggnetwork` to produce these coordinates is the Fruchterman-Reingold force-directed layout algorithm. All of the [placement algorithms implemented in the `sna` package](https://www.rdocumentation.org/packages/sna/versions/2.5/topics/gplot.layout) are available through `ggnetwork`, which also accepts additional layout parameters:
 
 ```{r, eval=FALSE}
 ggnetwork(n, layout = "fruchtermanreingold", cell.jitter = 0.75)

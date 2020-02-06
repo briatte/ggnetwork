@@ -1,7 +1,11 @@
 ggnetwork 0.5.7
 ===============
 
-Adjustments to avoid any [issues with `class()`](https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html).
+## Minor improvements and fixes
+
+* Adjustments to avoid any [issues with `class()`](https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html).
+
+* Fixed some faulty or unsecure URLs (thanks to Uwe Ligges).
 
 ggnetwork 0.5.6
 ===============

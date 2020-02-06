@@ -20,12 +20,12 @@ knitr::opts_chunk$set(
 [![Travis-CI Build Status](https://travis-ci.org/briatte/ggnetwork.svg?branch=master)](https://travis-ci.org/briatte/ggnetwork)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/briatte/ggnetwork?branch=master&svg=true)](https://ci.appveyor.com/project/briatte/ggnetwork)
 [![Coverage Status (codecov)](https://codecov.io/gh/briatte/ggnetwork/branch/master/graph/badge.svg)](https://codecov.io/gh/briatte/ggnetwork)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-ago/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
 [![cran checks_worst](https://cranchecks.info/badges/worst/ggnetwork)](https://cran.r-project.org/web/checks/check_results_ggnetwork.html)
-[![CRAN_Download_total](http://cranlogs.r-pkg.org/badges/grand-total/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
+[![CRAN_Download_total](https://cranlogs.r-pkg.org/badges/grand-total/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
 <!-- badges: end -->
 
-This package allows to pass network objects to [`ggplot2`](http://ggplot2.org/) and provides geometries to plot their elements.
+This package allows to pass network objects to [`ggplot2`](https://ggplot2.org/) and provides geometries to plot their elements.
 
 ## Get started
 
