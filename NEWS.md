@@ -1,7 +1,7 @@
-ggnetwork 0.5.8
-===============
+ggnetwork 0.5.8 (2020-02-12)
+============================
 
-Many thanks to Uwe Ligges and [Julia Fukuyama](https://github.com/jfukuyama), from the [`phyloseqGraphTest` package](https://github.com/jfukuyama/phyloseqGraphTest), who helped with pushing the package forward while preserving its reverse dependencies.
+Many thanks to Uwe Ligges, from CRAN, and to [Julia Fukuyama](https://github.com/jfukuyama), from the [`phyloseqGraphTest` package](https://github.com/jfukuyama/phyloseqGraphTest), who both helped with pushing the package forward while preserving its reverse dependencies.
 
 ## Minor improvements and fixes
 
