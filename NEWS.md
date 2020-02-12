@@ -1,3 +1,12 @@
+ggnetwork 0.5.8
+===============
+
+Many thanks to Uwe Ligges and [Julia Fukuyama](https://github.com/jfukuyama), from the [`phyloseqGraphTest` package](https://github.com/jfukuyama/phyloseqGraphTest), who helped with pushing the package forward while preserving its reverse dependencies.
+
+## Minor improvements and fixes
+
+* Fixed a bug that caused networks of class `igraph` to lose edge attributes.
+
 ggnetwork 0.5.7
 ===============
 
@@ -6,8 +15,6 @@ ggnetwork 0.5.7
 * Adjustments to avoid any [issues with `class()`](https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html).
 
 * Fixed some faulty and/or unsecure URLs (thanks to Uwe Ligges).
-
-* Fixed a bug that caused networks of class `igraph` to lose edge attributes.
 
 ggnetwork 0.5.6
 ===============
