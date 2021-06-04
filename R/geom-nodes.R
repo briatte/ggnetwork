@@ -63,17 +63,12 @@ geom_nodes <- function(
   )
 }
 
-# note: the nudge_x,nudge_y arguments below are duplicated from the original
-# function due to a small bug in roxygen2 5.0.1 (see issue #444 and PR #445)
-
 #' Label the nodes of a network.
 #'
 #' All arguments to these geoms are identical to those of
 #' \code{\link[ggplot2]{geom_text}} and \code{\link[ggplot2]{geom_label}}.
 #'
 #' @inheritParams ggplot2::geom_text
-#' @param nudge_x,nudge_y Horizontal and vertical adjustment to nudge labels by.
-#'   Useful for offsetting text from points, particularly on discrete scales.
 #'
 #' @examples
 #' ## geom_nodetext examples
@@ -138,9 +133,6 @@ geom_nodetext <- function(
   )
 }
 
-# note: the nudge_x,nudge_y arguments below are duplicated from the original
-# function due to a small bug in roxygen2 5.0.1 (see issue #444 and PR #445)
-
 #' Draw repulsive node labels
 #'
 #' All arguments to these geoms are identical to those of
@@ -148,8 +140,6 @@ geom_nodetext <- function(
 #' \code{\link[ggrepel]{geom_label_repel}}.
 #'
 #' @inheritParams ggrepel::geom_text_repel
-#' @param nudge_x,nudge_y Horizontal and vertical adjustments to nudge the
-#'   starting position of each text label.
 #'
 #' @examples
 #' ## geom_nodetext_repel example

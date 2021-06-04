@@ -121,9 +121,6 @@ geom_edges <- function(
   )
 }
 
-# note: the nudge_x,nudge_y arguments below are duplicated from the original
-# function due to a small bug in roxygen2 5.0.1 (see issue #444 and PR #445)
-
 #' Label the edges of a network.
 #'
 #' All arguments to both \code{\link{geom_edgetext}} and
@@ -135,8 +132,6 @@ geom_edges <- function(
 #' identical results.
 #'
 #' @inheritParams ggplot2::geom_label
-#' @param nudge_x,nudge_y Horizontal and vertical adjustment to nudge labels by.
-#'   Useful for offsetting text from points, particularly on discrete scales.
 #'
 #' @examples
 #' if (require(network) && require(sna)) {
@@ -208,9 +203,6 @@ geom_edgetext <- function(
   )
 }
 
-# note: the nudge_x,nudge_y arguments below are duplicated from the original
-# function due to a small bug in roxygen2 5.0.1 (see issue #444 and PR #445)
-
 #' Draw repulsive edge labels.
 #'
 #' All arguments to both \code{\link{geom_edgetext_repel}} and
@@ -219,8 +211,6 @@ geom_edgetext <- function(
 #' \code{\link{geom_label_repel}} produce strictly identical results.
 #'
 #' @inheritParams ggrepel::geom_label_repel
-#' @param nudge_x,nudge_y Horizontal and vertical adjustments to nudge the
-#'   starting position of each text label.
 #'
 #' @examples
 #' if (require(network) && require(sna)) {
