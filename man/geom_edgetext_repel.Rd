@@ -15,11 +15,9 @@ geom_edgetext_repel(
   point.padding = unit(1e-06, "lines"),
   label.r = unit(0.15, "lines"),
   label.size = 0.25,
-  segment.colour = "#666666",
-  segment.size = 0.5,
   arrow = NULL,
   force = 1,
-  max.iter = 2000,
+  max.iter = 10000,
   nudge_x = 0,
   nudge_y = 0,
   na.rm = FALSE,
@@ -37,11 +35,9 @@ geom_edgelabel_repel(
   point.padding = unit(1e-06, "lines"),
   label.r = unit(0.15, "lines"),
   label.size = 0.25,
-  segment.colour = "#666666",
-  segment.size = 0.5,
   arrow = NULL,
   force = 1,
-  max.iter = 2000,
+  max.iter = 10000,
   nudge_x = 0,
   nudge_y = 0,
   na.rm = FALSE,
@@ -91,23 +87,21 @@ passing \code{unit(x, "units")}).}
 
 \item{label.size}{Size of label border, in mm.}
 
-\item{segment.colour}{Colour of the line segment. Defaults to the same colour
-as the text. In the unlikely event you specify both US and UK spellings of colour, the
-US spelling will take precedence.}
-
-\item{segment.size}{Width of line segment connecting the data point to
-the text label, in mm.}
-
 \item{arrow}{specification for arrow heads, as created by \code{\link[grid]{arrow}}}
 
 \item{force}{Force of repulsion between overlapping text labels. Defaults
 to 1.}
 
 \item{max.iter}{Maximum number of iterations to try to resolve overlaps.
-Defaults to 2000.}
+Defaults to 10000.}
 
-\item{nudge_x, nudge_y}{Horizontal and vertical adjustments to nudge the
-starting position of each text label.}
+\item{nudge_x}{Horizontal and vertical adjustments to nudge the
+starting position of each text label. The units for \code{nudge_x} and
+\code{nudge_y} are the same as for the data units on the x-axis and y-axis.}
+
+\item{nudge_y}{Horizontal and vertical adjustments to nudge the
+starting position of each text label. The units for \code{nudge_x} and
+\code{nudge_y} are the same as for the data units on the x-axis and y-axis.}
 
 \item{na.rm}{If \code{FALSE} (the default), removes missing values with
 a warning.  If \code{TRUE} silently removes missing values.}

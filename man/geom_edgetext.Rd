@@ -59,7 +59,8 @@ will be used as the layer data. A \code{function} can be created
 from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
 
 \item{position}{Position adjustment, either as a string, or the result of
-a call to a position adjustment function.}
+a call to a position adjustment function. Cannot be jointy specified with
+\code{nudge_x} or \code{nudge_y}.}
 
 \item{parse}{If \code{TRUE}, the labels will be parsed into expressions and
 displayed as described in \code{?plotmath}.}
@@ -69,8 +70,13 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
-\item{nudge_x, nudge_y}{Horizontal and vertical adjustment to nudge labels by.
-Useful for offsetting text from points, particularly on discrete scales.}
+\item{nudge_x}{Horizontal and vertical adjustment to nudge labels by.
+Useful for offsetting text from points, particularly on discrete scales.
+Cannot be jointly specified with \code{position}.}
+
+\item{nudge_y}{Horizontal and vertical adjustment to nudge labels by.
+Useful for offsetting text from points, particularly on discrete scales.
+Cannot be jointly specified with \code{position}.}
 
 \item{label.padding}{Amount of padding around label. Defaults to 0.25 lines.}
 
