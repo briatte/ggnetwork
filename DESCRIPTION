@@ -28,6 +28,7 @@ Imports:
     utils
 Suggests:
     knitr,
+    rmarkdown,
     testthat
 Collate:
     'utilities.R'
