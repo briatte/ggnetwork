@@ -260,7 +260,7 @@ geom_edgetext_repel <- function(
   #segment.size = 0.5,
   arrow = NULL,
   force = 1,
-  max.iter = 2000,
+  max.iter = 10000,
   nudge_x = 0,
   nudge_y = 0,
   na.rm = FALSE,
