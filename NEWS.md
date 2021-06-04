@@ -1,3 +1,10 @@
+ggnetwork 0.5.9 (2021-06-04)
+============================
+
+## Minor improvements and fixes
+
+* Declared the soft dependency on `rmarkdown` (see [this `knitr` issue](https://github.com/yihui/knitr/issues/1864)).
+
 ggnetwork 0.5.8 (2020-02-12)
 ============================
 
