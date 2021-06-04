@@ -40,7 +40,7 @@ library(ggplot2)
 
 `ggnetwork` further requires the `network` and `sna` packages for network manipulation, and will also install the [`ggrepel`](https://github.com/slowkow/ggrepel) package for repulsive label drawing.
 
-The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/ggnet) by [Samantha C. Tyner](https://github.com/sctyner) and [Heike Hoffmann](https://github.com/heike). It also shares some similarity to the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet), which are part of the [`GGally`](https://github.com/ggobi/ggally) package by Barret Schloerke and others. Each of these projects are extensions to Hadley Wickham's implementation of Leland Wilkinson's "grammar of graphics" in [ggplot2](https://ggplot2.tidyverse.org/).
+The `ggnetwork` package is very much related to the development of [`geom_net`](https://github.com/sctyner/geomnet) by [Samantha C. Tyner](https://github.com/sctyner) and [Heike Hoffmann](https://github.com/heike). It also shares some similarity to the [`ggnet` and `ggnet2` functions](https://github.com/briatte/ggnet), which are part of the [`GGally`](https://github.com/ggobi/ggally) package by Barret Schloerke and others. Each of these projects are extensions to Hadley Wickham's implementation of Leland Wilkinson's "grammar of graphics" in [ggplot2](https://ggplot2.tidyverse.org/).
 
 ## Minimal example
 
