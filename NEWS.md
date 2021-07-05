@@ -1,3 +1,10 @@
+ggnetwork 0.5.10 (2021-07-05)
+=============================
+
+## Minor improvements and fixes
+
+* Modified the "duplicated edges" test on `network` objects, which are now pruned of duplicated ('redundant') edges by default, unless `multiple = TRUE` (multiplex egdes) is declared.
+
 ggnetwork 0.5.9 (2021-06-04)
 ============================
 
