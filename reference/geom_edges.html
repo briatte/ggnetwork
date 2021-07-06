@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -43,7 +47,6 @@ of fortify.network. The curvature, angle and
 ncp arguments of geom_curve are also available:
 if curvature is set to any value above 0 (the default), the
 edges produced by geom_edges will be curved." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -61,7 +64,7 @@ edges produced by geom_edges will be curved." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,7 +78,7 @@ edges produced by geom_edges will be curved." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggnetwork</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.10</span>
       </span>
     </div>
 
@@ -83,7 +86,7 @@ edges produced by geom_edges will be curved." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -99,8 +102,8 @@ edges produced by geom_edges will be curved." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/briatte/ggnetwork">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/briatte/ggnetwork/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,19 +135,19 @@ if <code>curvature</code> is set to any value above <code>0</code> (the default)
 edges produced by <code>geom_edges</code> will be curved.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geom_edges</span>(
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
-  <span class='kw'>arrow</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>curvature</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>90</span>,
-  <span class='kw'>ncp</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-  <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>inherit.aes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>geom_edges</span><span class='op'>(</span>
+  mapping <span class='op'>=</span> <span class='cn'>NULL</span>,
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  position <span class='op'>=</span> <span class='st'>"identity"</span>,
+  arrow <span class='op'>=</span> <span class='cn'>NULL</span>,
+  curvature <span class='op'>=</span> <span class='fl'>0</span>,
+  angle <span class='op'>=</span> <span class='fl'>90</span>,
+  ncp <span class='op'>=</span> <span class='fl'>5</span>,
+  na.rm <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  show.legend <span class='op'>=</span> <span class='cn'>NA</span>,
+  inherit.aes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -229,89 +232,87 @@ to the paired geom/stat.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>network</span>) <span class='kw'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>sna</span>)) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='http://statnet.org/'>network</a></span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='http://statnet.org'>sna</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
 
   <span class='co'># rerun if the example does not produce reciprocated ties</span>
-  <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/network/man/network.html'>network</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/sna/man/rgraph.html'>rgraph</a></span>(<span class='fl'>10</span>, <span class='kw'>tprob</span> <span class='kw'>=</span> <span class='fl'>0.2</span>), <span class='kw'>directed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/network/man/network.html'>network</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/sna/man/rgraph.html'>rgraph</a></span><span class='op'>(</span><span class='fl'>10</span>, tprob <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span>, directed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
   <span class='co'># just edges</span>
-  <span class='fu'>ggplot</span>(<span class='no'>n</span>, <span class='fu'>aes</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>xend</span> <span class='kw'>=</span> <span class='no'>xend</span>, <span class='kw'>yend</span> <span class='kw'>=</span> <span class='no'>yend</span>)) +
-    <span class='fu'>geom_edges</span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>) +
-    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span>()
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_edges</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>1</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span><span class='op'>(</span><span class='op'>)</span>
 
   <span class='co'># with nodes</span>
-  <span class='fu'>ggplot</span>(<span class='no'>n</span>, <span class='fu'>aes</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>xend</span> <span class='kw'>=</span> <span class='no'>xend</span>, <span class='kw'>yend</span> <span class='kw'>=</span> <span class='no'>yend</span>)) +
-    <span class='fu'>geom_edges</span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>) +
-    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>) +
-    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span>()
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_edges</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>1</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span><span class='op'>(</span><span class='op'>)</span>
 
   <span class='co'># with arrows</span>
-  <span class='fu'>ggplot</span>(<span class='no'>n</span>, <span class='fu'>aes</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>xend</span> <span class='kw'>=</span> <span class='no'>xend</span>, <span class='kw'>yend</span> <span class='kw'>=</span> <span class='no'>yend</span>)) +
-    <span class='fu'>geom_edges</span>(
-      <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>,
-      <span class='kw'>arrow</span> <span class='kw'>=</span> <span class='fu'>arrow</span>(<span class='kw'>length</span> <span class='kw'>=</span> <span class='fu'><a href='unit.html'>unit</a></span>(<span class='fl'>0.5</span>, <span class='st'>"lines"</span>), <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"closed"</span>)
-    ) +
-    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>) +
-    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span>()
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_edges</span><span class='op'>(</span>
+      size <span class='op'>=</span> <span class='fl'>1</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span>,
+      arrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grid/arrow.html'>arrow</a></span><span class='op'>(</span>length <span class='op'>=</span> <span class='fu'><a href='unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='st'>"lines"</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"closed"</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span><span class='op'>(</span><span class='op'>)</span>
 
   <span class='co'># with curvature</span>
-  <span class='fu'>ggplot</span>(<span class='no'>n</span>, <span class='fu'>aes</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>xend</span> <span class='kw'>=</span> <span class='no'>xend</span>, <span class='kw'>yend</span> <span class='kw'>=</span> <span class='no'>yend</span>)) +
-    <span class='fu'>geom_edges</span>(
-      <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>, <span class='kw'>curvature</span> <span class='kw'>=</span> <span class='fl'>0.15</span>,
-      <span class='kw'>arrow</span> <span class='kw'>=</span> <span class='fu'>arrow</span>(<span class='kw'>length</span> <span class='kw'>=</span> <span class='fu'><a href='unit.html'>unit</a></span>(<span class='fl'>0.5</span>, <span class='st'>"lines"</span>), <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"closed"</span>)
-    ) +
-    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>) +
-    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span>()
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_edges</span><span class='op'>(</span>
+      size <span class='op'>=</span> <span class='fl'>1</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span>, curvature <span class='op'>=</span> <span class='fl'>0.15</span>,
+      arrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grid/arrow.html'>arrow</a></span><span class='op'>(</span>length <span class='op'>=</span> <span class='fu'><a href='unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='st'>"lines"</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"closed"</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span><span class='op'>(</span><span class='op'>)</span>
 
   <span class='co'># arbitrary categorical edge attribute</span>
-  <span class='no'>e</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>letters</span>[ <span class='fl'>1</span>:<span class='fl'>2</span> ], <span class='fu'><a href='https://rdrr.io/pkg/network/man/network.edgecount.html'>network.edgecount</a></span>(<span class='no'>n</span>), <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-  <span class='fu'><a href='https://rdrr.io/pkg/network/man/attribute.methods.html'>set.edge.attribute</a></span>(<span class='no'>n</span>, <span class='st'>"type"</span>, <span class='no'>e</span>)
-  <span class='fu'>ggplot</span>(<span class='no'>n</span>, <span class='fu'>aes</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>xend</span> <span class='kw'>=</span> <span class='no'>xend</span>, <span class='kw'>yend</span> <span class='kw'>=</span> <span class='no'>yend</span>)) +
-    <span class='fu'>geom_edges</span>(<span class='fu'>aes</span>(<span class='kw'>linetype</span> <span class='kw'>=</span> <span class='no'>type</span>),
-      <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>curvature</span> <span class='kw'>=</span> <span class='fl'>0.15</span>,
-      <span class='kw'>arrow</span> <span class='kw'>=</span> <span class='fu'>arrow</span>(<span class='kw'>length</span> <span class='kw'>=</span> <span class='fu'><a href='unit.html'>unit</a></span>(<span class='fl'>0.5</span>, <span class='st'>"lines"</span>), <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"closed"</span>)
-    ) +
-    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>) +
-    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span>()
+  <span class='va'>e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span> <span class='op'>]</span>, <span class='fu'><a href='https://rdrr.io/pkg/network/man/network.edgecount.html'>network.edgecount</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/network/man/attribute.methods.html'>set.edge.attribute</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='st'>"type"</span>, <span class='va'>e</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_edges</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>linetype <span class='op'>=</span> <span class='va'>type</span><span class='op'>)</span>,
+      size <span class='op'>=</span> <span class='fl'>1</span>, curvature <span class='op'>=</span> <span class='fl'>0.15</span>,
+      arrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grid/arrow.html'>arrow</a></span><span class='op'>(</span>length <span class='op'>=</span> <span class='fu'><a href='unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='st'>"lines"</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"closed"</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span>, colour <span class='op'>=</span> <span class='st'>"steelblue"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span><span class='op'>(</span><span class='op'>)</span>
 
   <span class='co'># arbitrary numeric edge attribute (signed network)</span>
-  <span class='no'>e</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(-<span class='fl'>2</span>:<span class='fl'>2</span>, <span class='fu'><a href='https://rdrr.io/pkg/network/man/network.edgecount.html'>network.edgecount</a></span>(<span class='no'>n</span>), <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-  <span class='fu'><a href='https://rdrr.io/pkg/network/man/attribute.methods.html'>set.edge.attribute</a></span>(<span class='no'>n</span>, <span class='st'>"weight"</span>, <span class='no'>e</span>)
-  <span class='fu'>ggplot</span>(<span class='no'>n</span>, <span class='fu'>aes</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>xend</span> <span class='kw'>=</span> <span class='no'>xend</span>, <span class='kw'>yend</span> <span class='kw'>=</span> <span class='no'>yend</span>)) +
-    <span class='fu'>geom_edges</span>(<span class='fu'>aes</span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>weight</span>),
-      <span class='kw'>curvature</span> <span class='kw'>=</span> <span class='fl'>0.15</span>,
-      <span class='kw'>arrow</span> <span class='kw'>=</span> <span class='fu'>arrow</span>(<span class='kw'>length</span> <span class='kw'>=</span> <span class='fu'><a href='unit.html'>unit</a></span>(<span class='fl'>0.5</span>, <span class='st'>"lines"</span>), <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"closed"</span>)
-    ) +
-    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>) +
-    <span class='fu'>scale_colour_gradient</span>(<span class='kw'>low</span> <span class='kw'>=</span> <span class='st'>"steelblue"</span>, <span class='kw'>high</span> <span class='kw'>=</span> <span class='st'>"tomato"</span>) +
-    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span>()
+  <span class='va'>e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>2</span><span class='op'>:</span><span class='fl'>2</span>, <span class='fu'><a href='https://rdrr.io/pkg/network/man/network.edgecount.html'>network.edgecount</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/network/man/attribute.methods.html'>set.edge.attribute</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='st'>"weight"</span>, <span class='va'>e</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_edges</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>weight</span><span class='op'>)</span>,
+      curvature <span class='op'>=</span> <span class='fl'>0.15</span>,
+      arrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grid/arrow.html'>arrow</a></span><span class='op'>(</span>length <span class='op'>=</span> <span class='fu'><a href='unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='st'>"lines"</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"closed"</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span>, colour <span class='op'>=</span> <span class='st'>"grey50"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_colour_gradient</a></span><span class='op'>(</span>low <span class='op'>=</span> <span class='st'>"steelblue"</span>, high <span class='op'>=</span> <span class='st'>"tomato"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span><span class='op'>(</span><span class='op'>)</span>
 
   <span class='co'># draw only a subset of all edges</span>
-  <span class='no'>positive_weight</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
-    <span class='no'>x</span>[ <span class='no'>x</span>$<span class='no'>weight</span> <span class='kw'>&gt;=</span> <span class='fl'>0</span>, ]
-  }
-  <span class='fu'>ggplot</span>(<span class='no'>n</span>, <span class='fu'>aes</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>xend</span> <span class='kw'>=</span> <span class='no'>xend</span>, <span class='kw'>yend</span> <span class='kw'>=</span> <span class='no'>yend</span>)) +
-    <span class='fu'>geom_edges</span>(<span class='fu'>aes</span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>weight</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>positive_weight</span>) +
-    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>) +
-    <span class='fu'>scale_colour_gradient</span>(<span class='kw'>low</span> <span class='kw'>=</span> <span class='st'>"gold"</span>, <span class='kw'>high</span> <span class='kw'>=</span> <span class='st'>"tomato"</span>) +
-    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span>()
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: sna</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: statnet.common</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘statnet.common’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
+  <span class='va'>positive_weight</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>x</span><span class='op'>[</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>weight</span> <span class='op'>&gt;=</span> <span class='fl'>0</span>, <span class='op'>]</span>
+  <span class='op'>}</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xend <span class='op'>=</span> <span class='va'>xend</span>, yend <span class='op'>=</span> <span class='va'>yend</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_edges</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>weight</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>positive_weight</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='geom_nodes.html'>geom_nodes</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>4</span>, colour <span class='op'>=</span> <span class='st'>"grey50"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_colour_gradient</a></span><span class='op'>(</span>low <span class='op'>=</span> <span class='st'>"gold"</span>, high <span class='op'>=</span> <span class='st'>"tomato"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='theme_blank.html'>theme_blank</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='message'>Loading required package: sna</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: statnet.common</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘statnet.common’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    order</span></div><div class='output co'>#&gt; <span class='message'>sna: Tools for Social Network Analysis</span>
-#&gt; <span class='message'>Version 2.5 created on 2019-12-09.</span>
+#&gt; <span class='message'>    attr, order</span></div><div class='output co'>#&gt; <span class='message'>sna: Tools for Social Network Analysis</span>
+#&gt; <span class='message'>Version 2.6 created on 2020-10-5.</span>
 #&gt; <span class='message'>copyright (c) 2005, Carter T. Butts, University of California-Irvine</span>
 #&gt; <span class='message'> For citation information, type citation("sna").</span>
 #&gt; <span class='message'> Type help(package="sna") to get started.</span></div><div class='img'><img src='geom_edges-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -322,7 +323,7 @@ to the paired geom/stat.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
