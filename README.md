@@ -8,7 +8,7 @@
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![GitHub
-tag](https://img.shields.io/github/tag/briatte/ggnetwork.svg?label=%22latest%20tag%22)](https://github.com/briatte/ggnetwork)
+tag](https://img.shields.io/github/tag/briatte/ggnetwork.svg?label=latest)](https://github.com/briatte/ggnetwork)
 [![Travis-CI Build
 Status](https://travis-ci.org/briatte/ggnetwork.svg?branch=master)](https://travis-ci.org/briatte/ggnetwork)
 [![AppVeyor Build
