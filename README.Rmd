@@ -46,7 +46,8 @@ The `ggnetwork` package depends on __R 3.5+__ and on `ggplot2` version 2.0.0+.
 
 ## Documentation
 
-The package vignette contains [detailed examples](https://briatte.github.io/ggnetwork/) of how to use its `fortify` method and each of its geometries.
+- The [package vignette](https://briatte.github.io/ggnetwork/) contains detailed examples of how to use its `fortify` method and each of its geometries.
+- The [package website](https://briatte.github.io/ggnetwork/articles/ggnetwork.html) has more information and a list of [all package functions](https://briatte.github.io/ggnetwork/reference/index.html).
 
 For further examples that use `ggnetwork` with other packages to produce animated graphs, see James Curley's slides on “[Interactive and Dynamic Network Visualization in R](http://curleylab.psych.columbia.edu/netviz/)” (2016). For even more options, see Katherine Ognyanova's tutorial “[Network visualization with R](https://kateto.net/network-visualization) (2019), and David Schoch's guide “[Network Visualizations in R using `ggraph` and `graphlayouts`](http://mr.schochastics.net/netVizR.html)” (2019).
 
