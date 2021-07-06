@@ -1,5 +1,15 @@
+ggnetwork 0.5.11 (2021-07-06)
+=============================
+
+## Repository changes
+
+* Replaced Travis CI with GitHub Actions (#66).
+* Started using [`renv`](https://rstudio.github.io/renv/articles/renv.html) for [that purpose](https://rstudio.github.io/renv/articles/ci.html).
+
 ggnetwork 0.5.10 (2021-07-05)
 =============================
+
+Many thanks to Kurt Hornik, from CRAN, and to Marco Sandri, from the [`BasketballAnalyzeR`](https://cran.r-project.org/package=BasketballAnalyzeR) package, who both helped with pushing the package forward while preserving its reverse dependencies.
 
 ## Minor improvements and fixes
 
