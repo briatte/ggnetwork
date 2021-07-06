@@ -54,8 +54,8 @@ test_that("ggnetwork works", {
     matrix(c(1:2, 2:1), nrow = 2),
     matrix(c(1:2, 2:1), nrow = 2)
   )
-  # with {network} -- not required as of {network} v1.17, which automatically
-  # prunes redundant edges
+  # with {network} (updated for v1.17, which now automatically prunes redundant
+  # edges except when multiplex edges are allowed)
   expect_warning(
     ggnetwork(network::network(n, multiple = TRUE)),
     "duplicated edges"
