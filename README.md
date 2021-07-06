@@ -8,7 +8,8 @@
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![GitHub
-tag](https://img.shields.io/github/tag/briatte/ggnetwork.svg?label=latest)](https://github.com/briatte/ggnetwork)
+tag](https://img.shields.io/github/tag/briatte/ggnetwork.svg?label=latest)](https://github.com/briatte/ggnetwork/releases)
+[![R-CMD-check](https://github.com/briatte/ggnetwork/workflows/R-CMD-check/badge.svg)](https://github.com/briatte/ggnetwork/actions?workflow=R-CMD-check)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/briatte/ggnetwork?branch=master&svg=true)](https://ci.appveyor.com/project/briatte/ggnetwork)
 [![Coverage Status
@@ -45,9 +46,13 @@ The `ggnetwork` package depends on **R 3.5+** and on `ggplot2` version
 
 ## Documentation
 
-The package vignette contains [detailed
-examples](https://briatte.github.io/ggnetwork/) of how to use its
-`fortify` method and each of its geometries.
+-   The [package vignette](https://briatte.github.io/ggnetwork/)
+    contains detailed examples of how to use its `fortify` method and
+    each of its geometries.
+-   The [package
+    website](https://briatte.github.io/ggnetwork/articles/ggnetwork.html)
+    has more information and a list of [all package
+    functions](https://briatte.github.io/ggnetwork/reference/index.html).
 
 For further examples that use `ggnetwork` with other packages to produce
 animated graphs, see James Curley’s slides on “[Interactive and Dynamic
