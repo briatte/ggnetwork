@@ -56,7 +56,7 @@ For further examples that use `ggnetwork` with other packages to produce animate
 
 If you encounter a clear bug, please file a minimal reproducible example [on GitHub](https://github.com/briatte/ggnetwork/issues).
 
-For questions and other discussion, please contact the package maintainer.
+For questions and other discussion, please contact the package maintainer, or ask other users [on Stack Overflow](https://stackoverflow.com/search?tab=newest&q=ggnetwork).
 
 ## Citation
 
