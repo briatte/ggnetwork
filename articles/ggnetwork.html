@@ -129,7 +129,7 @@
 ##                 colour = NA), panel.border = ggplot2::element_blank(), 
 ##             panel.grid = ggplot2::element_blank(), ...)
 ## }
-## &lt;bytecode: 0x7ff21c2a7660&gt;
+## &lt;bytecode: 0x7fe9abc61078&gt;
 ## &lt;environment: namespace:ggnetwork&gt;</code></pre>
 </div>
 <div id="main-building-blocks" class="section level2">
@@ -150,35 +150,35 @@
 <p>The top of the data frame produced by <code>ggnetwork</code> contains self-loops to force every node to be included in the plot. This explains why the rows shown below have the same values in <code>"x"</code> and <code>"xend"</code> (and in <code>"y"</code> and <code>"yend"</code>), and only missing values in the columns corresponding to the edge attributes:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##           x         y family importance vertex.names      xend      yend day
-## 2 0.1280977 0.1605104      b          3            9 0.2702005 0.4056296   1
-## 3 0.1280977 0.1605104      b          3            9 0.5978367 0.0000000   3
-## 4 0.1280977 0.1605104      b          3            9 0.4672641 0.4454737   1
-## 5 0.2702005 0.4056296      a          1            8 0.7433063 0.2858830   2
-## 6 0.2702005 0.4056296      a          1            8 0.7534275 0.5764473   3
-## 7 0.2702005 0.4056296      a          1            8 0.5972049 0.2042666   3
+<pre><code>##            x         y family importance vertex.names      xend      yend day
+## 1 0.00000000 0.2032049      a          2            7 0.2650419 0.0000000   1
+## 2 0.02954967 0.5502371      a          2           10 0.3205196 0.4870018   3
+## 3 0.02954967 0.5502371      a          2           10 0.2430977 0.8120502   3
+## 4 0.02954967 0.5502371      a          2           10 0.0000000 0.2032049   3
+## 6 0.26504193 0.0000000      b          3            6 0.5437822 0.1743519   2
+## 7 0.32051961 0.4870018      c          3            4 0.2430977 0.8120502   1
 ##   type
-## 2    x
-## 3    x
-## 4    y
-## 5    x
-## 6    z
-## 7    x</code></pre>
+## 1    z
+## 2    y
+## 3    y
+## 4    z
+## 6    y
+## 7    y</code></pre>
 <p>The next rows of the data frame contain the actual edges:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##             x         y family importance vertex.names      xend      yend day
-## 51  0.1107021 0.2921574      b          2            5 0.1107021 0.2921574  NA
-## 61  0.1783649 0.6560160      b          2            6 0.1783649 0.6560160  NA
-## 71  1.0000000 1.0000000      a          1            7 1.0000000 1.0000000  NA
-## 81  0.1395996 0.1241468      a          1            8 0.1395996 0.1241468  NA
-## 91  0.4225151 0.0000000      b          3            9 0.4225151 0.0000000  NA
-## 101 0.4286065 0.6493900      a          3           10 0.4286065 0.6493900  NA
+## 51  0.2689149 0.6005730      b          1            5 0.2689149 0.6005730  NA
+## 61  0.5421616 0.2673601      b          3            6 0.5421616 0.2673601  NA
+## 71  0.4258185 0.0000000      a          2            7 0.4258185 0.0000000  NA
+## 8   0.3230746 0.9169907      b          3            8 0.3230746 0.9169907  NA
+## 91  0.8583731 0.5319669      a          1            9 0.8583731 0.5319669  NA
+## 101 0.1280252 0.1787292      a          2           10 0.1280252 0.1787292  NA
 ##     type
 ## 51  &lt;NA&gt;
 ## 61  &lt;NA&gt;
 ## 71  &lt;NA&gt;
-## 81  &lt;NA&gt;
+## 8   &lt;NA&gt;
 ## 91  &lt;NA&gt;
 ## 101 &lt;NA&gt;</code></pre>
 <p>The data frame returned by <code>ggnetwork</code> has (<em>N</em> + <em>E</em>) rows, where <em>N</em> is the number of nodes of the network, and <em>E</em> its number of edges. This data format is very likely to include duplicate information about the nodes, which is unavoidable.</p>
@@ -386,7 +386,7 @@
 ##         ggplot2::theme(panel.border = ggplot2::element_rect(fill = NA, 
 ##             color = "grey50"), ...)
 ## }
-## &lt;bytecode: 0x7ff2205ce518&gt;
+## &lt;bytecode: 0x7fe9ae63e288&gt;
 ## &lt;environment: namespace:ggnetwork&gt;</code></pre>
 </div>
 </div>
