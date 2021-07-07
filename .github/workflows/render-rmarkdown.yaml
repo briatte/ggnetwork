@@ -37,14 +37,14 @@ jobs:
 
     # install packages
     - name: install rmarkdown
-      run: Rscript -e 'install.packages(c("rmarkdown","remotes"))'
+      run: Rscript -e 'install.packages("rmarkdown")'
 
     # Render README.md using rmarkdown
     - name: render README
-      run: Rscript -e 'rmarkdown::render("README.Rmd", output_format = "md_document")'
+      run: Rscript -e 'rmarkdown::render("README.Rmd")'
 
     - name: commit rendered README
       run: |
-        git add README.md man/figures/README-*
+        git add README.md
         git commit -m "Re-build README.md" || echo "No changes to commit"
         git push origin master || echo "No changes to commit"
