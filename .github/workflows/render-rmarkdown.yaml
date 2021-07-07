@@ -1,50 +1,50 @@
+
+name: render README
+
+# Controls when the action will run
 on:
   push:
-    paths:
-      - '**.Rmd'
-
-name: render-rmarkdown
+    branches: master
 
 jobs:
-  build:
+  render:
+    # The type of runner that the job will run on
     runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - uses: r-lib/actions/setup-r@master
+    - uses: r-lib/actions/setup-pandoc@master
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+    - name: Install dependencies on MacOS
+      if: runner.os == 'macOS'
+      run: |
+        brew install cairo libgit2
 
-      - name: Install pandoc
-        run: |
-          brew install pandoc
+    - name: Query dependencies
+      run: |
+        install.packages('remotes')
+        saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+      shell: Rscript {0}
 
-      - name: Cache Renv packages
-        uses: actions/cache@v2
-        with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
+    - name: Cache R packages
+      uses: actions/cache@v2
+      with:
+        path: ${{ env.R_LIBS_USER }}
+        key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+        restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install packages
-        run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::activate()'
-          R -e 'renv::restore()'
+    # install packages
+    - name: install rmarkdown
+      run: Rscript -e 'install.packages(c("rmarkdown","remotes"))'
 
-      - name: Render Rmarkdown files
-        run: |
-          RMD_PATH=($(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '[.]Rmd$'))
-          Rscript -e 'for (f in commandArgs(TRUE)) if (file.exists(f)) rmarkdown::render(f)' ${RMD_PATH[*]}
+    # Render README.md using rmarkdown
+    - name: render README
+      run: Rscript -e 'rmarkdown::render("README.Rmd", output_format = "md_document")'
 
-      - name: Commit results
-        run: |
-          git config --local user.name "$GITHUB_ACTOR"
-          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git add *.md
-          git commit ${RMD_PATH[*]/.Rmd/.md} -m 'Re-build Rmarkdown files' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
+    - name: commit rendered README
+      run: |
+        git add README.md man/figures/README-*
+        git commit -m "Re-build README.md" || echo "No changes to commit"
+        git push origin master || echo "No changes to commit"
