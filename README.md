@@ -48,10 +48,10 @@ The `ggnetwork` package depends on **R 3.5+** and on `ggplot2` version
 
 ## Documentation
 
--   The [package vignette](https://briatte.github.io/ggnetwork/)
+  - The [package vignette](https://briatte.github.io/ggnetwork/)
     contains detailed examples of how to use its `fortify` method and
     each of its geometries.
--   The [package
+  - The [package
     website](https://briatte.github.io/ggnetwork/articles/ggnetwork.html)
     has more information and a list of [all package
     functions](https://briatte.github.io/ggnetwork/reference/index.html).
@@ -138,7 +138,7 @@ its predecessor, the `ggnet` package, which also benefitted from
 discussions with [@pedroj](https://github.com/pedroj) and Bertrand
 Sudre.
 
-------------------------------------------------------------------------
+-----
 
 Please note that this project is released with a [Contributor Code of
 Conduct](.github/CODE_OF_CONDUCT.md).  
