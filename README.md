@@ -14,10 +14,12 @@ tag](https://img.shields.io/github/tag/briatte/ggnetwork.svg?label=latest)](http
 Status](https://ci.appveyor.com/api/projects/status/github/briatte/ggnetwork?branch=master&svg=true)](https://ci.appveyor.com/project/briatte/ggnetwork)
 [![Coverage Status
 (codecov)](https://codecov.io/gh/briatte/ggnetwork/branch/master/graph/badge.svg)](https://codecov.io/gh/briatte/ggnetwork)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
-[![cran
-checks\_worst](https://cranchecks.info/badges/worst/ggnetwork)](https://cran.r-project.org/web/checks/check_results_ggnetwork.html)
-[![CRAN\_Download\_total](https://cranlogs.r-pkg.org/badges/grand-total/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
+[![CRAN
+status](https://www.r-pkg.org/badges/version-ago/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
+[![CRAN checks
+(worst)](https://cranchecks.info/badges/worst/ggnetwork)](https://cran.r-project.org/web/checks/check_results_ggnetwork.html)
+[![CRAN total
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
 <!-- badges: end -->
 
 This package allows to pass network objects to
@@ -69,7 +71,8 @@ If you encounter a clear bug, please file a minimal reproducible example
 [on GitHub](https://github.com/briatte/ggnetwork/issues).
 
 For questions and other discussion, please contact the package
-maintainer.
+maintainer, or ask other users [on Stack
+Overflow](https://stackoverflow.com/search?tab=newest&q=ggnetwork).
 
 ## Citation
 
