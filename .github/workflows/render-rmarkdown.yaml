@@ -33,6 +33,7 @@ jobs:
       - name: Install packages
         run: |
           R -e 'install.packages("renv")'
+          R -e 'renv::activate()'
           R -e 'renv::restore()'
 
       - name: Render Rmarkdown files
@@ -44,6 +45,6 @@ jobs:
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git add .
+          git add *.md
           git commit ${RMD_PATH[*]/.Rmd/.md} -m 'Re-build Rmarkdown files' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
