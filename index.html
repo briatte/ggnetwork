@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ggnetwork</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.12</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/ggnetwork.html">Get started</a>
 </li>
@@ -55,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/briatte/ggnetwork/">
+  <a href="https://github.com/briatte/ggnetwork/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,59 +68,56 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="ggnetwork" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#ggnetwork" class="anchor"></a>ggnetwork</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="ggnetwork">ggnetwork<a class="anchor" aria-label="anchor" href="#ggnetwork"></a>
+</h1></div>
 <!-- badges: start -->
-
-<p>This package allows to pass network objects to <a href="https://ggplot2.org/"><code>ggplot2</code></a> and provides geometries to plot their elements.</p>
-<div id="get-started" class="section level2">
-<h2 class="hasAnchor">
-<a href="#get-started" class="anchor"></a>Get started</h2>
-<p>You can install the released version of <code>ggnetwork</code> <a href="https://cran.r-project.org/package=ggnetwork">from CRAN</a> with:</p>
+<p>This package allows to pass network objects to <a href="https://ggplot2.org/" class="external-link"><code>ggplot2</code></a> and provides geometries to plot their elements.</p>
+<div class="section level2">
+<h2 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
+</h2>
+<p>You can install the released version of <code>ggnetwork</code> <a href="https://cran.r-project.org/package=ggnetwork" class="external-link">from CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggnetwork"</span><span class="op">)</span></code></pre></div>
-<p>And the development version <a href="https://github.com/briatte/ggnetwork">from GitHub</a> with:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ggnetwork"</span><span class="op">)</span></span></code></pre></div>
+<p>And the development version <a href="https://github.com/briatte/ggnetwork" class="external-link">from GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"briatte/ggnetwork"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"briatte/ggnetwork"</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>ggnetwork</code> package depends on <strong>R 3.5+</strong> and on <code>ggplot2</code> version 2.0.0+.</p>
 </div>
-<div id="documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
 <ul>
-<li>The <a href="https://briatte.github.io/ggnetwork/">package vignette</a> contains detailed examples of how to use its <code>fortify</code> method and each of its geometries.</li>
-<li>The <a href="https://briatte.github.io/ggnetwork/articles/ggnetwork.html">package website</a> has more information and a list of <a href="https://briatte.github.io/ggnetwork/reference/index.html">all package functions</a>.</li>
+<li>The <a href="https://briatte.github.io/ggnetwork/" class="external-link">package vignette</a> contains detailed examples of how to use its <code>fortify</code> method and each of its geometries.</li>
+<li>The <a href="https://briatte.github.io/ggnetwork/articles/ggnetwork.html" class="external-link">package website</a> has more information and a list of <a href="https://briatte.github.io/ggnetwork/reference/index.html" class="external-link">all package functions</a>.</li>
 </ul>
-<p>For further examples that use <code>ggnetwork</code> with other packages to produce animated graphs, see James Curley’s slides on “<a href="http://curleylab.psych.columbia.edu/netviz/">Interactive and Dynamic Network Visualization in R</a>” (2016). For even more options, see Katherine Ognyanova’s tutorial “<a href="https://kateto.net/network-visualization">Network visualization with R</a> (2019), and David Schoch’s guide “<a href="http://mr.schochastics.net/netVizR.html">Network Visualizations in R using <code>ggraph</code> and <code>graphlayouts</code></a>” (2019).</p>
+<p>For further examples that use <code>ggnetwork</code> with other packages to produce animated graphs, see James Curley’s slides on “<a href="http://curleylab.psych.columbia.edu/netviz/" class="external-link">Interactive and Dynamic Network Visualization in R</a>” (2016). For even more options, see Katherine Ognyanova’s tutorial “<a href="https://kateto.net/network-visualization" class="external-link">Network visualization with R</a> (2019), and David Schoch’s guide “<a href="http://mr.schochastics.net/netVizR.html" class="external-link">Network Visualizations in R using <code>ggraph</code> and <code>graphlayouts</code></a>” (2019).</p>
 </div>
-<div id="getting-help" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-help" class="anchor"></a>Getting help</h2>
-<p>If you encounter a clear bug, please file a minimal reproducible example <a href="https://github.com/briatte/ggnetwork/issues">on GitHub</a>.</p>
-<p>For questions and other discussion, please contact the package maintainer, or ask other users <a href="https://stackoverflow.com/search?tab=newest&amp;q=ggnetwork">on Stack Overflow</a>.</p>
+<div class="section level2">
+<h2 id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
+</h2>
+<p>If you encounter a clear bug, please file a minimal reproducible example <a href="https://github.com/briatte/ggnetwork/issues" class="external-link">on GitHub</a>.</p>
+<p>For questions and other discussion, please contact the package maintainer, or ask other users <a href="https://stackoverflow.com/search?tab=newest&amp;q=ggnetwork" class="external-link">on Stack Overflow</a>.</p>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
 <p>You can get a citation for the package from R:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"ggnetwork"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"ggnetwork"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="see-also" class="section level2">
-<h2 class="hasAnchor">
-<a href="#see-also" class="anchor"></a>See also</h2>
+<div class="section level2">
+<h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a>
+</h2>
 <p>The <code>ggnetwork</code> package was written within a larger development effort around network visualization with <code>ggplot2</code>, on which you can read the following article:</p>
-<blockquote>
-<p>Sam Tyner, François Briatte and Heike Hofmann, “<a href="https://doi.org/10.32614/RJ-2017-023">Network Visualization with <code>ggplot2</code></a>,” <em>The R Journal</em> 9(1): 27–59, 2017.</p>
-</blockquote>
-<p>The article also covers the related packages <a href="https://github.com/sctyner/geomnet"><code>geomnet</code></a> and <a href="https://github.com/briatte/ggnet"><code>ggnet</code></a>. It does not cover the more recent <a href="https://github.com/thomasp85/ggraph"><code>ggraph</code></a>, <a href="https://github.com/schochastics/graphlayouts"><code>graphlayouts</code></a> and <a href="https://github.com/thomasp85/tidygraph"><code>tidygraph</code></a>, although you should turn to those if you need a highly extensive way to build and plot ‘tidy’ networks with <code>ggplot2</code>.</p>
+<blockquote><p>Sam Tyner, François Briatte and Heike Hofmann, “<a href="https://doi.org/10.32614/RJ-2017-023" class="external-link">Network Visualization with <code>ggplot2</code></a>,” <em>The R Journal</em> 9(1): 27–59, 2017.</p></blockquote>
+<p>The article also covers the related packages <a href="https://github.com/sctyner/geomnet" class="external-link"><code>geomnet</code></a> and <a href="https://github.com/briatte/ggnet" class="external-link"><code>ggnet</code></a>. It does not cover the more recent <a href="https://github.com/thomasp85/ggraph" class="external-link"><code>ggraph</code></a>, <a href="https://github.com/schochastics/graphlayouts" class="external-link"><code>graphlayouts</code></a> and <a href="https://github.com/thomasp85/tidygraph" class="external-link"><code>tidygraph</code></a>, although you should turn to those if you need a highly extensive way to build and plot ‘tidy’ networks with <code>ggplot2</code>.</p>
 </div>
-<div id="thanks" class="section level2">
-<h2 class="hasAnchor">
-<a href="#thanks" class="anchor"></a>Thanks</h2>
-<p>Thanks to <a href="https://github.com/achmurzy">@achmurzy</a>, <a href="https://github.com/andrewd789">@andrewd789</a>, <a href="https://github.com/ArtemSokolov">@ArtemSokolov</a>, <a href="https://github.com/aterhorst">@aterhorst</a>, <a href="https://github.com/Edouard-Legoupil">@Edouard-Legoupil</a>, <a href="https://github.com/emillykkejensen">@emillykkejensen</a>, <a href="https://github.com/EvanUp">@EvanUp</a>, <a href="https://github.com/evinhas">@evinhas</a>, <a href="https://github.com/ferroao">@ferroao</a>, <a href="https://github.com/FinScience">@FinScience</a>, <a href="https://github.com/ghost">@ghost</a>, <a href="https://github.com/instantkaffee">@instantkaffee</a>, <a href="https://github.com/jalapic">@jalapic</a>, <a href="https://github.com/jcfisher">@jcfisher</a>, <a href="https://github.com/jfaganUK">@jfaganUK</a>, <a href="https://github.com/kippjohnson">@kippjohnson</a>, <a href="https://github.com/koheiw">@koheiw</a>, <a href="https://github.com/komalsrathi">@komalsrathi</a>, <a href="https://github.com/mbojan">@mbojan</a>, <a href="https://github.com/mcanouil">@mcanouil</a>, <a href="https://github.com/mgagliol">@mgagliol</a>, <a href="https://github.com/mhairi">@mhairi</a>, <a href="https://github.com/minimaxir">@minimaxir</a>, <a href="https://github.com/mkarikom">@mkarikom</a>, <a href="https://github.com/nick-youngblut">@nick-youngblut</a>, <a href="https://github.com/pinguinjay">@pinguinjay</a>, <a href="https://github.com/SantiFilippo">@SantiFilippo</a>, <a href="https://github.com/sciabolazza">@sciabolazza</a>, <a href="https://github.com/sctyner">@sctyner</a>, <a href="https://github.com/trinker">@trinker</a>, <a href="https://github.com/zachcp">@zachcp</a> and two anonymous <em><a href="https://journal.r-project.org/">R Journal</a></em> reviewers. <a href="https://github.com/heike">@heike</a> and <a href="https://github.com/ethen8181">@ethen8181</a> also helped with the tricky issue of having arrows on directed edges, while <a href="https://github.com/sumtxt">@sumtxt</a> inspired this package as well as its predecessor, the <code>ggnet</code> package, which also benefitted from discussions with <a href="https://github.com/pedroj">@pedroj</a> and Bertrand Sudre.</p>
+<div class="section level2">
+<h2 id="thanks">Thanks<a class="anchor" aria-label="anchor" href="#thanks"></a>
+</h2>
+<p>Thanks to <a href="https://github.com/achmurzy" class="external-link">@achmurzy</a>, <a href="https://github.com/andrewd789" class="external-link">@andrewd789</a>, <a href="https://github.com/ArtemSokolov" class="external-link">@ArtemSokolov</a>, <a href="https://github.com/aterhorst" class="external-link">@aterhorst</a>, <a href="https://github.com/Edouard-Legoupil" class="external-link">@Edouard-Legoupil</a>, <a href="https://github.com/emillykkejensen" class="external-link">@emillykkejensen</a>, <a href="https://github.com/EvanUp" class="external-link">@EvanUp</a>, <a href="https://github.com/evinhas" class="external-link">@evinhas</a>, <a href="https://github.com/ferroao" class="external-link">@ferroao</a>, <a href="https://github.com/FinScience" class="external-link">@FinScience</a>, <a href="https://github.com/ghost" class="external-link">@ghost</a>, <a href="https://github.com/instantkaffee" class="external-link">@instantkaffee</a>, <a href="https://github.com/jalapic" class="external-link">@jalapic</a>, <a href="https://github.com/jcfisher" class="external-link">@jcfisher</a>, <a href="https://github.com/jfaganUK" class="external-link">@jfaganUK</a>, <a href="https://github.com/kippjohnson" class="external-link">@kippjohnson</a>, <a href="https://github.com/koheiw" class="external-link">@koheiw</a>, <a href="https://github.com/komalsrathi" class="external-link">@komalsrathi</a>, <a href="https://github.com/mbojan" class="external-link">@mbojan</a>, <a href="https://github.com/mcanouil" class="external-link">@mcanouil</a>, <a href="https://github.com/mgagliol" class="external-link">@mgagliol</a>, <a href="https://github.com/mhairi" class="external-link">@mhairi</a>, <a href="https://github.com/minimaxir" class="external-link">@minimaxir</a>, <a href="https://github.com/mkarikom" class="external-link">@mkarikom</a>, <a href="https://github.com/nick-youngblut" class="external-link">@nick-youngblut</a>, <a href="https://github.com/pinguinjay" class="external-link">@pinguinjay</a>, <a href="https://github.com/SantiFilippo" class="external-link">@SantiFilippo</a>, <a href="https://github.com/sciabolazza" class="external-link">@sciabolazza</a>, <a href="https://github.com/sctyner" class="external-link">@sctyner</a>, <a href="https://github.com/trinker" class="external-link">@trinker</a>, <a href="https://github.com/zachcp" class="external-link">@zachcp</a> and two anonymous <em><a href="https://journal.r-project.org/" class="external-link">R Journal</a></em> reviewers. <a href="https://github.com/heike" class="external-link">@heike</a> and <a href="https://github.com/ethen8181" class="external-link">@ethen8181</a> also helped with the tricky issue of having arrows on directed edges, while <a href="https://github.com/sumtxt" class="external-link">@sumtxt</a> inspired this package as well as its predecessor, the <code>ggnet</code> package, which also benefitted from discussions with <a href="https://github.com/pedroj" class="external-link">@pedroj</a> and Bertrand Sudre.</p>
 <hr>
 <p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>.<br>
 By participating in this project you agree to abide by its terms.</p>
@@ -134,61 +127,60 @@ By participating in this project you agree to abide by its terms.</p>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=ggnetwork">https://​cloud.r-project.org/​package=ggnetwork</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/briatte/ggnetwork/">https://​github.com/​briatte/​ggnetwork/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/briatte/ggnetwork/issues">https://​github.com/​briatte/​ggnetwork/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
-</ul>
-</div>
-<div class="community">
-<h2>Community</h2>
-<ul class="list-unstyled">
-<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
-<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://f.briatte.org/">François Briatte</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6494-9774" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://cloud.r-project.org/package=ggnetwork" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/briatte/ggnetwork/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/briatte/ggnetwork/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://github.com/briatte/ggnetwork/releases"><img src="https://img.shields.io/github/tag/briatte/ggnetwork.svg?label=latest" alt="GitHub tag"></a></li>
-<li><a href="https://github.com/briatte/ggnetwork/actions?workflow=R-CMD-check"><img src="https://github.com/briatte/ggnetwork/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://ci.appveyor.com/project/briatte/ggnetwork"><img src="https://ci.appveyor.com/api/projects/status/github/briatte/ggnetwork?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="https://codecov.io/gh/briatte/ggnetwork"><img src="https://codecov.io/gh/briatte/ggnetwork/branch/master/graph/badge.svg" alt="Coverage Status (codecov)"></a></li>
-<li><a href="https://cran.r-project.org/package=ggnetwork"><img src="https://www.r-pkg.org/badges/version-ago/ggnetwork" alt="CRAN status"></a></li>
-<li><a href="https://cran.r-project.org/web/checks/check_results_ggnetwork.html"><img src="https://cranchecks.info/badges/worst/ggnetwork" alt="CRAN checks (worst)"></a></li>
-<li><a href="https://cran.r-project.org/package=ggnetwork"><img src="https://cranlogs.r-pkg.org/badges/grand-total/ggnetwork" alt="CRAN total downloads"></a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
+</ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing ggnetwork</a></li>
+</ul>
+</div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://f.briatte.org/" class="external-link">François Briatte</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6494-9774" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://f.briatte.org/">François Briatte</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://f.briatte.org/" class="external-link">François Briatte</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -196,6 +188,8 @@ By participating in this project you agree to abide by its terms.</p>
 
   
 
+
+  
 
   </body>
 </html>
