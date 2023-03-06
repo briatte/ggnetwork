@@ -1,10 +1,16 @@
+ggnetwork 0.5.12 (2023-03-06)
+=============================
+
+## Minor improvements and fixes
+
+* Fortifying graph objects now assumes that `getOption("stringsAsFactors")` is to be set to `FALSE` when it is missing (required by a recent change in R-devel).
+
 ggnetwork 0.5.11 (2021-07-06)
 =============================
 
 ## Repository changes
 
 * Replaced Travis CI with GitHub Actions (#66).
-* Started using [`renv`](https://rstudio.github.io/renv/articles/renv.html) for [that purpose](https://rstudio.github.io/renv/articles/ci.html).
 
 ggnetwork 0.5.10 (2021-07-05)
 =============================

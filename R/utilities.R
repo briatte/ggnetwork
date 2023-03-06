@@ -110,8 +110,8 @@ NULL
 #'   meaningful spatial coordinates, such as latitude and longitude.
 #' @param stringsAsFactors whether vertex and edge attributes should be
 #'   converted to factors if they are of class \code{character}. Defaults to
-#'   the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
-#'   default: see \code{\link[base]{data.frame}}.
+#'   the value of \code{getOption("stringsAsFactors")}, which is \code{FALSE}
+#'   by default: see \code{\link[base]{data.frame}}.
 #' @param .list_vertex_attributes_fun a "list vertex attributes" function.
 #' @param .get_vertex_attributes_fun a "get vertex attributes" function.
 #' @param .list_edges_attributes_fun a "get edges attributes" function.
@@ -129,7 +129,7 @@ format_fortify <- function(
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
   by = NULL,
   scale = TRUE,
-  stringsAsFactors = getOption("stringsAsFactors"),
+  stringsAsFactors = getOption("stringsAsFactors", FALSE),
   .list_vertex_attributes_fun = NULL,
   .get_vertex_attributes_fun = NULL,
   .list_edges_attributes_fun = NULL,

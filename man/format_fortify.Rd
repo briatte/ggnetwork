@@ -11,7 +11,7 @@ format_fortify(
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
   by = NULL,
   scale = TRUE,
-  stringsAsFactors = getOption("stringsAsFactors"),
+  stringsAsFactors = getOption("stringsAsFactors", FALSE),
   .list_vertex_attributes_fun = NULL,
   .get_vertex_attributes_fun = NULL,
   .list_edges_attributes_fun = NULL,
@@ -48,8 +48,8 @@ meaningful spatial coordinates, such as latitude and longitude.}
 
 \item{stringsAsFactors}{whether vertex and edge attributes should be
 converted to factors if they are of class \code{character}. Defaults to
-the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
-default: see \code{\link[base]{data.frame}}.}
+the value of \code{getOption("stringsAsFactors")}, which is \code{FALSE}
+by default: see \code{\link[base]{data.frame}}.}
 
 \item{.list_vertex_attributes_fun}{a "list vertex attributes" function.}
 

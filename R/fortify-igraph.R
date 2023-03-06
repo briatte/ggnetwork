@@ -20,7 +20,7 @@ fortify.igraph <- function(
   arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0),
   by = NULL,
   scale = TRUE,
-  stringsAsFactors = getOption("stringsAsFactors"),
+  stringsAsFactors = getOption("stringsAsFactors", FALSE),
   ...
 ) {
   # node placement

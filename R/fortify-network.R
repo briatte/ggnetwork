@@ -103,7 +103,7 @@ fortify.network <- function(
   arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
   by = NULL,
   scale = TRUE,
-  stringsAsFactors = getOption("stringsAsFactors"),
+  stringsAsFactors = getOption("stringsAsFactors", FALSE),
   ...
 ) {
   # node placement
