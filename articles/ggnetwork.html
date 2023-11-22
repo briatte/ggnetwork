@@ -72,7 +72,7 @@
       <h1 data-toc-skip>ggnetwork: Network geometries for ggplot2</h1>
                         <h4 data-toc-skip class="author">François Briatte</h4>
             
-            <h4 data-toc-skip class="date">2023-03-06</h4>
+            <h4 data-toc-skip class="date">2023-11-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/briatte/ggnetwork/blob/HEAD/vignettes/ggnetwork.Rmd" class="external-link"><code>vignettes/ggnetwork.Rmd</code></a></small>
       <div class="hidden name"><code>ggnetwork.Rmd</code></div>
@@ -125,7 +125,7 @@
 <span><span class="co">##                 colour = NA), panel.border = ggplot2::element_blank(), </span></span>
 <span><span class="co">##             panel.grid = ggplot2::element_blank(), ...)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x7fd295c18800&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x7fbcf2627eb0&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:ggnetwork&gt;</span></span></code></pre>
 </div>
 <div class="section level2">
@@ -147,35 +147,35 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           x         y family importance vertex.names      xend       yend day</span></span>
-<span><span class="co">## 1 0.0000000 0.3830849      a          2            7 0.2080156 0.53871646   2</span></span>
-<span><span class="co">## 2 0.2080156 0.5387165      c          2            4 0.4302778 0.31955884   1</span></span>
-<span><span class="co">## 3 0.2273736 0.1911474      c          2            9 0.4302778 0.31955884   2</span></span>
-<span><span class="co">## 4 0.2273736 0.1911474      c          2            9 0.5625321 0.09230099   2</span></span>
-<span><span class="co">## 5 0.2273736 0.1911474      c          2            9 0.0000000 0.38308491   3</span></span>
-<span><span class="co">## 7 0.3909362 0.0000000      c          1            8 0.5625321 0.09230099   1</span></span>
+<span><span class="co">## 2 0.2336200 0.0000000      b          1            8 0.0000000 0.22893229   2</span></span>
+<span><span class="co">## 3 0.2336200 0.0000000      b          1            8 0.6238782 0.07648287   3</span></span>
+<span><span class="co">## 4 0.2336200 0.0000000      b          1            8 0.3624419 0.24446560   3</span></span>
+<span><span class="co">## 5 0.3594203 0.4010002      a          2           10 0.0000000 0.22893229   2</span></span>
+<span><span class="co">## 6 0.3594203 0.4010002      a          2           10 0.6238782 0.07648287   3</span></span>
+<span><span class="co">## 7 0.3594203 0.4010002      a          2           10 0.4887545 0.71928144   1</span></span>
 <span><span class="co">##   type</span></span>
-<span><span class="co">## 1    y</span></span>
-<span><span class="co">## 2    x</span></span>
-<span><span class="co">## 3    y</span></span>
+<span><span class="co">## 2    z</span></span>
+<span><span class="co">## 3    z</span></span>
 <span><span class="co">## 4    z</span></span>
-<span><span class="co">## 5    y</span></span>
-<span><span class="co">## 7    y</span></span></code></pre>
+<span><span class="co">## 5    z</span></span>
+<span><span class="co">## 6    z</span></span>
+<span><span class="co">## 7    x</span></span></code></pre>
 <p>The next rows of the data frame contain the actual edges:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##             x         y family importance vertex.names      xend      yend day</span></span>
-<span><span class="co">## 51  1.0000000 0.5221704      a          3            5 1.0000000 0.5221704  NA</span></span>
-<span><span class="co">## 6   0.5490695 0.5656598      b          1            6 0.5490695 0.5656598  NA</span></span>
-<span><span class="co">## 7   0.0000000 0.6087745      a          2            7 0.0000000 0.6087745  NA</span></span>
-<span><span class="co">## 81  0.5705103 0.3439966      c          1            8 0.5705103 0.3439966  NA</span></span>
-<span><span class="co">## 9   0.2759628 0.6281703      c          2            9 0.2759628 0.6281703  NA</span></span>
-<span><span class="co">## 101 0.2877040 0.0000000      c          2           10 0.2877040 0.0000000  NA</span></span>
+<span><span class="co">## 51  0.2687861 0.0000000      c          2            5 0.2687861 0.0000000  NA</span></span>
+<span><span class="co">## 61  0.6212801 0.9019335      c          3            6 0.6212801 0.9019335  NA</span></span>
+<span><span class="co">## 71  0.3783159 0.7381251      b          1            7 0.3783159 0.7381251  NA</span></span>
+<span><span class="co">## 81  0.2248498 1.0000000      b          1            8 0.2248498 1.0000000  NA</span></span>
+<span><span class="co">## 91  0.7298446 0.6491440      a          3            9 0.7298446 0.6491440  NA</span></span>
+<span><span class="co">## 101 0.3460480 0.5807387      a          2           10 0.3460480 0.5807387  NA</span></span>
 <span><span class="co">##     type</span></span>
 <span><span class="co">## 51  &lt;NA&gt;</span></span>
-<span><span class="co">## 6   &lt;NA&gt;</span></span>
-<span><span class="co">## 7   &lt;NA&gt;</span></span>
+<span><span class="co">## 61  &lt;NA&gt;</span></span>
+<span><span class="co">## 71  &lt;NA&gt;</span></span>
 <span><span class="co">## 81  &lt;NA&gt;</span></span>
-<span><span class="co">## 9   &lt;NA&gt;</span></span>
+<span><span class="co">## 91  &lt;NA&gt;</span></span>
 <span><span class="co">## 101 &lt;NA&gt;</span></span></code></pre>
 <p>The data frame returned by <code>ggnetwork</code> has (<em>N</em> + <em>E</em>) rows, where <em>N</em> is the number of nodes of the network, and <em>E</em> its number of edges. This data format is very likely to include duplicate information about the nodes, which is unavoidable.</p>
 <p>Note that <code>ggnetwork</code> does not include any safety mechanism against duplicate column names. As a consequence, if there is both a vertex attribute called <code>"na"</code> and an edge attribute called <code>"na"</code>, as in the example above, then the vertex attribute will be renamed <code>"na.x"</code> and the edge attribute will be renamed <code>"na.y"</code>.</p>
@@ -382,7 +382,7 @@
 <span><span class="co">##         ggplot2::theme(panel.border = ggplot2::element_rect(fill = NA, </span></span>
 <span><span class="co">##             color = "grey50"), ...)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x7fd29ad78778&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x7fbcf247ddd8&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:ggnetwork&gt;</span></span></code></pre>
 </div>
 </div>
@@ -410,7 +410,10 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>size <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/theme_blank.html">theme_blank</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use "none" instead as</span></span>
-<span><span class="co">## of ggplot2 3.3.4.</span></span></code></pre>
+<span><span class="co">## of ggplot2 3.3.4.</span></span>
+<span><span class="co">## <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
 <p><img src="ggnetwork_files/figure-html/unnamed-chunk-30-1.png" width="700"></p>
 <p>Last, all geoms provided by <code>ggnetwork</code> can be subsetted through the <code>data</code> argument, just as any <code>ggplot2</code> geom, and as in the example below, which draws only a subset of all node labels:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
@@ -424,7 +427,7 @@
 <span>  <span class="fu"><a href="../reference/theme_blank.html">theme_blank</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ggnetwork_files/figure-html/unnamed-chunk-31-1.png" width="700"></p>
 <hr>
-<p>Last printed on Mar 6, 2023, using ggnetwork version 0.5.12.</p>
+<p>Last printed on Nov 22, 2023, using ggnetwork version 0.5.12.</p>
 </div>
   </div>
 
