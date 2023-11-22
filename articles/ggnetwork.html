@@ -125,7 +125,7 @@
 <span><span class="co">##                 colour = NA), panel.border = ggplot2::element_blank(), </span></span>
 <span><span class="co">##             panel.grid = ggplot2::element_blank(), ...)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x7f83d36167c8&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x7fe4a4992910&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:ggnetwork&gt;</span></span></code></pre>
 </div>
 <div class="section level2">
@@ -147,35 +147,35 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           x         y family importance vertex.names      xend      yend day</span></span>
-<span><span class="co">## 2 0.2256814 0.7628606      c          1            4 0.5230457 0.5476682   2</span></span>
-<span><span class="co">## 3 0.2256814 0.7628606      c          1            4 0.4677896 1.0000000   2</span></span>
-<span><span class="co">## 4 0.2420386 0.4595470      b          3            6 0.2256814 0.7628606   1</span></span>
-<span><span class="co">## 5 0.2420386 0.4595470      b          3            6 0.5945238 0.2096726   2</span></span>
-<span><span class="co">## 6 0.2420386 0.4595470      b          3            6 0.5230457 0.5476682   1</span></span>
-<span><span class="co">## 7 0.2772998 0.2107911      b          3            9 0.0000000 0.0000000   2</span></span>
+<span><span class="co">## 2 0.2314699 0.2131546      c          1            8 0.4672885 0.0000000   3</span></span>
+<span><span class="co">## 3 0.2314699 0.2131546      c          1            8 0.3214053 0.5233996   3</span></span>
+<span><span class="co">## 4 0.3214053 0.5233996      a          2            3 0.0000000 0.5938275   1</span></span>
+<span><span class="co">## 5 0.3214053 0.5233996      a          2            3 0.6967131 0.5275167   1</span></span>
+<span><span class="co">## 7 0.5227659 0.7578578      c          3           10 0.6967131 0.5275167   3</span></span>
+<span><span class="co">## 8 0.5227659 0.7578578      c          3           10 0.3214053 0.5233996   2</span></span>
 <span><span class="co">##   type</span></span>
-<span><span class="co">## 2    z</span></span>
-<span><span class="co">## 3    z</span></span>
-<span><span class="co">## 4    y</span></span>
-<span><span class="co">## 5    z</span></span>
-<span><span class="co">## 6    x</span></span>
-<span><span class="co">## 7    y</span></span></code></pre>
+<span><span class="co">## 2    x</span></span>
+<span><span class="co">## 3    y</span></span>
+<span><span class="co">## 4    x</span></span>
+<span><span class="co">## 5    x</span></span>
+<span><span class="co">## 7    y</span></span>
+<span><span class="co">## 8    y</span></span></code></pre>
 <p>The next rows of the data frame contain the actual edges:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##              x         y family importance vertex.names       xend      yend</span></span>
-<span><span class="co">## 51  0.63485418 0.3145235      c          3            5 0.63485418 0.3145235</span></span>
-<span><span class="co">## 61  0.53767214 0.7676692      b          3            6 0.53767214 0.7676692</span></span>
-<span><span class="co">## 71  0.03620131 0.5754740      c          2            7 0.03620131 0.5754740</span></span>
-<span><span class="co">## 81  0.43239628 0.0000000      b          1            8 0.43239628 0.0000000</span></span>
-<span><span class="co">## 9   0.73359609 0.6096309      b          3            9 0.73359609 0.6096309</span></span>
-<span><span class="co">## 101 0.18863002 0.2445245      a          1           10 0.18863002 0.2445245</span></span>
+<pre><code><span><span class="co">##             x          y family importance vertex.names      xend       yend</span></span>
+<span><span class="co">## 51  0.1697915 0.45956531      a          1            5 0.1697915 0.45956531</span></span>
+<span><span class="co">## 6   0.2349330 0.00000000      b          1            6 0.2349330 0.00000000</span></span>
+<span><span class="co">## 7   0.0000000 0.27204286      c          1            7 0.0000000 0.27204286</span></span>
+<span><span class="co">## 81  0.5867825 0.05794966      c          1            8 0.5867825 0.05794966</span></span>
+<span><span class="co">## 91  0.8530644 1.00000000      a          1            9 0.8530644 1.00000000</span></span>
+<span><span class="co">## 101 0.7432131 0.70596675      c          3           10 0.7432131 0.70596675</span></span>
 <span><span class="co">##     day type</span></span>
 <span><span class="co">## 51   NA &lt;NA&gt;</span></span>
-<span><span class="co">## 61   NA &lt;NA&gt;</span></span>
-<span><span class="co">## 71   NA &lt;NA&gt;</span></span>
+<span><span class="co">## 6    NA &lt;NA&gt;</span></span>
+<span><span class="co">## 7    NA &lt;NA&gt;</span></span>
 <span><span class="co">## 81   NA &lt;NA&gt;</span></span>
-<span><span class="co">## 9    NA &lt;NA&gt;</span></span>
+<span><span class="co">## 91   NA &lt;NA&gt;</span></span>
 <span><span class="co">## 101  NA &lt;NA&gt;</span></span></code></pre>
 <p>The data frame returned by <code>ggnetwork</code> has (<em>N</em> + <em>E</em>) rows, where <em>N</em> is the number of nodes of the network, and <em>E</em> its number of edges. This data format is very likely to include duplicate information about the nodes, which is unavoidable.</p>
 <p>Note that <code>ggnetwork</code> does not include any safety mechanism against duplicate column names. As a consequence, if there is both a vertex attribute called <code>"na"</code> and an edge attribute called <code>"na"</code>, as in the example above, then the vertex attribute will be renamed <code>"na.x"</code> and the edge attribute will be renamed <code>"na.y"</code>.</p>
@@ -382,7 +382,7 @@
 <span><span class="co">##         ggplot2::theme(panel.border = ggplot2::element_rect(fill = NA, </span></span>
 <span><span class="co">##             color = "grey50"), ...)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x7f83d8dcbdf0&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x7fe4a696fbc8&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:ggnetwork&gt;</span></span></code></pre>
 </div>
 </div>
