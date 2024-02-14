@@ -48,13 +48,13 @@ The `ggnetwork` package depends on **R 3.5+** and on `ggplot2` version
 
 ## Documentation
 
-  - The [package vignette](https://briatte.github.io/ggnetwork/)
-    contains detailed examples of how to use its `fortify` method and
-    each of its geometries.
-  - The [package
-    website](https://briatte.github.io/ggnetwork/articles/ggnetwork.html)
-    has more information and a list of [all package
-    functions](https://briatte.github.io/ggnetwork/reference/index.html).
+- The [package vignette](https://briatte.github.io/ggnetwork/) contains
+  detailed examples of how to use its `fortify` method and each of its
+  geometries.
+- The [package
+  website](https://briatte.github.io/ggnetwork/articles/ggnetwork.html)
+  has more information and a list of [all package
+  functions](https://briatte.github.io/ggnetwork/reference/index.html).
 
 For further examples that use `ggnetwork` with other packages to produce
 animated graphs, see James Curley’s slides on “[Interactive and Dynamic
@@ -121,7 +121,6 @@ Thanks to [@achmurzy](https://github.com/achmurzy),
 [@kippjohnson](https://github.com/kippjohnson),
 [@koheiw](https://github.com/koheiw),
 [@komalsrathi](https://github.com/komalsrathi),
-[@krlmlr](https://github.com/krlmlr),
 [@mbojan](https://github.com/mbojan),
 [@mcanouil](https://github.com/mcanouil),
 [@mgagliol](https://github.com/mgagliol),
@@ -133,7 +132,6 @@ Thanks to [@achmurzy](https://github.com/achmurzy),
 [@SantiFilippo](https://github.com/SantiFilippo),
 [@sciabolazza](https://github.com/sciabolazza),
 [@sctyner](https://github.com/sctyner),
-[@sndmrc](https://github.com/sndmrc),
 [@trinker](https://github.com/trinker),
 [@zachcp](https://github.com/zachcp) and two anonymous *[R
 Journal](https://journal.r-project.org/)* reviewers.
@@ -145,7 +143,7 @@ its predecessor, the `ggnet` package, which also benefitted from
 discussions with [@pedroj](https://github.com/pedroj) and Bertrand
 Sudre.
 
------
+------------------------------------------------------------------------
 
 Please note that this project is released with a [Contributor Code of
 Conduct](.github/CODE_OF_CONDUCT.md).  
