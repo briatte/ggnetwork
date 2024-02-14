@@ -1,3 +1,10 @@
+ggnetwork 0.5.13 (2024-02-14)
+=============================
+
+## Minor improvements and fixes
+
+* Fortifying graph objects was slightly modified to accommodate for a change in `igraph` 2.0.1 and above (thanks to Marco Sandri and `igraph` developers for raising the issue).
+
 ggnetwork 0.5.12 (2023-03-06)
 =============================
 
