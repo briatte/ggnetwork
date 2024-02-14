@@ -24,10 +24,9 @@ fortify.igraph <- function(
   ...
 ) {
   # node placement
-  if (inherits(layout, "matrix") && identical(dim(layout), c(as.integer(igraph::gorder(model)), 2L))) {
-    nodes <- layout[, 1:2 ]
-  } else if (inherits(layout, "matrix")) {
-    stop("layout matrix dimensions do not match network size")
+  if (inherits(layout, "matrix")) {
+    if (nrow(layout) != igraph::gorder(model)) {
+      stop("layout matrix dimensions do not match network size")
     }
     nodes <- layout[, 1:2]
   } else {
