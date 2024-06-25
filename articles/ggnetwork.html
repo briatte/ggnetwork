@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ggnetwork: Network geometries for ggplot2 • ggnetwork</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -72,7 +72,7 @@
       <h1 data-toc-skip>ggnetwork: Network geometries for ggplot2</h1>
                         <h4 data-toc-skip class="author">François Briatte</h4>
             
-            <h4 data-toc-skip class="date">2024-02-14</h4>
+            <h4 data-toc-skip class="date">2024-06-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/briatte/ggnetwork/blob/HEAD/vignettes/ggnetwork.Rmd" class="external-link"><code>vignettes/ggnetwork.Rmd</code></a></small>
       <div class="hidden name"><code>ggnetwork.Rmd</code></div>
@@ -125,7 +125,7 @@
 <span><span class="co">##                 colour = NA), panel.border = ggplot2::element_blank(), </span></span>
 <span><span class="co">##             panel.grid = ggplot2::element_blank(), ...)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x7fa8c97befa0&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x12e3bcdd8&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:ggnetwork&gt;</span></span></code></pre>
 </div>
 <div class="section level2">
@@ -146,37 +146,37 @@
 <p>The top of the data frame produced by <code>ggnetwork</code> contains self-loops to force every node to be included in the plot. This explains why the rows shown below have the same values in <code>"x"</code> and <code>"xend"</code> (and in <code>"y"</code> and <code>"yend"</code>), and only missing values in the columns corresponding to the edge attributes:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##           x          y family importance vertex.names      xend      yend day</span></span>
-<span><span class="co">## 1 0.0000000 0.48430093      b          1            6 0.1814340 1.0000000   2</span></span>
-<span><span class="co">## 2 0.1814340 1.00000000      c          2            5 0.5877903 0.9716093   2</span></span>
-<span><span class="co">## 3 0.2265538 0.69947596      a          3           10 0.1814340 1.0000000   3</span></span>
-<span><span class="co">## 4 0.2265538 0.69947596      a          3           10 0.5122743 0.4502714   3</span></span>
-<span><span class="co">## 5 0.2741878 0.09477229      b          1            9 0.5122743 0.4502714   3</span></span>
-<span><span class="co">## 6 0.2741878 0.09477229      b          1            9 0.0000000 0.4843009   3</span></span>
+<pre><code><span><span class="co">##           x         y family importance vertex.names       xend      yend day</span></span>
+<span><span class="co">## 3 0.2562322 0.4963630      b          3           10 0.03371037 0.1941497   2</span></span>
+<span><span class="co">## 4 0.2562322 0.4963630      b          3           10 0.60497726 0.6273773   2</span></span>
+<span><span class="co">## 5 0.2562322 0.4963630      b          3           10 0.48528253 0.6643214   1</span></span>
+<span><span class="co">## 6 0.2562322 0.4963630      b          3           10 0.50421124 0.2971391   1</span></span>
+<span><span class="co">## 7 0.2562322 0.4963630      b          3           10 0.00000000 0.7217790   1</span></span>
+<span><span class="co">## 8 0.4852825 0.6643214      c          2            5 0.62800526 1.0000000   3</span></span>
 <span><span class="co">##   type</span></span>
-<span><span class="co">## 1    y</span></span>
-<span><span class="co">## 2    x</span></span>
-<span><span class="co">## 3    z</span></span>
-<span><span class="co">## 4    z</span></span>
-<span><span class="co">## 5    y</span></span>
-<span><span class="co">## 6    z</span></span></code></pre>
+<span><span class="co">## 3    y</span></span>
+<span><span class="co">## 4    y</span></span>
+<span><span class="co">## 5    x</span></span>
+<span><span class="co">## 6    y</span></span>
+<span><span class="co">## 7    y</span></span>
+<span><span class="co">## 8    y</span></span></code></pre>
 <p>The next rows of the data frame contain the actual edges:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="fu"><a href="../reference/ggnetwork.html">ggnetwork</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##             x          y family importance vertex.names      xend       yend</span></span>
-<span><span class="co">## 51  0.2817158 0.85998260      c          2            5 0.2817158 0.85998260</span></span>
-<span><span class="co">## 61  0.7415812 1.00000000      b          1            6 0.7415812 1.00000000</span></span>
-<span><span class="co">## 71  0.9214633 0.00000000      b          2            7 0.9214633 0.00000000</span></span>
-<span><span class="co">## 81  0.4315733 0.05346187      b          1            8 0.4315733 0.05346187</span></span>
-<span><span class="co">## 9   0.9359977 0.67701644      b          1            9 0.9359977 0.67701644</span></span>
-<span><span class="co">## 101 0.0000000 0.69913580      a          3           10 0.0000000 0.69913580</span></span>
-<span><span class="co">##     day type</span></span>
-<span><span class="co">## 51   NA &lt;NA&gt;</span></span>
-<span><span class="co">## 61   NA &lt;NA&gt;</span></span>
-<span><span class="co">## 71   NA &lt;NA&gt;</span></span>
-<span><span class="co">## 81   NA &lt;NA&gt;</span></span>
-<span><span class="co">## 9    NA &lt;NA&gt;</span></span>
-<span><span class="co">## 101  NA &lt;NA&gt;</span></span></code></pre>
+<pre><code><span><span class="co">##             x         y family importance vertex.names      xend      yend day</span></span>
+<span><span class="co">## 51  0.5345452 0.3246924      c          2            5 0.5345452 0.3246924  NA</span></span>
+<span><span class="co">## 61  0.4233749 0.3692322      b          3            6 0.4233749 0.3692322  NA</span></span>
+<span><span class="co">## 71  0.7487316 0.4721346      a          2            7 0.7487316 0.4721346  NA</span></span>
+<span><span class="co">## 8   0.5656610 0.6851465      a          3            8 0.5656610 0.6851465  NA</span></span>
+<span><span class="co">## 91  0.0000000 0.5514976      c          2            9 0.0000000 0.5514976  NA</span></span>
+<span><span class="co">## 101 0.2816272 0.6323586      b          3           10 0.2816272 0.6323586  NA</span></span>
+<span><span class="co">##     type</span></span>
+<span><span class="co">## 51  &lt;NA&gt;</span></span>
+<span><span class="co">## 61  &lt;NA&gt;</span></span>
+<span><span class="co">## 71  &lt;NA&gt;</span></span>
+<span><span class="co">## 8   &lt;NA&gt;</span></span>
+<span><span class="co">## 91  &lt;NA&gt;</span></span>
+<span><span class="co">## 101 &lt;NA&gt;</span></span></code></pre>
 <p>The data frame returned by <code>ggnetwork</code> has (<em>N</em> + <em>E</em>) rows, where <em>N</em> is the number of nodes of the network, and <em>E</em> its number of edges. This data format is very likely to include duplicate information about the nodes, which is unavoidable.</p>
 <p>Note that <code>ggnetwork</code> does not include any safety mechanism against duplicate column names. As a consequence, if there is both a vertex attribute called <code>"na"</code> and an edge attribute called <code>"na"</code>, as in the example above, then the vertex attribute will be renamed <code>"na.x"</code> and the edge attribute will be renamed <code>"na.y"</code>.</p>
 </div>
@@ -382,7 +382,7 @@
 <span><span class="co">##         ggplot2::theme(panel.border = ggplot2::element_rect(fill = NA, </span></span>
 <span><span class="co">##             color = "grey50"), ...)</span></span>
 <span><span class="co">## }</span></span>
-<span><span class="co">## &lt;bytecode: 0x7fa8c564ae30&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x139ca7708&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:ggnetwork&gt;</span></span></code></pre>
 </div>
 </div>
@@ -427,7 +427,7 @@
 <span>  <span class="fu"><a href="../reference/theme_blank.html">theme_blank</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ggnetwork_files/figure-html/unnamed-chunk-31-1.png" width="700"></p>
 <hr>
-<p>Last printed on Feb 14, 2024, using ggnetwork version 0.5.13.</p>
+<p>Last printed on Jun 25, 2024, using ggnetwork version 0.5.13.</p>
 </div>
   </div>
 
@@ -448,7 +448,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>

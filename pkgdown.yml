@@ -1,7 +1,7 @@
 pandoc: 2.7.3
-pkgdown: 2.0.7
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   ggnetwork: ggnetwork.html
-last_built: 2024-02-14T13:05Z
+last_built: 2024-06-25T05:22Z
 
