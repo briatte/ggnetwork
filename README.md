@@ -17,7 +17,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/briatte/ggnetwork?bra
 [![CRAN
 status](https://www.r-pkg.org/badges/version-ago/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
 [![CRAN checks
-(worst)](https://cranchecks.info/badges/worst/ggnetwork)](https://cran.r-project.org/web/checks/check_results_ggnetwork.html)
+(worst)](https://badges.cranchecks.info/worst/ggnetwork.svg)](https://cran.r-project.org/web/checks/check_results_ggnetwork.html)
 [![CRAN total
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/ggnetwork)](https://cran.r-project.org/package=ggnetwork)
 <!-- badges: end -->
