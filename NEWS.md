@@ -1,3 +1,11 @@
+ggnetwork 0.5.14 (2025-09-09)
+=============================
+
+## Minor improvements and fixes
+
+* Minor updates to documentation to pass new CRAN checks on cross-references.
+* Minor updates to handle deprecated and renamed functions in `igraph`.
+
 ggnetwork 0.5.13 (2024-02-14)
 =============================
 
