@@ -10,7 +10,8 @@ test_that("fortify.network works", {
 })
 
 # test data
-n <- igraph::random.graph.game(n = 1, p.or.m = 0)
+# note: `p` used to be `p.or.m` until igraph version 0.8.0
+n <- igraph::sample_gnp(n = 1, p = 0)
 n <- network::network(igraph::as_adjacency_matrix(n))
 
 # wrong layout matrix

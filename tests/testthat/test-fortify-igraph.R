@@ -10,7 +10,8 @@ test_that("fortify.igraph works", {
 })
 
 # test data
-n <- igraph::random.graph.game(n = 1, p.or.m = 0)
+# note: `p` used to be `p.or.m` until igraph version 0.8.0
+n <- igraph::sample_gnp(n = 1, p = 0)
 
 # wrong layout matrix
 test_that("fortify.igraph rejects layout matrix of wrong dimensions", {

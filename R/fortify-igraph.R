@@ -17,7 +17,7 @@ fortify.igraph <- function(
   model,
   data = NULL,
   layout = igraph::nicely(),
-  arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0),
+  arrow.gap = ifelse(igraph::is_directed(model), 0.025, 0),
   by = NULL,
   scale = TRUE,
   stringsAsFactors = getOption("stringsAsFactors", FALSE),
@@ -41,10 +41,10 @@ fortify.igraph <- function(
     by = by,
     scale = scale,
     stringsAsFactors = stringsAsFactors,
-    .list_vertex_attributes_fun = igraph::list.vertex.attributes,
-    .get_vertex_attributes_fun = igraph::get.vertex.attribute,
-    .list_edges_attributes_fun = igraph::list.edge.attributes,
-    .get_edges_attributes_fun = igraph::get.edge.attribute,
+    .list_vertex_attributes_fun = igraph::vertex_attr_names,
+    .get_vertex_attributes_fun = igraph::vertex_attr,
+    .list_edges_attributes_fun = igraph::edge_attr_names,
+    .get_edges_attributes_fun = igraph::edge_attr,
     .as_edges_list_fun = igraph::as_edgelist
   )
 }
