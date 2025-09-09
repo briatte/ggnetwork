@@ -5,7 +5,7 @@
 #'
 #' @param base_size base font size
 #' @param base_family base font family
-#' @param ... other \code{\link{theme}} arguments
+#' @param ... other \code{\link[ggplot2]{theme}} arguments
 #'
 #' @export
 theme_blank <- function(base_size = 12, base_family = "", ...) {
@@ -29,7 +29,7 @@ theme_blank <- function(base_size = 12, base_family = "", ...) {
 #'
 #' @param base_size base font size
 #' @param base_family base font family
-#' @param ... other \code{\link{theme}} arguments
+#' @param ... other \code{\link[ggplot2]{theme}} arguments
 #'
 #' @export
 theme_facet <- function(base_size = 12, base_family = "", ...) {

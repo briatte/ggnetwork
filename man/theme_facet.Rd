@@ -11,7 +11,7 @@ theme_facet(base_size = 12, base_family = "", ...)
 
 \item{base_family}{base font family}
 
-\item{...}{other \code{\link{theme}} arguments}
+\item{...}{other \code{\link[ggplot2]{theme}} arguments}
 }
 \description{
 A variation of \code{\link{theme_blank}} that adds a panel border to the

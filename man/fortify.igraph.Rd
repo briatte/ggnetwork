@@ -8,7 +8,7 @@
   model,
   data = NULL,
   layout = igraph::nicely(),
-  arrow.gap = ifelse(igraph::is.directed(model), 0.025, 0),
+  arrow.gap = ifelse(igraph::is_directed(model), 0.025, 0),
   by = NULL,
   scale = TRUE,
   stringsAsFactors = getOption("stringsAsFactors", FALSE),

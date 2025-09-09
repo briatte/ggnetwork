@@ -128,8 +128,8 @@ geom_edges <- function(
 #' \code{\link[ggplot2]{geom_label}}, with the only difference that the
 #' \code{label.size} argument defaults to \code{0} in order to avoid drawing a
 #' border around the edge labels. The labels will be drawn at mid-edges.
-#' \code{\link{geom_text}} and \code{\link{geom_label}} produce strictly
-#' identical results.
+#' \code{\link[ggplot2]{geom_text}} and \code{\link[ggplot2]{geom_label}}
+#' produce strictly identical results.
 #'
 #' @inheritParams ggplot2::geom_label
 #'
