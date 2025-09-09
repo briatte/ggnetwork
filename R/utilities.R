@@ -246,4 +246,5 @@ format_fortify <- function(
 # Suppress R CMD check note
 #' @importFrom network network
 #' @importFrom sna gplot.layout.adj
+#' @importFrom utils data
 NULL
