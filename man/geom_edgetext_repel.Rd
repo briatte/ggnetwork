@@ -114,8 +114,9 @@ the default plot specification, e.g. \code{\link[ggplot2]{borders}}.}
 \description{
 All arguments to both \code{\link{geom_edgetext_repel}} and
 \code{\link{geom_edgelabel_repel}} are identical to those of
-\code{\link[ggrepel]{geom_label_repel}}. \code{\link{geom_text_repel}} and
-\code{\link{geom_label_repel}} produce strictly identical results.
+\code{\link[ggrepel]{geom_label_repel}}.
+\code{\link[ggrepel]{geom_text_repel}} and
+\code{\link[ggrepel]{geom_label_repel}} produce strictly identical results.
 }
 \examples{
 if (require(network) && require(sna)) {
