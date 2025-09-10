@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggnetwork</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.14</span>
       </span>
     </div>
 
@@ -34,20 +34,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/briatte/ggnetwork/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Fortify method for networks of class <code><a href="https://r.igraph.org/reference/aaa-igraph-package.html" class="external-link">igraph</a></code></h1>
-    <small class="dont-index">Source: <a href="https://github.com/briatte/ggnetwork/blob/HEAD/R/fortify-igraph.R" class="external-link"><code>R/fortify-igraph.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/briatte/ggnetwork/blob/master/R/fortify-igraph.R" class="external-link"><code>R/fortify-igraph.R</code></a></small>
     <div class="hidden name"><code>fortify.igraph.Rd</code></div>
     </div>
 
@@ -56,12 +56,12 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for igraph</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for class 'igraph'</span></span>
 <span><span class="fu"><a href="fortify.html">fortify</a></span><span class="op">(</span></span>
 <span>  <span class="va">model</span>,</span>
 <span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  layout <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/layout_nicely.html" class="external-link">nicely</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  arrow.gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/is.directed.html" class="external-link">is.directed</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>, <span class="fl">0.025</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>  arrow.gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/is_directed.html" class="external-link">is_directed</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span>, <span class="fl">0.025</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>  by <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  scale <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  stringsAsFactors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"stringsAsFactors"</span>, <span class="cn">FALSE</span><span class="op">)</span>,</span>
@@ -71,15 +71,17 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>model</dt>
+
+
+<dl><dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
 <dd><p>an object of class <code><a href="https://r.igraph.org/reference/aaa-igraph-package.html" class="external-link">igraph</a></code>.</p></dd>
 
 
-<dt>data</dt>
+<dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>not used by this method.</p></dd>
 
 
-<dt>layout</dt>
+<dt id="arg-layout">layout<a class="anchor" aria-label="anchor" href="#arg-layout"></a></dt>
 <dd><p>a function call to an
 <code><a href="https://r.igraph.org/reference/aaa-igraph-package.html" class="external-link">igraph</a></code> layout function, such as
 <code><a href="https://r.igraph.org/reference/layout_nicely.html" class="external-link">layout_nicely</a></code> (the default), or a 2 column matrix
@@ -87,7 +89,7 @@ giving the x and y coordinates for the vertices.
 See <code><a href="https://r.igraph.org/reference/layout_.html" class="external-link">layout_</a></code> for details.</p></dd>
 
 
-<dt>arrow.gap</dt>
+<dt id="arg-arrow-gap">arrow.gap<a class="anchor" aria-label="anchor" href="#arg-arrow-gap"></a></dt>
 <dd><p>a parameter that will shorten the network edges in order to
 avoid overplotting edge arrows and nodes; defaults to <code>0</code> when the
 network is undirected (no edge shortening), or to <code>0.025</code> when the
@@ -95,7 +97,7 @@ network is directed. Small values near <code>0.025</code> will generally achieve
 good results when the size of the nodes is reasonably small.</p></dd>
 
 
-<dt>by</dt>
+<dt id="arg-by">by<a class="anchor" aria-label="anchor" href="#arg-by"></a></dt>
 <dd><p>a character vector that matches an edge attribute, which will be
 used to generate a data frame that can be plotted with
 <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></code>. The
@@ -103,28 +105,26 @@ nodes of the network will appear in all facets, at the same coordinates.
 Defaults to <code>NULL</code> (no faceting).</p></dd>
 
 
-<dt>scale</dt>
+<dt id="arg-scale">scale<a class="anchor" aria-label="anchor" href="#arg-scale"></a></dt>
 <dd><p>whether to (re)scale the layout coordinates. Defaults to
 <code>TRUE</code>, but should be set to <code>FALSE</code> if <code>layout</code> contains
 meaningful spatial coordinates, such as latitude and longitude.</p></dd>
 
 
-<dt>stringsAsFactors</dt>
+<dt id="arg-stringsasfactors">stringsAsFactors<a class="anchor" aria-label="anchor" href="#arg-stringsasfactors"></a></dt>
 <dd><p>whether vertex and edge attributes should be
 converted to factors if they are of class <code>character</code>. Defaults to
 the value of <code>getOption("stringsAsFactors")</code>, which is <code>FALSE</code>
 by default: see <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code>.</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>additional parameters for the <code><a href="https://r.igraph.org/reference/layout_.html" class="external-link">layout_</a></code> function</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code> object.</p>
+    <p>a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code> object.</p>
     </div>
 
   </div>
@@ -139,15 +139,15 @@ by default: see <code><a href="https://rdrr.io/r/base/data.frame.html" class="ex
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 

@@ -4,7 +4,7 @@ or igraph object."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aja
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -18,7 +18,7 @@ or igraph object."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aja
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggnetwork</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.14</span>
       </span>
     </div>
 
@@ -35,20 +35,20 @@ or igraph object."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aja
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/briatte/ggnetwork/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>format_fortify</h1>
-    <small class="dont-index">Source: <a href="https://github.com/briatte/ggnetwork/blob/HEAD/R/utilities.R" class="external-link"><code>R/utilities.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/briatte/ggnetwork/blob/master/R/utilities.R" class="external-link"><code>R/utilities.R</code></a></small>
     <div class="hidden name"><code>format_fortify.Rd</code></div>
     </div>
 
@@ -76,23 +76,25 @@ or <code><a href="https://r.igraph.org/reference/aaa-igraph-package.html" class=
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>model</dt>
+
+
+<dl><dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
 <dd><p>an object of class <code><a href="https://rdrr.io/pkg/network/man/network.html" class="external-link">network</a></code>
 or <code><a href="https://r.igraph.org/reference/aaa-igraph-package.html" class="external-link">igraph</a></code>.</p></dd>
 
 
-<dt>nodes</dt>
+<dt id="arg-nodes">nodes<a class="anchor" aria-label="anchor" href="#arg-nodes"></a></dt>
 <dd><p>a nodes object from a call to fortify.</p></dd>
 
 
-<dt>weights</dt>
+<dt id="arg-weights">weights<a class="anchor" aria-label="anchor" href="#arg-weights"></a></dt>
 <dd><p>the name of an edge attribute to use as edge weights when
 computing the network layout, if the layout supports such weights (see
 'Details').
 Defaults to <code>NULL</code> (no edge weights).</p></dd>
 
 
-<dt>arrow.gap</dt>
+<dt id="arg-arrow-gap">arrow.gap<a class="anchor" aria-label="anchor" href="#arg-arrow-gap"></a></dt>
 <dd><p>a parameter that will shorten the network edges in order to
 avoid overplotting edge arrows and nodes; defaults to <code>0</code> when the
 network is undirected (no edge shortening), or to <code>0.025</code> when the
@@ -100,7 +102,7 @@ network is directed. Small values near <code>0.025</code> will generally achieve
 good results when the size of the nodes is reasonably small.</p></dd>
 
 
-<dt>by</dt>
+<dt id="arg-by">by<a class="anchor" aria-label="anchor" href="#arg-by"></a></dt>
 <dd><p>a character vector that matches an edge attribute, which will be
 used to generate a data frame that can be plotted with
 <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></code>. The
@@ -108,44 +110,42 @@ nodes of the network will appear in all facets, at the same coordinates.
 Defaults to <code>NULL</code> (no faceting).</p></dd>
 
 
-<dt>scale</dt>
+<dt id="arg-scale">scale<a class="anchor" aria-label="anchor" href="#arg-scale"></a></dt>
 <dd><p>whether to (re)scale the layout coordinates. Defaults to
 <code>TRUE</code>, but should be set to <code>FALSE</code> if <code>layout</code> contains
 meaningful spatial coordinates, such as latitude and longitude.</p></dd>
 
 
-<dt>stringsAsFactors</dt>
+<dt id="arg-stringsasfactors">stringsAsFactors<a class="anchor" aria-label="anchor" href="#arg-stringsasfactors"></a></dt>
 <dd><p>whether vertex and edge attributes should be
 converted to factors if they are of class <code>character</code>. Defaults to
 the value of <code>getOption("stringsAsFactors")</code>, which is <code>FALSE</code>
 by default: see <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code>.</p></dd>
 
 
-<dt>.list_vertex_attributes_fun</dt>
+<dt id="arg--list-vertex-attributes-fun">.list_vertex_attributes_fun<a class="anchor" aria-label="anchor" href="#arg--list-vertex-attributes-fun"></a></dt>
 <dd><p>a "list vertex attributes" function.</p></dd>
 
 
-<dt>.get_vertex_attributes_fun</dt>
+<dt id="arg--get-vertex-attributes-fun">.get_vertex_attributes_fun<a class="anchor" aria-label="anchor" href="#arg--get-vertex-attributes-fun"></a></dt>
 <dd><p>a "get vertex attributes" function.</p></dd>
 
 
-<dt>.list_edges_attributes_fun</dt>
+<dt id="arg--list-edges-attributes-fun">.list_edges_attributes_fun<a class="anchor" aria-label="anchor" href="#arg--list-edges-attributes-fun"></a></dt>
 <dd><p>a "get edges attributes" function.</p></dd>
 
 
-<dt>.get_edges_attributes_fun</dt>
+<dt id="arg--get-edges-attributes-fun">.get_edges_attributes_fun<a class="anchor" aria-label="anchor" href="#arg--get-edges-attributes-fun"></a></dt>
 <dd><p>a "get edges attributes" function.</p></dd>
 
 
-<dt>.as_edges_list_fun</dt>
+<dt id="arg--as-edges-list-fun">.as_edges_list_fun<a class="anchor" aria-label="anchor" href="#arg--as-edges-list-fun"></a></dt>
 <dd><p>a "as edges list" function.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code> object.</p>
+    <p>a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></code> object.</p>
     </div>
 
   </div>
@@ -160,15 +160,15 @@ by default: see <code><a href="https://rdrr.io/r/base/data.frame.html" class="ex
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
