@@ -14,7 +14,7 @@ geom_edgetext_repel(
   label.padding = unit(0.25, "lines"),
   point.padding = unit(1e-06, "lines"),
   label.r = unit(0.15, "lines"),
-  label.size = 0.25,
+  linewidth = 0.25,
   arrow = NULL,
   force = 1,
   max.iter = 10000,
@@ -34,7 +34,7 @@ geom_edgelabel_repel(
   label.padding = unit(0.25, "lines"),
   point.padding = unit(1e-06, "lines"),
   label.r = unit(0.15, "lines"),
-  label.size = 0.25,
+  linewidth = 0.25,
   arrow = NULL,
   force = 1,
   max.iter = 10000,
@@ -84,8 +84,6 @@ specified by passing \code{unit(x, "units")}).}
 \item{label.r}{Radius of rounded corners, as unit or number. Defaults
 to 0.15. (Default unit is lines, but other units can be specified by
 passing \code{unit(x, "units")}).}
-
-\item{label.size}{Size of label border, in mm.}
 
 \item{arrow}{specification for arrow heads, as created by \code{\link[grid]{arrow}}}
 

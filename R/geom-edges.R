@@ -126,7 +126,7 @@ geom_edges <- function(
 #' All arguments to both \code{\link{geom_edgetext}} and
 #' \code{\link{geom_edgelabel}} are identical to those of
 #' \code{\link[ggplot2]{geom_label}}, with the only difference that the
-#' \code{label.size} argument defaults to \code{0} in order to avoid drawing a
+#' \code{linewidth} argument defaults to \code{0} in order to avoid drawing a
 #' border around the edge labels. The labels will be drawn at mid-edges.
 #' \code{\link[ggplot2]{geom_text}} and \code{\link[ggplot2]{geom_label}}
 #' produce strictly identical results.
@@ -171,7 +171,7 @@ geom_edgetext <- function(
   nudge_y = 0,
   label.padding = unit(0.25, "lines"),
   label.r = unit(0.15, "lines"),
-  label.size = 0,
+  linewidth = 0,
   na.rm = FALSE,
   show.legend = NA,
   inherit.aes = TRUE
@@ -196,7 +196,7 @@ geom_edgetext <- function(
       parse = parse,
       label.padding = label.padding,
       label.r = label.r,
-      label.size = label.size,
+      linewidth = linewidth,
       na.rm = na.rm,
       ...
     )
@@ -256,7 +256,7 @@ geom_edgetext_repel <- function(
   label.padding = unit(0.25, "lines"),
   point.padding = unit(1e-6, "lines"),
   label.r = unit(0.15, "lines"),
-  label.size = 0.25,
+  linewidth = 0.25,
   #segment.colour = "#666666",
   #segment.size = 0.5,
   arrow = NULL,
@@ -282,7 +282,7 @@ geom_edgetext_repel <- function(
       label.padding = label.padding,
       point.padding = point.padding,
       label.r = label.r,
-      label.size = label.size,
+      linewidth = linewidth,
       #segment.colour = segment.colour,
       #segment.size = segment.size,
       arrow = arrow,
