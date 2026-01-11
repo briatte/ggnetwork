@@ -1,3 +1,10 @@
+ggnetwork 0.5.15 (2026-01-11)
+=============================
+
+## Minor improvements and fixes
+
+* Replaced deprecated `label.size` parameter with `linewidth`, thanks to [Alexey Sergushichev](https://github.com/assaron) (#80).
+
 ggnetwork 0.5.14 (2025-09-09)
 =============================
 
